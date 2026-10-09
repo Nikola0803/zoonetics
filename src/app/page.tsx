@@ -37,6 +37,13 @@ const studyContexts = [
   { title: "You want to compare options", kicker: "Before another expense", body: "Read what each research profile actually supports, what it does not, and which questions belong with your veterinarian.", image: "/images/canis/mobility-story.png", position: "object-center" },
 ];
 
+const creatorStories = [
+  { title: "The moment the walk changed", prompt: "A creator documents the small movement change that started their search.", image: "/images/canis/hero-senior-lab.png", position: "object-[64%_center]", duration: "00:28" },
+  { title: "What I filmed before the vet visit", prompt: "Side-by-side owner footage gives the appointment a clearer starting point.", image: "/images/canis/story-before.png", position: "object-center", duration: "00:34" },
+  { title: "Why I started tracking the stairs", prompt: "A simple weekly check-in makes subtle changes easier to describe.", image: "/images/canis/story-followup.png", position: "object-center", duration: "00:31" },
+  { title: "One dog. One honest timeline.", prompt: "A dated creator diary keeps observation separate from a product claim.", image: "/images/canis/mobility-story.png", position: "object-center", duration: "00:42" },
+];
+
 const researchCycle = [
   ["01", "Write down the change", "Note when it started, what movement looks different, and whether it is getting worse."],
   ["02", "Start with a veterinarian", "Pain and mobility changes can have many causes. A proper examination belongs before product research."],
@@ -95,7 +102,7 @@ export default function Home() {
             <Link href="#collection" className="transition hover:text-[#A9C7FF]">K9 peptides</Link>
             <Link href="#approach" className="transition hover:text-[#A9C7FF]">Our approach</Link>
             <Link href="#science" className="transition hover:text-[#A9C7FF]">The science</Link>
-            <Link href="#stories" className="transition hover:text-[#A9C7FF]">Dog stories</Link>
+            <Link href="#creator-stories" className="transition hover:text-[#A9C7FF]">Creator videos</Link>
             <Link href="#questions" className="transition hover:text-[#A9C7FF]">Questions</Link>
           </nav>
           <Link href="#collection" className="rounded-full bg-[#F6F7FC] px-5 py-3 text-[10px] font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#A9C7FF]"><span className="sm:hidden">Collection</span><span className="hidden sm:inline">Explore collection</span></Link>
@@ -149,6 +156,33 @@ export default function Home() {
                 </div>
               </article>
             </div>
+          </div>
+        </section>
+
+        <section id="creator-stories" className="overflow-hidden bg-[#101829] px-5 py-20 text-white md:px-10 md:py-28">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">From the K9 creator community</p><h2 className="mt-5 max-w-xl font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em]">Real dog people. <span className="font-serif italic text-[#A9C7FF]">Real camera-roll moments.</span></h2></div>
+              <div className="max-w-xl lg:justify-self-end"><p className="text-lg leading-8 text-white/62">Short, vertical stories give owners something more useful than a polished promise: what another dog owner noticed, what they documented, and what they asked next.</p><div className="mt-5 flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-[0.13em]"><span className="rounded-full border border-white/18 px-4 py-2 text-white/65">Creator attributed</span><span className="rounded-full border border-white/18 px-4 py-2 text-white/65">Disclosure visible</span><span className="rounded-full border border-white/18 px-4 py-2 text-white/65">Observation labeled</span></div></div>
+            </div>
+
+            <div className="scrollbar-none -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
+              {creatorStories.map((story, index) => (
+                <article key={story.title} className="group relative aspect-[9/16] w-[78vw] max-w-[315px] shrink-0 snap-start overflow-hidden rounded-[1.6rem] bg-[#17233B]">
+                  <Image src={story.image} alt="" fill sizes="(max-width: 768px) 78vw, 315px" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${story.position}`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#101829]/95 via-[#101829]/12 to-[#101829]/35" />
+                  <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5"><span className="rounded-full bg-white px-3 py-2 text-[9px] font-bold uppercase tracking-[0.13em] text-[#17233B]">UGC story 0{index + 1}</span><span className="rounded-full bg-black/30 px-3 py-2 text-[9px] font-bold text-white backdrop-blur">{story.duration}</span></div>
+                  <div className="absolute inset-0 grid place-items-center"><span className="grid h-16 w-16 place-items-center rounded-full border border-white/60 bg-white/15 text-2xl backdrop-blur transition group-hover:scale-110 group-hover:bg-white group-hover:text-[#17233B]"><i className="ri-play-fill translate-x-0.5" /></span></div>
+                  <div className="absolute inset-x-0 bottom-0 p-6"><p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#A9C7FF]">Creator footage slot ready</p><h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.035em]">{story.title}</h3><p className="mt-3 text-sm leading-5 text-white/58">{story.prompt}</p><div className="mt-5 flex items-center justify-between border-t border-white/15 pt-4 text-[9px] font-bold uppercase tracking-[0.12em] text-white/45"><span>Handle + dog</span><span>Rights approved</span></div></div>
+                </article>
+              ))}
+              <aside className="flex aspect-[9/16] w-[78vw] max-w-[315px] shrink-0 snap-start flex-col justify-between rounded-[1.6rem] bg-[#FF8A72] p-7 text-[#17233B]">
+                <div><span className="grid h-12 w-12 place-items-center rounded-full bg-[#17233B] text-xl text-white"><i className="ri-shield-star-line" /></span><p className="mt-8 text-[10px] font-bold uppercase tracking-[0.16em]">Every published creator story includes</p><ul className="mt-6 space-y-4 text-base font-semibold"><li className="flex gap-3"><i className="ri-check-line" /> Creator and dog attribution</li><li className="flex gap-3"><i className="ri-check-line" /> Paid or gifted disclosure</li><li className="flex gap-3"><i className="ri-check-line" /> Date and filming context</li><li className="flex gap-3"><i className="ri-check-line" /> Owner-observation label</li><li className="flex gap-3"><i className="ri-check-line" /> No dosing or medical claims</li></ul></div>
+                <p className="border-t border-[#17233B]/18 pt-5 text-xs leading-5 text-[#17233B]/60">Approved creator footage can replace each poster without changing the layout.</p>
+              </aside>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 border-t border-white/15 pt-6 text-sm text-white/45 md:flex-row md:items-center md:justify-between"><p>Creator experiences are personal observations—not clinical evidence or guaranteed outcomes.</p><p className="font-bold uppercase tracking-[0.13em] text-[#A9C7FF]">Vertical video · captions · sound optional</p></div>
           </div>
         </section>
 
