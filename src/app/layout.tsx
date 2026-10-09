@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "PetPeps — Research Peptides & Blends for Canine Studies",
   description:
-    "Research-use-only peptides and purpose-built blends organized for canine studies, with transparent batch testing and responsible education.",
+    "A focused research-use-only peptide library with evidence by species, transparent lot records, and clear limits for dog owners asking better questions.",
   robots: { index: false, follow: false },
   openGraph: {
     title: "PetPeps",
-    description: "Research-use-only peptides and purpose-built blends organized for canine studies.",
+    description: "A focused peptide research library with evidence by species, transparent lot records, and clear limits.",
     images: [
       {
         url: "/images/canis/hero-senior-lab.png",

@@ -2,41 +2,38 @@ import Image from "next/image";
 import Link from "next/link";
 
 const pathways = [
-  ["01", "Connective-tissue biology", "Research context for signaling pathways observed in tendon, ligament, and soft-tissue models.", "ri-bone-line"],
-  ["02", "Healthy-aging models", "A disciplined way to organize compounds studied alongside age-related cellular and recovery pathways.", "ri-heart-pulse-line"],
-  ["03", "Recovery research", "Research profiles for compounds investigated in repair-response and activity-stress models.", "ri-run-line"],
+  ["01", "You notice it first", "The pause at the stairs. The shorter walk. The extra time it takes to stand. Small changes are often what send owners looking for answers.", "ri-eye-line"],
+  ["02", "Care gets expensive fast", "When every next step carries another bill, people need a clearer way to understand what is established, what is experimental, and what to ask next.", "ri-wallet-3-line"],
+  ["03", "Clarity protects your dog", "A short list, honest evidence limits, and a veterinarian in the conversation are worth more than a giant catalog of confident promises.", "ri-shield-check-line"],
 ];
 
 const standards = [
-  ["01", "Identity", "Independent methods verify that each lot is what its record says it is."],
-  ["02", "Purity", "Quantitative results stay connected to the exact lot—not a generic sample."],
-  ["03", "Traceability", "CRM inventory, fulfillment, and documentation share one source of truth."],
-  ["04", "Restraint", "No veterinary efficacy claim is published without the evidence to support it."],
+  ["01", "Source", "See where a claim comes from: human data, laboratory research, animal models, or owner observation."],
+  ["02", "Species", "Human or laboratory findings are never presented as proof that the same outcome occurs in dogs."],
+  ["03", "Lot", "Identity and purity results stay connected to the exact research lot—not a generic sample."],
+  ["04", "Limits", "Every profile states what is unknown and what still requires veterinary or controlled canine research."],
 ];
 
 const products = [
-  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Peptide blend", focus: "Connective-tissue research", formats: ["10 + 10 mg"], color: "#17233B", ink: "#F6F7FC" },
-  { name: "Daily Signal", formula: "BPC-157 + KPV", type: "Peptide blend", focus: "Repair-pathway research", formats: ["10 + 10 mg"], color: "#4567D8", ink: "#FBFAFF" },
-  { name: "Coat & Matrix", formula: "GHK-Cu + KPV", type: "Peptide blend", focus: "Skin & tissue model research", formats: ["50 + 10 mg"], color: "#7869C9", ink: "#FBFAFF" },
-  { name: "BPC-157", formula: "Pentadecapeptide", type: "Single peptide", focus: "Soft-tissue pathway research", formats: ["5 mg", "10 mg"], color: "#5F7CF6", ink: "#FBFAFF" },
-  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "Single peptide", focus: "Repair-response research", formats: ["5 mg", "10 mg"], color: "#5A7A9E", ink: "#F6F7FC" },
-  { name: "KPV", formula: "Lys–Pro–Val tripeptide", type: "Single peptide", focus: "Inflammatory-pathway research", formats: ["10 mg"], color: "#6C78A8", ink: "#F6F7FC" },
-  { name: "GHK-Cu", formula: "Copper peptide complex", type: "Single peptide", focus: "Skin & tissue model research", formats: ["50 mg"], color: "#8C68D8", ink: "#FBFAFF" },
-  { name: "NAD+", formula: "Nicotinamide adenine dinucleotide", type: "Research compound", focus: "Cellular-energy research", formats: ["500 mg"], color: "#4F6F8F", ink: "#FBFAFF" },
+  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Peptide blend", focus: "Paired repair-pathway research", formats: ["10 + 10 mg"], color: "#17233B", ink: "#F6F7FC" },
+  { name: "Matrix Pair", formula: "GHK-Cu + KPV", type: "Peptide blend", focus: "Skin and tissue model research", formats: ["50 + 10 mg"], color: "#7869C9", ink: "#FBFAFF" },
+  { name: "BPC-157", formula: "Pentadecapeptide", type: "Single peptide", focus: "Tissue-pathway research", formats: ["5 mg", "10 mg"], color: "#5F7CF6", ink: "#FBFAFF" },
+  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "Single peptide", focus: "Cell-migration research", formats: ["5 mg", "10 mg"], color: "#5A7A9E", ink: "#F6F7FC" },
+  { name: "GHK-Cu", formula: "Copper peptide complex", type: "Single peptide", focus: "Copper-peptide research", formats: ["50 mg"], color: "#8C68D8", ink: "#FBFAFF" },
 ];
 
 const studyContexts = [
-  { title: "Senior canine models", kicker: "Age-related research", body: "Organize literature and observable endpoints around age-related changes in mobility, recovery, and cellular signaling.", image: "/images/canis/story-before.png", position: "object-center" },
-  { title: "Active & working dogs", kicker: "High-load research", body: "Explore repair-response questions associated with repeated activity and demanding working environments.", image: "/images/canis/hero-senior-lab.png", position: "object-[68%_center]" },
-  { title: "Large-breed cohorts", kicker: "Biomechanics research", body: "Build breed- and size-aware research questions without turning predisposition into a treatment claim.", image: "/images/canis/story-followup.png", position: "object-center" },
-  { title: "Recovery observation", kicker: "Measured follow-up", body: "Define comparable movement tasks, observation windows, and documentation before interpreting any change.", image: "/images/canis/mobility-story.png", position: "object-center" },
+  { title: "Getting up looks harder", kicker: "The first signal", body: "A change in rising, stairs, or jumping is a reason to document what changed and speak with a veterinarian—not guess at a diagnosis.", image: "/images/canis/story-before.png", position: "object-center" },
+  { title: "Walks keep getting shorter", kicker: "The routine changes", body: "Owners know a dog’s normal. Tracking distance, pace, and recovery gives the veterinary conversation something concrete.", image: "/images/canis/hero-senior-lab.png", position: "object-[68%_center]" },
+  { title: "Recovery takes longer", kicker: "After activity", body: "Repeated soreness or a slower return to normal deserves context, especially for active, working, and large-breed dogs.", image: "/images/canis/story-followup.png", position: "object-center" },
+  { title: "You want to compare options", kicker: "Before another expense", body: "Read what each research profile actually supports, what it does not, and which questions belong with your veterinarian.", image: "/images/canis/mobility-story.png", position: "object-center" },
 ];
 
 const researchCycle = [
-  ["01", "Frame the question", "Define the canine model, literature basis, and measurable endpoint before selecting a material."],
-  ["02", "Match the profile", "Compare single peptides and blends by research rationale—not by a promised veterinary outcome."],
-  ["03", "Verify the lot", "Connect identity, purity, and supporting documentation to the exact material under study."],
-  ["04", "Record what happened", "Preserve dates, conditions, observations, and adverse events without rewriting the story afterward."],
+  ["01", "Write down the change", "Note when it started, what movement looks different, and whether it is getting worse."],
+  ["02", "Start with a veterinarian", "Pain and mobility changes can have many causes. A proper examination belongs before product research."],
+  ["03", "Read the evidence by species", "Separate human data, laboratory findings, animal models, and canine evidence instead of blending them together."],
+  ["04", "Ask a better next question", "Use the record to discuss reasonable, legal, and evidence-based options—not to self-prescribe an RUO material."],
 ];
 
 const faqs = [
@@ -44,7 +41,8 @@ const faqs = [
   ["Why discuss canine research if the products are RUO?", "The canine focus defines the scientific subject matter, literature, and research questions this catalog organizes. It does not change product status: research-use-only materials are not intended for administration to humans or animals."],
   ["How will product quality be documented?", "Each available research lot is designed to connect to identity, purity, and batch documentation through the same CRM-backed lot system used by the parent platform."],
   ["Should I speak with my veterinarian?", "Yes. Always involve a licensed veterinarian in decisions concerning your dog, particularly when your dog has a health condition or uses prescription medication."],
-  ["What is included in the PetPeps library?", "The collection is structured around several peptide blends, individual peptides, and selected research compounds. Each profile is designed to carry its own format, lot record, testing, and evidence notes."],
+  ["Why is the collection intentionally small?", "Because more products do not create more certainty. PetPeps focuses on a short list of widely discussed research peptides and blends, then makes the evidence source and limitations visible for each one."],
+  ["Can I give a research-use-only peptide to my dog?", "PetPeps research materials are not approved veterinary medicines and are not intended for administration to animals. A product labeled for research use should not be treated as a substitute for a veterinary diagnosis or an approved treatment."],
 ];
 
 function BrandMark({ light = false }: { light?: boolean }) {
@@ -122,29 +120,30 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#17233B] to-transparent" />
           <div className="relative mx-auto flex min-h-[780px] max-w-[1480px] items-end px-5 pb-20 pt-32 md:min-h-[860px] md:items-center md:px-10 md:pb-8">
             <div className="max-w-[760px]">
-              <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> Canine-first research library</p>
-              <h1 className="max-w-[700px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">Peptide science,<span className="block font-serif italic text-[#A9C7FF]">for more good years.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">A growing collection of research-use-only peptide blends and individual peptides, each with a clear profile and lot-level documentation for canine research contexts.</p>
+              <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> For the dogs who still want to go</p>
+              <h1 className="max-w-[700px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">When they slow down,<span className="block font-serif italic text-[#A9C7FF]">you feel it.</span></h1>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">PetPeps narrows a noisy peptide category to a focused research library—so you can understand why a compound is being studied, what remains unknown, and what to ask before spending more.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">Explore peptides &amp; blends <i className="ri-arrow-right-line" /></Link>
-                <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">Read our standards</Link>
+                <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">See the focused collection <i className="ri-arrow-right-line" /></Link>
+                <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">Understand the evidence</Link>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-7 right-8 hidden overflow-hidden rounded-full border border-white/15 bg-[#101829]/48 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/65 backdrop-blur xl:flex"><span className="px-5 py-3">3 blends</span><span className="border-l border-white/15 px-5 py-3">5 individual materials</span><span className="border-l border-white/15 px-5 py-3">Lot-level records</span></div>
+          <div className="absolute bottom-7 right-8 hidden overflow-hidden rounded-full border border-white/15 bg-[#101829]/48 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/65 backdrop-blur xl:flex"><span className="px-5 py-3">2 focused blends</span><span className="border-l border-white/15 px-5 py-3">3 single peptides</span><span className="border-l border-white/15 px-5 py-3">Evidence by species</span></div>
         </section>
 
-        <section className="border-b border-[#17233B]/12 bg-[#FF8A72] px-5 py-4 text-[#17233B]">
-          <div className="mx-auto flex max-w-[1480px] flex-wrap items-center justify-center gap-x-10 gap-y-2 text-center text-[10px] font-bold uppercase tracking-[0.17em] md:justify-between">
-            <span>Single peptides</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Purpose-built blends</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Batch-level testing</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Canine-first education</span>
+        <section className="border-b border-[#17233B]/12 bg-[#FF8A72] px-5 py-5 text-[#17233B]">
+          <div className="mx-auto flex max-w-[1480px] flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
+            <p className="font-display text-xl font-semibold tracking-[-0.03em]">Care gets expensive fast. Clarity shouldn&apos;t.</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-[0.16em]"><span>Shortlist, not catalog</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Evidence with limits</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Vet-first questions</span></div>
           </div>
         </section>
 
         <section id="approach" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why canine research?</p>
-              <h2 className="max-w-4xl font-display text-[clamp(2.5rem,4.5vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">The little changes deserve <span className="font-serif italic text-[#D95858]">better questions.</span></h2>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why owners start looking</p>
+              <h2 className="max-w-4xl font-display text-[clamp(2.5rem,4.5vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">You know their normal. <span className="font-serif italic text-[#D95858]">That&apos;s why it hits hard.</span></h2>
             </div>
             <div className="mt-12 grid gap-4 md:grid-cols-3">
               {pathways.map(([number, title, text, icon]) => (
@@ -161,17 +160,17 @@ export default function Home() {
         <section id="stories" className="bg-[#EEF2FF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
             <div className="mb-12 grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">A clearer proof format</p>
-              <div><h2 className="max-w-3xl font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">Show the same dog. <span className="font-serif italic text-[#D95858]">Show the same movement.</span></h2><p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Before-and-follow-up media should be simple, comparable, and visibly documented—not buried beneath marketing language.</p></div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">The moment you start searching</p>
+              <div><h2 className="max-w-3xl font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">The changes you notice <span className="font-serif italic text-[#D95858]">before anyone else.</span></h2><p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">The pause before a step. The walk that ends early. The good day that takes longer to come back from. Start by documenting the change—not by chasing a promise.</p></div>
             </div>
             <div className="grid gap-5 lg:grid-cols-[0.8fr_0.8fr_1fr]">
               <StoryFrame image="/images/canis/story-before.png" label="Before" caption="Pausing at the steps" />
               <StoryFrame image="/images/canis/story-followup.png" label="Follow-up" caption="Moving through the day" warm />
               <article className="flex min-h-[560px] flex-col justify-between rounded-[1.75rem] bg-[#17233B] p-8 text-white md:p-10">
                 <div>
-                  <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.17em] text-[#A9C7FF]"><span className="h-px w-8 bg-[#A9C7FF]" /> Before &amp; follow-up</div>
-                  <h2 className="mt-8 max-w-md font-display text-[clamp(2.5rem,3.8vw,4rem)] font-medium leading-[0.98] tracking-[-0.045em]">The small changes are the ones <span className="font-serif italic text-[#A9C7FF]">owners notice.</span></h2>
-                  <p className="mt-7 max-w-md text-base leading-7 text-white/65">Same dog. Same movement. Two clearly dated moments. PetPeps will use simple, permissioned footage so the story is easy to see and easy to understand.</p>
+                  <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.17em] text-[#A9C7FF]"><span className="h-px w-8 bg-[#A9C7FF]" /> Make the change visible</div>
+                  <h2 className="mt-8 max-w-md font-display text-[clamp(2.5rem,3.8vw,4rem)] font-medium leading-[0.98] tracking-[-0.045em]">Same dog. Same movement. <span className="font-serif italic text-[#A9C7FF]">No dramatic edit.</span></h2>
+                  <p className="mt-7 max-w-md text-base leading-7 text-white/65">Dated, comparable footage helps an owner describe what changed and gives a veterinarian more useful context than memory alone.</p>
                 </div>
                 <div className="mt-10 border-t border-white/15 pt-6">
                   <p className="text-xs leading-6 text-white/55">Concept footage only—not a product outcome. Owner observations are anecdotal and never replace controlled canine research or veterinary advice.</p>
@@ -187,21 +186,21 @@ export default function Home() {
           <div className="relative mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Shop by research format</p>
-                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.55rem,4.4vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Several blends. Individual peptides. <span className="font-serif italic text-[#D95858]">One clear library.</span></h2>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">A deliberately small collection</p>
+                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.55rem,4.4vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Fewer formulas. <span className="font-serif italic text-[#D95858]">Better reasons.</span></h2>
               </div>
-              <div className="max-w-lg lg:justify-self-end"><p className="text-lg leading-8 text-[#23324D]/66">A complete collection—not one blend surrounded by marketing. Every formula has its own purpose, lot record, testing, and plain-language research profile.</p><div className="mt-5 flex flex-wrap gap-2"><span className="rounded-full bg-[#17233B] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white">3 peptide blends</span><span className="rounded-full border border-[#17233B]/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#17233B]">5 individual materials</span></div></div>
+              <div className="max-w-lg lg:justify-self-end"><p className="text-lg leading-8 text-[#23324D]/66">We cut the noise down to five profiles that repeatedly appear in repair, tissue, and copper-peptide research conversations. Being well known is not the same as being proven for dogs—each profile makes that distinction visible.</p><div className="mt-5 flex flex-wrap gap-2"><span className="rounded-full bg-[#17233B] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white">2 focused blends</span><span className="rounded-full border border-[#17233B]/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#17233B]">3 single peptides</span></div></div>
             </div>
 
             <div className="relative mt-14 min-h-[420px] overflow-hidden rounded-[2rem] bg-[#C7D2F2] md:min-h-[620px]">
               <Image src="/images/canis/peptide-family.png" alt="A coordinated family of PetPeps blends and individual research materials" fill sizes="100vw" className="object-cover" />
               <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 bg-gradient-to-t from-[#101829]/85 via-[#101829]/30 to-transparent px-7 pb-7 pt-28 text-white md:px-10 md:pb-10">
-                <div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">A system, not a single SKU</p><p className="mt-2 max-w-xl font-display text-2xl font-semibold md:text-4xl">A coherent family for singles, blends, and future formats.</p></div>
-                <span className="rounded-full border border-white/35 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em]">The PetPeps collection</span>
+                 <div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Chosen, not crowded</p><p className="mt-2 max-w-xl font-display text-2xl font-semibold md:text-4xl">A short list with a reason for every formula.</p></div>
+                <span className="rounded-full border border-white/35 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em]">Five research profiles</span>
               </div>
             </div>
 
-            <div className="mt-12 flex items-center justify-between border-b border-[#17233B]/15 pb-4"><p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#17233B]">Browse all research profiles</p><p className="hidden text-[11px] font-semibold text-[#17233B]/48 sm:block">Blends first · Singles follow</p></div>
+            <div className="mt-12 flex items-center justify-between border-b border-[#17233B]/15 pb-4"><p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#17233B]">The focused research library</p><p className="hidden text-[11px] font-semibold text-[#17233B]/48 sm:block">2 blends · 3 singles</p></div>
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {products.map((product, index) => (
                 <article key={product.name} className="group overflow-hidden rounded-2xl border border-[#17233B]/12 bg-[#FBFAFF] shadow-[0_18px_50px_rgba(23,35,59,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(23,35,59,0.14)]">
@@ -236,12 +235,12 @@ export default function Home() {
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Where the questions begin</p>
-                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Built around canine <span className="font-serif italic text-[#D95858]">research contexts.</span></h2>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What sends owners looking</p>
+                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">It usually starts with <span className="font-serif italic text-[#D95858]">one small thing.</span></h2>
               </div>
               <div className="lg:justify-self-end">
-                <p className="max-w-xl text-lg leading-8 text-[#17233B]/65">Not a human peptide catalog with a paw added. Every profile starts with the canine research question, the limits of the evidence, and what would need to be measured.</p>
-                <Link href="#science" className="mt-6 inline-flex items-center gap-2 border-b border-[#17233B]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">See our evidence standard <i className="ri-arrow-right-line" /></Link>
+                <p className="max-w-xl text-lg leading-8 text-[#17233B]/65">These moments do not identify a cause, but they do matter. PetPeps helps owners turn worry into a clearer record and a more useful conversation.</p>
+                <Link href="#science" className="mt-6 inline-flex items-center gap-2 border-b border-[#17233B]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">See how evidence is graded <i className="ri-arrow-right-line" /></Link>
               </div>
             </div>
             <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -265,14 +264,14 @@ export default function Home() {
         <section id="science" className="bg-[#101829] px-5 py-24 text-white md:px-10 md:py-32">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 border-b border-white/15 pb-16 lg:grid-cols-2 lg:items-end">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">The PetPeps standard</p><h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Proof, process, and a <span className="font-serif italic text-[#A9C7FF]">defensible record.</span></h2></div>
-              <p className="max-w-lg text-lg leading-8 text-white/60 lg:justify-self-end">Every profile follows the same backbone: define the research question, identify the material, verify the lot, and preserve what was observed without turning it into a treatment claim.</p>
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Before you spend more</p><h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Know what the evidence can—and <span className="font-serif italic text-[#A9C7FF]">cannot—say.</span></h2></div>
+              <p className="max-w-lg text-lg leading-8 text-white/60 lg:justify-self-end">A compound can be popular, studied in people, or promising in a laboratory and still have no established canine benefit. PetPeps keeps those evidence levels separate.</p>
             </div>
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {standards.map(([number,title,text]) => <article key={number} className="rounded-[1.4rem] border border-white/12 bg-white/[0.05] p-7"><span className="text-[10px] font-bold tracking-[0.2em] text-[#A9C7FF]">{number}</span><h3 className="mt-12 font-display text-2xl font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-white/55">{text}</p></article>)}
             </div>
             <div className="mt-20 grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">How the library works</p><h3 className="mt-5 max-w-md font-display text-[clamp(2.1rem,3vw,3.3rem)] font-medium leading-[1.02] tracking-[-0.04em]">From question to record, in four clear steps.</h3></div>
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">A safer decision path</p><h3 className="mt-5 max-w-md font-display text-[clamp(2.1rem,3vw,3.3rem)] font-medium leading-[1.02] tracking-[-0.04em]">Worry less blindly. Ask better questions.</h3></div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {researchCycle.map(([number, title, body]) => (
                   <article key={number} className="rounded-[1.4rem] border border-white/12 bg-white/[0.04] p-6">
@@ -293,7 +292,7 @@ export default function Home() {
               <p className="absolute bottom-7 left-7 right-7 text-[10px] font-bold uppercase tracking-[0.17em] text-white/75">Canine-first from the first question</p>
             </div>
             <div className="flex flex-col justify-between rounded-[2rem] bg-[#F6F7FC] p-8 md:p-12">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why we&apos;re building it</p><h2 className="mt-6 max-w-2xl font-display text-[clamp(2.5rem,4.2vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.045em]">Dogs shouldn&apos;t be an <span className="font-serif italic text-[#D95858]">afterthought.</span></h2><p className="mt-7 max-w-xl text-base leading-7 text-[#17233B]/62">The opportunity is not to make louder promises. It&apos;s to build a focused canine research experience: clearer questions, better records, honest limits, and an expanding library that feels made for this category from day one.</p></div>
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why PetPeps exists</p><h2 className="mt-6 max-w-2xl font-display text-[clamp(2.5rem,4.2vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.045em]">Love makes you want to act. <span className="font-serif italic text-[#D95858]">Good information makes you slow down.</span></h2><p className="mt-7 max-w-xl text-base leading-7 text-[#17233B]/62">Pet owners deserve more than miracle language and endless choices. They deserve a short list, visible evidence limits, transparent lots, and a clear reminder that a dog in pain needs veterinary care—not an internet shortcut.</p></div>
               <div className="mt-14 grid grid-cols-3 gap-px overflow-hidden rounded-xl bg-[#17233B]/15 text-center"><div className="bg-[#F6F7FC] p-4"><p className="font-display text-2xl font-semibold">Canine</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Focused</p></div><div className="bg-[#F6F7FC] p-4"><p className="font-display text-2xl font-semibold">Lot</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Linked</p></div><div className="bg-[#F6F7FC] p-4"><p className="font-display text-2xl font-semibold">RUO</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Clear</p></div></div>
             </div>
           </div>
@@ -301,7 +300,7 @@ export default function Home() {
 
         <section id="questions" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
-            <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p><h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">Know the limits. Read the record.</h2><p className="mt-6 max-w-sm text-sm leading-7 text-[#23324D]/62">Clear product status, evidence boundaries, and lot documentation belong beside the collection—not hidden in fine print.</p></div>
+            <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">The questions that matter</p><h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">Before you trust a vial.</h2><p className="mt-6 max-w-sm text-sm leading-7 text-[#23324D]/62">What is proven? In which species? Is the lot documented? And is this a research material or an approved veterinary medicine?</p></div>
             <div className="border-t border-[#17233B]/20">
               {faqs.map(([question,answer]) => <details key={question} className="group border-b border-[#17233B]/20 py-6"><summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-xl font-semibold tracking-[-0.025em] md:text-2xl">{question}<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#17233B]/25 text-sm transition group-open:rotate-45">+</span></summary><p className="max-w-2xl pt-5 text-[15px] leading-7 text-[#23324D]/65">{answer}</p></details>)}
             </div>
