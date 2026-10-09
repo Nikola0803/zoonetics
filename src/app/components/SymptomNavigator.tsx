@@ -6,7 +6,7 @@ import { useState } from "react";
 const pathways = [
   {
     id: "movement",
-    label: "Movement changed",
+    label: "Mobility research",
     icon: "ri-walk-line",
     title: "They hesitate before the step.",
     intro: "Stiffness, limping, or avoiding normal movement can be signs of pain. The cause cannot be identified from the movement alone.",
@@ -18,7 +18,7 @@ const pathways = [
   },
   {
     id: "skin",
-    label: "Skin looks different",
+    label: "Skin + tissue research",
     icon: "ri-sparkling-2-line",
     title: "The licking, redness, or coat change keeps returning.",
     intro: "Surface changes are visible, but the cause may be allergy, infection, parasites, irritation, injury, or a broader health problem.",
@@ -30,7 +30,7 @@ const pathways = [
   },
   {
     id: "behavior",
-    label: "Behavior or appetite",
+    label: "Behavior + appetite",
     icon: "ri-heart-pulse-line",
     title: "They are not acting like themselves.",
     intro: "Pain and illness can appear as withdrawal, restlessness, irritability, vocalization, or changes in eating and drinking.",
@@ -60,16 +60,16 @@ export default function SymptomNavigator() {
   const urgent = active.tone === "urgent";
 
   return (
-    <section id="symptom-guide" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
+    <section id="research-pathways" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1380px]">
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">A clearer place to begin</p><h2 className="mt-5 max-w-2xl font-display text-[clamp(2.6rem,4.4vw,4.65rem)] font-medium leading-[0.98] tracking-[-0.045em]">Start with the sign. <span className="font-serif italic text-[#D95858]">Not the vial.</span></h2></div>
-          <div className="max-w-xl lg:justify-self-end"><p className="text-lg leading-8 text-[#23324D]/66">Choose the change you are seeing. We will help you name what to document, understand why a diagnosis matters, and know whether product research belongs in the conversation at all.</p><p className="mt-4 text-sm font-semibold text-[#D95858]">PetPeps does not diagnose or treat dogs. Its products are research-use-only materials.</p></div>
+          <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">How the collection is organized</p><h2 className="mt-5 max-w-2xl font-display text-[clamp(2.6rem,4.4vw,4.65rem)] font-medium leading-[0.98] tracking-[-0.045em]">Choose the research question. <span className="font-serif italic text-[#D95858]">Then the profile.</span></h2></div>
+          <div className="max-w-xl lg:justify-self-end"><p className="text-lg leading-8 text-[#23324D]/66">You have seen the peptides, blends, pricing, and COAs. Now connect each profile to the K9 observation or experimental pathway researchers commonly use to frame the literature.</p><p className="mt-4 text-sm font-semibold text-[#D95858]">These links describe research themes—not proven canine treatments or product recommendations.</p></div>
         </div>
 
         <div className="mt-12 grid overflow-hidden rounded-[1.8rem] border border-[#17233B]/12 bg-white shadow-[0_24px_70px_rgba(23,35,59,0.08)] lg:grid-cols-[0.34fr_0.66fr]">
           <div className="border-b border-[#17233B]/12 bg-[#EEF2FF] p-4 lg:border-b-0 lg:border-r lg:p-5">
-            <p className="px-3 pb-4 pt-2 text-xs font-bold uppercase tracking-[0.14em] text-[#17233B]/45">What are you noticing?</p>
+            <p className="px-3 pb-4 pt-2 text-xs font-bold uppercase tracking-[0.14em] text-[#17233B]/45">Choose a K9 research lane</p>
             <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
               {pathways.map((item, index) => (
                 <button key={item.id} type="button" onClick={() => setActiveId(item.id)} aria-pressed={activeId === item.id} className={`group flex min-h-20 items-center gap-3 rounded-xl px-3 py-4 text-left transition md:px-4 ${activeId === item.id ? item.tone === "urgent" ? "bg-[#D95858] text-white" : "bg-[#17233B] text-white" : "bg-white/60 text-[#17233B] hover:bg-white"}`}>
@@ -81,7 +81,7 @@ export default function SymptomNavigator() {
           </div>
 
           <div className={`p-6 md:p-10 ${urgent ? "bg-[#FFF2EF]" : "bg-white"}`} aria-live="polite">
-            <div className="flex items-start justify-between gap-5"><div><p className={`text-xs font-bold uppercase tracking-[0.15em] ${urgent ? "text-[#D95858]" : "text-[#4F6EF7]"}`}>{urgent ? "Emergency veterinary care" : "The first chapter"}</p><h3 className="mt-3 max-w-3xl font-display text-[clamp(2rem,3.2vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.04em]">{active.title}</h3></div><span className={`hidden h-14 w-14 shrink-0 place-items-center rounded-full text-2xl md:grid ${urgent ? "bg-[#D95858] text-white" : "bg-[#DCE7FF] text-[#4F6EF7]"}`}><i className={active.icon} /></span></div>
+            <div className="flex items-start justify-between gap-5"><div><p className={`text-xs font-bold uppercase tracking-[0.15em] ${urgent ? "text-[#D95858]" : "text-[#4F6EF7]"}`}>{urgent ? "Emergency veterinary care" : "K9 research pathway"}</p><h3 className="mt-3 max-w-3xl font-display text-[clamp(2rem,3.2vw,3.25rem)] font-semibold leading-[1.02] tracking-[-0.04em]">{active.title}</h3></div><span className={`hidden h-14 w-14 shrink-0 place-items-center rounded-full text-2xl md:grid ${urgent ? "bg-[#D95858] text-white" : "bg-[#DCE7FF] text-[#4F6EF7]"}`}><i className={active.icon} /></span></div>
             <p className="mt-5 max-w-3xl text-base leading-7 text-[#17233B]/65">{active.intro}</p>
 
             <div className="mt-8 grid gap-7 md:grid-cols-2">
@@ -90,7 +90,7 @@ export default function SymptomNavigator() {
             </div>
 
             <div className="mt-8 border-t border-[#17233B]/12 pt-6">
-              {active.profiles.length > 0 ? <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><p className="text-xs font-bold uppercase tracking-[0.14em] text-[#17233B]/45">Research profiles people compare after diagnosis</p><div className="mt-3 flex flex-wrap gap-2">{active.profiles.map((profile) => <span key={profile} className="rounded-full border border-[#17233B]/15 bg-[#F6F7FC] px-4 py-2 text-sm font-bold">{profile}</span>)}</div><p className="mt-3 text-xs text-[#17233B]/45">Literature profiles only—not treatments or product recommendations.</p></div><Link href="#collection" className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#FF8A72] px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#17233B]">Explore the research library</Link></div> : <div className="flex items-center gap-4 rounded-xl border border-[#D95858]/25 bg-[#FFF2EF] p-5"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#D95858] text-white"><i className="ri-stethoscope-line" /></span><div><p className="font-display text-lg font-semibold">No product match. Veterinary care comes first.</p><p className="mt-1 text-sm text-[#17233B]/55">PetPeps will not route this set of signs into a peptide profile.</p></div></div>}
+              {active.profiles.length > 0 ? <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"><div><p className="text-xs font-bold uppercase tracking-[0.14em] text-[#17233B]/45">Profiles in this research pathway</p><div className="mt-3 flex flex-wrap gap-2">{active.profiles.map((profile) => <span key={profile} className="rounded-full border border-[#17233B]/15 bg-[#F6F7FC] px-4 py-2 text-sm font-bold">{profile}</span>)}</div><p className="mt-3 text-xs text-[#17233B]/45">Research materials and literature profiles—not canine medicines.</p></div><Link href="#collection" className="inline-flex shrink-0 items-center justify-center rounded-full bg-[#FF8A72] px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#17233B]">Return to products</Link></div> : <div className="flex items-center gap-4 rounded-xl border border-[#D95858]/25 bg-[#FFF2EF] p-5"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#D95858] text-white"><i className="ri-stethoscope-line" /></span><div><p className="font-display text-lg font-semibold">No peptide research match here.</p><p className="mt-1 text-sm text-[#17233B]/55">This path belongs with veterinary assessment, not product selection.</p></div></div>}
             </div>
           </div>
         </div>

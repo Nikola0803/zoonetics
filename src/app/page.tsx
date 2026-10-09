@@ -101,7 +101,7 @@ export default function Home() {
           <Link href="#top" aria-label="PetPeps home"><BrandMark light /></Link>
           <nav className="hidden items-center gap-7 text-[11px] font-semibold uppercase tracking-[0.13em] lg:flex" aria-label="Main navigation">
             <Link href="#collection" className="transition hover:text-[#A9C7FF]">K9 peptides</Link>
-            <Link href="#symptom-guide" className="transition hover:text-[#A9C7FF]">Symptom guide</Link>
+            <Link href="#research-pathways" className="transition hover:text-[#A9C7FF]">Research pathways</Link>
             <Link href="#science" className="transition hover:text-[#A9C7FF]">The science</Link>
             <Link href="#creator-stories" className="transition hover:text-[#A9C7FF]">Creator videos</Link>
             <Link href="#questions" className="transition hover:text-[#A9C7FF]">Questions</Link>
@@ -136,8 +136,6 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-[0.16em]"><span>Shortlist, not catalog</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Evidence with limits</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Vet-first questions</span></div>
           </div>
         </section>
-
-        <SymptomNavigator />
 
         <section id="stories" className="bg-[#EEF2FF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
@@ -216,6 +214,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <SymptomNavigator />
 
         <section id="approach" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
