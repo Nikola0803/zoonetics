@@ -176,6 +176,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="stories" className="bg-[#EEF2FF] px-5 py-20 md:px-10 md:py-28">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="mb-10 grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Before and follow-up</p>
+              <div><h2 className="max-w-3xl font-display text-[clamp(2.4rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em]">Show the change. <span className="font-serif italic text-[#D95858]">Keep the context.</span></h2><p className="mt-4 max-w-xl text-base leading-7 text-[#23324D]/65">Comparable footage can make the next veterinary conversation clearer.</p></div>
+            </div>
+            <div className="grid gap-5 lg:grid-cols-[0.8fr_0.8fr_1fr]">
+              <StoryFrame image="/images/canis/story-before.png" label="Before" caption="Pausing at the steps" />
+              <StoryFrame image="/images/canis/story-followup.png" label="Follow-up" caption="Moving through the day" warm />
+              <article className="flex min-h-[560px] flex-col justify-between rounded-[1.75rem] bg-[#17233B] p-8 text-white md:p-10">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#A9C7FF]">Document, don&apos;t diagnose</p>
+                  <h2 className="mt-8 max-w-md font-display text-[clamp(2.35rem,3.6vw,3.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Same dog. Same movement. <span className="font-serif italic text-[#A9C7FF]">No dramatic edit.</span></h2>
+                </div>
+                <p className="mt-10 border-t border-white/15 pt-6 text-sm leading-6 text-white/58">Owner observations are not clinical evidence or a substitute for veterinary care.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section id="creator-stories" className="overflow-hidden bg-[#101829] px-5 py-20 text-white md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
@@ -200,26 +220,6 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 border-t border-white/15 pt-6 text-sm text-white/45 md:flex-row md:items-center md:justify-between"><p>Creator experiences are personal observations—not clinical evidence or guaranteed outcomes.</p><p className="font-bold uppercase tracking-[0.13em] text-[#A9C7FF]">Vertical video · captions · sound optional</p></div>
-          </div>
-        </section>
-
-        <section id="stories" className="bg-[#EEF2FF] px-5 py-20 md:px-10 md:py-28">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="mb-10 grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Before and follow-up</p>
-              <div><h2 className="max-w-3xl font-display text-[clamp(2.4rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em]">Show the change. <span className="font-serif italic text-[#D95858]">Keep the context.</span></h2><p className="mt-4 max-w-xl text-base leading-7 text-[#23324D]/65">Comparable footage can make the next veterinary conversation clearer.</p></div>
-            </div>
-            <div className="grid gap-5 lg:grid-cols-[0.8fr_0.8fr_1fr]">
-              <StoryFrame image="/images/canis/story-before.png" label="Before" caption="Pausing at the steps" />
-              <StoryFrame image="/images/canis/story-followup.png" label="Follow-up" caption="Moving through the day" warm />
-              <article className="flex min-h-[560px] flex-col justify-between rounded-[1.75rem] bg-[#17233B] p-8 text-white md:p-10">
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#A9C7FF]">Document, don&apos;t diagnose</p>
-                  <h2 className="mt-8 max-w-md font-display text-[clamp(2.35rem,3.6vw,3.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Same dog. Same movement. <span className="font-serif italic text-[#A9C7FF]">No dramatic edit.</span></h2>
-                </div>
-                <p className="mt-10 border-t border-white/15 pt-6 text-sm leading-6 text-white/58">Owner observations are not clinical evidence or a substitute for veterinary care.</p>
-              </article>
-            </div>
           </div>
         </section>
 
