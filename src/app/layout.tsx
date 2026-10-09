@@ -7,11 +7,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "ZooNetics — K9 Research Peptides & Blends",
   description:
-    "A K9-only research-use peptide library with evidence by species, transparent lot records, and clear limits for dog owners asking better questions.",
-  robots: { index: false, follow: false },
+    "Shop ZooNetics K9 research peptides and blends, including BPC-157, TB-500, and GHK-Cu, with lot-level COAs and evidence by species.",
+  keywords: ["K9 research peptides", "dog peptide research", "BPC-157 research", "TB-500 research", "GHK-Cu research", "peptide blends"],
+  robots: { index: true, follow: true },
   openGraph: {
     title: "ZooNetics",
-    description: "A K9-only peptide research library with evidence by species, transparent lot records, and clear limits.",
+    description: "K9 research peptides and blends with lot-level COAs, clear formats, and evidence by species.",
     images: [
       {
         url: "/images/canis/hero-senior-lab.png",

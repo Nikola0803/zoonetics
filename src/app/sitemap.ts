@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getProducts } from "@/lib/products";
 import { getJournalArticles } from "@/lib/journal-data";
 
-const BASE_URL = "https://evlvpeptides.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://zoonetics.com";
 
 const STATIC_ROUTES = [
   { path: "/", priority: 1, changeFrequency: "daily" as const },
