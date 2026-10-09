@@ -23,6 +23,27 @@ const products = [
   { name: "NAD+", formula: "Nicotinamide adenine dinucleotide", type: "Supportive compound", focus: "Cellular-energy research", formats: ["500 mg"], color: "#8a7654", ink: "#fff8ef" },
 ];
 
+const studyContexts = [
+  { title: "Senior canine models", kicker: "Age-related research", body: "Organize literature and observable endpoints around age-related changes in mobility, recovery, and cellular signaling.", image: "/images/canis/story-before.png", position: "object-center" },
+  { title: "Active & working dogs", kicker: "High-load research", body: "Explore repair-response questions associated with repeated activity and demanding working environments.", image: "/images/canis/hero-senior-lab.png", position: "object-[68%_center]" },
+  { title: "Large-breed cohorts", kicker: "Biomechanics research", body: "Build breed- and size-aware research questions without turning predisposition into a treatment claim.", image: "/images/canis/story-followup.png", position: "object-center" },
+  { title: "Recovery observation", kicker: "Measured follow-up", body: "Define comparable movement tasks, observation windows, and documentation before interpreting any change.", image: "/images/canis/mobility-story.png", position: "object-center" },
+];
+
+const researchCycle = [
+  ["01", "Frame the question", "Define the canine model, literature basis, and measurable endpoint before selecting a material."],
+  ["02", "Match the profile", "Compare single peptides and blends by research rationale—not by a promised veterinary outcome."],
+  ["03", "Verify the lot", "Connect identity, purity, and supporting documentation to the exact material under study."],
+  ["04", "Record what happened", "Preserve dates, conditions, observations, and adverse events without rewriting the story afterward."],
+];
+
+const roadmap = [
+  ["Available first", "Single-peptide library", "Focused research profiles with planned formats and lot-level documentation."],
+  ["In development", "Signature blends", "Multi-compound concepts organized around clearly stated research rationales."],
+  ["Next layer", "Study records", "A structured home for protocols, source material, observations, and linked lots."],
+  ["Future", "Partner portal", "A dedicated workflow for qualified veterinary and research collaborators."],
+];
+
 const faqs = [
   ["Are peptide products approved medicines for dogs?", "No. The compounds presented here are research materials and are not approved veterinary medicines. No content on this site is a diagnosis, treatment plan, or replacement for veterinary care."],
   ["Why discuss canine research if the products are RUO?", "The canine focus defines the scientific subject matter, literature, and research questions this catalog organizes. It does not change product status: research-use-only materials are not intended for administration to humans or animals."],
@@ -206,6 +227,36 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="bg-[#eee5d6] px-5 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a75f3f]">Where the questions begin</p>
+                <h2 className="mt-5 font-display text-[clamp(3.2rem,5.5vw,5.8rem)] font-medium leading-[0.9] tracking-[-0.055em]">Built around canine <span className="font-serif italic text-[#a75f3f]">research contexts.</span></h2>
+              </div>
+              <div className="lg:justify-self-end">
+                <p className="max-w-xl text-lg leading-8 text-[#17382d]/65">Not a human peptide catalog with a paw added. Every profile starts with the canine research question, the limits of the evidence, and what would need to be measured.</p>
+                <Link href="#science" className="mt-6 inline-flex items-center gap-2 border-b border-[#17382d]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">See our evidence standard <i className="ri-arrow-right-line" /></Link>
+              </div>
+            </div>
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {studyContexts.map((context, index) => (
+                <article key={context.title} className="group overflow-hidden rounded-2xl bg-[#f8f4ec]">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#cfdaca]">
+                    <Image src={context.image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${context.position}`} />
+                    <span className="absolute left-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#f8f4ec] text-[9px] font-bold text-[#17382d]">0{index + 1}</span>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#a75f3f]">{context.kicker}</p>
+                    <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.035em]">{context.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-[#17382d]/58">{context.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="science" className="bg-[#dce3d4] px-5 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-2">
@@ -215,6 +266,26 @@ export default function Home() {
             <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {standards.map(([number,title,text]) => <article key={number} className="min-h-72 rounded-2xl border border-[#17382d]/12 bg-[#f4efe5]/65 p-7"><span className="text-[10px] font-bold tracking-[0.2em] text-[#8d4d34]">{number}</span><h3 className="mt-20 font-display text-2xl font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-[#18342b]/62">{text}</p></article>)}
             </div>
+          </div>
+        </section>
+
+        <section className="bg-[#102b23] px-5 py-24 text-white md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#e4b07d]">A research cycle, not a treatment cycle</p><h2 className="mt-5 font-display text-[clamp(3.4rem,6vw,6rem)] font-medium leading-[0.9] tracking-[-0.055em]">From a canine question to a <span className="font-serif italic text-[#e4b07d]">defensible record.</span></h2></div>
+              <p className="max-w-lg text-lg leading-8 text-white/60 lg:justify-self-end">A clear four-step journey makes a complex category easier to understand while centering the work a responsible research platform actually needs: framing, matching, verification, and documentation.</p>
+            </div>
+            <div className="relative mt-16 grid gap-4 lg:grid-cols-4">
+              <div className="absolute left-[8%] right-[8%] top-7 hidden h-px bg-white/15 lg:block" />
+              {researchCycle.map(([number, title, body]) => (
+                <article key={number} className="relative rounded-2xl border border-white/12 bg-white/[0.045] p-7 backdrop-blur">
+                  <span className="relative z-10 grid h-14 w-14 place-items-center rounded-full border border-[#e4b07d]/45 bg-[#102b23] text-[10px] font-bold tracking-[0.14em] text-[#e4b07d]">{number}</span>
+                  <h3 className="mt-14 font-display text-2xl font-semibold tracking-[-0.035em]">{title}</h3>
+                  <p className="mt-4 text-sm leading-6 text-white/55">{body}</p>
+                </article>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-col gap-4 rounded-2xl bg-[#d9935f] p-6 text-[#17382d] md:flex-row md:items-center md:justify-between md:p-8"><div><p className="text-[10px] font-bold uppercase tracking-[0.16em]">The free field guide · planned</p><p className="mt-2 font-display text-2xl font-semibold">How to read a peptide research profile and its COA.</p></div><span className="shrink-0 rounded-full bg-[#17382d] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em] text-white">Guide in development</span></div>
           </div>
         </section>
 
@@ -241,6 +312,34 @@ export default function Home() {
             <div className="mt-6 grid gap-4 rounded-2xl border border-[#17382d]/15 bg-[#eee5d6] p-6 md:grid-cols-[auto_1fr] md:items-center md:p-8">
               <span className="grid h-12 w-12 place-items-center rounded-full bg-[#d9935f] text-xl"><i className="ri-shield-check-line" /></span>
               <div><p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#a75f3f]">Stories are not clinical evidence</p><p className="mt-2 max-w-5xl text-sm leading-6 text-[#17382d]/62">Before/follow-up media will describe individual owner observations only. It will not establish causation, efficacy, safety, or approved use; no footage will substitute for controlled canine research or veterinary advice. Any product relationship must be disclosed clearly and reviewed before publication.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#d9935f] px-5 py-24 text-[#17382d] md:px-10 md:py-32">
+          <div className="mx-auto grid max-w-[1380px] gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="relative min-h-[560px] overflow-hidden rounded-[2rem] bg-[#17382d]">
+              <Image src="/images/canis/hero-senior-lab.png" alt="A senior Labrador on a walk" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-[62%_center]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#17382d]/75 via-transparent to-transparent" />
+              <p className="absolute bottom-7 left-7 right-7 text-[10px] font-bold uppercase tracking-[0.17em] text-white/75">Canine-first from the first question</p>
+            </div>
+            <div className="flex flex-col justify-between rounded-[2rem] bg-[#f4efe5] p-8 md:p-12">
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a75f3f]">Why we&apos;re building it</p><h2 className="mt-6 font-display text-[clamp(3.2rem,5vw,5.5rem)] font-medium leading-[0.9] tracking-[-0.055em]">Dogs shouldn&apos;t be an <span className="font-serif italic text-[#a75f3f]">afterthought.</span></h2><p className="mt-7 max-w-xl text-base leading-7 text-[#17382d]/62">The opportunity is not to make louder promises. It&apos;s to build a focused canine research experience: clearer questions, better records, honest limits, and an expanding library that feels made for this category from day one.</p></div>
+              <div className="mt-14 grid grid-cols-3 gap-px overflow-hidden rounded-xl bg-[#17382d]/15 text-center"><div className="bg-[#f4efe5] p-4"><p className="font-display text-2xl font-semibold">Canine</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Focused</p></div><div className="bg-[#f4efe5] p-4"><p className="font-display text-2xl font-semibold">Lot</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Linked</p></div><div className="bg-[#f4efe5] p-4"><p className="font-display text-2xl font-semibold">RUO</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Clear</p></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#eee5d6] px-5 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="max-w-4xl"><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a75f3f]">One library. More layers coming.</p><h2 className="mt-5 font-display text-[clamp(3.3rem,6vw,6rem)] font-medium leading-[0.9] tracking-[-0.055em]">The peptide catalog is <span className="font-serif italic text-[#a75f3f]">only the beginning.</span></h2></div>
+            <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {roadmap.map(([status, title, body], index) => (
+                <article key={title} className={`flex min-h-[340px] flex-col justify-between rounded-2xl p-7 ${index === 0 ? "bg-[#17382d] text-white" : "border border-[#17382d]/12 bg-[#f8f4ec]"}`}>
+                  <div className="flex items-center justify-between"><span className={`text-[9px] font-bold uppercase tracking-[0.16em] ${index === 0 ? "text-[#e4b07d]" : "text-[#a75f3f]"}`}>{status}</span><span className="text-[9px] font-bold opacity-35">0{index + 1}</span></div>
+                  <div><h3 className="font-display text-3xl font-semibold tracking-[-0.045em]">{title}</h3><p className={`mt-4 text-sm leading-6 ${index === 0 ? "text-white/55" : "text-[#17382d]/58"}`}>{body}</p></div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
