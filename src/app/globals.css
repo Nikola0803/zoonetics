@@ -3,7 +3,7 @@
 /*
  * Inherited EVLV compatibility tokens. Existing commerce/account routes still
  * reference these semantic names while the Canis Continuum launch surface uses
- * its own forest, clay, oat, and eucalyptus palette.
+ * its own navy, cobalt, periwinkle, lilac, and coral palette.
  *  1. Spec-exact palette (EVLV Brand Identity System, section 04/05) — the
  *     single source of truth for every hex value used on the site.
  *  2. Semantic aliases — the names components actually reference in
@@ -28,17 +28,17 @@
   --font-inter: Inter, "Helvetica Neue", Arial, sans-serif;
   --font-manrope: Manrope, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-newsreader: Newsreader, Iowan Old Style, Baskerville, Georgia, serif;
-  --color-obsidian: #0e1113;
-  --color-charcoal-spec: #1c2224;
-  --color-deep-mineral: #203a37;
-  --color-mineral: #314743;
-  --color-slate: #6b7370;
-  --color-stone-spec: #a7a297;
-  --color-warm-ivory: #d8d3c7;
-  --color-soft-ivory: #e7e3da;
-  --color-porcelain: #f1eee7;
-  --color-copper-light: #7d948e;
-  --color-copper-dark: #203a37;
+  --color-obsidian: #101829;
+  --color-charcoal-spec: #17233b;
+  --color-deep-mineral: #29446f;
+  --color-mineral: #4f6ef7;
+  --color-slate: #68758f;
+  --color-stone-spec: #aeb9d3;
+  --color-warm-ivory: #dce3f5;
+  --color-soft-ivory: #eef2ff;
+  --color-porcelain: #f6f7fc;
+  --color-copper-light: #a9c7ff;
+  --color-copper-dark: #17233b;
 
   --color-ivory: var(--color-soft-ivory);
   --color-ivory-soft: var(--color-porcelain);
@@ -51,7 +51,7 @@
   --color-white: #ffffff;
   --color-sage-forest: var(--color-charcoal-spec);
   --color-soft-gray: var(--color-slate);
-  --color-copper: #55736c;
+  --color-copper: #ff8a72;
 }
 
 @theme inline {

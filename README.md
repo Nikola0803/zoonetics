@@ -1,4 +1,4 @@
-# Canis Continuum
+# PetPeps
 
 A standalone, dog-first longevity and peptide research storefront concept spun out from the EVLV platform.
 
@@ -27,4 +27,4 @@ Copy `.env.example` to `.env.local` and configure the existing CRM variables. Re
 
 ## Working brand
 
-“Canis Continuum” is a design-stage name, not a cleared trademark. Replace the name and metadata once naming clearance is complete.
+“PetPeps” is the working brand name. Complete trademark and domain clearance before launch.
