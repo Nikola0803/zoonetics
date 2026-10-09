@@ -24,11 +24,11 @@ export type Product = {
   ink: string;
 };
 
-function ProductVial({ color, ink, name }: Pick<Product, "color" | "ink" | "name">) {
+function ProductVial({ color, ink, name, compact = false }: Pick<Product, "color" | "ink" | "name"> & { compact?: boolean }) {
   return (
-    <div className="relative mx-auto h-52 w-36" aria-hidden style={{ color: ink }}>
-      <Image src="/images/canis/zoonetics-vial.png" alt="" fill sizes="144px" className="object-contain" />
-      <p className="absolute left-1/2 top-[58%] w-24 -translate-x-1/2 text-center font-display text-[10px] font-bold leading-tight tracking-[-0.02em] drop-shadow" style={{ color: color === "#17233B" ? "#FFFFFF" : ink }}>{name}</p>
+    <div className={`relative mx-auto ${compact ? "h-40 w-28" : "h-52 w-36"}`} aria-hidden style={{ color: ink }}>
+      <Image src="/images/canis/zoonetics-vial.png" alt="" fill sizes={compact ? "112px" : "144px"} className="object-contain" />
+      <p className={`absolute left-1/2 top-[58%] -translate-x-1/2 text-center font-display font-bold leading-tight tracking-[-0.02em] drop-shadow ${compact ? "w-20 text-[8px]" : "w-24 text-[10px]"}`} style={{ color: color === "#17233B" ? "#FFFFFF" : ink }}>{name}</p>
     </div>
   );
 }
@@ -108,36 +108,26 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
         {visibleProducts.map((product, index) => {
           const basePrice = product.variants[0].cartProducts.reduce((sum, item) => sum + item.price, 0);
           const reportedPurity = product.variants[0].cartProducts[0]?.purity ?? "99%+";
+          const purityValues = reportedPurity.match(/\d+(?:\.\d+)?%/g);
+          const compactPurity = purityValues && purityValues.length > 1 ? `${purityValues.at(-1)?.replace("%", "")}–${purityValues[0]}` : reportedPurity;
           return (
-          <article data-product-card key={product.name} className="group w-[82vw] max-w-[340px] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#17233B]/12 bg-[#FBFAFF] shadow-[0_16px_40px_rgba(23,35,59,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_52px_rgba(23,35,59,0.13)]">
-            <div className="relative grid min-h-[260px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#26324A_0%,#101829_58%,#090C12_100%)] px-5 pt-9">
-              <div className="absolute left-5 top-5 flex items-center gap-2"><span className="rounded-full bg-[#FBFAFF] px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17233B]">{product.type}</span><span className="rounded-full border border-[#17233B]/15 bg-white/45 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17233B]/65">RUO</span></div>
-              <span className="absolute right-5 top-7 text-[9px] font-bold text-[#17233B]/35">0{index + 1}</span>
-              <ProductVial color={product.color} ink={product.ink} name={product.name} />
-              <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#D7DEEF] to-transparent" />
+          <article data-product-card key={product.name} className="group w-[72vw] max-w-[250px] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#17233B]/12 bg-[#FBFAFF] shadow-[0_12px_30px_rgba(23,35,59,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(23,35,59,0.12)]">
+            <div className="relative grid min-h-[190px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#26324A_0%,#101829_58%,#090C12_100%)] px-4 pt-7">
+              <div className="absolute left-3 top-3 flex items-center gap-1.5"><span className="rounded-full bg-[#FBFAFF] px-2.5 py-1.5 text-[8px] font-bold uppercase tracking-[0.12em] text-[#17233B]">{product.type}</span><span className="rounded-full border border-white/30 bg-white/15 px-2 py-1.5 text-[8px] font-bold uppercase tracking-[0.12em] text-white/75">RUO</span></div>
+              <span className="absolute right-3 top-4 text-[9px] font-bold text-white/35">0{index + 1}</span>
+              <ProductVial color={product.color} ink={product.ink} name={product.name} compact />
+              <div className="absolute inset-x-0 bottom-0 h-9 bg-gradient-to-t from-[#D7DEEF] to-transparent" />
             </div>
-            <div className="p-5">
-              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#D95858]">{product.focus}</p>
-              <h3 className="mt-3 font-display text-[1.65rem] font-semibold tracking-[-0.035em] text-[#17233B]">{product.name}</h3>
-              <p className="mt-1 text-sm leading-5 text-[#17233B]/55">{product.formula}</p>
-              <div className="mt-3 min-h-14">
-                <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#17233B]/45">Research profile</p>
-                <p className="mt-1.5 line-clamp-2 text-[13px] leading-5 text-[#17233B]/65">{product.reason}</p>
+            <div className="p-4">
+              <p className="line-clamp-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#D95858]">{product.focus}</p>
+              <h3 className="mt-2 font-display text-[1.35rem] font-semibold tracking-[-0.035em] text-[#17233B]">{product.name}</h3>
+              <p className="mt-0.5 text-[13px] leading-5 text-[#17233B]/55">{product.formula}</p>
+              <div className="mt-3 grid grid-cols-2 gap-2 border-y border-[#17233B]/10 py-3">
+                <div><p className="text-[8px] font-bold uppercase tracking-[0.13em] text-[#17233B]/40">Purity</p><p className="mt-1 truncate text-[11px] font-bold text-[#17233B]">{compactPurity}</p></div>
+                <div className="border-l border-[#17233B]/10 pl-3"><p className="text-[8px] font-bold uppercase tracking-[0.13em] text-[#17233B]/40">From</p><p className="mt-1 text-xs font-bold text-[#17233B]">${basePrice.toFixed(0)}</p></div>
               </div>
-              <div className="mt-3 flex items-center justify-between gap-4 border-t border-[#17233B]/12 pt-3.5">
-                <div><p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#17233B]/45">Research format</p><div className="mt-2 flex flex-wrap gap-2">{product.formats.map((format) => <span key={format} className="rounded-full border border-[#17233B]/15 px-3 py-1.5 text-[10px] font-bold text-[#17233B]">{format}</span>)}</div></div>
-                <div className="text-right text-[10px] font-semibold text-[#17233B]/55"><span className="block"><i className="ri-file-shield-2-line mr-1 text-[#D95858]" />Lot COA</span><span className="mt-2 block"><i className="ri-flask-line mr-1 text-[#D95858]" />Lyophilized</span></div>
-              </div>
-              <div className="mt-4 flex items-center justify-between rounded-xl bg-[#17233B] px-4 py-3 text-white"><div><p className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#A9C7FF]">Reported purity</p><p className="mt-1 text-sm font-bold">{reportedPurity}</p></div><Link href="/coas" className="text-[9px] font-bold uppercase tracking-[0.12em] text-white/65 underline underline-offset-4">See COA</Link></div>
-              <p className="mt-4 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17233B]/45">Choose a pack</p>
-              <div className="mt-2 grid grid-cols-3 gap-2">
-                {[{ qty: 1, discount: 0, label: "1 pack" }, { qty: 2, discount: 0.1, label: "2 packs" }, { qty: 4, discount: 0.2, label: "4 packs" }].map((pack) => {
-                  const packPrice = basePrice * pack.qty * (1 - pack.discount);
-                  return <button key={pack.qty} type="button" onClick={() => openQuickBuy(product, pack.qty)} className={`rounded-xl border px-2 py-2.5 text-left transition hover:border-[#4F6EF7] hover:bg-[#EEF2FF] ${pack.qty === 2 ? "border-[#4F6EF7] bg-[#EEF2FF]" : "border-[#17233B]/12 bg-white"}`}><span className="block text-[9px] font-bold text-[#17233B]">{pack.label}</span><span className="mt-1 block text-sm font-bold text-[#17233B]">${packPrice.toFixed(0)}</span>{pack.discount > 0 && <span className="mt-1 block text-[8px] font-bold uppercase tracking-[0.08em] text-[#D95858]">Save {pack.discount * 100}%</span>}</button>;
-                })}
-              </div>
-              <button type="button" onClick={() => openQuickBuy(product, 2)} className="mt-4 flex w-full items-center justify-between rounded-full bg-[#17233B] px-5 py-4 text-[10px] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#D95858]"><span>Choose pack + COA</span><i className="ri-shopping-bag-3-line text-base" /></button>
-              <div className="mt-4 flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.1em] text-[#17233B]/45"><span className="text-[#25734A]"><i className="ri-checkbox-circle-fill mr-1" />In stock</span><span>Research guide included</span></div>
+              <div className="mt-3 flex items-center justify-between text-[10px] font-semibold text-[#17233B]/55"><span>{product.formats.join(" · ")}</span><span><i className="ri-file-shield-2-line mr-1 text-[#D95858]" />Lot COA</span></div>
+              <button type="button" onClick={() => openQuickBuy(product)} className="mt-3 flex w-full items-center justify-center rounded-full bg-[#17233B] px-4 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#D95858]">Quick buy + COA</button>
             </div>
           </article>
         );})}
