@@ -5,13 +5,13 @@ import { CurrencyProvider } from "@/lib/currency-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "Canis Continuum — Canine Longevity, Thoughtfully Researched",
+  title: "Canis Continuum — Research Peptides & Blends for Dogs",
   description:
-    "A dog-first research platform for transparent peptide science, quality documentation, and responsible canine longevity education.",
+    "Single research peptides and purpose-built blends for dogs, with transparent batch testing and responsible canine longevity education.",
   robots: { index: false, follow: false },
   openGraph: {
     title: "Canis Continuum",
-    description: "More good years, still together.",
+    description: "Research peptides and purpose-built blends for dogs.",
     images: [
       {
         url: "/images/canis/hero-senior-lab.png",

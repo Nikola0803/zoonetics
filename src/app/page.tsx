@@ -14,6 +14,15 @@ const standards = [
   ["04", "Restraint", "No veterinary efficacy claim is published without the evidence to support it."],
 ];
 
+const products = [
+  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Signature blend", focus: "Mobility & recovery research", tone: "bg-[#17382d] text-white", accent: "text-[#e4b07d]" },
+  { name: "BPC-157", formula: "Single peptide", type: "Core peptide", focus: "Soft-tissue pathway research", tone: "bg-[#eee5d6] text-[#17382d]", accent: "text-[#a75f3f]" },
+  { name: "TB-500", formula: "Single peptide", type: "Core peptide", focus: "Repair-response research", tone: "bg-[#cfdaca] text-[#17382d]", accent: "text-[#5e755f]" },
+  { name: "KPV", formula: "Tripeptide", type: "Specialty peptide", focus: "Inflammatory-pathway research", tone: "bg-[#c7d0d5] text-[#17382d]", accent: "text-[#536c78]" },
+  { name: "GHK-Cu", formula: "Copper peptide", type: "Specialty peptide", focus: "Skin & tissue research", tone: "bg-[#d9935f] text-[#17382d]", accent: "text-[#713b29]" },
+  { name: "NAD+", formula: "Supportive compound", type: "Cellular support", focus: "Metabolic-pathway research", tone: "bg-[#efe0c2] text-[#17382d]", accent: "text-[#9b693c]" },
+];
+
 const faqs = [
   ["Are peptide products approved medicines for dogs?", "No. The compounds presented here are research materials and are not approved veterinary medicines. No content on this site is a diagnosis, treatment plan, or replacement for veterinary care."],
   ["How will product quality be documented?", "Each available research lot is designed to connect to identity, purity, and batch documentation through the same CRM-backed lot system used by the parent platform."],
@@ -39,12 +48,13 @@ export default function Home() {
         <div className="mx-auto flex h-20 max-w-[1480px] items-center justify-between px-5 md:px-10">
           <Link href="#top" aria-label="Canis Continuum home"><BrandMark light /></Link>
           <nav className="hidden items-center gap-8 text-[12px] font-semibold uppercase tracking-[0.13em] lg:flex" aria-label="Main navigation">
+            <Link href="#collection" className="transition hover:text-[#d9a777]">Peptides</Link>
             <Link href="#approach" className="transition hover:text-[#d9a777]">Our approach</Link>
             <Link href="#science" className="transition hover:text-[#d9a777]">The science</Link>
             <Link href="#stories" className="transition hover:text-[#d9a777]">Dog stories</Link>
             <Link href="#questions" className="transition hover:text-[#d9a777]">Questions</Link>
           </nav>
-          <Link href="#protocol" className="rounded-full bg-[#f4efe5] px-5 py-3 text-[11px] font-bold uppercase tracking-[0.13em] text-[#17382d] transition hover:bg-[#d9a777]">Explore the protocol</Link>
+          <Link href="#collection" className="rounded-full bg-[#f4efe5] px-5 py-3 text-[11px] font-bold uppercase tracking-[0.13em] text-[#17382d] transition hover:bg-[#d9a777]">View the peptides</Link>
         </div>
       </header>
 
@@ -55,11 +65,11 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#17382d] to-transparent" />
           <div className="relative mx-auto flex min-h-[820px] max-w-[1480px] items-end px-5 pb-24 pt-36 md:min-h-[900px] md:items-center md:px-10 md:pb-10">
             <div className="max-w-[760px]">
-              <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e1b78d]"><span className="h-px w-10 bg-[#e1b78d]" /> Canine longevity, thoughtfully researched</p>
-              <h1 className="font-display text-[clamp(4rem,9vw,8.4rem)] font-medium leading-[0.82] tracking-[-0.065em]">More good years,<span className="block font-serif italic text-[#e4b07d]">still together.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">A dog-first research platform exploring peptide science, transparent testing, and responsible longevity support—with veterinary guidance at the center.</p>
+              <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e1b78d]"><span className="h-px w-10 bg-[#e1b78d]" /> Research peptides &amp; blends for dogs</p>
+              <h1 className="font-display text-[clamp(4rem,9vw,8.4rem)] font-medium leading-[0.82] tracking-[-0.065em]">Peptide science,<span className="block font-serif italic text-[#e4b07d]">for more good years.</span></h1>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">Explore single peptides, purposeful blends, and transparent batch testing—built from the ground up around canine research and responsible owner education.</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link href="#protocol" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d9935f] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17382d] transition hover:bg-[#f0c69e]">Meet the first protocol <i className="ri-arrow-right-line" /></Link>
+                <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d9935f] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17382d] transition hover:bg-[#f0c69e]">Explore peptides &amp; blends <i className="ri-arrow-right-line" /></Link>
                 <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17382d]">Read our standards</Link>
               </div>
             </div>
@@ -69,7 +79,7 @@ export default function Home() {
 
         <section className="border-b border-[#17382d]/12 bg-[#d9935f] px-5 py-4 text-[#17382d]">
           <div className="mx-auto flex max-w-[1480px] flex-wrap items-center justify-center gap-x-10 gap-y-2 text-center text-[10px] font-bold uppercase tracking-[0.17em] md:justify-between">
-            <span>Independent analytical testing</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Batch-level records</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Built on EVLV infrastructure</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Education before products</span>
+            <span>Single peptides</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Purpose-built blends</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Batch-level testing</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Canine-first education</span>
           </div>
         </section>
 
@@ -91,6 +101,40 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="collection" className="bg-[#eee5d6] px-5 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a75f3f]">The peptide library</p>
+                <h2 className="mt-5 font-display text-[clamp(3.4rem,6vw,6rem)] font-medium leading-[0.9] tracking-[-0.055em]">Singles when precision matters. <span className="font-serif italic text-[#a75f3f]">Blends when pathways overlap.</span></h2>
+              </div>
+              <p className="max-w-lg text-lg leading-8 text-[#18342b]/66 lg:justify-self-end">The platform is being designed for a growing catalog—not one hero vial. Each formula will have its own purpose, lot record, testing, and plain-language research profile.</p>
+            </div>
+
+            <div className="relative mt-14 min-h-[420px] overflow-hidden rounded-[2rem] bg-[#aeb9a6] md:min-h-[620px]">
+              <Image src="/images/canis/peptide-family.png" alt="A coordinated family of canine peptide and blend concept products" fill sizes="100vw" className="object-cover" />
+              <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 bg-gradient-to-t from-[#102b23]/85 via-[#102b23]/30 to-transparent px-7 pb-7 pt-28 text-white md:px-10 md:pb-10">
+                <div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4b07d]">A system, not a single SKU</p><p className="mt-2 max-w-xl font-display text-2xl font-semibold md:text-4xl">A coherent family for singles, blends, and future formats.</p></div>
+                <span className="rounded-full border border-white/35 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em]">Concept packaging</span>
+              </div>
+            </div>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map((product, index) => (
+                <article key={product.name} className={`group flex min-h-[300px] flex-col justify-between rounded-2xl p-7 ${product.tone}`}>
+                  <div className="flex items-center justify-between"><span className={`text-[10px] font-bold uppercase tracking-[0.17em] ${product.accent}`}>{product.type}</span><span className="text-[10px] font-bold opacity-40">0{index + 1}</span></div>
+                  <div className="mt-16">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] opacity-55">{product.formula}</p>
+                    <h3 className="mt-2 font-display text-4xl font-semibold tracking-[-0.05em]">{product.name}</h3>
+                    <div className="mt-6 flex items-center justify-between border-t border-current/20 pt-5"><p className="text-sm opacity-65">{product.focus}</p><i className="ri-arrow-right-up-line text-xl transition group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p className="mt-5 text-xs leading-5 text-[#18342b]/50">Working catalog concepts only. Final formulas, availability, naming, labeling, and claims require analytical, veterinary, and legal review.</p>
+          </div>
+        </section>
+
         <section id="protocol" className="bg-[#17382d] px-5 py-20 text-white md:px-10 md:py-28">
           <div className="mx-auto grid max-w-[1380px] gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
             <div className="relative min-h-[620px] overflow-hidden rounded-[2rem] bg-[#efe6d6]">
@@ -98,9 +142,9 @@ export default function Home() {
               <span className="absolute left-5 top-5 rounded-full bg-[#f4efe5] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#17382d]">Concept · pre-launch</span>
             </div>
             <div className="lg:pl-8">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#e4b07d]">Protocol 01 / mobility research</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#e4b07d]">Featured blend / mobility research</p>
               <h2 className="mt-5 font-display text-[clamp(3.5rem,6vw,6.5rem)] font-medium leading-[0.86] tracking-[-0.06em]">The<br /><span className="font-serif italic text-[#e4b07d]">Long Run.</span></h2>
-              <p className="mt-7 max-w-xl text-lg leading-8 text-white/66">A future research stack centered on canine connective-tissue and recovery pathways. Every claim, lot, and product decision remains gated behind analytical, veterinary, and legal review.</p>
+              <p className="mt-7 max-w-xl text-lg leading-8 text-white/66">The first signature blend concept combines BPC-157 and TB-500 around connective-tissue and recovery research. It leads the collection, but it&apos;s one part of a broader canine peptide system.</p>
               <div className="mt-9 grid gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-3">
                 {[["Status","In review"],["Format","To be confirmed"],["Records","Lot linked"]].map(([label,value]) => <div key={label} className="bg-[#17382d] p-5"><p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/40">{label}</p><p className="mt-2 text-sm font-semibold">{value}</p></div>)}
               </div>
@@ -149,7 +193,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1380px]">
           <div className="grid gap-12 border-b border-white/15 pb-16 lg:grid-cols-[1.2fr_0.8fr]">
             <div><BrandMark light /><p className="mt-7 max-w-lg font-display text-4xl font-medium leading-tight tracking-[-0.04em]">A longer horizon for the dogs who give us everything.</p></div>
-            <div className="grid grid-cols-2 gap-8 text-sm lg:justify-self-end"><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4b07d]">Explore</p><p><Link href="#approach">Approach</Link></p><p><Link href="#science">Standards</Link></p><p><Link href="#questions">Questions</Link></p></div><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4b07d]">Platform</p><p>CRM ready</p><p>Lot traceability</p><p>Pre-launch</p></div></div>
+            <div className="grid grid-cols-2 gap-8 text-sm lg:justify-self-end"><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4b07d]">Explore</p><p><Link href="#collection">Peptides</Link></p><p><Link href="#approach">Approach</Link></p><p><Link href="#science">Standards</Link></p><p><Link href="#questions">Questions</Link></p></div><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4b07d]">Platform</p><p>Multiple peptides</p><p>Signature blends</p><p>Lot traceability</p><p>Pre-launch</p></div></div>
           </div>
           <div className="flex flex-col gap-4 py-7 text-[10px] uppercase tracking-[0.12em] text-white/38 md:flex-row md:items-center md:justify-between"><p>© 2026 Canis Continuum · Working brand concept</p><p>Research materials only · Not veterinary advice · Not intended to diagnose, treat, cure, or prevent disease</p></div>
         </div>
