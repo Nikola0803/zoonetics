@@ -60,6 +60,26 @@ function ProductVial({ color, ink, name }: { color: string; ink: string; name: s
   );
 }
 
+function StoryFrame({ image, label, caption, warm = false }: { image: string; label: string; caption: string; warm?: boolean }) {
+  return (
+    <figure className="group relative aspect-[9/16] min-h-[560px] overflow-hidden rounded-[1.75rem] bg-[#17382d]">
+      <Image src={image} alt={caption} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.02]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#102b23]/85 via-transparent to-[#102b23]/20" />
+      <div className="absolute left-5 right-5 top-5 flex items-center justify-between">
+        <span className={`rounded-full px-4 py-2 text-[9px] font-bold uppercase tracking-[0.16em] ${warm ? "bg-[#d9935f] text-[#17382d]" : "bg-[#f4efe5] text-[#17382d]"}`}>{label}</span>
+        <span className="rounded-full bg-black/25 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur">Video placeholder</span>
+      </div>
+      <div className="absolute inset-0 grid place-items-center">
+        <span className="grid h-16 w-16 place-items-center rounded-full border border-white/60 bg-white/15 text-2xl text-white backdrop-blur transition group-hover:scale-110 group-hover:bg-white group-hover:text-[#17382d]"><i className="ri-play-fill translate-x-0.5" /></span>
+      </div>
+      <figcaption className="absolute inset-x-0 bottom-0 p-6 text-white">
+        <p className="font-display text-2xl font-semibold tracking-[-0.035em]">{caption}</p>
+        <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/55">Owner-shot vertical video · media slot ready</p>
+      </figcaption>
+    </figure>
+  );
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen overflow-hidden bg-[#f4efe5] text-[#18342b]">
@@ -199,15 +219,28 @@ export default function Home() {
         </section>
 
         <section id="stories" className="bg-[#f4efe5] px-5 py-24 md:px-10 md:py-32">
-          <div className="mx-auto grid max-w-[1380px] gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
-            <div className="relative min-h-[580px] overflow-hidden rounded-[2rem]">
-              <Image src="/images/canis/mobility-story.png" alt="A senior golden retriever walking with its owner" fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#17382d]/70 via-transparent to-transparent" />
-              <p className="absolute bottom-7 left-7 right-7 max-w-lg font-display text-3xl font-medium leading-tight text-white md:text-4xl">The moments that matter aren&apos;t clinical. They&apos;re the next walk, the next step, the next good day.</p>
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a75f3f]">The proof format</p>
+              <h2 className="font-display text-[clamp(3.5rem,6vw,6.5rem)] font-medium leading-[0.88] tracking-[-0.06em]">Don&apos;t just tell the story. <span className="font-serif italic text-[#a75f3f]">Let owners see it.</span></h2>
             </div>
-            <div className="flex flex-col justify-between rounded-[2rem] bg-[#d9935f] p-8 text-[#17382d] md:p-12">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em]">Stories, with standards</p><blockquote className="mt-12 font-serif text-[clamp(2.5rem,4vw,4.5rem)] italic leading-[1.02] tracking-[-0.04em]">“We&apos;re here for more of the life between appointments.”</blockquote></div>
-              <div className="mt-20 border-t border-[#17382d]/25 pt-6"><p className="text-sm leading-6">Future owner stories will be labeled as individual experiences, never presented as clinical evidence. Results vary, and veterinary care comes first.</p></div>
+            <div className="mt-14 grid gap-5 lg:grid-cols-[0.8fr_0.8fr_1fr]">
+              <StoryFrame image="/images/canis/story-before.png" label="Before" caption="Pausing at the steps" />
+              <StoryFrame image="/images/canis/story-followup.png" label="Follow-up" caption="Moving through the day" warm />
+              <article className="flex min-h-[560px] flex-col justify-between rounded-[1.75rem] bg-[#17382d] p-8 text-white md:p-10">
+                <div>
+                  <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.17em] text-[#e4b07d]"><span className="h-px w-8 bg-[#e4b07d]" /> Sample story layout</div>
+                  <blockquote className="mt-10 font-serif text-[clamp(2.3rem,4vw,4.25rem)] italic leading-[1.02] tracking-[-0.04em]">“The change you notice is usually something small—until it gives you part of your routine back.”</blockquote>
+                  <div className="mt-10 flex flex-wrap gap-2 text-[9px] font-bold uppercase tracking-[0.13em] text-white/65"><span className="rounded-full border border-white/20 px-3 py-2">Same dog</span><span className="rounded-full border border-white/20 px-3 py-2">Same angle</span><span className="rounded-full border border-white/20 px-3 py-2">Dated clips</span><span className="rounded-full border border-white/20 px-3 py-2">Owner submitted</span></div>
+                </div>
+                <div className="mt-14 border-t border-white/15 pt-6">
+                  <p className="text-xs leading-6 text-white/55">Design demonstration only: these poster frames are generated placeholders and do not depict a product outcome. Future footage must be authentic, permissioned, dated, and presented without editing that changes the observed movement.</p>
+                </div>
+              </article>
+            </div>
+            <div className="mt-6 grid gap-4 rounded-2xl border border-[#17382d]/15 bg-[#eee5d6] p-6 md:grid-cols-[auto_1fr] md:items-center md:p-8">
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-[#d9935f] text-xl"><i className="ri-shield-check-line" /></span>
+              <div><p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#a75f3f]">Stories are not clinical evidence</p><p className="mt-2 max-w-5xl text-sm leading-6 text-[#17382d]/62">Before/follow-up media will describe individual owner observations only. It will not establish causation, efficacy, safety, or approved use; no footage will substitute for controlled canine research or veterinary advice. Any product relationship must be disclosed clearly and reviewed before publication.</p></div>
             </div>
           </div>
         </section>
