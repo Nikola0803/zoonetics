@@ -15,12 +15,14 @@ const standards = [
 ];
 
 const products = [
-  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Signature blend", focus: "Connective-tissue research", formats: ["10 + 10 mg"], color: "#17233B", ink: "#F6F7FC" },
+  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Peptide blend", focus: "Connective-tissue research", formats: ["10 + 10 mg"], color: "#17233B", ink: "#F6F7FC" },
+  { name: "Daily Signal", formula: "BPC-157 + KPV", type: "Peptide blend", focus: "Repair-pathway research", formats: ["10 + 10 mg"], color: "#4567D8", ink: "#FBFAFF" },
+  { name: "Coat & Matrix", formula: "GHK-Cu + KPV", type: "Peptide blend", focus: "Skin & tissue model research", formats: ["50 + 10 mg"], color: "#7869C9", ink: "#FBFAFF" },
   { name: "BPC-157", formula: "Pentadecapeptide", type: "Single peptide", focus: "Soft-tissue pathway research", formats: ["5 mg", "10 mg"], color: "#5F7CF6", ink: "#FBFAFF" },
   { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "Single peptide", focus: "Repair-response research", formats: ["5 mg", "10 mg"], color: "#5A7A9E", ink: "#F6F7FC" },
-  { name: "KPV", formula: "Lys–Pro–Val tripeptide", type: "Specialty peptide", focus: "Inflammatory-pathway research", formats: ["10 mg"], color: "#6C78A8", ink: "#F6F7FC" },
-  { name: "GHK-Cu", formula: "Copper peptide complex", type: "Specialty peptide", focus: "Skin & tissue model research", formats: ["50 mg"], color: "#8C68D8", ink: "#FBFAFF" },
-  { name: "NAD+", formula: "Nicotinamide adenine dinucleotide", type: "Supportive compound", focus: "Cellular-energy research", formats: ["500 mg"], color: "#4F6F8F", ink: "#FBFAFF" },
+  { name: "KPV", formula: "Lys–Pro–Val tripeptide", type: "Single peptide", focus: "Inflammatory-pathway research", formats: ["10 mg"], color: "#6C78A8", ink: "#F6F7FC" },
+  { name: "GHK-Cu", formula: "Copper peptide complex", type: "Single peptide", focus: "Skin & tissue model research", formats: ["50 mg"], color: "#8C68D8", ink: "#FBFAFF" },
+  { name: "NAD+", formula: "Nicotinamide adenine dinucleotide", type: "Research compound", focus: "Cellular-energy research", formats: ["500 mg"], color: "#4F6F8F", ink: "#FBFAFF" },
 ];
 
 const studyContexts = [
@@ -38,8 +40,8 @@ const researchCycle = [
 ];
 
 const roadmap = [
-  ["Available first", "Single-peptide library", "Focused research profiles with planned formats and lot-level documentation."],
-  ["In development", "Signature blends", "Multi-compound concepts organized around clearly stated research rationales."],
+  ["Launch collection", "Multiple peptide blends", "Several multi-compound concepts, each organized around a clearly stated research rationale."],
+  ["Alongside them", "Single-peptide library", "Focused individual materials with their own profiles, planned formats, and lot records."],
   ["Next layer", "Study records", "A structured home for protocols, source material, observations, and linked lots."],
   ["Future", "Partner portal", "A dedicated workflow for qualified veterinary and research collaborators."],
 ];
@@ -129,7 +131,7 @@ export default function Home() {
             <div className="max-w-[760px]">
               <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> Research peptides &amp; blends for canine studies</p>
               <h1 className="max-w-[700px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">Peptide science,<span className="block font-serif italic text-[#A9C7FF]">for more good years.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">A focused catalog of research-use-only peptides, purposeful blends, and lot-level documentation—organized around canine research questions without presenting veterinary treatment claims.</p>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">A growing collection of research-use-only peptide blends and individual peptides, each with a clear profile and lot-level documentation for canine research contexts.</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">Explore peptides &amp; blends <i className="ri-arrow-right-line" /></Link>
                 <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">Read our standards</Link>
@@ -188,10 +190,10 @@ export default function Home() {
           <div className="relative mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">The peptide library</p>
-                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.55rem,4.4vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Singles when precision matters. <span className="font-serif italic text-[#D95858]">Blends when pathways overlap.</span></h2>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Shop by research format</p>
+                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.55rem,4.4vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Several blends. Individual peptides. <span className="font-serif italic text-[#D95858]">One clear library.</span></h2>
               </div>
-              <p className="max-w-lg text-lg leading-8 text-[#23324D]/66 lg:justify-self-end">The platform is being designed for a growing catalog—not one hero vial. Each formula will have its own purpose, lot record, testing, and plain-language research profile.</p>
+              <div className="max-w-lg lg:justify-self-end"><p className="text-lg leading-8 text-[#23324D]/66">PetPeps is being designed as a real collection—not a single blend surrounded by marketing. Every blend and single gets its own purpose, lot record, testing, and plain-language research profile.</p><div className="mt-5 flex flex-wrap gap-2"><span className="rounded-full bg-[#17233B] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white">3 blend concepts</span><span className="rounded-full border border-[#17233B]/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#17233B]">5 individual materials</span></div></div>
             </div>
 
             <div className="relative mt-14 min-h-[420px] overflow-hidden rounded-[2rem] bg-[#C7D2F2] md:min-h-[620px]">
@@ -235,17 +237,17 @@ export default function Home() {
         <section id="protocol" className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-28">
           <div className="mx-auto grid max-w-[1380px] gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
             <div className="relative min-h-[620px] overflow-hidden rounded-[2rem] bg-[#EEF2FF]">
-              <Image src="/images/canis/product-vial.png" alt="Concept packaging for a canine research protocol" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
-              <span className="absolute left-5 top-5 rounded-full bg-[#F6F7FC] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#17233B]">Concept · pre-launch</span>
+              <Image src="/images/canis/peptide-family.png" alt="A family of PetPeps blend and single-peptide concept products" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+              <span className="absolute left-5 top-5 rounded-full bg-[#F6F7FC] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#17233B]">Collection · pre-launch</span>
             </div>
             <div className="lg:pl-8">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Featured blend / mobility research</p>
-              <h2 className="mt-5 font-display text-[clamp(2.7rem,4.5vw,4.9rem)] font-medium leading-[0.94] tracking-[-0.05em]">The<br /><span className="font-serif italic text-[#A9C7FF]">Long Run.</span></h2>
-              <p className="mt-7 max-w-xl text-lg leading-8 text-white/66">The first signature blend concept combines BPC-157 and TB-500 around connective-tissue and recovery research. It leads the collection, but it&apos;s one part of a broader canine peptide system.</p>
-              <div className="mt-9 grid gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-3">
-                {[["Status","In review"],["Format","To be confirmed"],["Records","Lot linked"]].map(([label,value]) => <div key={label} className="bg-[#17233B] p-5"><p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/40">{label}</p><p className="mt-2 text-sm font-semibold">{value}</p></div>)}
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">A collection, not one hero product</p>
+              <h2 className="mt-5 max-w-xl font-display text-[clamp(2.7rem,4.5vw,4.9rem)] font-medium leading-[0.94] tracking-[-0.05em]">Choose the <span className="font-serif italic text-[#A9C7FF]">research profile.</span></h2>
+              <p className="mt-7 max-w-xl text-lg leading-8 text-white/66">Some research questions call for a defined single material. Others examine paired pathways through a blend. PetPeps gives both formats equal clarity instead of forcing every visitor into one flagship formula.</p>
+              <div className="mt-9 grid gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-2">
+                {[["Blends","3 launch concepts"],["Individual materials","5 research profiles"]].map(([label,value]) => <div key={label} className="bg-[#17233B] p-5"><p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/40">{label}</p><p className="mt-2 text-sm font-semibold">{value}</p></div>)}
               </div>
-              <Link href="#questions" className="mt-8 inline-flex items-center gap-3 border-b border-[#A9C7FF] pb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#A9C7FF]">See responsible-use answers <i className="ri-arrow-right-line" /></Link>
+              <Link href="#science" className="mt-8 inline-flex items-center gap-3 border-b border-[#A9C7FF] pb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#A9C7FF]">How every profile is documented <i className="ri-arrow-right-line" /></Link>
             </div>
           </div>
         </section>
