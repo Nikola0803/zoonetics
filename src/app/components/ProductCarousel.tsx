@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { useCart } from "@/lib/cart-context";
@@ -14,6 +15,7 @@ export type Product = {
   name: string;
   formula: string;
   type: string;
+  lane: "mobility" | "skin" | "single";
   focus: string;
   reason: string;
   formats: string[];
@@ -24,18 +26,9 @@ export type Product = {
 
 function ProductVial({ color, ink, name }: Pick<Product, "color" | "ink" | "name">) {
   return (
-    <div className="relative mx-auto h-52 w-32" aria-hidden>
-      <div className="absolute left-1/2 top-2 h-5 w-24 -translate-x-1/2 rounded-t-lg bg-[#c9bda8] shadow-sm" />
-      <div className="absolute left-1/2 top-6 h-5 w-20 -translate-x-1/2 rounded-sm bg-[#7b4a26]" />
-      <div className="absolute inset-x-2 bottom-0 top-10 overflow-hidden rounded-b-[1.8rem] rounded-t-xl border border-[#4a2d1c]/30 bg-[linear-gradient(90deg,#6e3c1f,#b26d35_42%,#744021)] shadow-[0_22px_35px_rgba(36,43,32,0.22)]">
-        <div className="absolute inset-x-0 top-9 px-3 py-5 text-center" style={{ backgroundColor: color, color: ink }}>
-          <i className="ri-pulse-line text-lg" />
-          <p className="mt-2 text-[8px] font-bold uppercase tracking-[0.12em]">ZooNetics</p>
-          <p className="mt-1 font-display text-[11px] font-bold leading-tight">{name}</p>
-          <p className="mt-2 text-[6px] font-bold uppercase tracking-[0.16em] opacity-65">Research use only</p>
-        </div>
-        <div className="absolute inset-y-0 left-2 w-2 bg-white/15 blur-sm" />
-      </div>
+    <div className="relative mx-auto h-64 w-44" aria-hidden style={{ color: ink }}>
+      <Image src="/images/canis/zoonetics-vial.png" alt="" fill sizes="176px" className="object-contain" />
+      <p className="absolute left-1/2 top-[58%] w-28 -translate-x-1/2 text-center font-display text-[12px] font-bold leading-tight tracking-[-0.02em] drop-shadow" style={{ color: color === "#17233B" ? "#FFFFFF" : ink }}>{name}</p>
     </div>
   );
 }
@@ -48,7 +41,9 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
   const [variantIndex, setVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
+  const [activeLane, setActiveLane] = useState<"all" | Product["lane"]>("all");
   const { addToCart, count, subtotal } = useCart();
+  const visibleProducts = activeLane === "all" ? products : products.filter((product) => product.lane === activeLane);
 
   const move = (direction: -1 | 1) => {
     const element = track.current;
@@ -63,13 +58,13 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
     if (!element) return;
     const card = element.querySelector<HTMLElement>("[data-product-card]");
     const distance = (card?.offsetWidth ?? 360) + 20;
-    setPosition(Math.min(products.length, Math.max(1, Math.round(element.scrollLeft / distance) + 1)));
+    setPosition(Math.min(visibleProducts.length, Math.max(1, Math.round(element.scrollLeft / distance) + 1)));
   };
 
-  const openQuickBuy = (product: Product) => {
+  const openQuickBuy = (product: Product, packQuantity = 1) => {
     setSelectedProduct(product);
     setVariantIndex(0);
-    setQuantity(1);
+    setQuantity(packQuantity);
     setJustAdded(false);
     window.requestAnimationFrame(() => dialog.current?.showModal());
   };
@@ -78,31 +73,44 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
 
   const selectedVariant = selectedProduct?.variants[variantIndex];
   const variantPrice = selectedVariant?.cartProducts.reduce((sum, product) => sum + product.price, 0) ?? 0;
+  const packDiscount = quantity >= 4 ? 0.2 : quantity >= 2 ? 0.1 : 0;
+  const discountedTotal = variantPrice * quantity * (1 - packDiscount);
 
   const addSelected = () => {
     if (!selectedVariant) return;
-    selectedVariant.cartProducts.forEach((product) => addToCart(product, quantity, product.price, `ZooNetics K9 · ${selectedVariant.label}`));
+    selectedVariant.cartProducts.forEach((product) => addToCart(product, quantity, product.price * (1 - packDiscount), `ZooNetics K9 · ${selectedVariant.label}`));
     setJustAdded(true);
+  };
+
+  const selectLane = (lane: "all" | Product["lane"]) => {
+    setActiveLane(lane);
+    setPosition(1);
+    track.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   return (
     <div className="mt-12">
-      <div className="flex items-end justify-between gap-6 border-b border-[#17233B]/15 pb-5">
+      <div className="flex flex-col gap-5 border-b border-[#17233B]/15 pb-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#17233B]">The focused research library</p>
-          <p className="mt-2 text-sm text-[#17233B]/50">Swipe or use the arrows to explore two blends and three single peptides.</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#17233B]">Shop by research focus</p>
+          <div className="mt-3 flex flex-wrap gap-2" aria-label="Filter K9 research products">
+            {([['all', 'All profiles'], ['mobility', 'Mobility + recovery'], ['skin', 'Skin + tissue'], ['single', 'Single peptides']] as const).map(([lane, label]) => <button key={lane} type="button" onClick={() => selectLane(lane)} aria-pressed={activeLane === lane} className={`rounded-full px-4 py-2 text-[10px] font-bold uppercase tracking-[0.11em] transition ${activeLane === lane ? 'bg-[#17233B] text-white' : 'border border-[#17233B]/15 bg-white text-[#17233B]/65 hover:border-[#17233B]/40'}`}>{label}</button>)}
+          </div>
         </div>
         <div className="flex shrink-0 items-center gap-3">
-          <span className="mr-1 hidden text-[10px] font-bold tracking-[0.18em] text-[#17233B]/45 sm:block">0{position} / 0{products.length}</span>
+          <span className="mr-1 hidden text-[10px] font-bold tracking-[0.18em] text-[#17233B]/45 sm:block">0{position} / 0{visibleProducts.length}</span>
           <button type="button" onClick={() => move(-1)} aria-label="Previous product" className="grid h-11 w-11 place-items-center rounded-full border border-[#17233B]/20 bg-white text-[#17233B] transition hover:border-[#17233B] hover:bg-[#17233B] hover:text-white"><i className="ri-arrow-left-line" /></button>
           <button type="button" onClick={() => move(1)} aria-label="Next product" className="grid h-11 w-11 place-items-center rounded-full bg-[#17233B] text-white transition hover:bg-[#D95858]"><i className="ri-arrow-right-line" /></button>
         </div>
       </div>
 
       <div ref={track} onScroll={updatePosition} tabIndex={0} aria-label="ZooNetics product carousel" className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-8 pt-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4F6EF7] md:mx-0 md:px-0">
-        {products.map((product, index) => (
+        {visibleProducts.map((product, index) => {
+          const basePrice = product.variants[0].cartProducts.reduce((sum, item) => sum + item.price, 0);
+          const reportedPurity = product.variants[0].cartProducts[0]?.purity ?? "99%+";
+          return (
           <article data-product-card key={product.name} className="group w-[84vw] max-w-[390px] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#17233B]/12 bg-[#FBFAFF] shadow-[0_18px_50px_rgba(23,35,59,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(23,35,59,0.14)]">
-            <div className="relative grid min-h-[290px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#F8FAFF_0%,#E8ECFF_58%,#DCE3F5_100%)] px-6 pt-10">
+            <div className="relative grid min-h-[330px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#26324A_0%,#101829_58%,#090C12_100%)] px-6 pt-10">
               <div className="absolute left-5 top-5 flex items-center gap-2"><span className="rounded-full bg-[#FBFAFF] px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17233B]">{product.type}</span><span className="rounded-full border border-[#17233B]/15 bg-white/45 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17233B]/65">RUO</span></div>
               <span className="absolute right-5 top-7 text-[9px] font-bold text-[#17233B]/35">0{index + 1}</span>
               <ProductVial color={product.color} ink={product.ink} name={product.name} />
@@ -120,10 +128,19 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
                 <div><p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#17233B]/45">Research format</p><div className="mt-2 flex flex-wrap gap-2">{product.formats.map((format) => <span key={format} className="rounded-full border border-[#17233B]/15 px-3 py-1.5 text-[10px] font-bold text-[#17233B]">{format}</span>)}</div></div>
                 <div className="text-right text-[10px] font-semibold text-[#17233B]/55"><span className="block"><i className="ri-file-shield-2-line mr-1 text-[#D95858]" />Lot COA</span><span className="mt-2 block"><i className="ri-flask-line mr-1 text-[#D95858]" />Lyophilized</span></div>
               </div>
-              <button type="button" onClick={() => openQuickBuy(product)} className="mt-6 flex w-full items-center justify-between rounded-full bg-[#17233B] px-5 py-4 text-[10px] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#D95858]"><span>Quick buy + COA</span><i className="ri-shopping-bag-3-line text-base" /></button>
+              <div className="mt-5 flex items-center justify-between rounded-xl bg-[#17233B] px-4 py-3 text-white"><div><p className="text-[9px] font-bold uppercase tracking-[0.14em] text-[#A9C7FF]">Reported purity</p><p className="mt-1 text-sm font-bold">{reportedPurity}</p></div><Link href="/coas" className="text-[9px] font-bold uppercase tracking-[0.12em] text-white/65 underline underline-offset-4">See COA</Link></div>
+              <p className="mt-5 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17233B]/45">Choose a pack</p>
+              <div className="mt-2 grid grid-cols-3 gap-2">
+                {[{ qty: 1, discount: 0, label: "1 pack" }, { qty: 2, discount: 0.1, label: "2 packs" }, { qty: 4, discount: 0.2, label: "4 packs" }].map((pack) => {
+                  const packPrice = basePrice * pack.qty * (1 - pack.discount);
+                  return <button key={pack.qty} type="button" onClick={() => openQuickBuy(product, pack.qty)} className={`rounded-xl border px-2 py-3 text-left transition hover:border-[#4F6EF7] hover:bg-[#EEF2FF] ${pack.qty === 2 ? "border-[#4F6EF7] bg-[#EEF2FF]" : "border-[#17233B]/12 bg-white"}`}><span className="block text-[10px] font-bold text-[#17233B]">{pack.label}</span><span className="mt-1 block text-sm font-bold text-[#17233B]">${packPrice.toFixed(0)}</span>{pack.discount > 0 && <span className="mt-1 block text-[8px] font-bold uppercase tracking-[0.08em] text-[#D95858]">Save {pack.discount * 100}%</span>}</button>;
+                })}
+              </div>
+              <button type="button" onClick={() => openQuickBuy(product, 2)} className="mt-4 flex w-full items-center justify-between rounded-full bg-[#17233B] px-5 py-4 text-[10px] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#D95858]"><span>Choose pack + COA</span><i className="ri-shopping-bag-3-line text-base" /></button>
+              <div className="mt-4 flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.1em] text-[#17233B]/45"><span className="text-[#25734A]"><i className="ri-checkbox-circle-fill mr-1" />In stock</span><span>Research guide included</span></div>
             </div>
           </article>
-        ))}
+        );})}
         <div aria-hidden className="w-px shrink-0" />
       </div>
 
@@ -137,12 +154,12 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
 
             <div className="flex-1 overflow-y-auto">
               <div className="grid md:grid-cols-[0.82fr_1.18fr]">
-                <div className="relative grid min-h-[340px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#FFFFFF_0%,#E8ECFF_58%,#D2DBF4_100%)] px-8 py-12 md:min-h-[520px]">
+                <div className="relative grid min-h-[340px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#26324A_0%,#101829_58%,#090C12_100%)] px-8 py-12 md:min-h-[520px]">
                   <span className="absolute left-5 top-5 rounded-full bg-[#17233B] px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">K9 research only</span>
                   <ProductVial color={selectedProduct.color} ink={selectedProduct.ink} name={selectedProduct.name} />
                   <div className="absolute inset-x-5 bottom-5 rounded-xl border border-white/70 bg-white/75 p-4 backdrop-blur">
-                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#D95858]">Evidence status</p>
-                    <p className="mt-2 text-sm leading-5 text-[#17233B]/65">Research context only. No established canine clinical benefit; not approved for veterinary use.</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#D95858]">Lot status</p>
+                    <p className="mt-2 text-sm leading-5 text-[#17233B]/65">COA-connected identity, reported purity, batch code, and analytical date.</p>
                   </div>
                 </div>
 
@@ -177,8 +194,10 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
 
                   <div className="mt-6 flex items-center gap-3">
                     <div className="flex h-12 items-center rounded-full border border-[#17233B]/15 bg-white px-2"><button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity" className="grid h-8 w-8 place-items-center"><i className="ri-subtract-line" /></button><span className="w-8 text-center text-sm font-bold">{quantity}</span><button type="button" onClick={() => setQuantity(quantity + 1)} aria-label="Increase quantity" className="grid h-8 w-8 place-items-center"><i className="ri-add-line" /></button></div>
-                    <button type="button" onClick={addSelected} className="flex h-12 flex-1 items-center justify-between rounded-full bg-[#FF8A72] px-6 text-sm font-bold text-[#17233B] transition hover:bg-[#FFC0B0]"><span>{justAdded ? "Added to K9 cart" : "Add to K9 cart"}</span><span>${(variantPrice * quantity).toFixed(2)}</span></button>
+                    <button type="button" onClick={addSelected} className="flex h-12 flex-1 items-center justify-between rounded-full bg-[#FF8A72] px-6 text-sm font-bold text-[#17233B] transition hover:bg-[#FFC0B0]"><span>{justAdded ? "Added to K9 cart" : "Add to K9 cart"}</span><span>${discountedTotal.toFixed(2)}</span></button>
                   </div>
+
+                  {packDiscount > 0 && <p className="mt-3 text-right text-xs font-bold text-[#25734A]">Pack savings applied: {packDiscount * 100}%</p>}
 
                   {justAdded && <div className="mt-4 rounded-xl bg-[#17233B] p-4 text-white"><div className="flex items-center justify-between gap-4"><div><p className="text-sm font-bold">Ready in your K9 cart</p><p className="mt-1 text-xs text-white/55">{count} item{count === 1 ? "" : "s"} · ${subtotal.toFixed(2)}</p></div><Link href="/checkout" className="rounded-full bg-white px-4 py-2 text-xs font-bold text-[#17233B]">Checkout</Link></div></div>}
                   <p className="mt-5 text-xs leading-5 text-[#17233B]/45">For laboratory research use only. Not intended for administration to dogs, other animals, or humans. Product availability and lot details remain subject to final CRM synchronization.</p>

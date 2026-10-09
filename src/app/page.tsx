@@ -11,25 +11,25 @@ const crmProduct = (slug: string) => {
 };
 
 const standards = [
-  ["01", "Source", "See where a claim comes from: human data, laboratory research, animal models, or owner observation."],
-  ["02", "Species", "Human or laboratory findings are never presented as proof that the same outcome occurs in dogs."],
-  ["03", "Lot", "Identity and purity results stay connected to the exact research lot—not a generic sample."],
-  ["04", "Limits", "Every profile states what is unknown and what still requires veterinary or controlled canine research."],
+  ["01", "Identity", "Every profile starts with the exact compound, format, and research concentration."],
+  ["02", "Purity", "Analytical results make reported purity visible before a research order is placed."],
+  ["03", "Lot", "Every vial stays connected to its specific batch record and COA."],
+  ["04", "Traceability", "Product, batch, test date, and documentation stay together from shelf to study record."],
 ];
 
 const products: Product[] = [
-  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "K9 peptide blend", focus: "Paired repair-pathway research", reason: "A familiar pairing in repair-pathway research conversations, shown with the limits of that evidence intact.", formats: ["10 + 10 mg"], variants: [{ label: "10 + 10 mg", cartProducts: [crmProduct("bpc-tb-500-blend-20mg")] }], color: "#17233B", ink: "#F6F7FC" },
-  { name: "Matrix Pair", formula: "GHK-Cu + KPV", type: "K9 research pair", focus: "Skin and tissue model research", reason: "A paired profile for researchers comparing copper-peptide and tissue-model literature in one place.", formats: ["50 + 10 mg"], variants: [{ label: "50 + 10 mg pair", cartProducts: [crmProduct("ghk-cu-50mg"), crmProduct("kpv-10mg")] }], color: "#7869C9", ink: "#FBFAFF" },
-  { name: "BPC-157", formula: "Pentadecapeptide", type: "K9 single peptide", focus: "Tissue-pathway research", reason: "Included because it is widely discussed in repair research—not because canine benefit has been established.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("bpc-157-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("bpc-157-10mg")] }], color: "#5F7CF6", ink: "#FBFAFF" },
-  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "K9 single peptide", focus: "Cell-migration research", reason: "A focused way to review cell-migration and repair-model literature without treating early findings as veterinary proof.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("tb-500-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("tb-500-10mg")] }], color: "#5A7A9E", ink: "#F6F7FC" },
-  { name: "GHK-Cu", formula: "Copper peptide complex", type: "K9 single peptide", focus: "Copper-peptide research", reason: "Included for its established place in copper-peptide, tissue, and skin-model research conversations.", formats: ["50 mg"], variants: [{ label: "50 mg", cartProducts: [crmProduct("ghk-cu-50mg")] }], color: "#8C68D8", ink: "#FBFAFF" },
+  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "K9 peptide blend", lane: "mobility", focus: "Paired repair-pathway research", reason: "A focused two-peptide profile for mobility, recovery, and connective-tissue research workflows.", formats: ["10 + 10 mg"], variants: [{ label: "10 + 10 mg", cartProducts: [crmProduct("bpc-tb-500-blend-20mg")] }], color: "#17233B", ink: "#F6F7FC" },
+  { name: "Matrix Pair", formula: "GHK-Cu + KPV", type: "K9 research pair", lane: "skin", focus: "Skin and tissue model research", reason: "A paired profile for researchers comparing copper-peptide and tissue-model literature in one place.", formats: ["50 + 10 mg"], variants: [{ label: "50 + 10 mg pair", cartProducts: [crmProduct("ghk-cu-50mg"), crmProduct("kpv-10mg")] }], color: "#7869C9", ink: "#FBFAFF" },
+  { name: "BPC-157", formula: "Pentadecapeptide", type: "K9 single peptide", lane: "single", focus: "Tissue-pathway research", reason: "A single-compound profile for structured tissue and repair-pathway research.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("bpc-157-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("bpc-157-10mg")] }], color: "#5F7CF6", ink: "#FBFAFF" },
+  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "K9 single peptide", lane: "single", focus: "Cell-migration research", reason: "A single-compound profile for cell-migration and repair-model research workflows.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("tb-500-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("tb-500-10mg")] }], color: "#5A7A9E", ink: "#F6F7FC" },
+  { name: "GHK-Cu", formula: "Copper peptide complex", type: "K9 single peptide", lane: "skin", focus: "Copper-peptide research", reason: "A focused copper-peptide profile for tissue and skin-model research workflows.", formats: ["50 mg"], variants: [{ label: "50 mg", cartProducts: [crmProduct("ghk-cu-50mg")] }], color: "#8C68D8", ink: "#FBFAFF" },
 ];
 
 const studyContexts = [
   { title: "Getting up looks harder", kicker: "The first signal", body: "A change in rising, stairs, or jumping is a reason to document what changed and speak with a veterinarian—not guess at a diagnosis.", image: "/images/canis/story-before.png", position: "object-center" },
   { title: "Walks keep getting shorter", kicker: "The routine changes", body: "Owners know a dog’s normal. Tracking distance, pace, and recovery gives the veterinary conversation something concrete.", image: "/images/canis/hero-senior-lab.png", position: "object-[68%_center]" },
   { title: "Recovery takes longer", kicker: "After activity", body: "Repeated soreness or a slower return to normal deserves context, especially for active, working, and large-breed dogs.", image: "/images/canis/story-followup.png", position: "object-center" },
-  { title: "You want to compare options", kicker: "Before another expense", body: "Read what each research profile actually supports, what it does not, and which questions belong with your veterinarian.", image: "/images/canis/mobility-story.png", position: "object-center" },
+  { title: "You want to compare options", kicker: "Before another expense", body: "Compare the profile, format, lot record, and COA before adding anything to the research cart.", image: "/images/canis/mobility-story.png", position: "object-center" },
 ];
 
 const creatorStories = [
@@ -40,19 +40,17 @@ const creatorStories = [
 ];
 
 const researchCycle = [
-  ["01", "Write down the change", "Note when it started, what movement looks different, and whether it is getting worse."],
-  ["02", "Start with a veterinarian", "Pain and mobility changes can have many causes. A proper examination belongs before product research."],
-  ["03", "Read the evidence by species", "Separate human data, laboratory findings, animal models, and canine evidence instead of blending them together."],
-  ["04", "Ask a better next question", "Use the record to discuss reasonable, legal, and evidence-based options—not to self-prescribe an RUO material."],
+  ["01", "Choose the pathway", "Start with the compound or blend that fits the research model."],
+  ["02", "Select the format", "Compare available concentrations and choose the required research format."],
+  ["03", "Review the COA", "Check identity, reported purity, batch code, and analytical date before ordering."],
+  ["04", "Keep the lot connected", "Carry the exact batch record into the study file for clean traceability."],
 ];
 
 const faqs = [
-  ["Are peptide products approved medicines for dogs?", "No. The compounds presented here are research materials and are not approved veterinary medicines. No content on this site is a diagnosis, treatment plan, or replacement for veterinary care."],
-  ["Why discuss canine research if the products are RUO?", "The canine focus defines the scientific subject matter, literature, and research questions this catalog organizes. It does not change product status: research-use-only materials are not intended for administration to humans or animals."],
-  ["How will product quality be documented?", "Each available research lot is designed to connect to identity, purity, and batch documentation through the same CRM-backed lot system used by the parent platform."],
-  ["Should I speak with my veterinarian?", "Yes. Always involve a licensed veterinarian in decisions concerning your dog, particularly when your dog has a health condition or uses prescription medication."],
-  ["Why is the collection intentionally small?", "Because more products do not create more certainty. ZooNetics focuses on a short list of widely discussed research peptides and blends, then makes the evidence source and limitations visible for each one."],
-  ["Can I give a research-use-only peptide to my dog?", "ZooNetics research materials are not approved veterinary medicines and are not intended for administration to animals. A product labeled for research use should not be treated as a substitute for a veterinary diagnosis or an approved treatment."],
+  ["What is the current product status?", "The current ZooNetics collection is labeled for research use only. Any future veterinary-use language will be added only after the applicable authorization and final labeling are official."],
+  ["What comes with each research lot?", "Each available lot connects to identity, reported purity, batch code, analytical date, and its matching certificate of analysis."],
+  ["Why is the collection intentionally small?", "ZooNetics focuses on a practical set of high-interest K9 research profiles instead of filling the shelf with overlapping formulas."],
+  ["Can I compare blends and single peptides?", "Yes. Each card shows the compound, research pathway, available format, and lot documentation before quick buy."],
 ];
 
 function BrandMark({ light = false }: { light?: boolean }) {
@@ -114,20 +112,20 @@ export default function Home() {
             <div className="max-w-[760px]">
               <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> For the dogs who still want to go</p>
               <h1 className="max-w-[700px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">When they slow down,<span className="block font-serif italic text-[#A9C7FF]">you feel it.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">ZooNetics is a K9-only peptide research library—so dog owners can understand why a compound is being studied, what remains unknown, and what to ask before spending more.</p>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">A focused K9 peptide collection built around clean formats, lot-level COAs, and research-ready traceability.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">See the focused collection <i className="ri-arrow-right-line" /></Link>
-                <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">Understand the evidence</Link>
+                <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">See quality standards</Link>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-7 right-8 hidden overflow-hidden rounded-full border border-white/15 bg-[#101829]/48 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/65 backdrop-blur xl:flex"><span className="px-5 py-3">2 focused blends</span><span className="border-l border-white/15 px-5 py-3">3 single peptides</span><span className="border-l border-white/15 px-5 py-3">Evidence by species</span></div>
+          <div className="absolute bottom-7 right-8 hidden overflow-hidden rounded-full border border-white/15 bg-[#101829]/48 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/65 backdrop-blur xl:flex"><span className="px-5 py-3">2 focused blends</span><span className="border-l border-white/15 px-5 py-3">3 single peptides</span><span className="border-l border-white/15 px-5 py-3">Lot-linked COAs</span></div>
         </section>
 
         <section className="border-b border-[#17233B]/12 bg-[#FF8A72] px-5 py-5 text-[#17233B]">
           <div className="mx-auto flex max-w-[1480px] flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
             <p className="font-display text-xl font-semibold tracking-[-0.03em]">Care gets expensive fast. Clarity shouldn&apos;t.</p>
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-[0.16em]"><span>Shortlist, not catalog</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Evidence with limits</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Vet-first questions</span></div>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-[0.16em]"><span>Focused K9 profiles</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Lot-linked COAs</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Fast quick buy</span></div>
           </div>
         </section>
 
@@ -139,8 +137,8 @@ export default function Home() {
                 <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">It usually starts with <span className="font-serif italic text-[#D95858]">one small thing.</span></h2>
               </div>
               <div className="lg:justify-self-end">
-                <p className="max-w-xl text-lg leading-8 text-[#17233B]/65">These moments do not identify a cause, but they do matter. ZooNetics helps owners turn worry into a clearer record and a more useful conversation.</p>
-                <Link href="#science" className="mt-6 inline-flex items-center gap-2 border-b border-[#17233B]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">See how evidence is graded <i className="ri-arrow-right-line" /></Link>
+                <p className="max-w-xl text-lg leading-8 text-[#17233B]/65">Small changes start the search. ZooNetics makes it easier to compare focused K9 research profiles, formats, and lot documentation.</p>
+                <Link href="#collection" className="mt-6 inline-flex items-center gap-2 border-b border-[#17233B]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">Shop K9 research profiles <i className="ri-arrow-right-line" /></Link>
               </div>
             </div>
             <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -166,7 +164,7 @@ export default function Home() {
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
-              <div><h2 className="max-w-3xl font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">The changes you notice <span className="font-serif italic text-[#D95858]">before anyone else.</span></h2><p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Explore five focused research profiles with lot-level COAs, clear formats, and evidence limits visible before checkout.</p></div>
+              <div><h2 className="max-w-3xl font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">The changes you notice <span className="font-serif italic text-[#D95858]">before anyone else.</span></h2><p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Explore five focused K9 research profiles with clear formats and lot-level COAs visible before checkout.</p></div>
             </div>
             <ProductCarousel products={products} />
             <div className="mt-5 flex gap-4 rounded-2xl bg-[#17233B] p-5 text-white md:items-center md:px-7">
@@ -190,7 +188,7 @@ export default function Home() {
                   <p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#A9C7FF]">Document, don&apos;t diagnose</p>
                   <h2 className="mt-8 max-w-md font-display text-[clamp(2.35rem,3.6vw,3.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Same dog. Same movement. <span className="font-serif italic text-[#A9C7FF]">No dramatic edit.</span></h2>
                 </div>
-                <p className="mt-10 border-t border-white/15 pt-6 text-sm leading-6 text-white/58">Owner observations are not clinical evidence or a substitute for veterinary care.</p>
+                <p className="mt-10 border-t border-white/15 pt-6 text-sm leading-6 text-white/58">Dated footage keeps each comparison clear, consistent, and easy to revisit.</p>
               </article>
             </div>
           </div>
@@ -219,7 +217,7 @@ export default function Home() {
               </aside>
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 border-t border-white/15 pt-6 text-sm text-white/45 md:flex-row md:items-center md:justify-between"><p>Creator experiences are personal observations—not clinical evidence or guaranteed outcomes.</p><p className="font-bold uppercase tracking-[0.13em] text-[#A9C7FF]">Vertical video · captions · sound optional</p></div>
+            <div className="mt-8 flex flex-col gap-3 border-t border-white/15 pt-6 text-sm text-white/45 md:flex-row md:items-center md:justify-between"><p>Individual creator experiences vary.</p><p className="font-bold uppercase tracking-[0.13em] text-[#A9C7FF]">Vertical video · captions · sound optional</p></div>
           </div>
         </section>
 
@@ -228,14 +226,14 @@ export default function Home() {
         <section id="science" className="bg-[#101829] px-5 py-24 text-white md:px-10 md:py-32">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 border-b border-white/15 pb-16 lg:grid-cols-2 lg:items-end">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Before you spend more</p><h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Know what the evidence can—and <span className="font-serif italic text-[#A9C7FF]">cannot—say.</span></h2></div>
-              <p className="max-w-lg text-lg leading-8 text-white/60 lg:justify-self-end">A compound can be popular, studied in people, or promising in a laboratory and still have no established canine benefit. ZooNetics keeps those evidence levels separate.</p>
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">The ZooNetics standard</p><h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Built for clean, <span className="font-serif italic text-[#A9C7FF]">traceable K9 research.</span></h2></div>
+              <p className="max-w-lg text-lg leading-8 text-white/60 lg:justify-self-end">Focused compounds, lot-linked COAs, and the documentation needed to keep every research order organized.</p>
             </div>
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {standards.map(([number,title,text]) => <article key={number} className="rounded-[1.4rem] border border-white/12 bg-white/[0.05] p-7"><span className="text-[10px] font-bold tracking-[0.2em] text-[#A9C7FF]">{number}</span><h3 className="mt-12 font-display text-2xl font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-white/55">{text}</p></article>)}
             </div>
             <div className="mt-20 grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">A safer decision path</p><h3 className="mt-5 max-w-md font-display text-[clamp(2.1rem,3vw,3.3rem)] font-medium leading-[1.02] tracking-[-0.04em]">Worry less blindly. Ask better questions.</h3></div>
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">From profile to study file</p><h3 className="mt-5 max-w-md font-display text-[clamp(2.1rem,3vw,3.3rem)] font-medium leading-[1.02] tracking-[-0.04em]">Choose. Verify. Track.</h3></div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {researchCycle.map(([number, title, body]) => (
                   <article key={number} className="rounded-[1.4rem] border border-white/12 bg-white/[0.04] p-6">
@@ -250,7 +248,7 @@ export default function Home() {
 
         <section id="questions" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
-            <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">The questions that matter</p><h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">Before you trust a vial.</h2><p className="mt-6 max-w-sm text-sm leading-7 text-[#23324D]/62">What is proven? In which species? Is the lot documented? And is this a research material or an approved veterinary medicine?</p></div>
+            <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Quick answers</p><h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">Know your vial.</h2><p className="mt-6 max-w-sm text-sm leading-7 text-[#23324D]/62">Formats, lots, COAs, ordering, and the current product status—without the runaround.</p></div>
             <div className="border-t border-[#17233B]/20">
               {faqs.map(([question,answer]) => <details key={question} className="group border-b border-[#17233B]/20 py-6"><summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-xl font-semibold tracking-[-0.025em] md:text-2xl">{question}<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#17233B]/25 text-sm transition group-open:rotate-45">+</span></summary><p className="max-w-2xl pt-5 text-[15px] leading-7 text-[#23324D]/65">{answer}</p></details>)}
             </div>
