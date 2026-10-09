@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductCarousel, { type Product } from "./components/ProductCarousel";
+import { getProductBySlug } from "@/lib/products";
+
+const crmProduct = (slug: string) => {
+  const product = getProductBySlug(slug);
+  if (!product) throw new Error(`Missing CRM product: ${slug}`);
+  return product;
+};
 
 const pathways = [
   ["01", "You notice it first", "The pause at the stairs. The shorter walk. The extra time it takes to stand. Small changes are often what send owners looking for answers.", "ri-eye-line"],
@@ -16,11 +23,11 @@ const standards = [
 ];
 
 const products: Product[] = [
-  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Peptide blend", focus: "Paired repair-pathway research", reason: "A familiar pairing in repair-pathway research conversations, shown with the limits of that evidence intact.", formats: ["10 + 10 mg"], color: "#17233B", ink: "#F6F7FC" },
-  { name: "Matrix Pair", formula: "GHK-Cu + KPV", type: "Peptide blend", focus: "Skin and tissue model research", reason: "A paired profile for researchers comparing copper-peptide and tissue-model literature in one place.", formats: ["50 + 10 mg"], color: "#7869C9", ink: "#FBFAFF" },
-  { name: "BPC-157", formula: "Pentadecapeptide", type: "Single peptide", focus: "Tissue-pathway research", reason: "Included because it is widely discussed in repair research—not because canine benefit has been established.", formats: ["5 mg", "10 mg"], color: "#5F7CF6", ink: "#FBFAFF" },
-  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "Single peptide", focus: "Cell-migration research", reason: "A focused way to review cell-migration and repair-model literature without treating early findings as veterinary proof.", formats: ["5 mg", "10 mg"], color: "#5A7A9E", ink: "#F6F7FC" },
-  { name: "GHK-Cu", formula: "Copper peptide complex", type: "Single peptide", focus: "Copper-peptide research", reason: "Included for its established place in copper-peptide, tissue, and skin-model research conversations.", formats: ["50 mg"], color: "#8C68D8", ink: "#FBFAFF" },
+  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "K9 peptide blend", focus: "Paired repair-pathway research", reason: "A familiar pairing in repair-pathway research conversations, shown with the limits of that evidence intact.", formats: ["10 + 10 mg"], variants: [{ label: "10 + 10 mg", cartProducts: [crmProduct("bpc-tb-500-blend-20mg")] }], color: "#17233B", ink: "#F6F7FC" },
+  { name: "Matrix Pair", formula: "GHK-Cu + KPV", type: "K9 research pair", focus: "Skin and tissue model research", reason: "A paired profile for researchers comparing copper-peptide and tissue-model literature in one place.", formats: ["50 + 10 mg"], variants: [{ label: "50 + 10 mg pair", cartProducts: [crmProduct("ghk-cu-50mg"), crmProduct("kpv-10mg")] }], color: "#7869C9", ink: "#FBFAFF" },
+  { name: "BPC-157", formula: "Pentadecapeptide", type: "K9 single peptide", focus: "Tissue-pathway research", reason: "Included because it is widely discussed in repair research—not because canine benefit has been established.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("bpc-157-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("bpc-157-10mg")] }], color: "#5F7CF6", ink: "#FBFAFF" },
+  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "K9 single peptide", focus: "Cell-migration research", reason: "A focused way to review cell-migration and repair-model literature without treating early findings as veterinary proof.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("tb-500-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("tb-500-10mg")] }], color: "#5A7A9E", ink: "#F6F7FC" },
+  { name: "GHK-Cu", formula: "Copper peptide complex", type: "K9 single peptide", focus: "Copper-peptide research", reason: "Included for its established place in copper-peptide, tissue, and skin-model research conversations.", formats: ["50 mg"], variants: [{ label: "50 mg", cartProducts: [crmProduct("ghk-cu-50mg")] }], color: "#8C68D8", ink: "#FBFAFF" },
 ];
 
 const studyContexts = [
@@ -85,7 +92,7 @@ export default function Home() {
         <div className="mx-auto flex h-16 max-w-[1420px] items-center justify-between rounded-full border border-white/15 bg-[#101829]/72 px-4 shadow-[0_18px_60px_rgba(16,24,41,0.18)] backdrop-blur-xl md:h-[4.5rem] md:px-6">
           <Link href="#top" aria-label="PetPeps home"><BrandMark light /></Link>
           <nav className="hidden items-center gap-7 text-[11px] font-semibold uppercase tracking-[0.13em] lg:flex" aria-label="Main navigation">
-            <Link href="#collection" className="transition hover:text-[#A9C7FF]">Peptides</Link>
+            <Link href="#collection" className="transition hover:text-[#A9C7FF]">K9 peptides</Link>
             <Link href="#approach" className="transition hover:text-[#A9C7FF]">Our approach</Link>
             <Link href="#science" className="transition hover:text-[#A9C7FF]">The science</Link>
             <Link href="#stories" className="transition hover:text-[#A9C7FF]">Dog stories</Link>
@@ -105,7 +112,7 @@ export default function Home() {
             <div className="max-w-[760px]">
               <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> For the dogs who still want to go</p>
               <h1 className="max-w-[700px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">When they slow down,<span className="block font-serif italic text-[#A9C7FF]">you feel it.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">PetPeps narrows a noisy peptide category to a focused research library—so you can understand why a compound is being studied, what remains unknown, and what to ask before spending more.</p>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">PetPeps is a K9-only peptide research library—so dog owners can understand why a compound is being studied, what remains unknown, and what to ask before spending more.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">See the focused collection <i className="ri-arrow-right-line" /></Link>
                 <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">Understand the evidence</Link>
@@ -151,10 +158,10 @@ export default function Home() {
           <div className="relative mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">A deliberately small collection</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">A deliberately small K9 collection</p>
                 <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.55rem,4.4vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">Fewer formulas. <span className="font-serif italic text-[#D95858]">Better reasons.</span></h2>
               </div>
-              <div className="max-w-lg lg:justify-self-end"><p className="text-lg leading-8 text-[#23324D]/66">We cut the noise down to five profiles that repeatedly appear in repair, tissue, and copper-peptide research conversations. Being well known is not the same as being proven for dogs—each profile makes that distinction visible.</p><div className="mt-5 flex flex-wrap gap-2"><span className="rounded-full bg-[#17233B] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white">2 focused blends</span><span className="rounded-full border border-[#17233B]/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#17233B]">3 single peptides</span></div></div>
+              <div className="max-w-lg lg:justify-self-end"><p className="text-lg leading-8 text-[#23324D]/66">We cut the noise down to five dog-focused research profiles that repeatedly appear in repair, tissue, and copper-peptide conversations. Being well known is not the same as being proven for dogs—each profile makes that distinction visible.</p><div className="mt-5 flex flex-wrap gap-2"><span className="rounded-full bg-[#17233B] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white">K9 research only</span><span className="rounded-full border border-[#17233B]/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#17233B]">2 blends · 3 singles</span></div></div>
             </div>
 
             <div className="relative mt-14 min-h-[420px] overflow-hidden rounded-[2rem] bg-[#C7D2F2] md:min-h-[620px]">
@@ -271,7 +278,7 @@ export default function Home() {
       <footer className="bg-[#101829] px-5 pb-8 pt-16 text-[#F6F7FC] md:px-10 md:pt-24">
         <div className="mx-auto max-w-[1380px]">
           <div className="grid gap-12 border-b border-white/15 pb-16 lg:grid-cols-[1.2fr_0.8fr]">
-            <div><BrandMark light /><p className="mt-7 max-w-lg font-display text-3xl font-medium leading-snug tracking-[-0.03em]">A longer horizon for the dogs who give us everything.</p></div>
+            <div><BrandMark light /><p className="mt-7 max-w-lg font-display text-3xl font-medium leading-snug tracking-[-0.03em]">K9-focused research for the dogs who give us everything.</p></div>
             <div className="grid grid-cols-2 gap-8 text-sm lg:justify-self-end"><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Explore</p><p><Link href="#collection">Peptides</Link></p><p><Link href="#approach">Approach</Link></p><p><Link href="#science">Standards</Link></p><p><Link href="#questions">Questions</Link></p></div><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Collection</p><p>Peptide blends</p><p>Single peptides</p><p>Lot documentation</p><p>Research profiles</p></div></div>
           </div>
           <div className="flex flex-col gap-4 py-7 text-[10px] uppercase tracking-[0.12em] text-white/38 md:flex-row md:items-center md:justify-between"><p>© 2026 PetPeps · Canine research library</p><p>Research materials only · Not veterinary advice · Not intended to diagnose, treat, cure, or prevent disease</p></div>

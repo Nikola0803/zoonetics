@@ -5,13 +5,13 @@ import { CurrencyProvider } from "@/lib/currency-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "PetPeps — Research Peptides & Blends for Canine Studies",
+  title: "PetPeps — K9 Research Peptides & Blends",
   description:
-    "A focused research-use-only peptide library with evidence by species, transparent lot records, and clear limits for dog owners asking better questions.",
+    "A K9-only research-use peptide library with evidence by species, transparent lot records, and clear limits for dog owners asking better questions.",
   robots: { index: false, follow: false },
   openGraph: {
     title: "PetPeps",
-    description: "A focused peptide research library with evidence by species, transparent lot records, and clear limits.",
+    description: "A K9-only peptide research library with evidence by species, transparent lot records, and clear limits.",
     images: [
       {
         url: "/images/canis/hero-senior-lab.png",
