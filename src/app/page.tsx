@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const pathways = [
-  ["01", "Joint & soft tissue", "A focused research pathway for the tendons, ligaments, and connective tissue that keep dogs moving.", "ri-bone-line"],
-  ["02", "Healthy aging", "Evidence-led protocols designed around the changing recovery needs of mature and senior dogs.", "ri-heart-pulse-line"],
-  ["03", "Active recovery", "Support for sport, working, and highly active dogs when training places more demand on the body.", "ri-run-line"],
+  ["01", "Connective-tissue biology", "Research context for signaling pathways observed in tendon, ligament, and soft-tissue models.", "ri-bone-line"],
+  ["02", "Healthy-aging models", "A disciplined way to organize compounds studied alongside age-related cellular and recovery pathways.", "ri-heart-pulse-line"],
+  ["03", "Recovery research", "Research profiles for compounds investigated in repair-response and activity-stress models.", "ri-run-line"],
 ];
 
 const standards = [
@@ -15,16 +15,17 @@ const standards = [
 ];
 
 const products = [
-  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Signature blend", focus: "Mobility & recovery research", tone: "bg-[#17382d] text-white", accent: "text-[#e4b07d]" },
-  { name: "BPC-157", formula: "Single peptide", type: "Core peptide", focus: "Soft-tissue pathway research", tone: "bg-[#eee5d6] text-[#17382d]", accent: "text-[#a75f3f]" },
-  { name: "TB-500", formula: "Single peptide", type: "Core peptide", focus: "Repair-response research", tone: "bg-[#cfdaca] text-[#17382d]", accent: "text-[#5e755f]" },
-  { name: "KPV", formula: "Tripeptide", type: "Specialty peptide", focus: "Inflammatory-pathway research", tone: "bg-[#c7d0d5] text-[#17382d]", accent: "text-[#536c78]" },
-  { name: "GHK-Cu", formula: "Copper peptide", type: "Specialty peptide", focus: "Skin & tissue research", tone: "bg-[#d9935f] text-[#17382d]", accent: "text-[#713b29]" },
-  { name: "NAD+", formula: "Supportive compound", type: "Cellular support", focus: "Metabolic-pathway research", tone: "bg-[#efe0c2] text-[#17382d]", accent: "text-[#9b693c]" },
+  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "Signature blend", focus: "Connective-tissue research", formats: ["10 + 10 mg"], color: "#17382d", ink: "#f4efe5" },
+  { name: "BPC-157", formula: "Pentadecapeptide", type: "Single peptide", focus: "Soft-tissue pathway research", formats: ["5 mg", "10 mg"], color: "#b86f4d", ink: "#fff8ef" },
+  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "Single peptide", focus: "Repair-response research", formats: ["5 mg", "10 mg"], color: "#607b65", ink: "#f7f2e8" },
+  { name: "KPV", formula: "Lys–Pro–Val tripeptide", type: "Specialty peptide", focus: "Inflammatory-pathway research", formats: ["10 mg"], color: "#607785", ink: "#f7f2e8" },
+  { name: "GHK-Cu", formula: "Copper peptide complex", type: "Specialty peptide", focus: "Skin & tissue model research", formats: ["50 mg"], color: "#b88358", ink: "#fff8ef" },
+  { name: "NAD+", formula: "Nicotinamide adenine dinucleotide", type: "Supportive compound", focus: "Cellular-energy research", formats: ["500 mg"], color: "#8a7654", ink: "#fff8ef" },
 ];
 
 const faqs = [
   ["Are peptide products approved medicines for dogs?", "No. The compounds presented here are research materials and are not approved veterinary medicines. No content on this site is a diagnosis, treatment plan, or replacement for veterinary care."],
+  ["Why discuss canine research if the products are RUO?", "The canine focus defines the scientific subject matter, literature, and research questions this catalog organizes. It does not change product status: research-use-only materials are not intended for administration to humans or animals."],
   ["How will product quality be documented?", "Each available research lot is designed to connect to identity, purity, and batch documentation through the same CRM-backed lot system used by the parent platform."],
   ["Should I speak with my veterinarian?", "Yes. Always involve a licensed veterinarian in decisions concerning your dog, particularly when your dog has a health condition or uses prescription medication."],
   ["Is the shop live yet?", "Not yet. This launch version establishes the brand, education flow, and integration seams. Catalog, payments, and CRM inventory will be activated only after veterinary and legal review."],
@@ -38,6 +39,24 @@ function BrandMark({ light = false }: { light?: boolean }) {
       </span>
       <span className="font-display text-[1.35rem] font-semibold tracking-[-0.04em]">canis / continuum</span>
     </span>
+  );
+}
+
+function ProductVial({ color, ink, name }: { color: string; ink: string; name: string }) {
+  return (
+    <div className="relative mx-auto h-52 w-32" aria-hidden>
+      <div className="absolute left-1/2 top-2 h-5 w-24 -translate-x-1/2 rounded-t-lg bg-[#c9bda8] shadow-sm" />
+      <div className="absolute left-1/2 top-6 h-5 w-20 -translate-x-1/2 rounded-sm bg-[#7b4a26]" />
+      <div className="absolute inset-x-2 bottom-0 top-10 overflow-hidden rounded-b-[1.8rem] rounded-t-xl border border-[#4a2d1c]/30 bg-[linear-gradient(90deg,#6e3c1f,#b26d35_42%,#744021)] shadow-[0_22px_35px_rgba(36,43,32,0.22)]">
+        <div className="absolute inset-x-0 top-9 px-3 py-5 text-center" style={{ backgroundColor: color, color: ink }}>
+          <i className="ri-pulse-line text-lg" />
+          <p className="mt-2 text-[8px] font-bold uppercase tracking-[0.12em]">Canis continuum</p>
+          <p className="mt-1 font-display text-[11px] font-bold leading-tight">{name}</p>
+          <p className="mt-2 text-[6px] font-bold uppercase tracking-[0.16em] opacity-65">Research use only</p>
+        </div>
+        <div className="absolute inset-y-0 left-2 w-2 bg-white/15 blur-sm" />
+      </div>
+    </div>
   );
 }
 
@@ -65,9 +84,9 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#17382d] to-transparent" />
           <div className="relative mx-auto flex min-h-[820px] max-w-[1480px] items-end px-5 pb-24 pt-36 md:min-h-[900px] md:items-center md:px-10 md:pb-10">
             <div className="max-w-[760px]">
-              <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e1b78d]"><span className="h-px w-10 bg-[#e1b78d]" /> Research peptides &amp; blends for dogs</p>
+              <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e1b78d]"><span className="h-px w-10 bg-[#e1b78d]" /> Research peptides &amp; blends for canine studies</p>
               <h1 className="font-display text-[clamp(4rem,9vw,8.4rem)] font-medium leading-[0.82] tracking-[-0.065em]">Peptide science,<span className="block font-serif italic text-[#e4b07d]">for more good years.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">Explore single peptides, purposeful blends, and transparent batch testing—built from the ground up around canine research and responsible owner education.</p>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">A focused catalog of research-use-only peptides, purposeful blends, and lot-level documentation—organized around canine research questions without presenting veterinary treatment claims.</p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d9935f] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17382d] transition hover:bg-[#f0c69e]">Explore peptides &amp; blends <i className="ri-arrow-right-line" /></Link>
                 <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17382d]">Read our standards</Link>
@@ -86,8 +105,8 @@ export default function Home() {
         <section id="approach" className="px-5 py-24 md:px-10 md:py-36">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a75f3f]">A new category of care</p>
-              <h2 className="font-display text-[clamp(3rem,6vw,6rem)] font-medium leading-[0.92] tracking-[-0.055em]">Built around the life they&apos;re <span className="font-serif italic text-[#a75f3f]">still living.</span></h2>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#a75f3f]">Why canine research?</p>
+              <h2 className="font-display text-[clamp(3rem,6vw,6rem)] font-medium leading-[0.92] tracking-[-0.055em]">The little changes deserve <span className="font-serif italic text-[#a75f3f]">better questions.</span></h2>
             </div>
             <div className="mt-16 grid border-y border-[#17382d]/15 md:grid-cols-3">
               {pathways.map(([number, title, text, icon], index) => (
@@ -119,19 +138,33 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {products.map((product, index) => (
-                <article key={product.name} className={`group flex min-h-[300px] flex-col justify-between rounded-2xl p-7 ${product.tone}`}>
-                  <div className="flex items-center justify-between"><span className={`text-[10px] font-bold uppercase tracking-[0.17em] ${product.accent}`}>{product.type}</span><span className="text-[10px] font-bold opacity-40">0{index + 1}</span></div>
-                  <div className="mt-16">
-                    <p className="text-xs font-semibold uppercase tracking-[0.12em] opacity-55">{product.formula}</p>
-                    <h3 className="mt-2 font-display text-4xl font-semibold tracking-[-0.05em]">{product.name}</h3>
-                    <div className="mt-6 flex items-center justify-between border-t border-current/20 pt-5"><p className="text-sm opacity-65">{product.focus}</p><i className="ri-arrow-right-up-line text-xl transition group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
+                <article key={product.name} className="group overflow-hidden rounded-2xl border border-[#17382d]/12 bg-[#f8f4ec] shadow-[0_18px_50px_rgba(43,57,45,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(43,57,45,0.12)]">
+                  <div className="relative grid min-h-[290px] place-items-center overflow-hidden bg-[#dfe5dc] px-6 pt-10">
+                    <div className="absolute left-5 top-5 flex items-center gap-2"><span className="rounded-full bg-[#f8f4ec] px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17382d]">{product.type}</span><span className="rounded-full border border-[#17382d]/15 bg-white/45 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-[#17382d]/65">RUO</span></div>
+                    <span className="absolute right-5 top-7 text-[9px] font-bold text-[#17382d]/35">0{index + 1}</span>
+                    <ProductVial color={product.color} ink={product.ink} name={product.name} />
+                    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#cad5c6] to-transparent" />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#a75f3f]">{product.focus}</p>
+                    <h3 className="mt-3 font-display text-3xl font-semibold tracking-[-0.045em] text-[#17382d]">{product.name}</h3>
+                    <p className="mt-1 min-h-10 text-sm leading-5 text-[#17382d]/55">{product.formula}</p>
+                    <div className="mt-5 border-t border-[#17382d]/12 pt-5">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#17382d]/45">Planned research formats</p>
+                      <div className="mt-3 flex flex-wrap gap-2">{product.formats.map((format) => <span key={format} className="rounded-full border border-[#17382d]/15 px-3 py-2 text-[10px] font-bold text-[#17382d]">{format}</span>)}</div>
+                    </div>
+                    <div className="mt-5 grid grid-cols-2 gap-2 text-[10px] font-semibold text-[#17382d]/60"><span className="flex items-center gap-2"><i className="ri-file-shield-2-line text-[#a75f3f]" /> Lot-specific COA</span><span className="flex items-center gap-2"><i className="ri-flask-line text-[#a75f3f]" /> Lyophilized</span></div>
+                    <Link href={index === 0 ? "#protocol" : "#science"} className="mt-6 flex w-full items-center justify-between rounded-full bg-[#17382d] px-5 py-4 text-[10px] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#a75f3f]">View research profile <i className="ri-arrow-right-line text-base" /></Link>
                   </div>
                 </article>
               ))}
             </div>
-            <p className="mt-5 text-xs leading-5 text-[#18342b]/50">Working catalog concepts only. Final formulas, availability, naming, labeling, and claims require analytical, veterinary, and legal review.</p>
+            <div className="mt-8 grid gap-4 rounded-2xl bg-[#17382d] p-6 text-white md:grid-cols-[auto_1fr] md:items-center md:p-8">
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-[#d9935f] text-xl text-[#17382d]"><i className="ri-microscope-line" /></span>
+              <div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#e4b07d]">Research use only</p><p className="mt-2 max-w-4xl text-sm leading-6 text-white/65">Catalog concepts are laboratory research materials—not approved veterinary medicines and not intended for administration to humans or animals. Canine language describes the research context only. Final formulas, specifications, availability, labeling, and claims remain subject to analytical, veterinary, and legal review.</p></div>
+            </div>
           </div>
         </section>
 
