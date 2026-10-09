@@ -57,8 +57,8 @@ const faqs = [
   ["Why discuss canine research if the products are RUO?", "The canine focus defines the scientific subject matter, literature, and research questions this catalog organizes. It does not change product status: research-use-only materials are not intended for administration to humans or animals."],
   ["How will product quality be documented?", "Each available research lot is designed to connect to identity, purity, and batch documentation through the same CRM-backed lot system used by the parent platform."],
   ["Should I speak with my veterinarian?", "Yes. Always involve a licensed veterinarian in decisions concerning your dog, particularly when your dog has a health condition or uses prescription medication."],
-  ["Why is the collection intentionally small?", "Because more products do not create more certainty. PetPeps focuses on a short list of widely discussed research peptides and blends, then makes the evidence source and limitations visible for each one."],
-  ["Can I give a research-use-only peptide to my dog?", "PetPeps research materials are not approved veterinary medicines and are not intended for administration to animals. A product labeled for research use should not be treated as a substitute for a veterinary diagnosis or an approved treatment."],
+  ["Why is the collection intentionally small?", "Because more products do not create more certainty. ZooNetics focuses on a short list of widely discussed research peptides and blends, then makes the evidence source and limitations visible for each one."],
+  ["Can I give a research-use-only peptide to my dog?", "ZooNetics research materials are not approved veterinary medicines and are not intended for administration to animals. A product labeled for research use should not be treated as a substitute for a veterinary diagnosis or an approved treatment."],
 ];
 
 function BrandMark({ light = false }: { light?: boolean }) {
@@ -68,7 +68,7 @@ function BrandMark({ light = false }: { light?: boolean }) {
         <i className="ri-bubble-chart-fill text-xl text-[#A9C7FF]" aria-hidden />
         <span className="absolute bottom-1 right-1 h-2 w-2 rounded-full bg-[#FF8A72]" />
       </span>
-      <span className="font-display text-[1.45rem] font-extrabold tracking-[-0.055em]">Pet<span className={light ? "text-[#A9C7FF]" : "text-[#4F6EF7]"}>Peps</span></span>
+      <span className="font-display text-[1.45rem] font-extrabold tracking-[-0.055em]">Zoo<span className={light ? "text-[#A9C7FF]" : "text-[#4F6EF7]"}>Netics</span></span>
     </span>
   );
 }
@@ -98,7 +98,7 @@ export default function Home() {
     <div className="min-h-screen overflow-hidden bg-[#F6F7FC] text-[#23324D]">
       <header className="absolute inset-x-0 top-0 z-30 px-4 pt-4 text-white md:px-8 md:pt-6">
         <div className="mx-auto flex h-16 max-w-[1420px] items-center justify-between rounded-full border border-white/15 bg-[#101829]/72 px-4 shadow-[0_18px_60px_rgba(16,24,41,0.18)] backdrop-blur-xl md:h-[4.5rem] md:px-6">
-          <Link href="#top" aria-label="PetPeps home"><BrandMark light /></Link>
+          <Link href="#top" aria-label="ZooNetics home"><BrandMark light /></Link>
           <nav className="hidden items-center gap-7 text-[11px] font-semibold uppercase tracking-[0.13em] lg:flex" aria-label="Main navigation">
             <Link href="#collection" className="transition hover:text-[#A9C7FF]">K9 peptides</Link>
             <Link href="#research-pathways" className="transition hover:text-[#A9C7FF]">Research pathways</Link>
@@ -120,7 +120,7 @@ export default function Home() {
             <div className="max-w-[760px]">
               <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> For the dogs who still want to go</p>
               <h1 className="max-w-[700px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">When they slow down,<span className="block font-serif italic text-[#A9C7FF]">you feel it.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">PetPeps is a K9-only peptide research library—so dog owners can understand why a compound is being studied, what remains unknown, and what to ask before spending more.</p>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">ZooNetics is a K9-only peptide research library—so dog owners can understand why a compound is being studied, what remains unknown, and what to ask before spending more.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">See the focused collection <i className="ri-arrow-right-line" /></Link>
                 <Link href="#science" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-xs font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">Understand the evidence</Link>
@@ -134,6 +134,36 @@ export default function Home() {
           <div className="mx-auto flex max-w-[1480px] flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
             <p className="font-display text-xl font-semibold tracking-[-0.03em]">Care gets expensive fast. Clarity shouldn&apos;t.</p>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-[0.16em]"><span>Shortlist, not catalog</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Evidence with limits</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Vet-first questions</span></div>
+          </div>
+        </section>
+
+        <section className="bg-[#EEF2FF] px-5 py-20 md:px-10 md:py-28">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What sends owners looking</p>
+                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">It usually starts with <span className="font-serif italic text-[#D95858]">one small thing.</span></h2>
+              </div>
+              <div className="lg:justify-self-end">
+                <p className="max-w-xl text-lg leading-8 text-[#17233B]/65">These moments do not identify a cause, but they do matter. ZooNetics helps owners turn worry into a clearer record and a more useful conversation.</p>
+                <Link href="#science" className="mt-6 inline-flex items-center gap-2 border-b border-[#17233B]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">See how evidence is graded <i className="ri-arrow-right-line" /></Link>
+              </div>
+            </div>
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {studyContexts.map((context, index) => (
+                <article key={context.title} className="group overflow-hidden rounded-2xl bg-[#FBFAFF]">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#DCE3F5]">
+                    <Image src={context.image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${context.position}`} />
+                    <span className="absolute left-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FBFAFF] text-[9px] font-bold text-[#17233B]">0{index + 1}</span>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#D95858]">{context.kicker}</p>
+                    <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.035em]">{context.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-[#17233B]/58">{context.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -200,7 +230,7 @@ export default function Home() {
             </div>
 
             <div className="relative mt-14 min-h-[420px] overflow-hidden rounded-[2rem] bg-[#C7D2F2] md:min-h-[620px]">
-              <Image src="/images/canis/peptide-family.png" alt="A coordinated family of PetPeps blends and individual research materials" fill sizes="100vw" className="object-cover" />
+              <Image src="/images/canis/peptide-family.png" alt="A coordinated family of ZooNetics blends and individual research materials" fill sizes="100vw" className="object-cover" />
               <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 bg-gradient-to-t from-[#101829]/85 via-[#101829]/30 to-transparent px-7 pb-7 pt-28 text-white md:px-10 md:pb-10">
                  <div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Chosen, not crowded</p><p className="mt-2 max-w-xl font-display text-2xl font-semibold md:text-4xl">A short list with a reason for every formula.</p></div>
                 <span className="rounded-full border border-white/35 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em]">Five research profiles</span>
@@ -220,7 +250,7 @@ export default function Home() {
         <section id="approach" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why PetPeps</p><p className="mt-5 max-w-sm text-base leading-7 text-[#23324D]/62">The best product shelf is not the biggest one. It is the one that helps you understand why each option is there—and where the evidence stops.</p></div>
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why ZooNetics</p><p className="mt-5 max-w-sm text-base leading-7 text-[#23324D]/62">The best product shelf is not the biggest one. It is the one that helps you understand why each option is there—and where the evidence stops.</p></div>
               <h2 className="max-w-4xl font-display text-[clamp(2.5rem,4.5vw,4.7rem)] font-medium leading-[0.98] tracking-[-0.045em]">You know their normal. <span className="font-serif italic text-[#D95858]">We help you question the noise.</span></h2>
             </div>
             <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -235,41 +265,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-[#EEF2FF] px-5 py-24 md:px-10 md:py-32">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What sends owners looking</p>
-                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">It usually starts with <span className="font-serif italic text-[#D95858]">one small thing.</span></h2>
-              </div>
-              <div className="lg:justify-self-end">
-                <p className="max-w-xl text-lg leading-8 text-[#17233B]/65">These moments do not identify a cause, but they do matter. PetPeps helps owners turn worry into a clearer record and a more useful conversation.</p>
-                <Link href="#science" className="mt-6 inline-flex items-center gap-2 border-b border-[#17233B]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">See how evidence is graded <i className="ri-arrow-right-line" /></Link>
-              </div>
-            </div>
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {studyContexts.map((context, index) => (
-                <article key={context.title} className="group overflow-hidden rounded-2xl bg-[#FBFAFF]">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#DCE3F5]">
-                    <Image src={context.image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${context.position}`} />
-                    <span className="absolute left-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FBFAFF] text-[9px] font-bold text-[#17233B]">0{index + 1}</span>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#D95858]">{context.kicker}</p>
-                    <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.035em]">{context.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[#17233B]/58">{context.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="science" className="bg-[#101829] px-5 py-24 text-white md:px-10 md:py-32">
           <div className="mx-auto max-w-[1380px]">
             <div className="grid gap-10 border-b border-white/15 pb-16 lg:grid-cols-2 lg:items-end">
               <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Before you spend more</p><h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Know what the evidence can—and <span className="font-serif italic text-[#A9C7FF]">cannot—say.</span></h2></div>
-              <p className="max-w-lg text-lg leading-8 text-white/60 lg:justify-self-end">A compound can be popular, studied in people, or promising in a laboratory and still have no established canine benefit. PetPeps keeps those evidence levels separate.</p>
+              <p className="max-w-lg text-lg leading-8 text-white/60 lg:justify-self-end">A compound can be popular, studied in people, or promising in a laboratory and still have no established canine benefit. ZooNetics keeps those evidence levels separate.</p>
             </div>
             <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {standards.map(([number,title,text]) => <article key={number} className="rounded-[1.4rem] border border-white/12 bg-white/[0.05] p-7"><span className="text-[10px] font-bold tracking-[0.2em] text-[#A9C7FF]">{number}</span><h3 className="mt-12 font-display text-2xl font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-white/55">{text}</p></article>)}
@@ -296,7 +296,7 @@ export default function Home() {
               <p className="absolute bottom-7 left-7 right-7 text-[10px] font-bold uppercase tracking-[0.17em] text-white/75">Canine-first from the first question</p>
             </div>
             <div className="flex flex-col justify-between rounded-[2rem] bg-[#F6F7FC] p-8 md:p-12">
-              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why PetPeps exists</p><h2 className="mt-6 max-w-2xl font-display text-[clamp(2.5rem,4.2vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.045em]">Love makes you want to act. <span className="font-serif italic text-[#D95858]">Good information makes you slow down.</span></h2><p className="mt-7 max-w-xl text-base leading-7 text-[#17233B]/62">Pet owners deserve more than miracle language and endless choices. They deserve a short list, visible evidence limits, transparent lots, and a clear reminder that a dog in pain needs veterinary care—not an internet shortcut.</p></div>
+              <div><p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Why ZooNetics exists</p><h2 className="mt-6 max-w-2xl font-display text-[clamp(2.5rem,4.2vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.045em]">Love makes you want to act. <span className="font-serif italic text-[#D95858]">Good information makes you slow down.</span></h2><p className="mt-7 max-w-xl text-base leading-7 text-[#17233B]/62">Pet owners deserve more than miracle language and endless choices. They deserve a short list, visible evidence limits, transparent lots, and a clear reminder that a dog in pain needs veterinary care—not an internet shortcut.</p></div>
               <div className="mt-14 grid grid-cols-3 gap-px overflow-hidden rounded-xl bg-[#17233B]/15 text-center"><div className="bg-[#F6F7FC] p-4"><p className="font-display text-2xl font-semibold">Canine</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Focused</p></div><div className="bg-[#F6F7FC] p-4"><p className="font-display text-2xl font-semibold">Lot</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Linked</p></div><div className="bg-[#F6F7FC] p-4"><p className="font-display text-2xl font-semibold">RUO</p><p className="mt-1 text-[8px] font-bold uppercase tracking-[0.14em] opacity-45">Clear</p></div></div>
             </div>
           </div>
@@ -318,7 +318,7 @@ export default function Home() {
             <div><BrandMark light /><p className="mt-7 max-w-lg font-display text-3xl font-medium leading-snug tracking-[-0.03em]">K9-focused research for the dogs who give us everything.</p></div>
             <div className="grid grid-cols-2 gap-8 text-sm lg:justify-self-end"><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Explore</p><p><Link href="#collection">Peptides</Link></p><p><Link href="#approach">Approach</Link></p><p><Link href="#science">Standards</Link></p><p><Link href="#questions">Questions</Link></p></div><div className="space-y-3 text-white/60"><p className="mb-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Collection</p><p>Peptide blends</p><p>Single peptides</p><p>Lot documentation</p><p>Research profiles</p></div></div>
           </div>
-          <div className="flex flex-col gap-4 py-7 text-[10px] uppercase tracking-[0.12em] text-white/38 md:flex-row md:items-center md:justify-between"><p>© 2026 PetPeps · Canine research library</p><p>Research materials only · Not veterinary advice · Not intended to diagnose, treat, cure, or prevent disease</p></div>
+          <div className="flex flex-col gap-4 py-7 text-[10px] uppercase tracking-[0.12em] text-white/38 md:flex-row md:items-center md:justify-between"><p>© 2026 ZooNetics · Canine research library</p><p>Research materials only · Not veterinary advice · Not intended to diagnose, treat, cure, or prevent disease</p></div>
         </div>
       </footer>
     </div>

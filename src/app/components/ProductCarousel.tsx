@@ -30,7 +30,7 @@ function ProductVial({ color, ink, name }: Pick<Product, "color" | "ink" | "name
       <div className="absolute inset-x-2 bottom-0 top-10 overflow-hidden rounded-b-[1.8rem] rounded-t-xl border border-[#4a2d1c]/30 bg-[linear-gradient(90deg,#6e3c1f,#b26d35_42%,#744021)] shadow-[0_22px_35px_rgba(36,43,32,0.22)]">
         <div className="absolute inset-x-0 top-9 px-3 py-5 text-center" style={{ backgroundColor: color, color: ink }}>
           <i className="ri-pulse-line text-lg" />
-          <p className="mt-2 text-[8px] font-bold uppercase tracking-[0.12em]">PetPeps</p>
+          <p className="mt-2 text-[8px] font-bold uppercase tracking-[0.12em]">ZooNetics</p>
           <p className="mt-1 font-display text-[11px] font-bold leading-tight">{name}</p>
           <p className="mt-2 text-[6px] font-bold uppercase tracking-[0.16em] opacity-65">Research use only</p>
         </div>
@@ -81,7 +81,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
 
   const addSelected = () => {
     if (!selectedVariant) return;
-    selectedVariant.cartProducts.forEach((product) => addToCart(product, quantity, product.price, `PetPeps K9 · ${selectedVariant.label}`));
+    selectedVariant.cartProducts.forEach((product) => addToCart(product, quantity, product.price, `ZooNetics K9 · ${selectedVariant.label}`));
     setJustAdded(true);
   };
 
@@ -99,7 +99,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
         </div>
       </div>
 
-      <div ref={track} onScroll={updatePosition} tabIndex={0} aria-label="PetPeps product carousel" className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-8 pt-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4F6EF7] md:mx-0 md:px-0">
+      <div ref={track} onScroll={updatePosition} tabIndex={0} aria-label="ZooNetics product carousel" className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-8 pt-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4F6EF7] md:mx-0 md:px-0">
         {products.map((product, index) => (
           <article data-product-card key={product.name} className="group w-[84vw] max-w-[390px] shrink-0 snap-start overflow-hidden rounded-2xl border border-[#17233B]/12 bg-[#FBFAFF] shadow-[0_18px_50px_rgba(23,35,59,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(23,35,59,0.14)]">
             <div className="relative grid min-h-[290px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#F8FAFF_0%,#E8ECFF_58%,#DCE3F5_100%)] px-6 pt-10">
@@ -131,7 +131,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
         {selectedProduct && selectedVariant && (
           <div className="flex h-full w-full flex-col bg-[#F6F7FC] text-[#17233B] shadow-[-24px_0_80px_rgba(16,24,41,0.24)]">
             <header className="flex items-center justify-between border-b border-[#17233B]/12 bg-white px-5 py-4 md:px-8">
-              <div className="flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-[#DCE7FF] text-[#4F6EF7]"><i className="ri-bubble-chart-fill" /></span><div><p className="text-sm font-bold">PetPeps K9</p><p className="text-xs text-[#17233B]/48">Quick research order</p></div></div>
+              <div className="flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-[#DCE7FF] text-[#4F6EF7]"><i className="ri-bubble-chart-fill" /></span><div><p className="text-sm font-bold">ZooNetics K9</p><p className="text-xs text-[#17233B]/48">Quick research order</p></div></div>
               <div className="flex items-center gap-3"><Link href="/checkout" className="hidden rounded-full bg-[#EEF2FF] px-4 py-2 text-xs font-bold sm:block">K9 cart · {count}</Link><button type="button" onClick={closeQuickBuy} aria-label="Close quick buy" className="grid h-10 w-10 place-items-center rounded-full border border-[#17233B]/15 bg-white text-lg transition hover:bg-[#17233B] hover:text-white"><i className="ri-close-line" /></button></div>
             </header>
 
