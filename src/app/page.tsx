@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductCarousel, { type Product } from "./components/ProductCarousel";
-import SymptomNavigator from "./components/SymptomNavigator";
 import { getProductBySlug } from "@/lib/products";
 
 const crmProduct = (slug: string) => {
@@ -40,7 +39,7 @@ const creatorStories = [
 ];
 
 const researchCycle = [
-  ["01", "Choose the pathway", "Start with the compound or blend that fits the research model."],
+  ["01", "Choose the profile", "Start with the compound or blend that fits the research model."],
   ["02", "Select the format", "Compare available concentrations and choose the required research format."],
   ["03", "Review the COA", "Check identity, reported purity, batch code, and analytical date before ordering."],
   ["04", "Keep the lot connected", "Carry the exact batch record into the study file for clean traceability."],
@@ -93,7 +92,7 @@ export default function Home() {
           <Link href="#top" aria-label="ZooNetics home"><BrandMark light /></Link>
           <nav className="hidden items-center gap-7 text-[11px] font-semibold uppercase tracking-[0.13em] lg:flex" aria-label="Main navigation">
             <Link href="#collection" className="transition hover:text-[#A9C7FF]">K9 peptides</Link>
-            <Link href="#research-pathways" className="transition hover:text-[#A9C7FF]">Research pathways</Link>
+            <Link href="#research-pathways" className="transition hover:text-[#A9C7FF]">How to shop</Link>
             <Link href="#science" className="transition hover:text-[#A9C7FF]">The science</Link>
             <Link href="#creator-stories" className="transition hover:text-[#A9C7FF]">Creator videos</Link>
             <Link href="#questions" className="transition hover:text-[#A9C7FF]">Questions</Link>
@@ -122,29 +121,6 @@ export default function Home() {
           <div className="absolute bottom-7 right-8 hidden overflow-hidden rounded-full border border-white/15 bg-[#101829]/48 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/65 backdrop-blur xl:flex"><span className="px-5 py-3">2 focused blends</span><span className="border-l border-white/15 px-5 py-3">3 single peptides</span><span className="border-l border-white/15 px-5 py-3">Lot-linked COAs</span></div>
         </section>
 
-        <section className="border-b border-[#17233B]/12 bg-[#FF8A72] px-5 py-5 text-[#17233B]">
-          <div className="mx-auto flex max-w-[1480px] flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
-            <p className="font-display text-xl font-semibold tracking-[-0.03em]">Care gets expensive fast. Clarity shouldn&apos;t.</p>
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-[0.16em]"><span>Focused K9 profiles</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Lot-linked COAs</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Fast quick buy</span></div>
-          </div>
-        </section>
-
-        <section id="collection" className="relative overflow-hidden bg-[radial-gradient(circle_at_top_right,#DCE7FF_0%,#EEF2FF_44%,#F6F7FC_100%)] px-5 py-20 md:px-10 md:py-28">
-          <div className="pointer-events-none absolute -right-36 top-48 h-[34rem] w-[34rem] rounded-full border border-[#4F6EF7]/15" />
-          <div className="mx-auto max-w-[1380px]">
-            <div className="max-w-4xl">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
-              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">The changes you notice <span className="font-serif italic text-[#D95858]">before anyone else.</span></h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Explore five focused K9 research profiles with clear formats and lot-level COAs visible before checkout.</p>
-            </div>
-            <ProductCarousel products={products} />
-            <div className="mt-5 flex gap-4 rounded-2xl bg-[#17233B] p-5 text-white md:items-center md:px-7">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#FF8A72] text-lg text-[#17233B]"><i className="ri-microscope-line" /></span>
-              <p className="max-w-5xl text-sm leading-6 text-white/62"><strong className="text-white">Research use only.</strong> These materials are not approved veterinary medicines and are not intended for administration to humans or animals.</p>
-            </div>
-          </div>
-        </section>
-
         <section className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
             <div className="max-w-4xl">
@@ -167,6 +143,29 @@ export default function Home() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="collection" className="relative overflow-hidden bg-[radial-gradient(circle_at_top_right,#DCE7FF_0%,#EEF2FF_44%,#F6F7FC_100%)] px-5 py-20 md:px-10 md:py-24">
+          <div className="pointer-events-none absolute -right-36 top-48 h-[34rem] w-[34rem] rounded-full border border-[#4F6EF7]/15" />
+          <div className="mx-auto max-w-[1380px]">
+            <div className="max-w-4xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
+              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">A focused shelf. <span className="font-serif italic text-[#D95858]">Clearer choices.</span></h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Five K9 research profiles, each with a clear format, visible purity data, and lot-level COA access before checkout.</p>
+            </div>
+            <ProductCarousel products={products} />
+            <div className="mt-5 flex gap-4 rounded-2xl bg-[#17233B] p-5 text-white md:items-center md:px-7">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#FF8A72] text-lg text-[#17233B]"><i className="ri-microscope-line" /></span>
+              <p className="max-w-5xl text-sm leading-6 text-white/62"><strong className="text-white">Research use only.</strong> These materials are not approved veterinary medicines and are not intended for administration to humans or animals.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-[#17233B]/12 bg-[#FF8A72] px-5 py-5 text-[#17233B]">
+          <div className="mx-auto flex max-w-[1380px] flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left">
+            <p className="font-display text-xl font-semibold tracking-[-0.03em]">Care gets expensive fast. Clarity shouldn&apos;t.</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold uppercase tracking-[0.16em]"><span>Focused K9 profiles</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Lot-linked COAs</span><i className="ri-checkbox-blank-circle-fill text-[5px]" /><span>Fast quick buy</span></div>
           </div>
         </section>
 
@@ -218,7 +217,35 @@ export default function Home() {
           </div>
         </section>
 
-        <SymptomNavigator />
+        <section id="research-pathways" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-24">
+          <div className="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Built to actually shop</p>
+              <h2 className="mt-5 max-w-xl font-display text-[clamp(2.45rem,4vw,4rem)] font-medium leading-[0.98] tracking-[-0.045em]">Find the profile. <span className="font-serif italic text-[#D95858]">Verify the lot.</span></h2>
+              <p className="mt-5 max-w-lg text-base leading-7 text-[#23324D]/65">Start with the research focus, compare the compound and format, then open the exact documentation before adding it to the cart.</p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link href="#collection" className="rounded-full bg-[#17233B] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#D95858]">Explore the collection</Link>
+                <Link href="/coas" className="rounded-full border border-[#17233B]/20 bg-white px-6 py-3 text-[11px] font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:border-[#17233B]">Browse all COAs</Link>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[1.6rem] border border-[#17233B]/12 bg-white shadow-[0_18px_55px_rgba(23,35,59,0.07)]">
+              {[
+                ["01", "Start with a research focus", "Mobility + recovery · Skin + tissue · Single peptides"],
+                ["02", "Compare the product card", "Compound · Research format · Reported purity · Starting price"],
+                ["03", "Open Quick Buy + COA", "Choose the format · Review the lot · Add to the research cart"],
+              ].map(([number, title, detail], index) => (
+                <article key={number} className={`grid gap-4 px-6 py-7 md:grid-cols-[3.5rem_1fr] md:items-center md:px-8 ${index > 0 ? "border-t border-[#17233B]/10" : ""}`}>
+                  <span className="grid h-11 w-11 place-items-center rounded-full bg-[#EEF2FF] text-[10px] font-bold tracking-[0.15em] text-[#4F6EF7]">{number}</span>
+                  <div>
+                    <h3 className="font-display text-xl font-semibold tracking-[-0.025em] text-[#17233B]">{title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-[#17233B]/52">{detail}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section id="science" className="bg-[#101829] px-5 py-24 text-white md:px-10 md:py-32">
           <div className="mx-auto max-w-[1380px]">
