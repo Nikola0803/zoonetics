@@ -129,42 +129,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-[#EEF2FF] px-5 py-20 md:px-10 md:py-28">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What sends owners looking</p>
-                <h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">It usually starts with <span className="font-serif italic text-[#D95858]">one small thing.</span></h2>
-              </div>
-              <div className="lg:justify-self-end">
-                <p className="max-w-xl text-lg leading-8 text-[#17233B]/65">Small changes start the search. ZooNetics makes it easier to compare focused K9 research profiles, formats, and lot documentation.</p>
-                <Link href="#collection" className="mt-6 inline-flex items-center gap-2 border-b border-[#17233B]/30 pb-2 text-[10px] font-bold uppercase tracking-[0.15em]">Shop K9 research profiles <i className="ri-arrow-right-line" /></Link>
-              </div>
-            </div>
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {studyContexts.map((context, index) => (
-                <article key={context.title} className="group overflow-hidden rounded-2xl bg-[#FBFAFF]">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#DCE3F5]">
-                    <Image src={context.image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${context.position}`} />
-                    <span className="absolute left-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-[#FBFAFF] text-[9px] font-bold text-[#17233B]">0{index + 1}</span>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#D95858]">{context.kicker}</p>
-                    <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.035em]">{context.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[#17233B]/58">{context.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="collection" className="relative overflow-hidden bg-[radial-gradient(circle_at_top_right,#DCE7FF_0%,#EEF2FF_44%,#F6F7FC_100%)] px-5 py-20 md:px-10 md:py-28">
           <div className="pointer-events-none absolute -right-36 top-48 h-[34rem] w-[34rem] rounded-full border border-[#4F6EF7]/15" />
           <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div className="max-w-4xl">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
-              <div><h2 className="max-w-3xl font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">The changes you notice <span className="font-serif italic text-[#D95858]">before anyone else.</span></h2><p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Explore five focused K9 research profiles with clear formats and lot-level COAs visible before checkout.</p></div>
+              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">The changes you notice <span className="font-serif italic text-[#D95858]">before anyone else.</span></h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Explore five focused K9 research profiles with clear formats and lot-level COAs visible before checkout.</p>
             </div>
             <ProductCarousel products={products} />
             <div className="mt-5 flex gap-4 rounded-2xl bg-[#17233B] p-5 text-white md:items-center md:px-7">
@@ -174,11 +145,37 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="max-w-4xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What sends owners looking</p>
+              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">It usually starts with <span className="font-serif italic text-[#D95858]">one small thing.</span></h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-[#17233B]/65">Small changes start the search. These four moments help owners recognize why they began comparing K9 research profiles.</p>
+            </div>
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {studyContexts.map((context, index) => (
+                <article key={context.title} className="group overflow-hidden rounded-2xl border border-[#17233B]/8 bg-white shadow-[0_12px_40px_rgba(23,35,59,0.05)]">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-[#DCE3F5]">
+                    <Image src={context.image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${context.position}`} />
+                    <span className="absolute left-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white text-[9px] font-bold text-[#17233B]">0{index + 1}</span>
+                  </div>
+                  <div className="p-5">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#D95858]">{context.kicker}</p>
+                    <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.035em]">{context.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-[#17233B]/58">{context.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="stories" className="bg-[#EEF2FF] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
-            <div className="mb-10 grid gap-5 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div className="mb-10 max-w-4xl">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Before and follow-up</p>
-              <div><h2 className="max-w-3xl font-display text-[clamp(2.4rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em]">Show the change. <span className="font-serif italic text-[#D95858]">Keep the context.</span></h2><p className="mt-4 max-w-xl text-base leading-7 text-[#23324D]/65">Comparable footage can make the next veterinary conversation clearer.</p></div>
+              <h2 className="mt-5 font-display text-[clamp(2.4rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em]">Show the change. <span className="font-serif italic text-[#D95858]">Keep the context.</span></h2>
+              <p className="mt-4 max-w-xl text-base leading-7 text-[#23324D]/65">Comparable footage can make the next veterinary conversation clearer.</p>
             </div>
             <div className="grid gap-5 lg:grid-cols-[0.8fr_0.8fr_1fr]">
               <StoryFrame image="/images/canis/story-before.png" label="Before" caption="Pausing at the steps" />
