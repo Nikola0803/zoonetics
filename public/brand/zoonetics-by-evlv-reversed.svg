@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" role="img" aria-labelledby="title desc">
   <title id="title">ZooNetics by EVLV</title>
-  <desc id="desc">Reversed ZooNetics geometric wordmark with EVLV endorsement for dark backgrounds.</desc>
+  <desc id="desc">Reversed ZooNetics geometric wordmark with the supplied EVLV logo for dark backgrounds.</desc>
   <g fill="none" stroke="#F6F7FC" stroke-width="8" stroke-linecap="square" stroke-linejoin="round">
     <path d="M40 35H90L40 95H90"/>
     <ellipse cx="132" cy="65" rx="29" ry="32"/>
@@ -14,16 +14,9 @@
   </g>
   <circle cx="670" cy="31" r="8" fill="#FF7F68"/>
   <path d="M40 118H650" fill="none" stroke="#4F7BFF" stroke-width="6"/>
-  <g fill="none" stroke="#F6F7FC" stroke-linecap="square" stroke-linejoin="miter">
-    <g stroke-width="2">
-      <path d="M488 143V160M488 151C491 147 499 148 499 154C499 160 491 162 488 158"/>
-      <path d="M505 149L511 159L517 149M511 159L508 166"/>
-    </g>
-    <g stroke-width="5">
-      <path d="M536 139H554M536 151H551M536 163H554"/>
-      <path d="M565 139L576 163L588 139"/>
-      <path d="M601 139V163H620"/>
-      <path d="M633 139L644 163L656 139"/>
-    </g>
+  <g fill="none" stroke="#F6F7FC" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M508 143V160M508 151C511 147 519 148 519 154C519 160 511 162 508 158"/>
+    <path d="M525 149L531 159L537 149M531 159L528 166"/>
   </g>
+  <image href="print/evlv-logo-white-exact.png" x="548" y="142" width="108" height="19" preserveAspectRatio="xMidYMid meet"/>
 </svg>
