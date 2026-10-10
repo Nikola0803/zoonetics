@@ -13,13 +13,17 @@
     <path d="M650 43C637 29 600 32 600 52C600 68 648 63 648 83C648 102 610 103 598 88"/>
   </g>
   <circle cx="670" cy="31" r="8" fill="#FF7F68"/>
-  <path d="M40 118Q345 132 650 118" fill="none" stroke="#2F66FF" stroke-width="6"/>
-  <g fill="none" stroke="#17233B" stroke-width="3" stroke-linecap="square" stroke-linejoin="round">
-    <path d="M500 136V162M500 136H509C518 136 518 149 509 149H500M509 149C519 149 519 162 509 162H500"/>
-    <path d="M528 136L538 149L548 136M538 149V162"/>
-    <path d="M570 136H589M570 136V162M570 149H587M570 162H589"/>
-    <path d="M599 136L609 162L619 136"/>
-    <path d="M631 136V162H648"/>
-    <path d="M657 136L667 162L677 136"/>
+  <path d="M40 118H650" fill="none" stroke="#2F66FF" stroke-width="6"/>
+  <g fill="none" stroke="#17233B" stroke-linecap="square" stroke-linejoin="miter">
+    <g stroke-width="2">
+      <path d="M488 143V160M488 151C491 147 499 148 499 154C499 160 491 162 488 158"/>
+      <path d="M505 149L511 159L517 149M511 159L508 166"/>
+    </g>
+    <g stroke-width="5">
+      <path d="M536 139H554M536 151H551M536 163H554"/>
+      <path d="M565 139L576 163L588 139"/>
+      <path d="M601 139V163H620"/>
+      <path d="M633 139L644 163L656 139"/>
+    </g>
   </g>
 </svg>

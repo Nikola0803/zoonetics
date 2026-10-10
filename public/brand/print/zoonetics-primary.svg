@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 140" role="img" aria-labelledby="title desc">
   <title id="title">ZooNetics</title>
-  <desc id="desc">ZooNetics geometric wordmark with coral registration dot and blue underline.</desc>
+  <desc id="desc">ZooNetics geometric wordmark with coral registration dot and straight blue rule.</desc>
   <g fill="none" stroke="#17233B" stroke-width="8" stroke-linecap="square" stroke-linejoin="round">
     <path d="M40 35H90L40 95H90"/>
     <ellipse cx="132" cy="65" rx="29" ry="32"/>
@@ -13,5 +13,5 @@
     <path d="M650 43C637 29 600 32 600 52C600 68 648 63 648 83C648 102 610 103 598 88"/>
   </g>
   <circle cx="670" cy="31" r="8" fill="#FF7F68"/>
-  <path d="M40 118Q345 132 650 118" fill="none" stroke="#2F66FF" stroke-width="6"/>
+  <path d="M40 118H650" fill="none" stroke="#2F66FF" stroke-width="6"/>
 </svg>

@@ -13,5 +13,5 @@
     <path d="M650 43C637 29 600 32 600 52C600 68 648 63 648 83C648 102 610 103 598 88"/>
   </g>
   <circle cx="670" cy="31" r="8" fill="#FF7F68"/>
-  <path d="M40 118Q345 132 650 118" fill="none" stroke="#4F7BFF" stroke-width="6"/>
+  <path d="M40 118H650" fill="none" stroke="#4F7BFF" stroke-width="6"/>
 </svg>
