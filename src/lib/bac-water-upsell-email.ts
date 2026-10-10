@@ -68,7 +68,7 @@ export async function sendBacWaterUpsellEmail({ to, firstName, orderId }: BacWat
                 <p style="margin:0 0 12px;color:#B8875A;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">One quick order check</p>
                 <h1 style="margin:0;color:#0E1113;font-family:Georgia,'Times New Roman',serif;font-size:36px;line-height:1.12;font-weight:400;">Complete your research setup.</h1>
                 <p style="margin:22px 0 0;color:#4D5551;font-size:16px;line-height:1.65;">Hi ${safeName}, your EVLV order is confirmed. Bacteriostatic Water wasn&rsquo;t included in your checkout.</p>
-                <p style="margin:12px 0 0;color:#4D5551;font-size:16px;line-height:1.65;">If your planned laboratory workflow requires it and you don&rsquo;t already have it on hand, you can add it below. Already stocked? You&rsquo;re all set&mdash;no action needed.</p>
+                <p style="margin:12px 0 0;color:#4D5551;font-size:16px;line-height:1.65;">If your planned laboratory workflow requires it and you don&rsquo;t already have it on hand, you can add it below. Already stocked? You&rsquo;re all set, no action needed.</p>
               </td>
             </tr>
             <tr>
