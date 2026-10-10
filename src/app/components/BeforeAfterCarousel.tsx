@@ -35,7 +35,7 @@ export default function BeforeAfterCarousel({ pairs }: { pairs: Pair[] }) {
               See the <span className="font-serif italic text-[#D95858]">difference.</span>
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[#17233B]/55">
-              Side-by-side timelines from owners who documented what changed. Owner-observed accounts — not veterinary outcomes or medical claims.
+              Side-by-side timelines from owners who documented what changed. Owner-observed accounts, not veterinary outcomes or medical claims.
             </p>
           </div>
           <div className="flex shrink-0 flex-col items-end gap-3 pt-1">
@@ -102,7 +102,7 @@ export default function BeforeAfterCarousel({ pairs }: { pairs: Pair[] }) {
               </div>
               <div className="p-6 md:p-8">
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#F1E8E8] text-[11px] font-bold text-[#D95858]">—</span>
+                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#F1E8E8] text-[11px] font-bold text-[#D95858]">-</span>
                   <p className="text-[15px] leading-7 text-[#17233B]/65">{pair.before.caption}</p>
                 </div>
               </div>

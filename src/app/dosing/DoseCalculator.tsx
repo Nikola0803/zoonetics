@@ -339,7 +339,7 @@ export default function DoseCalculator() {
                 {dose ? (
                   <>
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#17233B]/30 mb-1">
-                      {part.flat ? "Reference dose" : `Mid reference — ${weightKg?.toFixed(1)} kg`}
+                      {part.flat ? "Reference dose" : `Mid reference - ${weightKg?.toFixed(1)} kg`}
                     </p>
                     <p className="text-5xl font-bold tracking-tight" style={{ color: part.color }}>
                       {dose.mid}
@@ -361,7 +361,7 @@ export default function DoseCalculator() {
                   <SyringeGauge units={typicalUnits} color={part.color} />
                 ) : (
                   <div className="h-16 w-full rounded-xl bg-[#F4F6FB] flex items-center justify-center">
-                    <span className="text-sm text-[#17233B]/25">— enter weight above</span>
+                    <span className="text-sm text-[#17233B]/25">enter weight above</span>
                   </div>
                 )}
 
@@ -501,7 +501,7 @@ export default function DoseCalculator() {
         <i className="ri-information-line mt-0.5 shrink-0 text-[#17233B]/30 text-sm" />
         <p className="text-[11px] leading-5 text-[#17233B]/40">
           <strong className="font-semibold text-[#17233B]/55">Research Use Only.</strong>{" "}
-          Dose ranges compiled from published animal model literature — not veterinary recommendations.
+          Dose ranges compiled from published animal model literature, not veterinary recommendations.
           Involve your veterinarian before making any health decisions for your dog.{" "}
           <Link href="/#questions" className="underline underline-offset-2 hover:text-[#17233B]/60 transition">See FAQ</Link>
         </p>

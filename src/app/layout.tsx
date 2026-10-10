@@ -5,7 +5,7 @@ import { CurrencyProvider } from "@/lib/currency-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "ZooNetics — K9 Research Peptides & Blends",
+  title: "ZooNetics - K9 Research Peptides & Blends",
   description:
     "Shop ZooNetics K9 research peptides and blends, including BPC-157, TB-500, and GHK-Cu, with lot-level COAs and research-ready traceability.",
   keywords: ["K9 research peptides", "dog peptide research", "BPC-157 research", "TB-500 research", "GHK-Cu research", "peptide blends"],

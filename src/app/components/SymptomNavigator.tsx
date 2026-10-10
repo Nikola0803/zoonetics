@@ -36,7 +36,7 @@ const pathways = [
     intro: "Pain and illness can appear as withdrawal, restlessness, irritability, vocalization, or changes in eating and drinking.",
     signs: ["Eating or drinking less", "Pacing or unable to settle", "Withdrawn, fearful, or unusually irritable", "Whining when touched or lifted"],
     possibilities: "These changes are nonspecific and can involve many body systems. They are not a reliable way to choose a product.",
-    action: "Contact your veterinarian—especially if appetite or thirst changes last more than a day or other signs appear.",
+    action: "Contact your veterinarian, especially if appetite or thirst changes last more than a day or other signs appear.",
     profiles: [],
     tone: "standard",
   },

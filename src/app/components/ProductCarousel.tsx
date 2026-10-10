@@ -218,17 +218,17 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
                           <div className="flex items-start justify-between gap-3">
                             <div>
                               <p className="text-sm font-bold">{item.name}</p>
-                              <p className="mt-0.5 text-[11px] text-[#17233B]/40">Lot {item.batch?.code ?? "—"}</p>
+                              <p className="mt-0.5 text-[11px] text-[#17233B]/40">Lot {item.batch?.code ?? "-"}</p>
                             </div>
                             <div className="text-right">
-                              <p className="text-sm font-bold text-[#4F6EF7]">{item.purity ?? "—"}</p>
+                              <p className="text-sm font-bold text-[#4F6EF7]">{item.purity ?? "-"}</p>
                               <p className="text-[10px] text-[#17233B]/38">Reported purity</p>
                             </div>
                           </div>
                           <div className="mt-3 grid grid-cols-3 gap-2 border-t border-[#17233B]/8 pt-3 text-[11px]">
-                            <span><b className="block text-[#17233B]/50">CAS</b>{item.casNumber ?? "—"}</span>
-                            <span><b className="block text-[#17233B]/50">Mass</b>{item.avgMass ?? "—"}</span>
-                            <span><b className="block text-[#17233B]/50">Tested</b>{item.batch?.date ?? "—"}</span>
+                            <span><b className="block text-[#17233B]/50">CAS</b>{item.casNumber ?? "-"}</span>
+                            <span><b className="block text-[#17233B]/50">Mass</b>{item.avgMass ?? "-"}</span>
+                            <span><b className="block text-[#17233B]/50">Tested</b>{item.batch?.date ?? "-"}</span>
                           </div>
                         </div>
                       ))}

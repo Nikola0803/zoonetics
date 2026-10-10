@@ -105,7 +105,7 @@ Your EVLV order is confirmed. Bacteriostatic Water wasn't included in your check
 If your planned laboratory workflow requires it and you don't already have it on hand, view it here:
 ${productUrl}
 
-Already stocked? You're all set—no action needed.
+Already stocked? You're all set, no action needed.
 
 For laboratory research use only. Not for human or veterinary use.
 EVLV is operated by Warrior Distributions LLC.`;

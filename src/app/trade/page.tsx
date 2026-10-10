@@ -6,10 +6,10 @@ import { TradeCalculator } from "./TradeCalculator";
 import { PolicyViewLink, TradeFaq, TradeLandingEvents } from "./TradeLandingClient";
 
 export const metadata: Metadata = {
-  title: "EVLV Trade — Wholesale Research Supply",
+  title: "EVLV Trade - Wholesale Research Supply",
   description: "Apply for wholesale access, documentation, and business tools to build an independent research-supply operation.",
   alternates: { canonical: "/trade" },
-  openGraph: { title: "EVLV Trade — Wholesale Research Supply", description: "Wholesale access, batch documentation, and business tools for qualified independent research-supply resellers.", url: "/trade" },
+  openGraph: { title: "EVLV Trade - Wholesale Research Supply", description: "Wholesale access, batch documentation, and business tools for qualified independent research-supply resellers.", url: "/trade" },
 };
 
 const steps = [
@@ -49,7 +49,7 @@ export default function TradePage() {
               Build your independent research-supply business.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/72">
-              Wholesale access, batch documentation, business tools, and a premium catalog—backed by EVLV.
+              Wholesale access, batch documentation, business tools, and a premium catalog, backed by EVLV.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="#plans" className="rounded-md bg-white px-7 py-3.5 text-center text-sm font-semibold text-charcoal transition hover:bg-ivory-soft">Explore the plans</Link>
@@ -111,7 +111,7 @@ export default function TradePage() {
       <section className="bg-sage-deep py-20 text-white md:py-28">
         <div className="container-altr grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="rounded-md border border-white/15 p-7 sm:p-9"><p className="text-xs font-semibold uppercase tracking-[.2em] text-white/45">A strong fit</p><h2 className="mt-4 font-display text-3xl font-medium">Built for operators with a real channel.</h2><ul className="mt-7 space-y-4 text-sm leading-6 text-white/68">{["Research suppliers serving qualified organizations", "Established B2B or specialty-commerce operators", "Businesses prepared to maintain documentation", "Teams able to market within approved claims and disclosures"].map((item) => <li key={item} className="flex gap-3"><span className="text-white">✓</span>{item}</li>)}</ul></div>
-          <div className="rounded-md border border-white/15 p-7 sm:p-9"><p className="text-xs font-semibold uppercase tracking-[.2em] text-white/45">Not designed for</p><h2 className="mt-4 font-display text-3xl font-medium">No recruitment economics. No personal-use promotion.</h2><ul className="mt-7 space-y-4 text-sm leading-6 text-white/68">{["Applicants seeking commissions for recruiting others", "Personal-consumption or outcome-based selling", "Guaranteed-income or fabricated success-story marketing", "Channels that cannot maintain research-only positioning"].map((item) => <li key={item} className="flex gap-3"><span className="text-white/50">—</span>{item}</li>)}</ul></div>
+          <div className="rounded-md border border-white/15 p-7 sm:p-9"><p className="text-xs font-semibold uppercase tracking-[.2em] text-white/45">Not designed for</p><h2 className="mt-4 font-display text-3xl font-medium">No recruitment economics. No personal-use promotion.</h2><ul className="mt-7 space-y-4 text-sm leading-6 text-white/68">{["Applicants seeking commissions for recruiting others", "Personal-consumption or outcome-based selling", "Guaranteed-income or fabricated success-story marketing", "Channels that cannot maintain research-only positioning"].map((item) => <li key={item} className="flex gap-3"><span className="text-white/50">·</span>{item}</li>)}</ul></div>
         </div>
       </section>
 

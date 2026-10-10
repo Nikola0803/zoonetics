@@ -6,7 +6,7 @@ import DoseCalculator from "./DoseCalculator";
 export const metadata: Metadata = {
   title: "K9 Dosing Reference | ZooNetics",
   description:
-    "Weight-based K9 peptide dosing reference with syringe calculator. BPC-157, TB-500, GHK-Cu — from published animal model research. Research use only.",
+    "Weight-based K9 peptide dosing reference with syringe calculator. BPC-157, TB-500, GHK-Cu from published animal model research. Research use only.",
 };
 
 const WEIGHT_TIERS = [
@@ -45,7 +45,7 @@ export default function DosingPage() {
                 Syringe calculator.
               </h1>
               <p className="mt-3 max-w-lg text-sm leading-6 text-[#17233B]/50">
-                Select a compound, enter your dog&apos;s weight — see the reference dose and exact draw amount on a U-100 syringe.
+                Select a compound, enter your dog&apos;s weight, and see the reference dose and exact draw amount on a U-100 syringe.
                 Compiled from animal model research. Not a veterinary recommendation.
               </p>
             </div>
@@ -75,7 +75,7 @@ export default function DosingPage() {
               {/* Quick reference table */}
               <div className="rounded-2xl border border-[#E0E8F5] bg-white p-5">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#17233B]/40 mb-4">
-                  Quick reference — mid dose
+                  Quick reference - mid dose
                 </p>
                 <p className="text-[10px] text-[#17233B]/30 mb-4">
                   BPC-157 at 10 mcg/kg · TB-500 at 0.15 mg/kg
@@ -102,7 +102,7 @@ export default function DosingPage() {
                   ))}
                 </div>
                 <p className="mt-3 text-[9px] leading-4 text-[#17233B]/30">
-                  GHK-Cu and KPV are not weight-tiered in the literature — use flat ranges from the calculator.
+                  GHK-Cu and KPV are not weight-tiered in the literature; use flat ranges from the calculator.
                 </p>
               </div>
 
@@ -114,7 +114,7 @@ export default function DosingPage() {
                 <ul className="space-y-3">
                   {[
                     ["ri-medicine-bottle-line", "#4F6EF7",  "Lyophilized peptide vial",   "Stored in freezer until use"],
-                    ["ri-drop-line",            "#5A7A9E",  "Bacteriostatic water",        "BAC water — not saline"],
+                    ["ri-drop-line",            "#5A7A9E",  "Bacteriostatic water",        "BAC water, not saline"],
                     ["ri-syringe-line",         "#7C5CBF",  "U-100 insulin syringes",      "29–31G, 0.3–1 mL"],
                     ["ri-temp-cold-line",       "#17233B",  "Cold storage after mixing",   "2–8 °C, use within 28 days"],
                   ].map(([icon, color, label, sub]) => (
@@ -142,7 +142,7 @@ export default function DosingPage() {
                 <ol className="space-y-3">
                   {[
                     ["Warm the vial", "20–30 min at room temp before adding water."],
-                    ["Add BAC water slowly", "Let it run down the glass side. Swirl gently — never shake."],
+                    ["Add BAC water slowly", "Let it run down the glass side. Swirl gently, never shake."],
                     ["Draw the calculated units", "Tilt vial, draw slowly with a U-100 syringe."],
                     ["Refrigerate", "2–8 °C after reconstitution. Do not refreeze."],
                   ].map(([title, body], i) => (

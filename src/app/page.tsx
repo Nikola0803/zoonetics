@@ -20,7 +20,7 @@ const products: Product[] = [
 
 const storyMoments = [
   { kicker: "Signal 01", title: "The pause before the jump", body: "Half-second hesitation. Stairs handled differently. Early data points worth writing down.", image: "/images/canis/story-before.png", position: "object-center" },
-  { kicker: "Signal 02", title: "Morning stiffness that clears by noon", body: "Stiff for the first few minutes, fine by midday. That's a pattern — not a bad morning.", image: "/images/canis/mobility-story.png", position: "object-center" },
+  { kicker: "Signal 02", title: "Morning stiffness that clears by noon", body: "Stiff for the first few minutes, fine by midday. That's a pattern, not a bad morning.", image: "/images/canis/mobility-story.png", position: "object-center" },
   { kicker: "Signal 03", title: "Walks keep getting shorter", body: "You know their normal. When distances shrink on back-to-back days, it's a trend.", image: "/images/canis/story-followup.png", position: "object-center" },
   { kicker: "Signal 04", title: "Recovery takes longer than it used to", body: "Used to shake it off overnight. Repeated slow recovery is one of the clearest early signals.", image: "/images/canis/hero-senior-lab.png", position: "object-[68%_center]" },
 ];
@@ -62,7 +62,7 @@ const peptideProfiles = [
     bg: "#DCE7FF",
     icon: "ri-run-line",
     research: "Studied in animal models for tendon-to-bone healing, muscle repair, and joint pathway activity. One of the most referenced peptides in K9 mobility and connective-tissue research.",
-    ownerStory: "\"BPC-157 came up in every research thread I found about connective tissue. It's why I started documenting.\" — Diane M., Labrador owner",
+    ownerStory: "\"BPC-157 came up in every research thread I found about connective tissue. It's why I started documenting.\" - Diane M., Labrador owner",
     profile: "The Long Run blend · standalone BPC-157",
   },
   {
@@ -72,7 +72,7 @@ const peptideProfiles = [
     bg: "#D6E4F0",
     icon: "ri-heart-pulse-line",
     research: "A synthetic Thymosin Beta-4 fragment studied in animal models for actin regulation, cell migration, and inflammatory modulation. Frequently paired with BPC-157 in repair-pathway research protocols.",
-    ownerStory: "\"When recovery started taking longer than the workout, I started documenting. TB-500 kept appearing in the same breath as BPC-157.\" — Marcus T., GSD owner",
+    ownerStory: "\"When recovery started taking longer than the workout, I started documenting. TB-500 kept appearing in the same breath as BPC-157.\" - Marcus T., GSD owner",
     profile: "The Long Run blend · standalone TB-500",
   },
   {
@@ -81,8 +81,8 @@ const peptideProfiles = [
     color: "#8C68D8",
     bg: "#E8E0FF",
     icon: "ri-sparkling-2-line",
-    research: "Among the most studied copper peptides in tissue remodeling research — collagen synthesis, wound closure, and skin barrier integrity in animal model contexts.",
-    ownerStory: "\"Her coat was dull, thinning along the spine. The documentation process alone gave me better vet conversations.\" — Sarah K., Golden Retriever owner",
+    research: "Among the most studied copper peptides in tissue remodeling research: collagen synthesis, wound closure, and skin barrier integrity in animal model contexts.",
+    ownerStory: "\"Her coat was dull, thinning along the spine. The documentation process alone gave me better vet conversations.\" - Sarah K., Golden Retriever owner",
     profile: "Matrix Pair blend · standalone GHK-Cu",
   },
 ];
@@ -92,18 +92,18 @@ const dogProfiles = [
   { icon: "ri-run-line", type: "Senior dogs (7+)", signal: "Stiffness, slower rises, shorter walks.", product: "The Long Run", formula: "BPC-157 + TB-500", color: "#5F7CF6" },
   { icon: "ri-shield-star-line", type: "Active & working K9s", signal: "High-output dogs. Faster recovery between sessions.", product: "The Long Run or TB-500", formula: "BPC-157 + TB-500 · standalone", color: "#FF8A72" },
   { icon: "ri-first-aid-kit-line", type: "Post-injury recovery", signal: "CCL/ACL, soft tissue, orthopedic surgery.", product: "The Long Run", formula: "BPC-157 + TB-500", color: "#D95858" },
-  { icon: "ri-heart-pulse-line", type: "Large breeds at risk", signal: "Shepherds, Labs, Goldens — hip & elbow focus.", product: "The Long Run or BPC-157", formula: "BPC-157 + TB-500 · standalone", color: "#8C68D8" },
+  { icon: "ri-heart-pulse-line", type: "Large breeds at risk", signal: "Shepherds, Labs, Goldens - hip & elbow focus.", product: "The Long Run or BPC-157", formula: "BPC-157 + TB-500 · standalone", color: "#8C68D8" },
   { icon: "ri-sparkling-2-line", type: "Coat + tissue focus", signal: "Dull coat, thinning, collagen research context.", product: "Matrix Pair", formula: "GHK-Cu + KPV", color: "#5A7A9E" },
 ];
 
 const faqs = [
   ["What's the difference between The Long Run and standalone BPC-157?", "The Long Run is a pre-paired blend of BPC-157 + TB-500 in one vial. Both compounds are frequently studied together in animal model research on repair pathways. Standalone BPC-157 is for researchers isolating a single-compound protocol, or who already source TB-500 separately."],
-  ["What does 'research use only' mean in plain language?", "These compounds are not approved veterinary medicines. They are sold for documented, non-clinical research purposes only. We cannot make treatment claims — and we don't. If you choose to observe your dog while using them, involve your veterinarian."],
-  ["How long is a typical research observation cycle?", "Animal model literature most commonly documents cycles of 6–12 weeks. Owners who log their observations typically begin noting visible changes between weeks 3–6. ZooNetics does not prescribe dosing protocols — include a veterinarian in your planning."],
+  ["What does 'research use only' mean in plain language?", "These compounds are not approved veterinary medicines. They are sold for documented, non-clinical research purposes only. We cannot make treatment claims, and we don't. If you choose to observe your dog while using them, involve your veterinarian."],
+  ["How long is a typical research observation cycle?", "Animal model literature most commonly documents cycles of 6–12 weeks. Owners who log their observations typically begin noting visible changes between weeks 3–6. ZooNetics does not prescribe dosing protocols; include a veterinarian in your planning."],
   ["Why do you publish lot-level COAs before checkout?", "Because you should be able to verify what you're ordering before you pay. Every product links to its identity, HPLC purity reading, lot number, analytical date, and the producing lab. No verifiable COA means no purchase decision you should feel confident making."],
   ["Can I use these alongside my dog's current medications?", "We can't advise on drug interactions. Involve your veterinarian before combining any research compound with prescribed medications, ongoing treatments, or other supplements."],
   ["What purity standard do your compounds meet?", "Every lot is HPLC-tested for identity and purity. Results are published in the certificate of analysis for that lot. We don't ship without a clean, documented result."],
-  ["Why are there blends and singles? Which do I choose?", "Blends are pre-paired compounds frequently studied together in the literature — one vial, one documented protocol. Singles let you isolate one compound or build your own combination. Most owners start with The Long Run blend."],
+  ["Why are there blends and singles? Which do I choose?", "Blends are pre-paired compounds frequently studied together in the literature: one vial, one documented protocol. Singles let you isolate one compound or build your own combination. Most owners start with The Long Run blend."],
   ["What is the current product status?", "All ZooNetics compounds are labeled for research use only. Any future veterinary-use language will be added only after applicable authorization and final labeling are official. Current status is clearly stated on every product card."],
 ];
 
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="max-w-[780px]">
               <p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> For the dogs who still want to go</p>
               <h1 className="max-w-[720px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">When they slow down,<span className="block font-serif italic text-[#A9C7FF]">you feel it.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">Peptide research profiles for K9 mobility, tissue, and skin — built around clean formats, lot-level COAs, and complete traceability.</p>
+              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">For owners who&apos;ve moved past guessing. ZooNetics makes research-grade K9 peptides for the ones ready to act - independently verified purity, clean formats, and lot documentation before you buy.</p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">Shop the collection <i className="ri-arrow-right-line" /></Link>
                 <Link href="#before-after" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">See before & after</Link>
@@ -181,7 +181,7 @@ export default function Home() {
             <div className="max-w-4xl">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">The signal most owners miss</p>
               <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Slow isn&apos;t just age. <span className="font-serif italic text-[#D95858]">It&apos;s a signal.</span></h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-[#17233B]/65">4 in 10 dogs under four already show early joint changes on x-ray. By eight, it&apos;s 1 in 2 — and most owners only notice months after the pattern started, because the signs are quiet. These are the four signals worth writing down.</p>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-[#17233B]/65">4 in 10 dogs under four already show early joint changes on x-ray. By eight, it&apos;s 1 in 2, and most owners only notice months after the pattern started, because the signs are quiet. These are the four signals worth writing down.</p>
               <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="text-[11px] text-[#17233B]/35">Research refs:</span>
                 <a href="https://www.nature.com/articles/s41598-024-52324-9" target="_blank" rel="noreferrer" className="text-[11px] font-semibold text-[#4F6EF7] transition hover:underline">Enomoto et al., Scientific Reports 2024 ↗</a>
@@ -262,7 +262,7 @@ export default function Home() {
                 <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">How these peptides <span className="font-serif italic text-[#A9C7FF]">have been helping.</span></h2>
               </div>
               <div className="max-w-lg lg:justify-self-end">
-                <p className="text-base leading-7 text-white/50">Preclinical and animal model research only — not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
+                <p className="text-base leading-7 text-white/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
               </div>
             </div>
 
@@ -283,9 +283,9 @@ export default function Home() {
                   <div className="border-t border-white/8 bg-white/[0.02] p-6">
                     <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/30 mb-3">Owner voice</p>
                     <blockquote>
-                      <p className="text-[15px] leading-6 text-white/65 italic [quotes:none]">{p.ownerStory.split("—")[0].replace(/^"|"$/g, "").trim()}</p>
-                      {p.ownerStory.includes("—") && (
-                        <cite className="mt-2 block text-xs not-italic text-white/35">— {p.ownerStory.split("—")[1]?.trim()}</cite>
+                      <p className="text-[15px] leading-6 text-white/65 italic [quotes:none]">{p.ownerStory.split(" - ")[0].replace(/^"|"$/g, "").trim()}</p>
+                      {p.ownerStory.includes(" - ") && (
+                        <cite className="mt-2 block text-xs not-italic text-white/35">- {p.ownerStory.split(" - ")[1]?.trim()}</cite>
                       )}
                     </blockquote>
                     <Link href="#collection" className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.1em] transition hover:opacity-80" style={{ color: p.color }}>
