@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" role="img" aria-labelledby="title desc">
+  <title id="title">ZooNetics by EVLV</title>
+  <desc id="desc">ZooNetics geometric wordmark with EVLV endorsement at the lower right.</desc>
+  <g fill="none" stroke="#17233B" stroke-width="8" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M40 35H90L40 95H90"/>
+    <ellipse cx="132" cy="65" rx="29" ry="32"/>
+    <ellipse cx="207" cy="65" rx="29" ry="32"/>
+    <path d="M250 95V35L302 95V35"/>
+    <path d="M335 35H383M335 65H377M335 95H383"/>
+    <path d="M410 35H468M439 35V95"/>
+    <path d="M495 35V95"/>
+    <path d="M575 43C559 29 525 32 525 65C525 98 559 101 575 87"/>
+    <path d="M650 43C637 29 600 32 600 52C600 68 648 63 648 83C648 102 610 103 598 88"/>
+  </g>
+  <circle cx="670" cy="31" r="8" fill="#FF7F68"/>
+  <path d="M40 118Q345 132 650 118" fill="none" stroke="#2F66FF" stroke-width="6"/>
+  <g fill="none" stroke="#17233B" stroke-width="3" stroke-linecap="square" stroke-linejoin="round">
+    <path d="M500 136V162M500 136H509C518 136 518 149 509 149H500M509 149C519 149 519 162 509 162H500"/>
+    <path d="M528 136L538 149L548 136M538 149V162"/>
+    <path d="M570 136H589M570 136V162M570 149H587M570 162H589"/>
+    <path d="M599 136L609 162L619 136"/>
+    <path d="M631 136V162H648"/>
+    <path d="M657 136L667 162L677 136"/>
+  </g>
+</svg>
