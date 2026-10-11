@@ -203,20 +203,20 @@ export default function Home() {
         </div>
 
         {/* ── THE SIGNAL ── */}
-        <section className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-28">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-8 md:grid-cols-[380px_1fr] md:items-center md:gap-20">
-              <div className="bg-[#17233B] p-10 text-white md:p-12">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#A9C7FF]">The clear signal</p>
-                <p className="mt-4 font-display text-[5.5rem] font-bold leading-none tracking-[-0.05em]">1 in 3</p>
-                <p className="mt-3 max-w-[220px] text-[15px] leading-6 text-white/50">dogs shows signs of joint and mobility decline before age 7.</p>
+        <section className="bg-[#F5F2EC] px-5 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1200px]">
+            <div className="grid gap-8 md:grid-cols-[340px_1fr] md:items-center md:gap-24">
+              <div className="bg-[#17233B] p-10 text-white">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#A9C7FF]">The clear signal</p>
+                <p className="mt-5 font-display text-[6rem] font-bold leading-none tracking-[-0.05em]">1 in 3</p>
+                <p className="mt-4 text-[15px] leading-6 text-white/50">dogs shows signs of joint and mobility decline before age 7.</p>
               </div>
               <div>
-                <h2 className="font-display text-[clamp(3rem,5.5vw,5.5rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-[#17233B]">slow isn&apos;t age.<br /><span className="text-[#FF8A72]">it&apos;s a signal.</span></h2>
-                <p className="mt-6 max-w-xl text-[16px] leading-7 text-[#17233B]/60">The pause before the jump. The stiff first steps. The walks that become shorter. They&apos;re not one-offs. Owners who start documenting early have the most to work with.</p>
-                <div className="mt-8 flex flex-wrap gap-4">
+                <h2 className="font-display text-[clamp(3rem,5.5vw,5.8rem)] font-semibold leading-[0.93] tracking-[-0.045em] text-[#17233B]">slow isn&apos;t age.<br /><span className="text-[#FF8A72]">it&apos;s a signal.</span></h2>
+                <p className="mt-7 max-w-lg text-[16px] leading-[1.75] text-[#17233B]/55">The pause before the jump. The stiff first steps. The walks that get shorter. These aren&apos;t one-offs. Owners who start documenting early have the most to work with.</p>
+                <div className="mt-10 flex flex-wrap gap-4">
                   <Link href="#collection" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Explore the compounds <i className="ri-arrow-right-line" /></Link>
-                  <Link href="#before-after" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/25 px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#17233B] hover:text-white">See before &amp; after</Link>
+                  <Link href="#before-after" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/20 px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#17233B] hover:text-white">See before &amp; after</Link>
                 </div>
               </div>
             </div>
@@ -261,23 +261,23 @@ export default function Home() {
         <BeforeAfterSection pairs={beforeAfterPairs} />
 
         {/* ── THE CYCLE ── */}
-        <section className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="mb-16">
+        <section className="bg-[#F5F2EC] px-5 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1200px]">
+            <div className="mb-20">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#FF8A72]">The research cycle</p>
-              <h2 className="mt-3 font-display text-[clamp(2rem,4vw,3.8rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[#17233B]">Every dog is different.<br />Here&apos;s the shape of the cycle.</h2>
+              <h2 className="mt-4 max-w-[640px] font-display text-[clamp(2.2rem,4.5vw,4.2rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[#17233B]">Every dog is different. Here&apos;s the shape of the cycle.</h2>
             </div>
-            <div className="grid md:grid-cols-4">
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-0">
               {([
                 { num: "01", title: "Notice The Signs", body: "Stiff first steps. Shorter walks. Stair hesitation. Before anything else, start logging what you see." },
                 { num: "02", title: "Run One Cycle", body: "6-12 weeks with your chosen compound, typically 5 days on, 2 off. Involve your vet from the start." },
                 { num: "03", title: "See The Change", body: "Easier rising first, then stairs and full walks. Most owners begin noting visible changes in weeks 3-6." },
                 { num: "04", title: "Keep The Gains", body: "A maintenance cycle when your dog needs it. Review findings with your vet before starting again." },
-              ] as const).map((step, i) => (
-                <div key={step.num} className="border-t-2 border-[#17233B]/15 pt-8 md:pr-8">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#17233B]/25 text-[11px] font-bold text-[#17233B]/50">{step.num}</span>
-                  <h3 className="mt-5 font-display text-[1.15rem] font-semibold tracking-[-0.01em] text-[#17233B]">{step.title}</h3>
-                  <p className="mt-2.5 text-[14px] leading-6 text-[#17233B]/50">{step.body}</p>
+              ] as const).map((step) => (
+                <div key={step.num} className="border-t-2 border-[#17233B]/12 pt-8 md:pr-10">
+                  <p className="font-display text-[3.5rem] font-semibold leading-none tracking-[-0.06em] text-[#17233B]/10">{step.num}</p>
+                  <h3 className="mt-6 font-display text-[1.2rem] font-semibold tracking-[-0.02em] text-[#17233B]">{step.title}</h3>
+                  <p className="mt-3 text-[14px] leading-[1.7] text-[#17233B]/48">{step.body}</p>
                 </div>
               ))}
             </div>
