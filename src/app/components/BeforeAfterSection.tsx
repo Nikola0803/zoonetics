@@ -21,33 +21,29 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
     <section id="before-after" className="bg-white px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1380px]">
 
-        {/* Header row */}
-        <div className="border-b border-[#17233B]/10 pb-12">
+        {/* Header */}
+        <div className="pb-10">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Owner observations</p>
-          <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">
-              See the <span className="font-serif italic text-[#4F6EF7]">difference.</span>
-            </h2>
-            <div className="flex items-center gap-4">
-              <p className="hidden max-w-xs text-base leading-7 text-[#17233B]/45 sm:block">
-                Week-by-week documentation from owners who tracked what changed.
-              </p>
-              <div className="hidden shrink-0 gap-2 sm:flex">
-                {pairs.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() => setIndex(i)}
-                    className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition ${
-                      i === index
-                        ? "bg-[#17233B] text-white"
-                        : "border border-[#17233B]/18 text-[#17233B]/45 hover:border-[#17233B]/40 hover:text-[#17233B]"
-                    }`}
-                  >
-                    Case {String(i + 1).padStart(2, "0")}
-                  </button>
-                ))}
-              </div>
+          <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">
+            See the <span className="font-serif italic text-[#4F6EF7]">difference.</span>
+          </h2>
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-[15px] leading-7 text-[#17233B]/45">Week-by-week documentation from owners who tracked what changed. Not anecdotes.</p>
+            <div className="flex gap-2">
+              {pairs.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition ${
+                    i === index
+                      ? "bg-[#17233B] text-white"
+                      : "border border-[#17233B]/18 text-[#17233B]/45 hover:border-[#17233B]/40 hover:text-[#17233B]"
+                  }`}
+                >
+                  Case {String(i + 1).padStart(2, "0")}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -146,18 +142,6 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
           </div>
         </div>
 
-        {/* Mobile dots */}
-        <div className="mt-6 flex justify-center gap-2 sm:hidden">
-          {pairs.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setIndex(i)}
-              aria-label={`Case ${i + 1}`}
-              className={`h-2 rounded-full transition-all ${i === index ? "w-8 bg-[#4F6EF7]" : "w-2 bg-[#17233B]/20"}`}
-            />
-          ))}
-        </div>
 
       </div>
 

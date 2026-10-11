@@ -185,10 +185,10 @@ export default function Home() {
         {/* ── PRODUCTS ── */}
         <section id="collection" className="relative overflow-hidden bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
-            <div className="max-w-4xl">
+            <div className="pb-2">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
-              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">A focused shelf. <span className="font-serif italic text-[#4F6EF7]">Clearer choices.</span></h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Six K9 research profiles, each with clear formats, visible purity data, and lot-level COA access before checkout.</p>
+              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">A focused shelf. <span className="font-serif italic text-[#4F6EF7]">Clearer choices.</span></h2>
+              <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#17233B]/50">Six K9 research profiles, each with clear formats, visible purity data, and lot-level COA access before checkout.</p>
             </div>
             <ProductCarousel products={products} />
             <p className="mt-3 text-[11px] leading-6 text-[#23324D]/45"><strong className="text-[#23324D]/60">Research use only.</strong> These materials are not approved veterinary medicines and are not intended for administration to humans or animals.</p>
@@ -198,22 +198,20 @@ export default function Home() {
         {/* ── TESTIMONIALS ── */}
         <section id="testimonials" className="bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
-            <div className="flex flex-wrap items-end justify-between gap-8 border-b border-[#17233B]/10 pb-12">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">From real dog owners</p>
-                <h2 className="mt-4 font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">They found it. <span className="font-serif italic text-[#4F6EF7]">Their dogs felt it.</span></h2>
+            <div className="pb-10">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">From real dog owners</p>
+              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">They found it. <span className="font-serif italic text-[#4F6EF7]">Their dogs felt it.</span></h2>
+              <div className="mt-6 flex flex-wrap items-center gap-6">
+                <p className="text-[15px] leading-7 text-[#17233B]/45">Real owners. Real timelines. Not marketing copy.</p>
+                <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full border border-[#17233B]/15 bg-white px-5 py-2.5 text-sm transition hover:border-[#17233B]/30">
+                  <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={22} height={22} className="h-5 w-auto rounded-sm" />
+                  <strong className="text-[13px] font-bold text-[#17233B]">★★★★★ 4.9</strong>
+                  <span className="text-[12px] text-[#17233B]/50">· 712 reviews</span>
+                  <span className="text-[11px] font-semibold text-[#4F6EF7]">Verify ↗</span>
+                </a>
               </div>
-
-              <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 rounded-2xl border border-[#17233B]/12 bg-white px-6 py-4 transition hover:border-[#17233B]/25">
-                <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={36} height={36} className="h-9 w-auto rounded" />
-                <div className="flex flex-col leading-tight">
-                  <small className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#17233B]/40">Verified Peptide Reviews</small>
-                  <strong className="mt-1 text-base font-bold text-[#17233B]">★★★★★ 4.9 <span className="font-normal text-[#17233B]/55">· 712 verified reviews</span></strong>
-                </div>
-                <em className="ml-2 text-xs font-semibold text-[#4F6EF7] not-italic">Verify us ↗</em>
-              </a>
             </div>
-            <div className="scrollbar-none -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
+            <div className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
               {testimonialVideos.map((v) => (
                 <article key={v.name} className="group relative aspect-[9/16] w-[78vw] max-w-[315px] shrink-0 snap-start overflow-hidden rounded-[1.6rem] bg-[#0E1B2E]">
                   <Image src={v.image} alt="" fill sizes="(max-width: 768px) 78vw, 315px" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${v.position}`} />
@@ -245,12 +243,10 @@ export default function Home() {
         {/* ── PEPTIDE SCIENCE ── */}
         <section id="science" className="bg-white px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
-            <div className="border-b border-[#17233B]/10 pb-12">
+            <div className="pb-10">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What the research shows</p>
-              <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
-                <h2 className="font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">How these peptides <span className="font-serif italic text-[#4F6EF7]">have been helping.</span></h2>
-                <p className="max-w-md text-base leading-7 text-[#17233B]/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
-              </div>
+              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">How these peptides <span className="font-serif italic text-[#4F6EF7]">have been helping.</span></h2>
+              <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#17233B]/50">Preclinical and animal model research only. We share it so you can research with context, not guesswork.</p>
             </div>
             <div className="mt-12 grid gap-4 md:grid-cols-3">
               {peptideProfiles.map((p) => (
@@ -272,8 +268,8 @@ export default function Home() {
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p>
-              <h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em] text-[#17233B]">The questions owners actually ask.</h2>
-              <p className="mt-6 max-w-sm text-[15px] leading-7 text-[#17233B]/55">Compounds, blends vs singles, what RUO means, COAs, cycles, and why we keep the range focused. No hedging.</p>
+              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.2vw,3.4rem)] font-medium leading-[1.05] tracking-[-0.04em] text-[#17233B]">The questions owners actually ask.</h2>
+              <p className="mt-5 text-[15px] leading-7 text-[#17233B]/50">Compounds, blends vs singles, what RUO means, COAs, cycles. No hedging.</p>
               <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#4F6EF7]">Shop the collection <i className="ri-arrow-right-line" /></Link>
             </div>
             <div className="border-t border-[#17233B]/15">
