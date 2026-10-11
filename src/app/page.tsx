@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductCarousel, { type Product } from "./components/ProductCarousel";
-import BeforeAfterCarousel from "./components/BeforeAfterCarousel";
+import BeforeAfterSection, { type BeforeAfterPair } from "./components/BeforeAfterSection";
 import { getProductBySlug } from "@/lib/products";
 
 const crmProduct = (slug: string) => {
@@ -11,11 +11,12 @@ const crmProduct = (slug: string) => {
 };
 
 const products: Product[] = [
-  { name: "The Long Run", formula: "BPC-157 + TB-500", type: "K9 peptide blend", lane: "mobility", focus: "Paired repair-pathway research", reason: "A focused two-peptide profile for mobility, recovery, and connective-tissue research workflows.", formats: ["10 + 10 mg"], variants: [{ label: "10 + 10 mg", cartProducts: [crmProduct("bpc-tb-500-blend-20mg")] }], color: "#17233B", ink: "#F6F7FC" },
-  { name: "Matrix Pair", formula: "GHK-Cu + KPV", type: "K9 research pair", lane: "skin", focus: "Skin and tissue model research", reason: "A paired profile for researchers comparing copper-peptide and tissue-model literature in one place.", formats: ["50 + 10 mg"], variants: [{ label: "50 + 10 mg pair", cartProducts: [crmProduct("ghk-cu-50mg"), crmProduct("kpv-10mg")] }], color: "#7869C9", ink: "#FBFAFF" },
-  { name: "BPC-157", formula: "Pentadecapeptide", type: "K9 single peptide", lane: "single", focus: "Tissue-pathway research", reason: "A single-compound profile for structured tissue and repair-pathway research.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("bpc-157-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("bpc-157-10mg")] }], color: "#5F7CF6", ink: "#FBFAFF" },
-  { name: "TB-500", formula: "Thymosin beta-4 fragment", type: "K9 single peptide", lane: "single", focus: "Cell-migration research", reason: "A single-compound profile for cell-migration and repair-model research workflows.", formats: ["5 mg", "10 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("tb-500-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("tb-500-10mg")] }], color: "#5A7A9E", ink: "#F6F7FC" },
-  { name: "GHK-Cu", formula: "Copper peptide complex", type: "K9 single peptide", lane: "skin", focus: "Copper-peptide research", reason: "A focused copper-peptide profile for tissue and skin-model research workflows.", formats: ["50 mg"], variants: [{ label: "50 mg", cartProducts: [crmProduct("ghk-cu-50mg")] }], color: "#8C68D8", ink: "#FBFAFF" },
+  { name: "K9 Reforge", formula: "BPC-157", image: "/images/zoonetics-products/k9-reforge.png", type: "K9 single peptide", lane: "single", focus: "Tissue-pathway research", reason: "A focused BPC-157 profile available in three research formats.", formats: ["5 mg", "10 mg", "20 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("bpc-157-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("bpc-157-10mg")] }, { label: "20 mg", cartProducts: [crmProduct("bpc-157-20mg")] }], color: "#72A7FF", ink: "#FBFAFF" },
+  { name: "K9 Reload", formula: "TB-500", image: "/images/zoonetics-products/k9-reload.png", type: "K9 single peptide", lane: "single", focus: "Cell-migration research", reason: "A focused TB-500 profile available in three research formats.", formats: ["5 mg", "10 mg", "20 mg"], variants: [{ label: "5 mg", cartProducts: [crmProduct("tb-500-5mg")] }, { label: "10 mg", cartProducts: [crmProduct("tb-500-10mg")] }, { label: "20 mg", cartProducts: [crmProduct("tb-500-20mg")] }], color: "#8FB4D5", ink: "#F6F7FC" },
+  { name: "K9 Rebuild", formula: "BPC-157 + TB-500", image: "/images/zoonetics-products/k9-rebuild.png", type: "K9 peptide blend", lane: "mobility", focus: "Paired repair-pathway research", reason: "A pre-paired BPC-157 and TB-500 research blend in two formats.", formats: ["10 mg", "20 mg"], variants: [{ label: "10 mg", cartProducts: [crmProduct("bpc-tb-500-blend-10mg")] }, { label: "20 mg", cartProducts: [crmProduct("bpc-tb-500-blend-20mg")] }], color: "#FF8A72", ink: "#F6F7FC" },
+  { name: "K9 Restore", formula: "GHK-Cu", image: "/images/zoonetics-products/k9-restore.png", type: "K9 single peptide", lane: "skin", focus: "Copper-peptide research", reason: "A focused 50 mg GHK-Cu profile for tissue and skin-model research.", formats: ["50 mg"], variants: [{ label: "50 mg", cartProducts: [crmProduct("ghk-cu-50mg")] }], color: "#B7A0FF", ink: "#FBFAFF" },
+  { name: "K9 Reclaim", formula: "KPV · injectable + oral", image: "/images/zoonetics-products/k9-reclaim.png", type: "K9 dual-format peptide", lane: "skin", focus: "Barrier and inflammatory-pathway research", reason: "KPV in injectable and oral research formats under one clear profile.", formats: ["10 mg injectable", "500 mcg oral"], variants: [{ label: "10 mg injectable", cartProducts: [crmProduct("kpv-10mg")] }, { label: "500 mcg oral", cartProducts: [crmProduct("kpv-oral-500mcg")] }], color: "#77C9A1", ink: "#FBFAFF" },
+  { name: "K9 Recast", formula: "GHK-Cu + BPC-157 + TB-500", image: "/images/zoonetics-products/k9-recast.png", type: "K9 triple blend", lane: "mobility", focus: "Multi-pathway research blend", reason: "A 70 mg triple blend combining GHK-Cu, BPC-157, and TB-500 in one research vial.", formats: ["70 mg"], variants: [{ label: "70 mg", cartProducts: [crmProduct("glow-70mg")] }], color: "#F0B76F", ink: "#17233B" },
 ];
 
 const storyMoments = [
@@ -32,25 +33,47 @@ const testimonialVideos = [
   { initials: "JR", name: "James R.", detail: "Border Collie, 6 yrs · Seattle", quote: "Why I started tracking the stairs.", image: "/images/canis/story-followup.png", position: "object-center", duration: "00:38" },
 ];
 
-const beforeAfterPairs = [
+const beforeAfterPairs: BeforeAfterPair[] = [
   {
-    label: "Mobility observation",
-    before: { tag: "Week 1", caption: "Hesitating at the stairs. Slower to rise after resting. Shorter morning walks.", image: "/images/canis/story-before.png" },
-    after: { tag: "Week 8", caption: "Back to full walk distance. Vet confirmed improved gait scores. Research log complete.", image: "/images/canis/story-followup.png" },
-    note: "Individual experience. Research use only.",
+    dog: { breed: "Golden Retriever, 9 yrs", age: "F", compound: "K9 Rebuild", compoundSlug: "bpc-tb-500-blend-10mg" },
+    owner: "Sarah K.",
+    before: {
+      week: "01",
+      observation: "Hesitating at the bottom of every staircase. Two minutes to get moving after lying down.",
+      quote: "I started filming because I needed proof for myself - not the vet, just me.",
+      image: "/images/canis/story-before.png",
+    },
+    after: {
+      week: "08",
+      observation: "Back to full walk distance. Taking stairs without stopping. Morning stiffness gone.",
+      quote: "The vet noticed the difference before I said anything.",
+      image: "/images/canis/story-followup.png",
+    },
+    note: "Owner-observed accounts. Research use only. Not a veterinary outcome.",
   },
   {
-    label: "Owner documentation",
-    before: { tag: "Before tracking", caption: "\"I couldn't explain exactly when it changed or how bad it was getting.\"", image: "/images/canis/mobility-story.png" },
-    after: { tag: "After 6 weeks", caption: "\"I had photos, distances, and dates. The vet appointment was completely different.\"", image: "/images/canis/peptide-family.png" },
-    note: "Owner-observed outcome. Not a medical claim.",
+    dog: { breed: "German Shepherd, 7 yrs", age: "M", compound: "K9 Restore", compoundSlug: "ghk-cu-50mg" },
+    owner: "Marcus T.",
+    before: {
+      week: "01",
+      observation: "Coat dull along the spine. Dry patches on both elbows. Heavy shedding.",
+      quote: "I documented it weekly with photos. I had no idea how much it had changed until I looked back.",
+      image: "/images/canis/mobility-story.png",
+    },
+    after: {
+      week: "06",
+      observation: "Coat visibly denser and glossy. Dry patches resolved. Shedding normalized.",
+      quote: "Week 6 was the week I knew I wasn't imagining it.",
+      image: "/images/canis/peptide-family.png",
+    },
+    note: "Owner-observed accounts. Research use only. Not a veterinary outcome.",
   },
 ];
 
 const trustStats = [
   { icon: "ri-test-tube-line", value: "≥99%", label: "HPLC-verified purity, every lot" },
   { icon: "ri-file-list-3-line", value: "100%", label: "Lot-linked COAs, pre-checkout" },
-  { icon: "ri-flask-line", value: "5", label: "Focused K9 research profiles" },
+  { icon: "ri-flask-line", value: "6", label: "Focused K9 research profiles" },
   { icon: "ri-shield-check-line", value: "RUO", label: "Clearly labeled. No ambiguity." },
 ];
 
@@ -63,7 +86,7 @@ const peptideProfiles = [
     icon: "ri-run-line",
     research: "Studied in animal models for tendon-to-bone healing, muscle repair, and joint pathway activity. One of the most referenced peptides in K9 mobility and connective-tissue research.",
     ownerStory: "\"BPC-157 came up in every research thread I found about connective tissue. It's why I started documenting.\" - Diane M., Labrador owner",
-    profile: "The Long Run blend · standalone BPC-157",
+    profile: "K9 Rebuild blend · K9 Reforge",
   },
   {
     name: "TB-500",
@@ -73,7 +96,7 @@ const peptideProfiles = [
     icon: "ri-heart-pulse-line",
     research: "A synthetic Thymosin Beta-4 fragment studied in animal models for actin regulation, cell migration, and inflammatory modulation. Frequently paired with BPC-157 in repair-pathway research protocols.",
     ownerStory: "\"When recovery started taking longer than the workout, I started documenting. TB-500 kept appearing in the same breath as BPC-157.\" - Marcus T., GSD owner",
-    profile: "The Long Run blend · standalone TB-500",
+    profile: "K9 Rebuild blend · K9 Reload",
   },
   {
     name: "GHK-Cu",
@@ -83,27 +106,27 @@ const peptideProfiles = [
     icon: "ri-sparkling-2-line",
     research: "Among the most studied copper peptides in tissue remodeling research: collagen synthesis, wound closure, and skin barrier integrity in animal model contexts.",
     ownerStory: "\"Her coat was dull, thinning along the spine. The documentation process alone gave me better vet conversations.\" - Sarah K., Golden Retriever owner",
-    profile: "Matrix Pair blend · standalone GHK-Cu",
+    profile: "K9 Recast blend · K9 Restore",
   },
 ];
 
 
 const dogProfiles = [
-  { icon: "ri-run-line", type: "Senior dogs (7+)", signal: "Stiffness, slower rises, shorter walks.", product: "The Long Run", formula: "BPC-157 + TB-500", color: "#5F7CF6" },
-  { icon: "ri-shield-star-line", type: "Active & working K9s", signal: "High-output dogs. Faster recovery between sessions.", product: "The Long Run or TB-500", formula: "BPC-157 + TB-500 · standalone", color: "#FF8A72" },
-  { icon: "ri-first-aid-kit-line", type: "Post-injury recovery", signal: "CCL/ACL, soft tissue, orthopedic surgery.", product: "The Long Run", formula: "BPC-157 + TB-500", color: "#D95858" },
-  { icon: "ri-heart-pulse-line", type: "Large breeds at risk", signal: "Shepherds, Labs, Goldens - hip & elbow focus.", product: "The Long Run or BPC-157", formula: "BPC-157 + TB-500 · standalone", color: "#8C68D8" },
-  { icon: "ri-sparkling-2-line", type: "Coat + tissue focus", signal: "Dull coat, thinning, collagen research context.", product: "Matrix Pair", formula: "GHK-Cu + KPV", color: "#5A7A9E" },
+  { icon: "ri-run-line", type: "Senior dogs (7+)", signal: "Stiffness, slower rises, shorter walks.", product: "K9 Rebuild", formula: "BPC-157 + TB-500", color: "#5F7CF6" },
+  { icon: "ri-shield-star-line", type: "Active & working K9s", signal: "High-output dogs. Faster recovery between sessions.", product: "K9 Rebuild or K9 Reload", formula: "Blend · TB-500 standalone", color: "#FF8A72" },
+  { icon: "ri-first-aid-kit-line", type: "Post-injury recovery", signal: "CCL/ACL, soft tissue, orthopedic surgery.", product: "K9 Rebuild", formula: "BPC-157 + TB-500", color: "#D95858" },
+  { icon: "ri-heart-pulse-line", type: "Large breeds at risk", signal: "Shepherds, Labs, Goldens - hip & elbow focus.", product: "K9 Rebuild or K9 Reforge", formula: "Blend · BPC-157 standalone", color: "#8C68D8" },
+  { icon: "ri-sparkling-2-line", type: "Coat + tissue focus", signal: "Dull coat, thinning, collagen research context.", product: "K9 Recast or K9 Restore", formula: "Triple blend · GHK-Cu", color: "#5A7A9E" },
 ];
 
 const faqs = [
-  ["What's the difference between The Long Run and standalone BPC-157?", "The Long Run is a pre-paired blend of BPC-157 + TB-500 in one vial. Both compounds are frequently studied together in animal model research on repair pathways. Standalone BPC-157 is for researchers isolating a single-compound protocol, or who already source TB-500 separately."],
+  ["What's the difference between K9 Rebuild and K9 Reforge?", "K9 Rebuild is a pre-paired blend of BPC-157 + TB-500 in one vial. K9 Reforge is standalone BPC-157 for researchers isolating a single-compound protocol or sourcing TB-500 separately."],
   ["What does 'research use only' mean in plain language?", "These compounds are not approved veterinary medicines. They are sold for documented, non-clinical research purposes only. We cannot make treatment claims, and we don't. If you choose to observe your dog while using them, involve your veterinarian."],
   ["How long is a typical research observation cycle?", "Animal model literature most commonly documents cycles of 6–12 weeks. Owners who log their observations typically begin noting visible changes between weeks 3–6. ZooNetics does not prescribe dosing protocols; include a veterinarian in your planning."],
   ["Why do you publish lot-level COAs before checkout?", "Because you should be able to verify what you're ordering before you pay. Every product links to its identity, HPLC purity reading, lot number, analytical date, and the producing lab. No verifiable COA means no purchase decision you should feel confident making."],
   ["Can I use these alongside my dog's current medications?", "We can't advise on drug interactions. Involve your veterinarian before combining any research compound with prescribed medications, ongoing treatments, or other supplements."],
   ["What purity standard do your compounds meet?", "Every lot is HPLC-tested for identity and purity. Results are published in the certificate of analysis for that lot. We don't ship without a clean, documented result."],
-  ["Why are there blends and singles? Which do I choose?", "Blends are pre-paired compounds frequently studied together in the literature: one vial, one documented protocol. Singles let you isolate one compound or build your own combination. Most owners start with The Long Run blend."],
+  ["Why are there blends and singles? Which do I choose?", "Blends are pre-paired compounds frequently studied together in the literature: one vial, one documented protocol. Singles let you isolate one compound or build your own combination. K9 Rebuild is the focused two-compound blend; K9 Recast is the 70 mg triple blend."],
   ["What is the current product status?", "All ZooNetics compounds are labeled for research use only. Any future veterinary-use language will be added only after applicable authorization and final labeling are official. Current status is clearly stated on every product card."],
 ];
 
@@ -243,7 +266,7 @@ export default function Home() {
             <div className="max-w-4xl">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
               <h2 className="mt-5 font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">A focused shelf. <span className="font-serif italic text-[#D95858]">Clearer choices.</span></h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Five K9 research profiles, each with a clear format, visible purity data, and lot-level COA access before checkout.</p>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Six K9 research profiles, each with clear formats, visible purity data, and lot-level COA access before checkout.</p>
             </div>
             <ProductCarousel products={products} />
             <div className="mt-5 flex gap-4 rounded-2xl bg-[#17233B] p-5 text-white md:items-center md:px-7">
@@ -350,7 +373,7 @@ export default function Home() {
         </section>
 
         {/* ── BEFORE & AFTER ── */}
-        <BeforeAfterCarousel pairs={beforeAfterPairs} />
+        <BeforeAfterSection pairs={beforeAfterPairs} />
 
         {/* ── TRUST BAR ── */}
         <section className="bg-[#17233B] px-5 py-14 text-white md:px-10">
@@ -375,7 +398,7 @@ export default function Home() {
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p>
               <h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">The questions owners actually ask.</h2>
-              <p className="mt-6 max-w-sm text-[15px] leading-7 text-[#23324D]/62">Compounds, blends vs singles, what RUO means, COAs, cycles, and why we only stock five profiles. No hedging.</p>
+              <p className="mt-6 max-w-sm text-[15px] leading-7 text-[#23324D]/62">Compounds, blends vs singles, what RUO means, COAs, cycles, and why we keep the range focused. No hedging.</p>
               <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#4F6EF7]">Shop the collection <i className="ri-arrow-right-line" /></Link>
             </div>
             <div className="border-t border-[#17233B]/20">
