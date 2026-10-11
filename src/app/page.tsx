@@ -187,7 +187,7 @@ export default function Home() {
           <div className="mx-auto max-w-[1380px]">
             <div className="max-w-4xl">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
-              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">A focused shelf. <span className="font-serif italic text-[#D95858]">Clearer choices.</span></h2>
+              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.2vw,4.4rem)] font-medium leading-[0.98] tracking-[-0.045em]">A focused shelf. <span className="font-serif italic text-[#4F6EF7]">Clearer choices.</span></h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Six K9 research profiles, each with clear formats, visible purity data, and lot-level COA access before checkout.</p>
             </div>
             <ProductCarousel products={products} />
@@ -203,6 +203,7 @@ export default function Home() {
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">From real dog owners</p>
                 <h2 className="mt-4 font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">They found it. <span className="font-serif italic text-[#4F6EF7]">Their dogs felt it.</span></h2>
               </div>
+
               <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 rounded-2xl border border-[#17233B]/12 bg-white px-6 py-4 transition hover:border-[#17233B]/25">
                 <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={36} height={36} className="h-9 w-auto rounded" />
                 <div className="flex flex-col leading-tight">
@@ -242,26 +243,24 @@ export default function Home() {
         </section>
 
         {/* ── PEPTIDE SCIENCE ── */}
-        <section id="science" className="bg-white px-5 py-20 md:px-10 md:py-28">
+        <section id="science" className="bg-white px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-8 border-b border-[#17233B]/10 pb-14 lg:grid-cols-2 lg:items-end">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4F6EF7]">What the research shows</p>
-                <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">How these peptides <span className="font-serif italic text-[#4F6EF7]">have been helping.</span></h2>
-              </div>
-              <div className="max-w-lg lg:justify-self-end">
-                <p className="text-base leading-7 text-[#17233B]/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
+            <div className="border-b border-[#17233B]/10 pb-12">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What the research shows</p>
+              <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
+                <h2 className="font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">How these peptides <span className="font-serif italic text-[#4F6EF7]">have been helping.</span></h2>
+                <p className="max-w-md text-base leading-7 text-[#17233B]/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
               </div>
             </div>
-            <div className="mt-12 grid gap-px border border-[#17233B]/8 md:grid-cols-3">
+            <div className="mt-12 grid gap-4 md:grid-cols-3">
               {peptideProfiles.map((p) => (
-                <div key={p.name} className="flex flex-col gap-5 bg-[#F9FAFB] p-8">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}18`, color: p.color }}>
+                <div key={p.name} className="flex flex-col gap-5 rounded-2xl border border-[#17233B]/10 bg-white p-8 shadow-[0_4px_20px_rgba(23,35,59,0.05)]">
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}15`, color: p.color }}>
                     <i className={p.icon} />{p.tag}
                   </span>
-                  <h3 className="font-display text-[2.6rem] font-semibold leading-none tracking-[-0.05em] text-[#17233B]">{p.name}</h3>
-                  <p className="text-[14px] leading-6 text-[#17233B]/50">{p.research}</p>
-                  <p className="mt-auto text-[12px] text-[#17233B]/35"><span className="text-[#17233B]/55">Available as:</span> {p.profile}</p>
+                  <h3 className="font-display text-[2.4rem] font-semibold leading-none tracking-[-0.05em] text-[#17233B]">{p.name}</h3>
+                  <p className="text-[14px] leading-6 text-[#17233B]/55">{p.research}</p>
+                  <p className="mt-auto border-t border-[#17233B]/8 pt-5 text-[12px] text-[#17233B]/40"><span className="font-semibold text-[#17233B]/60">Available as:</span> {p.profile}</p>
                 </div>
               ))}
             </div>
@@ -269,7 +268,7 @@ export default function Home() {
         </section>
 
         {/* ── FAQ ── */}
-        <section id="questions" className="bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-28">
+        <section id="questions" className="bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p>

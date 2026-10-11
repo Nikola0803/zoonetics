@@ -22,31 +22,33 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
       <div className="mx-auto max-w-[1380px]">
 
         {/* Header row */}
-        <div className="flex flex-wrap items-end justify-between gap-6 pb-12">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Owner observations</p>
-            <h2 className="mt-4 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">
+        <div className="border-b border-[#17233B]/10 pb-12">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Owner observations</p>
+          <div className="mt-4 flex flex-wrap items-end justify-between gap-6">
+            <h2 className="font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">
               See the <span className="font-serif italic text-[#4F6EF7]">difference.</span>
             </h2>
-            <p className="mt-4 max-w-lg text-base leading-7 text-[#17233B]/50">
-              Week-by-week documentation from owners who tracked what changed. Not anecdotes.
-            </p>
-          </div>
-          <div className="hidden gap-2 sm:flex">
-            {pairs.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setIndex(i)}
-                className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition ${
-                  i === index
-                    ? "bg-[#17233B] text-white"
-                    : "border border-[#17233B]/18 text-[#17233B]/45 hover:border-[#17233B]/40 hover:text-[#17233B]"
-                }`}
-              >
-                Case {String(i + 1).padStart(2, "0")}
-              </button>
-            ))}
+            <div className="flex items-center gap-4">
+              <p className="hidden max-w-xs text-base leading-7 text-[#17233B]/45 sm:block">
+                Week-by-week documentation from owners who tracked what changed.
+              </p>
+              <div className="hidden shrink-0 gap-2 sm:flex">
+                {pairs.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setIndex(i)}
+                    className={`rounded-full px-5 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition ${
+                      i === index
+                        ? "bg-[#17233B] text-white"
+                        : "border border-[#17233B]/18 text-[#17233B]/45 hover:border-[#17233B]/40 hover:text-[#17233B]"
+                    }`}
+                  >
+                    Case {String(i + 1).padStart(2, "0")}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
