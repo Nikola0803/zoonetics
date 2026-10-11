@@ -233,6 +233,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── BEFORE & AFTER ── */}
+        <BeforeAfterSection pairs={beforeAfterPairs} />
+
         {/* ── WHO IS THIS FOR ── */}
         <section id="profiles" className="bg-[#17233B] px-5 py-16 text-white md:px-10 md:py-20">
           <div className="mx-auto max-w-[1380px]">
@@ -371,9 +374,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* ── BEFORE & AFTER ── */}
-        <BeforeAfterSection pairs={beforeAfterPairs} />
 
         {/* ── TRUST BAR ── */}
         <section className="bg-[#17233B] px-5 py-14 text-white md:px-10">
