@@ -196,20 +196,20 @@ export default function Home() {
         </section>
 
         {/* ── TESTIMONIALS ── */}
-        <section id="testimonials" className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-24">
+        <section id="testimonials" className="bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
-            <div className="flex flex-wrap items-end justify-between gap-8 border-b border-white/12 pb-12">
+            <div className="flex flex-wrap items-end justify-between gap-8 border-b border-[#17233B]/10 pb-12">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">From real dog owners</p>
-                <h2 className="mt-4 font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em]">They found it. <span className="font-serif italic text-[#A9C7FF]">Their dogs felt it.</span></h2>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">From real dog owners</p>
+                <h2 className="mt-4 font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">They found it. <span className="font-serif italic text-[#4F6EF7]">Their dogs felt it.</span></h2>
               </div>
-              <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 rounded-2xl border border-white/12 bg-white/[0.06] px-6 py-4 transition hover:bg-white/10">
+              <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 rounded-2xl border border-[#17233B]/12 bg-white px-6 py-4 transition hover:border-[#17233B]/25">
                 <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={36} height={36} className="h-9 w-auto rounded" />
                 <div className="flex flex-col leading-tight">
-                  <small className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/45">Verified Peptide Reviews</small>
-                  <strong className="mt-1 text-base font-bold text-white">★★★★★ 4.9 <span className="font-normal text-white/55">· 712 verified reviews</span></strong>
+                  <small className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#17233B]/40">Verified Peptide Reviews</small>
+                  <strong className="mt-1 text-base font-bold text-[#17233B]">★★★★★ 4.9 <span className="font-normal text-[#17233B]/55">· 712 verified reviews</span></strong>
                 </div>
-                <em className="ml-2 text-xs font-semibold text-[#A9C7FF] not-italic">Verify us ↗</em>
+                <em className="ml-2 text-xs font-semibold text-[#4F6EF7] not-italic">Verify us ↗</em>
               </a>
             </div>
             <div className="scrollbar-none -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
@@ -226,10 +226,10 @@ export default function Home() {
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-6">
                     <div className="flex gap-0.5 text-[#FF8A72]">{[...Array(5)].map((_, i) => <i key={i} className="ri-star-fill text-xs" />)}</div>
-                    <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.035em]">{v.quote}</h3>
+                    <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.035em] text-white">{v.quote}</h3>
                     <div className="mt-4 flex items-center justify-between border-t border-white/15 pt-4">
                       <div>
-                        <p className="text-sm font-semibold">{v.name}</p>
+                        <p className="text-sm font-semibold text-white">{v.name}</p>
                         <p className="mt-0.5 text-[11px] text-white/45">{v.detail}</p>
                       </div>
                       <span className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-xs text-[#A9C7FF]"><i className="ri-verified-badge-line" /></span>
@@ -242,26 +242,26 @@ export default function Home() {
         </section>
 
         {/* ── PEPTIDE SCIENCE ── */}
-        <section id="science" className="bg-[#101829] px-5 py-20 text-white md:px-10 md:py-28">
+        <section id="science" className="bg-white px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-8 border-b border-white/10 pb-14 lg:grid-cols-2 lg:items-end">
+            <div className="grid gap-8 border-b border-[#17233B]/10 pb-14 lg:grid-cols-2 lg:items-end">
               <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">What the research shows</p>
-                <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">How these peptides <span className="font-serif italic text-[#A9C7FF]">have been helping.</span></h2>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#4F6EF7]">What the research shows</p>
+                <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em] text-[#17233B]">How these peptides <span className="font-serif italic text-[#4F6EF7]">have been helping.</span></h2>
               </div>
               <div className="max-w-lg lg:justify-self-end">
-                <p className="text-base leading-7 text-white/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
+                <p className="text-base leading-7 text-[#17233B]/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
               </div>
             </div>
-            <div className="mt-12 grid gap-px border border-white/8 md:grid-cols-3">
+            <div className="mt-12 grid gap-px border border-[#17233B]/8 md:grid-cols-3">
               {peptideProfiles.map((p) => (
-                <div key={p.name} className="flex flex-col gap-5 bg-white/[0.03] p-8">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}20`, color: p.color }}>
+                <div key={p.name} className="flex flex-col gap-5 bg-[#F9FAFB] p-8">
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}18`, color: p.color }}>
                     <i className={p.icon} />{p.tag}
                   </span>
-                  <h3 className="font-display text-[2.6rem] font-semibold leading-none tracking-[-0.05em]">{p.name}</h3>
-                  <p className="text-[14px] leading-6 text-white/50">{p.research}</p>
-                  <p className="mt-auto text-[12px] text-white/35"><span className="text-white/55">Available as:</span> {p.profile}</p>
+                  <h3 className="font-display text-[2.6rem] font-semibold leading-none tracking-[-0.05em] text-[#17233B]">{p.name}</h3>
+                  <p className="text-[14px] leading-6 text-[#17233B]/50">{p.research}</p>
+                  <p className="mt-auto text-[12px] text-[#17233B]/35"><span className="text-[#17233B]/55">Available as:</span> {p.profile}</p>
                 </div>
               ))}
             </div>
@@ -269,19 +269,19 @@ export default function Home() {
         </section>
 
         {/* ── FAQ ── */}
-        <section id="questions" className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-28">
+        <section id="questions" className="bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">Straight answers</p>
-              <h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">The questions owners actually ask.</h2>
-              <p className="mt-6 max-w-sm text-[15px] leading-7 text-white/50">Compounds, blends vs singles, what RUO means, COAs, cycles, and why we keep the range focused. No hedging.</p>
-              <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#A9C7FF]">Shop the collection <i className="ri-arrow-right-line" /></Link>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p>
+              <h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em] text-[#17233B]">The questions owners actually ask.</h2>
+              <p className="mt-6 max-w-sm text-[15px] leading-7 text-[#17233B]/55">Compounds, blends vs singles, what RUO means, COAs, cycles, and why we keep the range focused. No hedging.</p>
+              <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#4F6EF7]">Shop the collection <i className="ri-arrow-right-line" /></Link>
             </div>
-            <div className="border-t border-white/15">
+            <div className="border-t border-[#17233B]/15">
               {faqs.map(([question, answer]) => (
-                <details key={question} className="group border-b border-white/15 py-6">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.15rem] font-semibold tracking-[-0.025em] md:text-[1.35rem]">{question}<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/25 text-sm transition group-open:rotate-45">+</span></summary>
-                  <p className="max-w-2xl pt-5 text-base leading-7 text-white/55">{answer}</p>
+                <details key={question} className="group border-b border-[#17233B]/15 py-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.15rem] font-semibold tracking-[-0.025em] text-[#17233B] md:text-[1.35rem]">{question}<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#17233B]/20 text-sm text-[#17233B] transition group-open:rotate-45">+</span></summary>
+                  <p className="max-w-2xl pt-5 text-base leading-7 text-[#17233B]/55">{answer}</p>
                 </details>
               ))}
             </div>
