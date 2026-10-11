@@ -179,6 +179,61 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── TRUST TICKER ── */}
+        <div className="overflow-hidden bg-[#101829] py-3.5">
+          <div
+            className="flex items-center whitespace-nowrap"
+            style={{ animation: "ticker 32s linear infinite" }}
+          >
+            {[...Array(2)].map((_, rep) => (
+              <span key={rep} className="flex shrink-0 items-center">
+                {["HPLC-tested purity", "99.6%+ per lot", "Lot-level COAs", "US-sourced compounds", "3rd-party verified", "Research-grade only", "No filler. No shortcuts", "Independent lab testing"].map((item, i) => (
+                  <span key={i} className="flex items-center px-7 text-[11px] font-bold uppercase tracking-[0.18em] text-white/45">
+                    <span className="mr-7 text-[#A9C7FF]">·</span>{item}
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+          <style>{`@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+        </div>
+
+        {/* ── THE PROBLEM ── */}
+        <section className="bg-white px-5 py-20 md:px-10 md:py-28">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid gap-10 md:grid-cols-[340px_1fr] md:items-center md:gap-16 lg:gap-24">
+              {/* Statement block */}
+              <div className="rounded-2xl bg-[#17233B] p-10 text-white md:p-12">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">The signal</p>
+                <p className="mt-5 font-display text-[3rem] font-semibold leading-[1.05] tracking-[-0.04em] md:text-[3.4rem]">Slowing<br />down isn&apos;t<br /><span className="text-[#A9C7FF]">old age.</span></p>
+                <p className="mt-6 text-[14px] leading-6 text-white/45">Shorter walks. The pause before the stairs. Two minutes to get moving. These are signals - not inevitabilities.</p>
+              </div>
+              {/* Copy side */}
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What research-focused owners do</p>
+                <h2 className="mt-3 font-display text-[clamp(1.9rem,3.2vw,3.2rem)] font-medium leading-[1.05] tracking-[-0.04em] text-[#17233B]">Owners who start documenting early <span className="font-serif italic text-[#4F6EF7]">have the most to work with.</span></h2>
+                <p className="mt-6 max-w-xl text-[15px] leading-7 text-[#17233B]/55">BPC-157 and TB-500 are among the most referenced peptides in animal model research on connective tissue, joint pathways, and recovery. ZooNetics sources and independently tests every compound - so you research with verified data, not guesswork.</p>
+                <div className="mt-8 grid gap-3">
+                  {[
+                    "Lot-level COA linked before every purchase",
+                    "Singles to isolate, blends to combine - your protocol",
+                    "Published animal model literature behind every compound",
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <i className="ri-check-line mt-0.5 shrink-0 text-[#4F6EF7]" />
+                      <p className="text-[14px] leading-6 text-[#17233B]/65">{item}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link href="#collection" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#4F6EF7]">See the compounds <i className="ri-arrow-right-line" /></Link>
+                  <Link href="#before-after" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/25 px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:border-[#17233B] hover:bg-[#17233B] hover:text-white">Owner observations</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── BEFORE & AFTER ── */}
         <BeforeAfterSection pairs={beforeAfterPairs} />
 
@@ -192,6 +247,30 @@ export default function Home() {
             </div>
             <ProductCarousel products={products} />
             <p className="mt-3 text-[11px] leading-6 text-[#23324D]/45"><strong className="text-[#23324D]/60">Research use only.</strong> These materials are not approved veterinary medicines and are not intended for administration to humans or animals.</p>
+          </div>
+        </section>
+
+        {/* ── HOW IT WORKS ── */}
+        <section className="bg-white px-5 py-20 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="pb-12">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">The research cycle</p>
+              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">Every dog is different. <span className="font-serif italic text-[#4F6EF7]">Here&apos;s how to document it.</span></h2>
+            </div>
+            <div className="grid gap-px bg-[#17233B]/8 sm:grid-cols-2 md:grid-cols-4">
+              {([
+                { num: "01", title: "Notice the signs", body: "Shorter walks, stair hesitation, slow starts after lying down. Start logging what you observe before anything else." },
+                { num: "02", title: "Choose a compound", body: "Singles isolate one peptide. Blends pre-pair the most studied combinations. Pick based on your research goal and what the literature supports." },
+                { num: "03", title: "Run the cycle", body: "Published animal model protocols typically run 6-12 weeks. Track weekly. Include your vet. Note every change." },
+                { num: "04", title: "Review and decide", body: "Compare week-one observations to week eight. Adjust the protocol. Share findings with your vet before the next cycle." },
+              ] as const).map((step) => (
+                <div key={step.num} className="bg-white p-8 md:p-10">
+                  <p className="font-display text-[3.5rem] font-semibold leading-none tracking-[-0.06em] text-[#17233B]/8">{step.num}</p>
+                  <h3 className="mt-6 font-display text-[1.2rem] font-semibold tracking-[-0.02em] text-[#17233B]">{step.title}</h3>
+                  <p className="mt-3 text-[14px] leading-6 text-[#17233B]/50">{step.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
