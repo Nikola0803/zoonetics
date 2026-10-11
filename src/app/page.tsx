@@ -19,12 +19,6 @@ const products: Product[] = [
   { name: "K9 Recast", formula: "GHK-Cu + BPC-157 + TB-500", image: "/images/zoonetics-products/k9-recast.png", type: "K9 triple blend", lane: "mobility", focus: "Multi-pathway research blend", reason: "A 70 mg triple blend combining GHK-Cu, BPC-157, and TB-500 in one research vial.", formats: ["70 mg"], variants: [{ label: "70 mg", cartProducts: [crmProduct("glow-70mg")] }], color: "#F0B76F", ink: "#17233B" },
 ];
 
-const storyMoments = [
-  { kicker: "Signal 01", title: "The pause before the jump", body: "Half-second hesitation. Stairs handled differently. Early data points worth writing down.", image: "/images/canis/story-before.png", position: "object-center" },
-  { kicker: "Signal 02", title: "Morning stiffness that clears by noon", body: "Stiff for the first few minutes, fine by midday. That's a pattern, not a bad morning.", image: "/images/canis/mobility-story.png", position: "object-center" },
-  { kicker: "Signal 03", title: "Walks keep getting shorter", body: "You know their normal. When distances shrink on back-to-back days, it's a trend.", image: "/images/canis/story-followup.png", position: "object-center" },
-  { kicker: "Signal 04", title: "Recovery takes longer than it used to", body: "Used to shake it off overnight. Repeated slow recovery is one of the clearest early signals.", image: "/images/canis/hero-senior-lab.png", position: "object-[68%_center]" },
-];
 
 const testimonialVideos = [
   { initials: "SK", name: "Sarah K.", detail: "Golden Retriever, 9 yrs · Portland", quote: "The walk that changed everything.", image: "/images/canis/story-before.png", position: "object-center", duration: "00:41" },
@@ -70,12 +64,6 @@ const beforeAfterPairs: BeforeAfterPair[] = [
   },
 ];
 
-const trustStats = [
-  { icon: "ri-test-tube-line", value: "≥99%", label: "HPLC-verified purity, every lot" },
-  { icon: "ri-file-list-3-line", value: "100%", label: "Lot-linked COAs, pre-checkout" },
-  { icon: "ri-flask-line", value: "6", label: "Focused K9 research profiles" },
-  { icon: "ri-shield-check-line", value: "RUO", label: "Clearly labeled. No ambiguity." },
-];
 
 const peptideProfiles = [
   {
@@ -111,13 +99,6 @@ const peptideProfiles = [
 ];
 
 
-const dogProfiles = [
-  { icon: "ri-run-line", type: "Senior dogs (7+)", signal: "Stiffness, slower rises, shorter walks.", product: "K9 Rebuild", formula: "BPC-157 + TB-500", color: "#5F7CF6" },
-  { icon: "ri-shield-star-line", type: "Active & working K9s", signal: "High-output dogs. Faster recovery between sessions.", product: "K9 Rebuild or K9 Reload", formula: "Blend · TB-500 standalone", color: "#FF8A72" },
-  { icon: "ri-first-aid-kit-line", type: "Post-injury recovery", signal: "CCL/ACL, soft tissue, orthopedic surgery.", product: "K9 Rebuild", formula: "BPC-157 + TB-500", color: "#D95858" },
-  { icon: "ri-heart-pulse-line", type: "Large breeds at risk", signal: "Shepherds, Labs, Goldens - hip & elbow focus.", product: "K9 Rebuild or K9 Reforge", formula: "Blend · BPC-157 standalone", color: "#8C68D8" },
-  { icon: "ri-sparkling-2-line", type: "Coat + tissue focus", signal: "Dull coat, thinning, collagen research context.", product: "K9 Recast or K9 Restore", formula: "Triple blend · GHK-Cu", color: "#5A7A9E" },
-];
 
 const faqs = [
   ["What's the difference between K9 Rebuild and K9 Reforge?", "K9 Rebuild is a pre-paired blend of BPC-157 + TB-500 in one vial. K9 Reforge is standalone BPC-157 for researchers isolating a single-compound protocol or sourcing TB-500 separately."],
@@ -198,70 +179,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── STORY — "It usually starts with one small thing" ── */}
-        <section className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="max-w-4xl">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">The signal most owners miss</p>
-              <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">Slow isn&apos;t just age. <span className="font-serif italic text-[#D95858]">It&apos;s a signal.</span></h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-[#17233B]/65">4 in 10 dogs under four already show early joint changes on x-ray. By eight, it&apos;s 1 in 2, and most owners only notice months after the pattern started, because the signs are quiet. These are the four signals worth writing down.</p>
-              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span className="text-[11px] text-[#17233B]/35">Research refs:</span>
-                <a href="https://www.nature.com/articles/s41598-024-52324-9" target="_blank" rel="noreferrer" className="text-[11px] font-semibold text-[#4F6EF7] transition hover:underline">Enomoto et al., Scientific Reports 2024 ↗</a>
-                <span className="text-[11px] text-[#17233B]/25">·</span>
-                <a href="https://epub.ub.uni-muenchen.de/120343/1/1-s2.0-S1090023324000716-main.pdf" target="_blank" rel="noreferrer" className="text-[11px] font-semibold text-[#4F6EF7] transition hover:underline">Roitner et al., Vet. Journal 2024 ↗</a>
-              </div>
-            </div>
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {storyMoments.map((moment, index) => (
-                <article key={moment.title} className="group overflow-hidden rounded-2xl border border-[#17233B]/8 bg-white shadow-[0_12px_40px_rgba(23,35,59,0.05)]">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-[#DCE3F5]">
-                    <Image src={moment.image} alt="" fill sizes="(max-width: 768px) 100vw, 25vw" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${moment.position}`} />
-                    <span className="absolute left-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white text-[9px] font-bold text-[#17233B]">0{index + 1}</span>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#D95858]">{moment.kicker}</p>
-                    <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.035em]">{moment.title}</h3>
-                    <p className="mt-3 text-[15px] leading-6 text-[#17233B]/58">{moment.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <div className="mt-8 text-center">
-              <Link href="#profiles" className="inline-flex items-center gap-2 text-sm font-bold text-[#4F6EF7] underline underline-offset-4 transition hover:text-[#D95858]">Match the signal to the right research profile <i className="ri-arrow-down-line" /></Link>
-            </div>
-          </div>
-        </section>
-
         {/* ── BEFORE & AFTER ── */}
         <BeforeAfterSection pairs={beforeAfterPairs} />
-
-        {/* ── WHO IS THIS FOR ── */}
-        <section id="profiles" className="bg-[#17233B] px-5 py-16 text-white md:px-10 md:py-20">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="flex flex-wrap items-end justify-between gap-6 mb-8">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Built for the dogs who need it most</p>
-                <h2 className="mt-4 font-display text-[clamp(2rem,3.5vw,3.4rem)] font-medium leading-[1] tracking-[-0.04em]">Find your dog&apos;s <span className="font-serif italic text-[#A9C7FF]">research profile.</span></h2>
-              </div>
-              <Link href="#collection" className="inline-flex items-center gap-2 text-sm font-bold text-[#A9C7FF] underline underline-offset-4 transition hover:text-[#FF8A72]">Browse the full collection <i className="ri-arrow-right-line" /></Link>
-            </div>
-            <div className="grid gap-3 grid-cols-2 lg:grid-cols-5">
-              {dogProfiles.map((p) => (
-                <Link key={p.type} href="#collection" className="group rounded-[1rem] border border-white/8 bg-white/[0.04] p-5 transition hover:border-white/20 hover:bg-white/[0.09] cursor-pointer">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl text-lg mb-4" style={{ background: `${p.color}22`, color: p.color }}><i className={p.icon} /></span>
-                  <h3 className="font-display text-base font-semibold leading-tight tracking-[-0.02em]">{p.type}</h3>
-                  <p className="mt-2 text-xs leading-5 text-white/45">{p.signal}</p>
-                  <div className="mt-4 border-t border-white/10 pt-3">
-                    <p className="text-[11px] font-semibold text-white/60">{p.product}</p>
-                    <p className="text-[10px] text-white/30">{p.formula}</p>
-                  </div>
-                  <p className="mt-3 text-[10px] font-bold text-white/25 transition group-hover:text-white/50 uppercase tracking-[0.1em]">View profile →</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ── PRODUCTS ── */}
         <section id="collection" className="relative overflow-hidden bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
@@ -279,51 +198,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── PEPTIDE SCIENCE ── */}
-        <section id="science" className="bg-[#101829] px-5 py-20 text-white md:px-10 md:py-28">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-8 border-b border-white/10 pb-14 lg:grid-cols-2 lg:items-end">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">What the research shows</p>
-                <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">How these peptides <span className="font-serif italic text-[#A9C7FF]">have been helping.</span></h2>
-              </div>
-              <div className="max-w-lg lg:justify-self-end">
-                <p className="text-base leading-7 text-white/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
-              </div>
-            </div>
-
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {peptideProfiles.map((p) => (
-                <article key={p.name} className="flex flex-col overflow-hidden rounded-[1.4rem] border border-white/8 bg-white/[0.04]">
-                  <div className="flex-1 p-6">
-                    <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}22`, color: p.color }}>
-                      <i className={p.icon} />{p.tag}
-                    </span>
-                    <h3 className="mt-5 font-display text-[2.8rem] font-semibold leading-none tracking-[-0.05em]">{p.name}</h3>
-                    <p className="mt-4 text-[15px] leading-6 text-white/55">{p.research}</p>
-                    <div className="mt-5 flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5">
-                      <i className="ri-flask-line text-sm" style={{ color: p.color }} />
-                      <p className="text-[13px] text-white/45"><strong className="text-white/70">Available as:</strong> {p.profile}</p>
-                    </div>
-                  </div>
-                  <div className="border-t border-white/8 bg-white/[0.02] p-6">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/30 mb-3">Owner voice</p>
-                    <blockquote>
-                      <p className="text-[15px] leading-6 text-white/65 italic [quotes:none]">{p.ownerStory.split(" - ")[0].replace(/^"|"$/g, "").trim()}</p>
-                      {p.ownerStory.includes(" - ") && (
-                        <cite className="mt-2 block text-xs not-italic text-white/35">- {p.ownerStory.split(" - ")[1]?.trim()}</cite>
-                      )}
-                    </blockquote>
-                    <Link href="#collection" className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.1em] transition hover:opacity-80" style={{ color: p.color }}>
-                      View compound <i className="ri-arrow-right-line" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── TESTIMONIALS ── */}
         <section id="testimonials" className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
@@ -332,20 +206,15 @@ export default function Home() {
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">From real dog owners</p>
                 <h2 className="mt-4 font-display text-[clamp(2.45rem,4vw,4.1rem)] font-medium leading-[0.98] tracking-[-0.045em]">They found it. <span className="font-serif italic text-[#A9C7FF]">Their dogs felt it.</span></h2>
               </div>
-              <div>
-                <div>
-                  <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 rounded-2xl border border-white/12 bg-white/[0.06] px-6 py-4 transition hover:bg-white/10">
-                    <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={36} height={36} className="h-9 w-auto rounded" />
-                    <div className="flex flex-col leading-tight">
-                      <small className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/45">Verified Peptide Reviews</small>
-                      <strong className="mt-1 text-base font-bold text-white">★★★★★ 4.9 <span className="font-normal text-white/55">· 712 verified reviews</span></strong>
-                    </div>
-                    <em className="ml-2 text-xs font-semibold text-[#A9C7FF] not-italic">Verify us ↗</em>
-                  </a>
+              <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 rounded-2xl border border-white/12 bg-white/[0.06] px-6 py-4 transition hover:bg-white/10">
+                <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={36} height={36} className="h-9 w-auto rounded" />
+                <div className="flex flex-col leading-tight">
+                  <small className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/45">Verified Peptide Reviews</small>
+                  <strong className="mt-1 text-base font-bold text-white">★★★★★ 4.9 <span className="font-normal text-white/55">· 712 verified reviews</span></strong>
                 </div>
-              </div>
+                <em className="ml-2 text-xs font-semibold text-[#A9C7FF] not-italic">Verify us ↗</em>
+              </a>
             </div>
-
             <div className="scrollbar-none -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
               {testimonialVideos.map((v) => (
                 <article key={v.name} className="group relative aspect-[9/16] w-[78vw] max-w-[315px] shrink-0 snap-start overflow-hidden rounded-[1.6rem] bg-[#0E1B2E]">
@@ -375,18 +244,45 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── TRUST BAR ── */}
-        <section className="bg-[#17233B] px-5 py-14 text-white md:px-10">
+        {/* ── PEPTIDE SCIENCE ── */}
+        <section id="science" className="bg-[#101829] px-5 py-20 text-white md:px-10 md:py-28">
           <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-8 md:grid-cols-4">
-              {trustStats.map((stat) => (
-                <div key={stat.value} className="flex items-center gap-5 md:flex-col md:items-start lg:flex-row lg:items-center">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white/10 text-xl text-[#A9C7FF]"><i className={stat.icon} /></span>
-                  <div>
-                    <p className="font-display text-3xl font-semibold">{stat.value}</p>
-                    <p className="mt-1 text-[13px] text-white/50">{stat.label}</p>
+            <div className="grid gap-8 border-b border-white/10 pb-14 lg:grid-cols-2 lg:items-end">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">What the research shows</p>
+                <h2 className="mt-5 font-display text-[clamp(2.5rem,4.3vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em]">How these peptides <span className="font-serif italic text-[#A9C7FF]">have been helping.</span></h2>
+              </div>
+              <div className="max-w-lg lg:justify-self-end">
+                <p className="text-base leading-7 text-white/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
+              </div>
+            </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {peptideProfiles.map((p) => (
+                <article key={p.name} className="flex flex-col overflow-hidden rounded-[1.4rem] border border-white/8 bg-white/[0.04]">
+                  <div className="flex-1 p-6">
+                    <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}22`, color: p.color }}>
+                      <i className={p.icon} />{p.tag}
+                    </span>
+                    <h3 className="mt-5 font-display text-[2.8rem] font-semibold leading-none tracking-[-0.05em]">{p.name}</h3>
+                    <p className="mt-4 text-[15px] leading-6 text-white/55">{p.research}</p>
+                    <div className="mt-5 flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5">
+                      <i className="ri-flask-line text-sm" style={{ color: p.color }} />
+                      <p className="text-[13px] text-white/45"><strong className="text-white/70">Available as:</strong> {p.profile}</p>
+                    </div>
                   </div>
-                </div>
+                  <div className="border-t border-white/8 bg-white/[0.02] p-6">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/30 mb-3">Owner voice</p>
+                    <blockquote>
+                      <p className="text-[15px] leading-6 text-white/65 italic [quotes:none]">{p.ownerStory.split(" - ")[0].replace(/^"|"$/g, "").trim()}</p>
+                      {p.ownerStory.includes(" - ") && (
+                        <cite className="mt-2 block text-xs not-italic text-white/35">- {p.ownerStory.split(" - ")[1]?.trim()}</cite>
+                      )}
+                    </blockquote>
+                    <Link href="#collection" className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.1em] transition hover:opacity-80" style={{ color: p.color }}>
+                      View compound <i className="ri-arrow-right-line" />
+                    </Link>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
