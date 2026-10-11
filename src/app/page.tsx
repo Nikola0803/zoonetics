@@ -131,49 +131,53 @@ function BrandMark({ light = false, endorsed = false, size = "md" }: { light?: b
 export default function Home() {
   return (
     <div className="min-h-screen overflow-hidden bg-[#F5F2EC] text-[#23324D]">
-      <header className="absolute inset-x-0 top-0 z-30 px-4 pt-4 text-white md:px-8 md:pt-6">
-        <div className="mx-auto flex h-16 max-w-[1420px] items-center justify-between rounded-full border border-white/15 bg-[#101829]/72 px-4 shadow-[0_18px_60px_rgba(16,24,41,0.18)] backdrop-blur-xl md:h-[4.5rem] md:px-6">
-          <Link href="#top" aria-label="ZooNetics home"><BrandMark light /></Link>
-          <nav className="hidden items-center gap-7 text-xs font-semibold uppercase tracking-[0.13em] lg:flex" aria-label="Main navigation">
-            <Link href="#collection" className="transition hover:text-[#A9C7FF]">K9 peptides</Link>
-            <Link href="#science" className="transition hover:text-[#A9C7FF]">The science</Link>
-            <Link href="#testimonials" className="transition hover:text-[#A9C7FF]">Reviews</Link>
-            <Link href="#before-after" className="transition hover:text-[#A9C7FF]">Before & After</Link>
-            <Link href="#questions" className="transition hover:text-[#A9C7FF]">FAQ</Link>
-            <Link href="/dosing" className="inline-flex items-center gap-1.5 rounded-full border border-[#A9C7FF]/35 px-3.5 py-1.5 text-[11px] transition hover:border-[#A9C7FF] hover:text-[#A9C7FF]"><i className="ri-syringe-line" />Dosing</Link>
+      <header className="sticky top-0 z-30 border-b border-[#17233B]/8 bg-[#F5F2EC] px-5 md:px-10">
+        <div className="mx-auto flex h-16 max-w-[1380px] items-center justify-between md:h-[4.5rem]">
+          <Link href="#top" aria-label="ZooNetics home"><BrandMark /></Link>
+          <nav className="hidden items-center gap-8 text-[11px] font-semibold uppercase tracking-[0.13em] text-[#17233B]/50 lg:flex" aria-label="Main navigation">
+            <Link href="#collection" className="transition hover:text-[#17233B]">K9 peptides</Link>
+            <Link href="#science" className="transition hover:text-[#17233B]">Science</Link>
+            <Link href="#testimonials" className="transition hover:text-[#17233B]">Reviews</Link>
+            <Link href="#before-after" className="transition hover:text-[#17233B]">Before &amp; After</Link>
+            <Link href="#questions" className="transition hover:text-[#17233B]">FAQ</Link>
           </nav>
-          <Link href="#collection" className="rounded-full bg-[#F5F2EC] px-6 py-3 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#A9C7FF]"><span className="sm:hidden">Shop</span><span className="hidden sm:inline">Shop now</span></Link>
+          <Link href="/shop/bpc-tb-500-blend-10mg" className="rounded-full bg-[#17233B] px-6 py-3 text-xs font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]"><span className="sm:hidden">Shop</span><span className="hidden sm:inline">Get K9 Rebuild</span></Link>
         </div>
       </header>
 
       <main id="top">
 
         {/* ── HERO ── */}
-        <section className="relative min-h-[780px] bg-[#17233B] text-white md:min-h-[900px]">
-          <Image src="/images/canis/hero-senior-lab.png" alt="A mature black Labrador enjoying a sunrise walk with its owner" fill priority sizes="100vw" className="object-cover object-[62%_center]" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,24,41,0.98)_0%,rgba(16,24,41,0.91)_30%,rgba(16,24,41,0.42)_62%,rgba(16,24,41,0.12)_100%)]" />
-          <div className="absolute -left-24 top-24 h-80 w-80 rounded-full bg-[#4F6EF7]/18 blur-3xl" />
-          <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#17233B] to-transparent" />
-          <div className="relative mx-auto flex min-h-[780px] max-w-[1480px] items-end px-5 pb-20 pt-32 md:min-h-[900px] md:items-center md:px-10 md:pb-8">
-            <div className="max-w-[780px]">
-              <p className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#B7C3FF]"><span className="h-px w-10 bg-[#B7C3FF]" /> For the dogs who still want to go</p>
-              <h1 className="max-w-[720px] font-display text-[clamp(3.35rem,7vw,6.8rem)] font-medium leading-[0.88] tracking-[-0.055em]">When they slow down,<span className="block font-serif italic text-[#A9C7FF]">you feel it.</span></h1>
-              <p className="mt-8 max-w-xl text-base leading-7 text-white/72 md:text-lg">For owners who&apos;ve moved past guessing. ZooNetics makes research-grade K9 peptides for the ones ready to act - independently verified purity, clean formats, and lot documentation before you buy.</p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Link href="#collection" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF8A72] px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#FFC0B0]">Shop the collection <i className="ri-arrow-right-line" /></Link>
-                <Link href="#before-after" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] transition hover:bg-white hover:text-[#17233B]">See before & after</Link>
+        <section className="bg-[#F5F2EC] px-5 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1380px]">
+            <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+              <div>
+                <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#17233B]/40">ZooNetics K9 research</p>
+                <h1 className="font-display text-[clamp(3.5rem,7vw,7.2rem)] font-semibold leading-[0.88] tracking-[-0.055em] text-[#17233B]">K9 peptides,<br /><span className="text-[#FF8A72]">made right.</span></h1>
+                <p className="mt-7 max-w-lg text-[17px] leading-7 text-[#17233B]/60">For owners who&apos;ve moved past guessing. Independently verified purity, clean formats, and lot documentation before you buy.</p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Get K9 Rebuild <i className="ri-arrow-right-line" /></Link>
+                  <Link href="#collection" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/25 px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#17233B] hover:text-white">See all compounds</Link>
+                </div>
+                <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-[#17233B]/10 pt-8">
+                  <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 transition hover:opacity-80">
+                    <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={22} height={22} className="h-5 w-auto rounded-sm" />
+                    <span className="text-[13px] font-bold text-[#17233B]">★★★★★ 4.9</span>
+                    <span className="text-[12px] text-[#17233B]/45">· 712 verified owners</span>
+                  </a>
+                  <span className="flex items-center gap-2 text-[12px] text-[#17233B]/40"><i className="ri-shield-check-line" /> RUO labeled</span>
+                  <span className="flex items-center gap-2 text-[12px] text-[#17233B]/40"><i className="ri-flask-line" /> HPLC tested</span>
+                </div>
               </div>
-              <div className="mt-10 flex flex-wrap items-center gap-5">
-                <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 py-3 backdrop-blur transition hover:bg-white/18">
-                  <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={28} height={28} className="h-7 w-auto rounded-sm" />
-                  <span className="flex flex-col leading-tight">
-                    <small className="text-[10px] font-bold uppercase tracking-[0.15em] text-white/50">Verified Peptide Reviews</small>
-                    <strong className="text-[14px] font-bold text-white tracking-tight">★★★★★ <span className="text-white/80">4.9 · 712 reviews</span></strong>
-                  </span>
-                  <em className="hidden text-[11px] font-semibold text-white/40 not-italic sm:block">Verify us ↗</em>
-                </a>
-                <span className="flex items-center gap-2 text-xs font-semibold text-white/40"><i className="ri-file-list-3-line" /> Lot-linked COAs</span>
-                <span className="flex items-center gap-2 text-xs font-semibold text-white/40"><i className="ri-shield-check-line" /> RUO labeled</span>
+              <div className="relative">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl md:rounded-3xl">
+                  <Image src="/images/canis/hero-senior-lab.png" alt="A mature Labrador on a morning walk" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-[62%_center]" />
+                </div>
+                <div className="absolute -bottom-4 -left-4 max-w-[230px] rounded-xl bg-white p-4 shadow-lg">
+                  <div className="flex gap-0.5 text-[#FF8A72]">{[...Array(5)].map((_, i) => <i key={i} className="ri-star-fill text-xs" />)}</div>
+                  <p className="mt-1.5 text-[13px] font-semibold leading-snug text-[#17233B]">&ldquo;Walk distance doubled by week 6.&rdquo;</p>
+                  <p className="mt-1 text-[11px] text-[#17233B]/45">Sarah K. · Golden Retriever, 9 yrs</p>
+                </div>
               </div>
             </div>
           </div>
@@ -280,6 +284,20 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── GUIDE CAPTURE ── */}
+        <section className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-24">
+          <div className="mx-auto max-w-[740px] text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A9C7FF]">For owners who document</p>
+            <h2 className="mt-4 font-display text-[clamp(2.4rem,4.5vw,4.5rem)] font-semibold leading-[0.96] tracking-[-0.04em]">Get the free<br />K9 research guide.</h2>
+            <p className="mt-5 text-[16px] leading-7 text-white/50">Dosing frameworks, observation checklists, and vet conversation templates. Free for ZooNetics owners.</p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <input type="email" placeholder="your@email.com" className="flex-1 rounded-full border border-white/15 bg-white/10 px-6 py-4 text-[15px] text-white outline-none placeholder:text-white/30 focus:border-white/40 sm:rounded-r-none sm:border-r-0" />
+              <button type="button" className="rounded-full bg-[#FF8A72] px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-white sm:rounded-l-none">Get the guide</button>
+            </div>
+            <p className="mt-4 text-[12px] text-white/25">Free. No spam. Unsubscribe anytime.</p>
+          </div>
+        </section>
+
         {/* ── REVIEWS ── */}
         <section id="testimonials" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
@@ -361,10 +379,10 @@ export default function Home() {
         <section id="questions" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#FF8A72]">Straight answers</p>
               <h2 className="mt-3 font-display text-[clamp(2.2rem,3.2vw,3.4rem)] font-medium leading-[1.05] tracking-[-0.04em] text-[#17233B]">The questions owners actually ask.</h2>
               <p className="mt-5 text-[15px] leading-7 text-[#17233B]/50">Compounds, blends vs singles, what RUO means, COAs, cycles. No hedging.</p>
-              <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#4F6EF7]">Shop the collection <i className="ri-arrow-right-line" /></Link>
+              <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Shop the collection <i className="ri-arrow-right-line" /></Link>
             </div>
             <div className="border-t border-[#17233B]/15">
               {faqs.map(([question, answer]) => (

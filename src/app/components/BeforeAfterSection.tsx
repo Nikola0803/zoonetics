@@ -23,9 +23,9 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
         {/* Header */}
         <div className="flex flex-wrap items-end justify-between gap-4 pb-12">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Owner observations</p>
-            <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">
-              See the <span className="font-serif italic text-[#4F6EF7]">difference.</span>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#FF8A72]">Owner observations</p>
+            <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[#17233B]">
+              See the difference.
             </h2>
           </div>
           <div className="flex gap-2">
