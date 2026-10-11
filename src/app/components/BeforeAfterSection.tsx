@@ -18,7 +18,7 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
   const initials = pair.owner.split(" ").map((w) => w[0]).join("").slice(0, 2);
 
   return (
-    <section id="before-after" className="bg-[#0D1726] px-5 py-20 md:px-10 md:py-28">
+    <section id="before-after" className="bg-[#17233B] px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1380px]">
 
         {/* Header row */}
@@ -68,9 +68,9 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-[0.72] saturate-[0.55]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1726]/90 via-[#0D1726]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17233B]/90 via-[#17233B]/20 to-transparent" />
                 <div className="absolute inset-0 bg-[#D95858]/10" />
-                <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-[#0D1726]/75 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#FF8A72] backdrop-blur-sm">
+                <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-[#17233B]/75 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#FF8A72] backdrop-blur-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#FF8A72]" />
                   Week {pair.before.week}
                 </span>
@@ -96,8 +96,8 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1726]/80 via-transparent to-transparent" />
-                <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-[#0D1726]/75 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#A9C7FF] backdrop-blur-sm">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#17233B]/80 via-transparent to-transparent" />
+                <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-[#17233B]/75 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#A9C7FF] backdrop-blur-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#A9C7FF]" />
                   Week {pair.after.week}
                 </span>
@@ -115,7 +115,7 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
           </div>
 
           {/* Footer bar */}
-          <div className="flex flex-wrap items-center justify-between gap-5 border-t border-white/8 bg-[#0D1726] px-8 py-5">
+          <div className="flex flex-wrap items-center justify-between gap-5 border-t border-white/8 bg-[#17233B] px-8 py-5">
             <div className="flex flex-wrap items-center gap-5">
               <div className="flex items-center gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/8 text-sm font-bold text-white">

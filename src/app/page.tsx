@@ -191,10 +191,7 @@ export default function Home() {
               <p className="mt-5 max-w-2xl text-base leading-7 text-[#23324D]/65">Six K9 research profiles, each with clear formats, visible purity data, and lot-level COA access before checkout.</p>
             </div>
             <ProductCarousel products={products} />
-            <div className="mt-5 flex gap-4 rounded-2xl bg-[#17233B] p-5 text-white md:items-center md:px-7">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#FF8A72] text-lg text-[#17233B]"><i className="ri-microscope-line" /></span>
-              <p className="max-w-5xl text-sm leading-6 text-white/62"><strong className="text-white">Research use only.</strong> These materials are not approved veterinary medicines and are not intended for administration to humans or animals.</p>
-            </div>
+            <p className="mt-3 text-[11px] leading-6 text-[#23324D]/45"><strong className="text-[#23324D]/60">Research use only.</strong> These materials are not approved veterinary medicines and are not intended for administration to humans or animals.</p>
           </div>
         </section>
 
@@ -256,52 +253,35 @@ export default function Home() {
                 <p className="text-base leading-7 text-white/50">Preclinical and animal model research only, not veterinary outcomes. We share it so you can research with context, not guesswork.</p>
               </div>
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
+            <div className="mt-12 grid gap-px border border-white/8 md:grid-cols-3">
               {peptideProfiles.map((p) => (
-                <article key={p.name} className="flex flex-col overflow-hidden rounded-[1.4rem] border border-white/8 bg-white/[0.04]">
-                  <div className="flex-1 p-6">
-                    <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}22`, color: p.color }}>
-                      <i className={p.icon} />{p.tag}
-                    </span>
-                    <h3 className="mt-5 font-display text-[2.8rem] font-semibold leading-none tracking-[-0.05em]">{p.name}</h3>
-                    <p className="mt-4 text-[15px] leading-6 text-white/55">{p.research}</p>
-                    <div className="mt-5 flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5">
-                      <i className="ri-flask-line text-sm" style={{ color: p.color }} />
-                      <p className="text-[13px] text-white/45"><strong className="text-white/70">Available as:</strong> {p.profile}</p>
-                    </div>
-                  </div>
-                  <div className="border-t border-white/8 bg-white/[0.02] p-6">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/30 mb-3">Owner voice</p>
-                    <blockquote>
-                      <p className="text-[15px] leading-6 text-white/65 italic [quotes:none]">{p.ownerStory.split(" - ")[0].replace(/^"|"$/g, "").trim()}</p>
-                      {p.ownerStory.includes(" - ") && (
-                        <cite className="mt-2 block text-xs not-italic text-white/35">- {p.ownerStory.split(" - ")[1]?.trim()}</cite>
-                      )}
-                    </blockquote>
-                    <Link href="#collection" className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.1em] transition hover:opacity-80" style={{ color: p.color }}>
-                      View compound <i className="ri-arrow-right-line" />
-                    </Link>
-                  </div>
-                </article>
+                <div key={p.name} className="flex flex-col gap-5 bg-white/[0.03] p-8">
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}20`, color: p.color }}>
+                    <i className={p.icon} />{p.tag}
+                  </span>
+                  <h3 className="font-display text-[2.6rem] font-semibold leading-none tracking-[-0.05em]">{p.name}</h3>
+                  <p className="text-[14px] leading-6 text-white/50">{p.research}</p>
+                  <p className="mt-auto text-[12px] text-white/35"><span className="text-white/55">Available as:</span> {p.profile}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* ── FAQ ── */}
-        <section id="questions" className="bg-[#FBFCFF] px-5 py-20 md:px-10 md:py-28">
+        <section id="questions" className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-28">
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF8A72]">Straight answers</p>
               <h2 className="mt-4 font-display text-[clamp(2.35rem,3.5vw,3.75rem)] font-medium leading-[1.02] tracking-[-0.04em]">The questions owners actually ask.</h2>
-              <p className="mt-6 max-w-sm text-[15px] leading-7 text-[#23324D]/62">Compounds, blends vs singles, what RUO means, COAs, cycles, and why we keep the range focused. No hedging.</p>
-              <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#4F6EF7]">Shop the collection <i className="ri-arrow-right-line" /></Link>
+              <p className="mt-6 max-w-sm text-[15px] leading-7 text-white/50">Compounds, blends vs singles, what RUO means, COAs, cycles, and why we keep the range focused. No hedging.</p>
+              <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#A9C7FF]">Shop the collection <i className="ri-arrow-right-line" /></Link>
             </div>
-            <div className="border-t border-[#17233B]/20">
+            <div className="border-t border-white/15">
               {faqs.map(([question, answer]) => (
-                <details key={question} className="group border-b border-[#17233B]/20 py-6">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.15rem] font-semibold tracking-[-0.025em] md:text-[1.35rem]">{question}<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#17233B]/25 text-sm transition group-open:rotate-45">+</span></summary>
-                  <p className="max-w-2xl pt-5 text-base leading-7 text-[#23324D]/65">{answer}</p>
+                <details key={question} className="group border-b border-white/15 py-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.15rem] font-semibold tracking-[-0.025em] md:text-[1.35rem]">{question}<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/25 text-sm transition group-open:rotate-45">+</span></summary>
+                  <p className="max-w-2xl pt-5 text-base leading-7 text-white/55">{answer}</p>
                 </details>
               ))}
             </div>
