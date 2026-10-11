@@ -14,6 +14,7 @@ export type QuickVariant = {
 export type Product = {
   name: string;
   formula: string;
+  image: string;
   type: string;
   lane: "mobility" | "skin" | "single";
   focus: string;
@@ -24,11 +25,10 @@ export type Product = {
   ink: string;
 };
 
-function ProductVial({ color, ink, name, compact = false }: Pick<Product, "color" | "ink" | "name"> & { compact?: boolean }) {
+function ProductVial({ image, name, compact = false }: Pick<Product, "image" | "name"> & { compact?: boolean }) {
   return (
-    <div className={`relative mx-auto ${compact ? "h-40 w-28" : "h-52 w-36"}`} aria-hidden style={{ color: ink }}>
-      <Image src="/images/canis/zoonetics-vial.png" alt="" fill sizes={compact ? "112px" : "144px"} className="object-contain" />
-      <p className={`absolute left-1/2 top-[58%] -translate-x-1/2 text-center font-display font-bold leading-tight tracking-[-0.02em] drop-shadow ${compact ? "w-20 text-[8px]" : "w-24 text-[10px]"}`} style={{ color: color === "#17233B" ? "#FFFFFF" : ink }}>{name}</p>
+    <div className={`relative mx-auto ${compact ? "h-44 w-32" : "h-64 w-44"}`}>
+      <Image src={image} alt={`${name} ZooNetics vial`} fill sizes={compact ? "128px" : "176px"} className="object-contain drop-shadow-[0_18px_20px_rgba(0,0,0,0.28)]" />
     </div>
   );
 }
@@ -115,7 +115,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
             <div className="relative grid min-h-[190px] place-items-center overflow-hidden bg-[radial-gradient(circle_at_50%_35%,#26324A_0%,#101829_58%,#090C12_100%)] px-4 pt-7">
               <div className="absolute left-3 top-3 flex items-center gap-1.5"><span className="rounded-full bg-[#FBFAFF] px-2.5 py-1.5 text-[8px] font-bold uppercase tracking-[0.12em] text-[#17233B]">{product.type}</span><span className="rounded-full border border-white/30 bg-white/15 px-2 py-1.5 text-[8px] font-bold uppercase tracking-[0.12em] text-white/75">RUO</span></div>
               <span className="absolute right-3 top-4 text-[9px] font-bold text-white/35">0{index + 1}</span>
-              <ProductVial color={product.color} ink={product.ink} name={product.name} compact />
+              <ProductVial image={product.image} name={product.name} compact />
               <div className="absolute inset-x-0 bottom-0 h-9 bg-gradient-to-t from-[#D7DEEF] to-transparent" />
             </div>
             <div className="p-4">
@@ -166,7 +166,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
                 {/* Left — vial visual */}
                 <div className="relative flex min-h-[280px] flex-col items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_30%,#26324A_0%,#101829_55%,#090C12_100%)] px-8 py-12 lg:min-h-0">
                   <span className="absolute left-5 top-5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur">RUO · K9 research</span>
-                  <ProductVial color={selectedProduct.color} ink={selectedProduct.ink} name={selectedProduct.name} />
+                  <ProductVial image={selectedProduct.image} name={selectedProduct.name} />
                   <div className="mt-6 w-full rounded-2xl border border-white/12 bg-white/8 p-5 backdrop-blur">
                     <div className="flex items-center gap-3 border-b border-white/10 pb-4">
                       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#25734A]/20 text-sm text-[#4FCB7A]"><i className="ri-checkbox-circle-fill" /></span>

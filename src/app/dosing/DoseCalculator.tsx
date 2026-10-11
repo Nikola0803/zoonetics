@@ -5,11 +5,12 @@ import Link from "next/link";
 // ── Compound definitions ────────────────────────────────────────────────────
 
 const COMPOUNDS = [
-  { id: "long-run", name: "The Long Run", sub: "BPC-157 + TB-500", color: "#4F6EF7", parts: ["bpc", "tb"] as const },
-  { id: "bpc-157",  name: "BPC-157",      sub: "Pentadecapeptide",  color: "#4F6EF7", parts: ["bpc"]       as const },
-  { id: "tb-500",   name: "TB-500",        sub: "Thymosin β4",       color: "#5A7A9E", parts: ["tb"]        as const },
-  { id: "ghk-cu",   name: "GHK-Cu",        sub: "Copper peptide",    color: "#7C5CBF", parts: ["ghk"]       as const },
-  { id: "matrix",   name: "Matrix Pair",   sub: "GHK-Cu + KPV",      color: "#7C5CBF", parts: ["ghk","kpv"] as const },
+  { id: "k9-rebuild", name: "K9 Rebuild", sub: "BPC-157 + TB-500", color: "#FF8A72", parts: ["bpc", "tb"] as const },
+  { id: "k9-reforge", name: "K9 Reforge", sub: "BPC-157", color: "#72A7FF", parts: ["bpc"] as const },
+  { id: "k9-reload", name: "K9 Reload", sub: "TB-500", color: "#8FB4D5", parts: ["tb"] as const },
+  { id: "k9-restore", name: "K9 Restore", sub: "GHK-Cu", color: "#B7A0FF", parts: ["ghk"] as const },
+  { id: "k9-reclaim", name: "K9 Reclaim", sub: "KPV", color: "#77C9A1", parts: ["kpv"] as const },
+  { id: "k9-recast", name: "K9 Recast", sub: "GHK-Cu + BPC-157 + TB-500", color: "#F0B76F", parts: ["ghk", "bpc", "tb"] as const },
 ];
 
 type PartId = "bpc" | "tb" | "ghk" | "kpv";
@@ -22,14 +23,14 @@ const PARTS: Record<PartId, {
 }> = {
   bpc: {
     label: "BPC-157", unit: "mcg", color: "#4F6EF7",
-    defaultVialMg: 10, vialOptions: [5, 10],
+    defaultVialMg: 10, vialOptions: [5, 10, 20],
     frequency: "Once daily", cycle: "5 days on · 2 off · 6–8 weeks",
     flat: false,
     calc: (kg) => ({ low: Math.round(kg * 5), mid: Math.round(kg * 10), high: Math.round(kg * 15) }),
   },
   tb: {
     label: "TB-500", unit: "mg", color: "#5A7A9E",
-    defaultVialMg: 10, vialOptions: [5, 10],
+    defaultVialMg: 10, vialOptions: [5, 10, 20],
     frequency: "2× weekly → 1× weekly", cycle: "6–8 weeks",
     flat: false,
     calc: (kg) => ({
@@ -218,7 +219,7 @@ function SyringeGauge({
 // ── Main component ───────────────────────────────────────────────────────────
 
 export default function DoseCalculator() {
-  const [selectedId, setSelectedId] = useState("long-run");
+  const [selectedId, setSelectedId] = useState("k9-rebuild");
   const [weightVal,  setWeightVal]  = useState("");
   const [weightUnit, setWeightUnit] = useState<"lb" | "kg">("lb");
   const [vials,  setVials]  = useState<Partial<Record<PartId, number>>>({});
