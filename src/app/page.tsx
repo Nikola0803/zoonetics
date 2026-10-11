@@ -130,7 +130,7 @@ function BrandMark({ light = false, endorsed = false, size = "md" }: { light?: b
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-hidden bg-[#F6F7FC] text-[#23324D]">
+    <div className="min-h-screen overflow-hidden bg-[#F5F2EC] text-[#23324D]">
       <header className="absolute inset-x-0 top-0 z-30 px-4 pt-4 text-white md:px-8 md:pt-6">
         <div className="mx-auto flex h-16 max-w-[1420px] items-center justify-between rounded-full border border-white/15 bg-[#101829]/72 px-4 shadow-[0_18px_60px_rgba(16,24,41,0.18)] backdrop-blur-xl md:h-[4.5rem] md:px-6">
           <Link href="#top" aria-label="ZooNetics home"><BrandMark light /></Link>
@@ -142,7 +142,7 @@ export default function Home() {
             <Link href="#questions" className="transition hover:text-[#A9C7FF]">FAQ</Link>
             <Link href="/dosing" className="inline-flex items-center gap-1.5 rounded-full border border-[#A9C7FF]/35 px-3.5 py-1.5 text-[11px] transition hover:border-[#A9C7FF] hover:text-[#A9C7FF]"><i className="ri-syringe-line" />Dosing</Link>
           </nav>
-          <Link href="#collection" className="rounded-full bg-[#F6F7FC] px-6 py-3 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#A9C7FF]"><span className="sm:hidden">Shop</span><span className="hidden sm:inline">Shop now</span></Link>
+          <Link href="#collection" className="rounded-full bg-[#F5F2EC] px-6 py-3 text-xs font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#A9C7FF]"><span className="sm:hidden">Shop</span><span className="hidden sm:inline">Shop now</span></Link>
         </div>
       </header>
 
@@ -199,21 +199,24 @@ export default function Home() {
         </div>
 
         {/* ── THE PROBLEM ── */}
-        <section className="bg-white px-5 py-20 md:px-10 md:py-28">
+        <section className="bg-[#F5F2EC] px-5 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-10 md:grid-cols-[340px_1fr] md:items-center md:gap-16 lg:gap-24">
+            <div className="grid gap-8 md:grid-cols-[1fr_1.3fr] md:items-start md:gap-16 lg:gap-20">
               {/* Statement block */}
-              <div className="rounded-2xl bg-[#17233B] p-10 text-white md:p-12">
+              <div className="rounded-2xl bg-[#17233B] p-10 text-white md:p-14">
                 <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">The signal</p>
-                <p className="mt-5 font-display text-[3rem] font-semibold leading-[1.05] tracking-[-0.04em] md:text-[3.4rem]">Slowing<br />down isn&apos;t<br /><span className="text-[#A9C7FF]">old age.</span></p>
-                <p className="mt-6 text-[14px] leading-6 text-white/45">Shorter walks. The pause before the stairs. Two minutes to get moving. These are signals - not inevitabilities.</p>
+                <p className="mt-6 font-display text-[4rem] font-semibold leading-[0.92] tracking-[-0.045em] md:text-[5.2rem]">Slowing<br />down<br />isn&apos;t<br /><span className="text-[#A9C7FF]">old age.</span></p>
+                <p className="mt-8 text-[15px] leading-7 text-white/45">Shorter walks. The pause before the stairs. Two minutes to get moving in the morning. These are signals, not inevitabilities.</p>
+                <div className="mt-10 border-t border-white/12 pt-8">
+                  <Link href="#collection" className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#A9C7FF]">See the compounds <i className="ri-arrow-right-line" /></Link>
+                </div>
               </div>
               {/* Copy side */}
-              <div>
+              <div className="pt-0 md:pt-2">
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What research-focused owners do</p>
-                <h2 className="mt-3 font-display text-[clamp(1.9rem,3.2vw,3.2rem)] font-medium leading-[1.05] tracking-[-0.04em] text-[#17233B]">Owners who start documenting early <span className="font-serif italic text-[#4F6EF7]">have the most to work with.</span></h2>
-                <p className="mt-6 max-w-xl text-[15px] leading-7 text-[#17233B]/55">BPC-157 and TB-500 are among the most referenced peptides in animal model research on connective tissue, joint pathways, and recovery. ZooNetics sources and independently tests every compound - so you research with verified data, not guesswork.</p>
-                <div className="mt-8 grid gap-3">
+                <h2 className="mt-4 font-display text-[clamp(2.4rem,4vw,4.2rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">Owners who start<br />documenting early<br /><span className="font-serif italic text-[#4F6EF7]">have the most to work with.</span></h2>
+                <p className="mt-7 max-w-lg text-[16px] leading-7 text-[#17233B]/55">BPC-157 and TB-500 are among the most referenced peptides in animal model research on connective tissue, joint pathways, and recovery. ZooNetics independently tests every lot - so you research with verified data, not guesswork.</p>
+                <div className="mt-8 grid gap-4">
                   {[
                     "Lot-level COA linked before every purchase",
                     "Singles to isolate, blends to combine - your protocol",
@@ -221,13 +224,23 @@ export default function Home() {
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <i className="ri-check-line mt-0.5 shrink-0 text-[#4F6EF7]" />
-                      <p className="text-[14px] leading-6 text-[#17233B]/65">{item}</p>
+                      <p className="text-[15px] leading-6 text-[#17233B]/65">{item}</p>
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link href="#collection" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#4F6EF7]">See the compounds <i className="ri-arrow-right-line" /></Link>
-                  <Link href="#before-after" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/25 px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:border-[#17233B] hover:bg-[#17233B] hover:text-white">Owner observations</Link>
+                <div className="mt-10 grid grid-cols-3 gap-6 border-t border-[#17233B]/12 pt-10">
+                  <div>
+                    <p className="font-display text-[2.6rem] font-semibold leading-none tracking-[-0.04em] text-[#17233B]">6-12</p>
+                    <p className="mt-2 text-[12px] leading-5 text-[#17233B]/45">weeks in published animal model protocols</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-[2.6rem] font-semibold leading-none tracking-[-0.04em] text-[#17233B]">99.6<span className="text-[1.6rem]">%+</span></p>
+                    <p className="mt-2 text-[12px] leading-5 text-[#17233B]/45">HPLC purity per lot, verified before shipping</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-[2.6rem] font-semibold leading-none tracking-[-0.04em] text-[#17233B]">3rd</p>
+                    <p className="mt-2 text-[12px] leading-5 text-[#17233B]/45">party independent lab testing on every batch</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -238,7 +251,7 @@ export default function Home() {
         <BeforeAfterSection pairs={beforeAfterPairs} />
 
         {/* ── PRODUCTS ── */}
-        <section id="collection" className="relative overflow-hidden bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
+        <section id="collection" className="relative overflow-hidden bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
             <div className="pb-2">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">K9 research peptides and blends</p>
@@ -275,7 +288,7 @@ export default function Home() {
         </section>
 
         {/* ── TESTIMONIALS ── */}
-        <section id="testimonials" className="bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
+        <section id="testimonials" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
             <div className="pb-10">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">From real dog owners</p>
@@ -320,22 +333,22 @@ export default function Home() {
         </section>
 
         {/* ── PEPTIDE SCIENCE ── */}
-        <section id="science" className="bg-white px-5 py-20 md:px-10 md:py-24">
+        <section id="science" className="bg-[#101829] px-5 py-20 text-white md:px-10 md:py-24">
           <div className="mx-auto max-w-[1380px]">
             <div className="pb-10">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">What the research shows</p>
-              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-[#17233B]">How these peptides <span className="font-serif italic text-[#4F6EF7]">have been helping.</span></h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#17233B]/50">Preclinical and animal model research only. We share it so you can research with context, not guesswork.</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">What the research shows</p>
+              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-medium leading-[1.0] tracking-[-0.04em] text-white">How these peptides <span className="font-serif italic text-[#A9C7FF]">have been studied.</span></h2>
+              <p className="mt-4 max-w-xl text-[15px] leading-7 text-white/40">Preclinical and animal model research only. We share it so you can research with context, not guesswork.</p>
             </div>
-            <div className="mt-12 grid gap-4 md:grid-cols-3">
+            <div className="grid gap-px bg-white/8 md:grid-cols-3">
               {peptideProfiles.map((p) => (
-                <div key={p.name} className="flex flex-col gap-5 rounded-2xl border border-[#17233B]/10 bg-white p-8 shadow-[0_4px_20px_rgba(23,35,59,0.05)]">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}15`, color: p.color }}>
+                <div key={p.name} className="flex flex-col gap-5 bg-[#101829] p-8 md:p-10">
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}20`, color: p.color }}>
                     <i className={p.icon} />{p.tag}
                   </span>
-                  <h3 className="font-display text-[2.4rem] font-semibold leading-none tracking-[-0.05em] text-[#17233B]">{p.name}</h3>
-                  <p className="text-[14px] leading-6 text-[#17233B]/55">{p.research}</p>
-                  <p className="mt-auto border-t border-[#17233B]/8 pt-5 text-[12px] text-[#17233B]/40"><span className="font-semibold text-[#17233B]/60">Available as:</span> {p.profile}</p>
+                  <h3 className="font-display text-[3rem] font-semibold leading-none tracking-[-0.05em] text-white">{p.name}</h3>
+                  <p className="text-[14px] leading-6 text-white/45">{p.research}</p>
+                  <p className="mt-auto border-t border-white/8 pt-5 text-[12px] text-white/25"><span className="font-semibold text-white/40">Available as:</span> {p.profile}</p>
                 </div>
               ))}
             </div>
@@ -343,7 +356,7 @@ export default function Home() {
         </section>
 
         {/* ── FAQ ── */}
-        <section id="questions" className="bg-[#F6F7FC] px-5 py-20 md:px-10 md:py-24">
+        <section id="questions" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
           <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D95858]">Straight answers</p>

@@ -17,7 +17,7 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
   const pair = pairs[index];
 
   return (
-    <section id="before-after" className="bg-white px-5 py-20 md:px-10 md:py-24">
+    <section id="before-after" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1380px]">
 
         {/* Header */}
@@ -53,7 +53,7 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
           style={{ animation: "baFadeIn 0.38s ease both" }}
         >
           {/* BEFORE */}
-          <div className="bg-white pb-10 pr-0 md:pr-10">
+          <div className="bg-[#F5F2EC] pb-10 pr-0 md:pr-10">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src={pair.before.image}
@@ -76,7 +76,7 @@ export default function BeforeAfterSection({ pairs }: { pairs: BeforeAfterPair[]
           </div>
 
           {/* AFTER */}
-          <div className="bg-white pb-10 pl-0 md:pl-10">
+          <div className="bg-[#F5F2EC] pb-10 pl-0 md:pl-10">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src={pair.after.image}
