@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ResearchProfileTabs from "./components/ResearchProfileTabs";
+import VideoProofSection from "./components/VideoProofSection";
 
 // ── PALETTE ──────────────────────────────────────────────────────────────────
 const D  = "#10243D";   // clinical navy: headlines, body, buttons
@@ -64,7 +65,7 @@ export default function Home() {
       <div className="overflow-hidden px-5 py-2.5 text-center" style={{ background: D }}>
         <p className="text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: "rgba(248,244,238,0.65)" }}>
           Launch access is open · independently tested K9 research products.{" "}
-          <Link href="/shop/bpc-tb-500-blend-10mg" className="underline underline-offset-2" style={{ color: CR }}>explore K9 Rebuild →</Link>
+          <Link href="/shop" className="underline underline-offset-2" style={{ color: CR }}>explore the K9 product line →</Link>
         </p>
       </div>
 
@@ -80,17 +81,17 @@ export default function Home() {
           <nav className="hidden items-center gap-8 text-[14px] font-bold lg:flex" aria-label="Main navigation">
             <Link href="#signal" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Why ZOONETICS</Link>
             <Link href="#care-path" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>How It Works</Link>
-            <Link href="#product" className="transition hover:opacity-80" style={{ color: `${D}99` }}>K9 Rebuild</Link>
+            <Link href="/shop" className="transition hover:opacity-80" style={{ color: `${D}99` }}>K9 Product Line</Link>
             <Link href="#product" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Research Profiles</Link>
             <Link href="#creators" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Owner Stories</Link>
             <Link href="#questions" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>FAQ</Link>
           </nav>
           <div className="flex items-center gap-5">
             <Link href="/account" className="hidden text-[13px] font-bold lg:block" style={{ color: `${D}A8` }}>Account</Link>
-            <Link href="/shop/bpc-tb-500-blend-10mg"
+            <Link href="/shop"
               className="rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] transition"
               style={{ background: D, color: CR }}>
-              <span className="sm:hidden">shop</span><span className="hidden sm:inline">get k9 rebuild</span>
+              <span className="sm:hidden">shop</span><span className="hidden sm:inline">shop all products</span>
             </Link>
           </div>
         </div>
@@ -113,8 +114,8 @@ export default function Home() {
                 Independently tested peptide profiles for canine research. Built around mobility, tissue-repair, inflammatory, and recovery pathways. Every lot is identity and purity verified before it reaches the shelf.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-extrabold text-[#081624] transition hover:bg-[#DDE7FF]">
-                  Explore K9 Rebuild
+                <Link href="/shop" className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-extrabold text-[#081624] transition hover:bg-[#DDE7FF]">
+                  Explore K9 Product Line
                 </Link>
                 <Link href="#care-path" className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10">
                   See What&apos;s In The Kit
@@ -128,7 +129,7 @@ export default function Home() {
             </div>
 
             <div className="relative min-h-[560px] lg:min-h-[780px]">
-              <Image src="/images/zoonetics-premium/hero-senior-lab-v2.png" alt="Senior black Labrador preparing for a morning walk with its owner" fill priority sizes="(max-width: 1024px) 100vw, 54vw" className="object-cover object-center" />
+              <Image src="/images/zoonetics-premium/hero-owner-lab-v3.png" alt="Senior black Labrador preparing for a morning walk with its owner" fill priority sizes="(max-width: 1024px) 100vw, 54vw" className="object-cover object-[78%_center]" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/70 via-transparent to-[#081624]/10 lg:bg-gradient-to-r lg:from-[#081624] lg:via-[#081624]/5 lg:to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 grid grid-cols-2 gap-3 md:bottom-10 md:left-10 md:right-10">
                 <div className="rounded-2xl border border-white/20 bg-[#081624]/78 p-5 text-white backdrop-blur-xl">
@@ -146,60 +147,53 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Narrative bridge between the aspirational hero and the evidence-led story. */}
+        <section className="bg-white px-5 py-16 md:px-10 md:py-24">
+          <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
+            <div>
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>It Usually Starts Small</p>
+              <h2 className="mt-5 max-w-xl font-display text-[clamp(2.6rem,4vw,4.2rem)] font-extrabold leading-[0.98] tracking-[-0.05em]" style={{ color: D }}>You notice it before anyone else does.</h2>
+              <p className="mt-6 max-w-md text-[16px] font-medium leading-8" style={{ color: `${D}8F` }}>Not a diagnosis. Not one dramatic event. Just a few ordinary moments that no longer feel quite ordinary.</p>
+              <div className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#EEF3FF] px-5 py-3 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#4F6EF7]"><span className="h-2 w-2 rounded-full bg-[#4F6EF7]" /> Keep watching the same moments</div>
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-[#17233B]/8 bg-[#F5F7FC] shadow-[0_24px_70px_rgba(23,35,59,0.08)]">
+              {[
+                ["01", "Morning", "Takes longer to stand", "ri-sun-line"],
+                ["02", "The usual walk", "Turns around one block earlier", "ri-footprint-line"],
+                ["03", "Back at home", "Pauses before the stairs", "ri-home-5-line"],
+              ].map(([n, moment, observation, icon], index) => (
+                <div key={n} className={`grid grid-cols-[52px_1fr_auto] items-center gap-4 px-5 py-6 md:px-7 ${index < 2 ? "border-b border-[#17233B]/8" : ""}`}>
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-lg text-[#4F6EF7] shadow-sm"><i className={icon} /></span>
+                  <div><p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#17233B]/38">{moment}</p><p className="mt-1 font-display text-lg font-extrabold tracking-[-0.02em] text-[#17233B] md:text-xl">{observation}</p></div>
+                  <span className="font-display text-3xl font-extrabold text-[#17233B]/8">{n}</span>
+                </div>
+              ))}
+              <div className="flex items-center justify-between gap-4 bg-[#17233B] px-6 py-5 text-white md:px-7"><p className="font-display text-lg font-extrabold">One day is a moment. A week becomes a pattern.</p><i className="ri-arrow-down-line text-xl text-[#A9C7FF]" /></div>
+            </div>
+          </div>
+        </section>
+
         {/* ── THE SIGNAL ── */}
-        <section id="signal" className="px-5 py-20 md:px-10 md:py-28" style={{ background: CR }}>
-          <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-10 md:grid-cols-2 md:items-start md:gap-16">
-
-              {/* Stat box */}
-              <div className="p-8 md:p-10" style={{ background: MD }}>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: `${CR}80` }}>The clear signal</p>
-                <p className="mt-4 font-display text-[6rem] font-bold leading-none tracking-[-0.06em]" style={{ color: CR }}>1 in 2</p>
-                <p className="mt-3 text-[14px] leading-6" style={{ color: `${CR}D1` }}>dogs over eight have arthritis on x-ray.</p>
-                <div className="mt-8 space-y-3">
-                  {[["elbow", "57.4"], ["shoulder", "39.2"], ["stifle (knee)", "36.4"], ["hip", "35.9"]].map(([joint, pct]) => (
-                    <div key={String(joint)}>
-                      <div className="mb-1 flex justify-between text-[11px]">
-                        <span style={{ color: `${CR}B8` }}>{joint}</span>
-                        <span style={{ color: `${CR}70` }}>{pct}%</span>
-                      </div>
-                      <div className="h-[3px] w-full rounded-full" style={{ background: `${CR}18` }}>
-                        <div className="h-[3px] rounded-full" style={{ width: `${Number(pct)}%`, background: AM }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-[11px] leading-5" style={{ color: `${CR}80` }}>But joint wear is rarely the first thing we notice in dogs.</p>
-                <p className="mt-3 text-[10px] leading-5" style={{ color: `${CR}70` }}>by joint, in dogs over eight · Roitner et al., The Veterinary Journal, 2024</p>
+        <section id="signal" className="overflow-hidden bg-[#101829] text-white">
+          <div className="grid lg:min-h-[700px] lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative min-h-[500px] lg:min-h-full">
+              <Image src="/images/zoonetics-premium/early-signals-v1.png" alt="Dog owner noticing a change in her dog's daily movement" fill sizes="(max-width: 1024px) 100vw, 53vw" className="object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#101829] via-[#101829]/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#101829]" />
+              <div className="absolute bottom-6 left-5 right-5 rounded-[24px] border border-white/15 bg-[#101829]/80 p-6 backdrop-blur-xl md:bottom-10 md:left-10 md:max-w-md">
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">The First Signs Are Small</p>
+                <div className="mt-5 grid grid-cols-3 gap-4 text-sm font-bold"><span>Pauses<br /><small className="font-medium text-white/50">at stairs</small></span><span>Shorter<br /><small className="font-medium text-white/50">walks</small></span><span>Slower<br /><small className="font-medium text-white/50">to stand</small></span></div>
               </div>
-
-              {/* Headline + copy */}
-              <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>The gap between visits</p>
-                <h2 className="mt-4 font-display text-[clamp(2.8rem,5.5vw,5.5rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ color: D }}>
-                  Decline starts<br /><span className="font-serif font-medium italic" style={{ color: AM }}>quietly.</span>
-                </h2>
-                <p className="mt-7 max-w-xl text-[17px] font-medium leading-8" style={{ color: `${D}B8` }}>
-                  Dogs rarely give us one dramatic warning. They give us twenty small ones: the pause at the stairs, the shorter route, the extra second before standing. The problem is not noticing. It is remembering the pattern clearly enough to act on it.
-                </p>
-
-                {/* 3 mini stats */}
-                <div className="mt-10 grid grid-cols-3 gap-6 border-t pt-10" style={{ borderColor: `${D}12` }}>
-                  <div>
-                    <p className="font-display text-[2rem] font-bold leading-none tracking-[-0.05em]" style={{ color: D }}>4 in 10</p>
-                    <p className="mt-2 text-[11px] leading-5" style={{ color: `${D}7A` }}>dogs under four already show arthritis on x-ray · Enomoto et al.</p>
-                  </div>
-                  <div>
-                    <p className="font-display text-[2rem] font-bold leading-none tracking-[-0.05em]" style={{ color: D }}>2.5%</p>
-                    <p className="mt-2 text-[11px] leading-5" style={{ color: `${D}7A` }}>of dogs ever get an arthritis diagnosis at the vet · Anderson et al.</p>
-                  </div>
-                  <div>
-                    <p className="font-display text-[1rem] font-bold leading-tight" style={{ color: D }}>trackable</p>
-                    <p className="mt-2 text-[11px] leading-5" style={{ color: `${D}7A` }}>small mobility changes become more useful when documented over time</p>
-                  </div>
-                </div>
+            </div>
+            <div className="flex flex-col justify-center px-6 py-16 md:px-14 lg:px-16 xl:px-20">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">The Gap Between Visits</p>
+              <h2 className="mt-5 max-w-xl font-display text-[clamp(2.7rem,4.4vw,5rem)] font-extrabold leading-[0.96] tracking-[-0.05em]">You know your dog. You notice the change.</h2>
+              <p className="mt-7 max-w-xl text-[17px] font-medium leading-8 text-white/68">It is rarely one dramatic warning. It is the pause at the stairs, the shorter route, or the extra second before standing. One moment is easy to dismiss. A pattern is harder to ignore.</p>
+              <div className="mt-10 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[20px] bg-white p-6 text-[#17233B]"><p className="font-display text-5xl font-extrabold tracking-[-0.06em]">1 in 2</p><p className="mt-2 text-sm font-bold leading-6">dogs over eight show arthritis on x-ray.</p></div>
+                <div className="rounded-[20px] border border-white/14 bg-white/[0.06] p-6"><p className="font-display text-3xl font-extrabold text-[#A9C7FF]">Track the pattern</p><p className="mt-3 text-sm font-medium leading-6 text-white/58">Repeatable observations can turn a vague concern into a clearer veterinary conversation.</p></div>
               </div>
-
+              <p className="mt-6 text-[10px] font-medium leading-5 text-white/35">Research context: Roitner et al., The Veterinary Journal, 2024. Individual imaging findings do not establish a diagnosis.</p>
             </div>
           </div>
         </section>
@@ -244,103 +238,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── NARRATIVE + B&A ── */}
-        <section className="px-5 py-20 md:px-10 md:py-28" style={{ background: "#FFFFFF" }}>
-          <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-14 md:grid-cols-[0.72fr_1.28fr] md:items-start md:gap-16">
-
-              <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>The moment owners know</p>
-                <h2 className="mt-4 max-w-xl font-display text-[clamp(2.2rem,3.1vw,3.1rem)] font-extrabold leading-[0.98] tracking-[-0.04em]" style={{ color: D }}>
-                  They still want the walk.<br /><span className="font-serif font-medium italic" style={{ color: AM }}>Their body says wait.</span>
-                </h2>
-                <p className="mt-7 max-w-xl text-[16px] font-medium leading-8" style={{ color: `${D}A8` }}>
-                  That mismatch is what owners feel first. ZOONETICS exists to turn it into something useful: a baseline, a record, a veterinary conversation, and, where appropriate, a transparent research decision.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="/shop/bpc-tb-500-blend-10mg"
-                    className="inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-bold transition"
-                    style={{ background: D, color: CR }}>
-                    Get K9 Rebuild →
-                  </Link>
-                  <Link href="#product" className="inline-flex items-center gap-2 px-4 py-4 text-sm transition" style={{ color: `${D}99` }}>
-                    View All Profiles
-                  </Link>
-                </div>
-              </div>
-
-              {/* B&A */}
-              <div id="before-after">
-                <div className="grid grid-cols-2 gap-1.5 overflow-hidden rounded-2xl">
-                  <div className="relative aspect-[4/5]">
-                    <Image src="/images/canis/story-before.png" alt="Before" fill sizes="25vw" className="object-cover saturate-0 brightness-[0.58]" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-4">
-                      <span className="block text-[9px] font-bold uppercase tracking-[0.18em] text-white/55">Before</span>
-                      <span className="mt-1 block text-[12px] font-semibold leading-snug text-white">stiff, slow, barely climbing the stairs</span>
-                    </div>
-                  </div>
-                  <div className="relative aspect-[4/5]">
-                    <Image src="/images/canis/story-followup.png" alt="After" fill sizes="25vw" className="object-cover brightness-[0.82]" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-4">
-                      <span className="block text-[9px] font-bold uppercase tracking-[0.18em]" style={{ color: `${AM}cc` }}>After</span>
-                      <span className="mt-1 block text-[12px] font-semibold leading-snug text-white">trotting the block again</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="mt-4 text-center text-[13px] font-bold uppercase tracking-[0.16em]" style={{ color: `${D}80` }}>Zero · Before &amp; After</p>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* ── CREATOR COMMUNITY ── */}
-        <section id="creators" className="px-5 py-20 md:px-10 md:py-28" style={{ background: "#EAF0FF" }}>
-          <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
-              <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>Video diaries from real owners</p>
-                <h2 className="mt-4 max-w-2xl font-display text-[clamp(2.35rem,3vw,3.1rem)] font-extrabold leading-[0.98] tracking-[-0.04em]" style={{ color: D }}>
-                  <span className="block xl:whitespace-nowrap">Don&apos;t Take Our Word For It.</span><span className="mt-1 block font-serif font-medium italic" style={{ color: AM }}>Watch Theirs.</span>
-                </h2>
-              </div>
-              <div className="max-w-xl lg:justify-self-end">
-                <p className="text-[16px] font-medium leading-8" style={{ color: `${D}B8` }}>The useful stories include the awkward first video, the routine in between, and the honest follow-up. These are owner observations, not clinical evidence, and that distinction stays visible.</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Owner submitted", "Weekly check-ins", "Individual results vary"].map((tag) => <span key={tag} className="rounded-full border bg-white/80 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.1em]" style={{ borderColor: `${D}12`, color: `${D}99` }}>{tag}</span>)}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-14 grid gap-4 md:grid-cols-3">
-              {[
-                { image: "/images/canis/story-before.png", label: "00:42", title: "“He stopped pausing at the first step.”", note: "Sarah + Moose · week 06" },
-                { image: "/images/canis/mobility-story.png", label: "00:36", title: "“The weekly videos made it obvious.”", note: "Marco + Rio · week 08" },
-                { image: "/images/canis/story-followup.png", label: "00:51", title: "“We had something useful to show our vet.”", note: "Danielle + Nova · care diary" },
-              ].map((story, index) => (
-                <article key={story.title} className={`group relative overflow-hidden rounded-2xl ${index === 1 ? "md:-translate-y-5" : ""}`}>
-                  <div className="relative aspect-[4/5]">
-                    <Image src={story.image} alt="Dog owner documentation story" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.025]" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/90 via-[#081624]/8 to-transparent" />
-                    <div className="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.13em] backdrop-blur" style={{ color: D }}>{story.label}</div>
-                    <div className="absolute inset-0 grid place-items-center"><span className="grid h-16 w-16 place-items-center rounded-full border border-white/55 bg-[#081624]/28 text-xl text-white shadow-xl backdrop-blur-md transition group-hover:scale-110 group-hover:bg-white group-hover:text-[#081624]">▶</span></div>
-                    <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                      <p className="font-display text-xl font-extrabold leading-tight">{story.title}</p>
-                      <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-white/70">{story.note}</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-10 flex flex-col gap-4 rounded-2xl bg-white p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
-              <div><p className="font-display text-xl font-extrabold" style={{ color: D }}>Every story starts with a baseline.</p><p className="mt-2 text-[13px] font-medium" style={{ color: `${D}85` }}>Owner-submitted experiences · research use only · not clinical evidence.</p></div>
-              <Link href="#product" className="inline-flex shrink-0 items-center justify-center rounded-full px-6 py-4 text-sm font-extrabold" style={{ background: D, color: CR }}>Explore Research Profiles ↑</Link>
-            </div>
-          </div>
-        </section>
+        <VideoProofSection />
 
         {/* ── BUILT FOR ── */}
         <section className="px-5 py-20 md:px-10 md:py-28" style={{ background: CR }}>
@@ -348,7 +246,7 @@ export default function Home() {
             <div className="mb-14 grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: AM }}>Where Owners Start</p>
-                <h2 className="mt-4 max-w-3xl text-balance font-display text-[clamp(2.5rem,4vw,4rem)] font-extrabold leading-[0.96] tracking-[-0.04em]" style={{ color: D }}>Built For The Dogs Who Need Better Documentation.</h2>
+                <h2 className="mt-4 max-w-3xl text-balance font-display text-[clamp(2.25rem,3.25vw,3.35rem)] font-extrabold leading-[0.98] tracking-[-0.04em]" style={{ color: D }}>Built For The Dogs Who Need Better Documentation.</h2>
               </div>
               <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold transition" style={{ background: D, color: CR }}>Explore K9 Rebuild →</Link>
             </div>
@@ -371,37 +269,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── THE CYCLE ── */}
-        <section id="cycle" className="px-5 py-20 md:px-10 md:py-28" style={{ background: "#EAF0FF" }}>
-          <div className="mx-auto max-w-[1200px]">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>The Documentation Cycle</p>
-            <h2 className="mb-14 mt-4 max-w-2xl text-balance font-display text-[clamp(2.4rem,4vw,4rem)] font-extrabold leading-[0.96] tracking-[-0.04em]" style={{ color: D }}>Every Dog Is Different. The Record Should Be Consistent.</h2>
-            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-0">
-              {[
-                { title: "Notice The Signs", body: "Stiff mornings, hesitation at stairs and shorter walks." },
-                { title: "Set The Baseline", body: "Capture the same movements, routes and recovery markers before research begins." },
-                { title: "Document Weekly", body: "Repeat the same check-in so observations become comparable, not anecdotal." },
-                { title: "Review The Record", body: "Bring the timeline to your veterinarian and decide what deserves attention next." },
-              ].map((step, i) => (
-                <div key={step.title} className="border-t-2 pt-7 md:pr-10" style={{ borderColor: `${D}15` }}>
-                  <p className="font-display text-[3rem] font-bold leading-none tracking-[-0.06em]" style={{ color: `${D}08` }}>{String(i + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-5 font-display text-[1rem] font-bold" style={{ color: D }}>{step.title}</h3>
-                  <p className="mt-2 text-[13px] leading-6" style={{ color: `${D}8C` }}>{step.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── EMAIL CAPTURE ── */}
         <section id="guide" className="px-5 py-20 md:px-10 md:py-24" style={{ background: BK }}>
-          <div className="mx-auto max-w-[680px] text-center">
+          <div className="mx-auto max-w-[720px] text-center">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: `${AM}cc` }}>Free download</p>
-            <h2 className="mt-4 font-display text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[0.96] tracking-[-0.04em]" style={{ color: CR }}>
-              The K9 Rebuild Handling &amp; Research Guide
+            <h2 className="mt-4 font-display text-[clamp(2rem,3vw,3rem)] font-extrabold leading-[1.02] tracking-[-0.035em]" style={{ color: CR }}>
+              <span className="block">The K9 Rebuild</span><span className="mt-1 block font-serif font-medium italic" style={{ color: "#A9C7FF" }}>Handling &amp; Research Guide</span>
             </h2>
             <p className="mt-5 text-[15px] leading-7" style={{ color: `${CR}AD` }}>
-              Reconstitution, handling, the at-home walkthrough, and the full cycle. The exact guide that ships in every box. Plus 15% off your first order.
+              Reconstitution, handling, the at-home walkthrough, and a repeatable research record. The exact guide that ships in every box. Plus 15% off your first order.
             </p>
             <div className="mt-8 flex flex-col gap-0 sm:flex-row">
               <input type="email" placeholder="your@email.com"
@@ -502,7 +378,7 @@ export default function Home() {
             <div className="space-y-3 text-[13px]" style={{ color: `${CR}AD` }}>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: `${AM}cc` }}>Shop</p>
               <p><Link href="/shop/bpc-tb-500-blend-10mg" className="transition hover:opacity-100">K9 Rebuild</Link></p>
-              <p><Link href="#cycle" className="transition hover:opacity-100">How it works</Link></p>
+              <p><Link href="#care-path" className="transition hover:opacity-100">How it works</Link></p>
               <p><Link href="#creators" className="transition hover:opacity-100">Owner Stories</Link></p>
               <p><Link href="#product" className="transition hover:opacity-100">All Research Profiles</Link></p>
             </div>

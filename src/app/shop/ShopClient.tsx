@@ -53,7 +53,7 @@ function FilterDropdown<T extends string>({
         type="button"
         onClick={() => setOpen((o) => !o)}
         className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold transition-colors md:px-5 md:text-sm ${
-          isActive ? "bg-sage text-white" : "border border-stone bg-ivory-soft text-charcoal/70 hover:bg-stone/40"
+          isActive ? "bg-[#4F6EF7] text-white" : "border border-[#17233B]/12 bg-white text-[#17233B]/70 hover:border-[#4F6EF7]/50"
         }`}
       >
         {activeLabel ?? label}
@@ -71,7 +71,7 @@ function FilterDropdown<T extends string>({
                 setOpen(false);
               }}
               className={`block w-full px-4 py-2 text-left text-sm transition ${
-                opt.value === value ? "font-semibold text-sage-deep" : "text-charcoal/70 hover:bg-ivory-soft"
+                opt.value === value ? "font-semibold text-[#4F6EF7]" : "text-[#17233B]/70 hover:bg-[#EEF3FF]"
               }`}
             >
               {opt.label}
@@ -118,12 +118,13 @@ export function ShopClient({ products }: { products: Product[] }) {
 
   return (
     <>
-      <section className="-mt-[90px] bg-charcoal pb-20 pt-[150px] text-center text-white md:-mt-[100px] md:pb-32 md:pt-[170px]">
+      <section className="relative overflow-hidden bg-[#101829] py-20 text-center text-white md:py-28">
+        <div className="absolute -right-24 -top-36 h-[480px] w-[480px] rounded-full bg-[#4F6EF7]/20 blur-3xl" />
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-          <h1 className="mb-4 font-display text-4xl font-semibold md:text-5xl lg:text-6xl">Products</h1>
+          <p className="mb-5 text-xs font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">The K9 Product Line</p>
+          <h1 className="mb-5 font-display text-4xl font-extrabold tracking-[-0.04em] md:text-6xl">Research profiles, clearly defined.</h1>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            Every EVLV product is rigorously lab tested, with multiple samples sent for every batch to ensure
-            consistency, accuracy and complete transparency.
+            Explore peptide profiles by research focus. Every ZOONETICS lot is independently tested for identity and purity, with its documentation visible before checkout.
           </p>
           <div className="relative mx-auto mt-8 max-w-md">
             <input
@@ -138,14 +139,14 @@ export function ShopClient({ products }: { products: Product[] }) {
         </div>
       </section>
 
-      <section className="sticky top-[90px] z-40 border-b border-stone bg-ivory/95 backdrop-blur-sm md:top-[100px]">
+      <section className="sticky top-[82px] z-40 border-b border-[#17233B]/10 bg-[#FBFCFF]/95 backdrop-blur-sm">
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <div className="flex items-center gap-2 overflow-x-auto py-4 md:gap-3">
             <button
               type="button"
               onClick={resetAll}
               className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold transition-colors md:px-5 md:text-sm ${
-                nothingActive ? "bg-sage text-white" : "border border-stone bg-ivory-soft text-charcoal/70 hover:bg-stone/40"
+                nothingActive ? "bg-[#17233B] text-white" : "border border-[#17233B]/12 bg-white text-[#17233B]/70 hover:border-[#4F6EF7]/50"
               }`}
             >
               All
@@ -171,10 +172,10 @@ export function ShopClient({ products }: { products: Product[] }) {
               type="button"
               onClick={() => setSortAz((v) => !v)}
               className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold transition-colors md:px-5 md:text-sm ${
-                sortAz ? "bg-sage text-white" : "border border-stone bg-ivory-soft text-charcoal/70 hover:bg-stone/40"
+                sortAz ? "bg-[#17233B] text-white" : "border border-[#17233B]/12 bg-white text-[#17233B]/70 hover:border-[#4F6EF7]/50"
               }`}
             >
-              A&ndash;Z
+              A to Z
             </button>
 
             <Link
@@ -187,12 +188,14 @@ export function ShopClient({ products }: { products: Product[] }) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1400px] px-4 py-14 md:px-8 md:py-20">
+      <section className="bg-[#F5F7FC] px-4 py-14 md:px-8 md:py-20">
+        <div className="mx-auto max-w-[1400px]">
         <p className="mb-6 text-sm text-charcoal/50">Showing {filtered.length} products</p>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+        </div>
         </div>
       </section>
     </>

@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = await resolveProduct(slug);
   if (!product) notFound();
 
-  const related = getRelatedProducts(slug);
+  const related = getRelatedProducts(slug).filter((item) => item.name.startsWith("K9 "));
   const coaMap = await getCoaMap();
   const coa = coaMap[product.slug];
   const reviews = await getGoogleReviews();
@@ -85,6 +85,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <div className="bg-[#F5F7FC]">
       <div className="mx-auto max-w-[1400px] px-4 pb-4 pt-8 md:px-8 md:pt-10">
         <nav className="flex flex-wrap items-center gap-2 text-xs text-charcoal/50">
           <Link href="/" className="transition hover:text-charcoal">
@@ -102,6 +103,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="mx-auto max-w-[1400px] px-4 pb-12 md:px-8">
         <ProductClient product={product} coa={coa} ratingBadge={<GoogleRatingBadge variant="light" />} />
       </div>
+      </div>
 
       {/* Three-step process -- rebuilt to match the homepage's own
           "How ordering works" card recipe (icon-tinted square + numeral +
@@ -110,12 +112,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           any visual language with the rest of the site. Copy stays
           distinct from the Key Benefits trust badges above so the two
           don't repeat the same claims. */}
-      <section className="bg-ivory py-10 md:py-24">
+      <section className="bg-[#101829] py-14 text-white md:py-24">
         <div className="mx-auto max-w-[1200px] px-4 md:px-8">
           <div className="mb-10 flex max-w-[660px] flex-col gap-3">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-copper">Getting started</p>
-            <h2 className="font-display text-2xl font-semibold text-charcoal md:text-3xl">
-              Three steps to <em className="text-sage-deep not-italic">your bench</em>
+            <p className="text-[12px] font-extrabold uppercase tracking-[0.18em] text-[#A9C7FF]">From Shelf To Study</p>
+            <h2 className="font-display text-3xl font-extrabold text-white md:text-5xl">
+              Three steps to your research bench.
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -124,21 +126,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               { n: "02", icon: "ri-shield-check-line", t: "Checkout in minutes", b: "Secure checkout, no membership or subscription required." },
               { n: "03", icon: "ri-truck-line", t: "Ships same day", b: "Orders before our daily cutoff go out same day in discreet packaging." },
             ].map((step) => (
-              <div key={step.n} className="flex flex-col gap-5 rounded-2xl border border-stone bg-white p-6">
+              <div key={step.n} className="flex flex-col gap-5 rounded-2xl border border-white/12 bg-white/[0.06] p-6">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sage-mist text-lg text-sage-deep">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#4F6EF7] text-lg text-white">
                     <i className={step.icon} />
                   </span>
                   <span
-                    className="font-light text-stone"
+                    className="font-light text-white/22"
                     style={{ fontFamily: "var(--font-newsreader), Georgia, serif", fontSize: "2.25rem", lineHeight: 1 }}
                   >
                     {step.n}
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-display text-base font-semibold text-charcoal">{step.t}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-charcoal/60">{step.b}</p>
+                  <h3 className="font-display text-base font-bold text-white">{step.t}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-white/55">{step.b}</p>
                 </div>
               </div>
             ))}
@@ -148,7 +150,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {/* Real reviews, if configured -- quietly omitted otherwise, never fabricated */}
       {featuredReviews.length > 0 && (
-        <section id="reviews" className="bg-ivory-soft py-16 md:py-24">
+        <section id="reviews" className="bg-[#EAF0FF] py-16 md:py-24">
           <div className="mx-auto max-w-[1200px] px-4 md:px-8">
             <div className="mb-3 flex justify-center">
               <GoogleRatingBadge variant="light" />
@@ -186,7 +188,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <FrequentlyBoughtTogether product={product} related={related} />
 
       {/* FAQ */}
-      <section className="bg-ivory py-16 md:py-24">
+      <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-[1200px] px-4 md:px-8">
           <h2 className="mb-10 text-center font-display text-2xl font-semibold text-charcoal md:text-3xl">
             Questions about <em className="text-sage-deep not-italic">{title}</em>
@@ -198,7 +200,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Closing CTA -- mirrors the homepage's FinalCta section: flat brand-green bg-sage-deep, no gradients/glows */}
-      <section className="bg-sage-deep py-16 text-center text-white md:py-24">
+      <section className="bg-[#4F6EF7] py-16 text-center text-white md:py-24">
         <div className="mx-auto max-w-[1200px] px-4 md:px-8">
           <h2 className="mx-auto max-w-2xl font-display text-3xl font-semibold leading-tight md:text-4xl">
             Get this batch <em className="text-ivory not-italic">verified and on your bench.</em>
@@ -208,7 +210,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </p>
           <a
             href="#top"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-ivory px-8 py-4 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-sage-light"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-extrabold uppercase tracking-wide text-[#17233B] transition hover:bg-[#A9C7FF]"
           >
             {product.inStock ? `Order ${title}` : "Check Availability"} <i className="ri-arrow-right-line" />
           </a>

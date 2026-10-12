@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { ProductVisual } from "@/components/ui/ProductVisual";
+import { K9VialVisual } from "@/components/ui/K9VialVisual";
 
 export type GalleryMedia = { type: "image" | "video"; src: string };
 
@@ -56,7 +57,9 @@ export function MediaGallery({
     <div>
       <div className="group relative overflow-hidden rounded-lg border border-stone bg-ivory-soft">
         <div className="aspect-square w-full p-10 sm:p-14">
-          {current.type === "video" ? (
+          {current.type === "image" && name.startsWith("K9 ") ? (
+            <K9VialVisual title={title} dosage={dosage} className="h-full w-full" />
+          ) : current.type === "video" ? (
             <video
               ref={videoRef}
               key={current.src}

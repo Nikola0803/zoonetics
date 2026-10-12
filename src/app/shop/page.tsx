@@ -7,7 +7,7 @@ import { TrustIconRow } from "@/components/ui/TrustIconRow";
 
 export const metadata: Metadata = {
   title: "Shop Research Peptides",
-  description: "Browse the full EVLV catalogue of research peptides and ancillaries, each batch independently tested with a published Certificate of Analysis.",
+  description: "Browse the ZOONETICS K9 research product line. Each lot is independently tested with a published Certificate of Analysis.",
   alternates: { canonical: "/shop" },
 };
 
@@ -19,7 +19,7 @@ const SHOP_TRUST_ITEMS = [
 ];
 
 export default async function ShopPage() {
-  const products = getShopListProducts(mergeProducts(getProducts(), await getLiveProducts()));
+  const products = getShopListProducts(mergeProducts(getProducts(), await getLiveProducts())).filter((product) => product.name.startsWith("K9 "));
 
   return (
     <>

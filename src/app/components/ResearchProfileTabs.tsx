@@ -9,78 +9,84 @@ const profiles = [
     id: "rebuild",
     name: "K9 Rebuild",
     compound: "BPC-157 + TB-500",
+    focusLabel: "Mobility + Soft Tissue",
     label: "The Research Stack",
     image: "/images/zoonetics-products/k9-rebuild.png",
     href: "/shop/bpc-tb-500-blend-10mg",
     purity: "99.59–99.31%",
     price: "$75",
     formats: ["10 mg", "20 mg"],
-    summary: "A paired BPC-157 + TB-500 profile for research into complementary repair-signaling and cell-migration pathways.",
+    summary: "The broad mobility profile. Researchers select this blend when the question spans joints, tendons, ligaments, soft tissue and recovery after physical stress.",
     focuses: ["Tissue-repair signaling", "Cell migration", "Inflammatory pathways", "Recovery after physical stress"],
   },
   {
     id: "reforge",
     name: "K9 Reforge",
     compound: "BPC-157",
+    focusLabel: "Focused Tissue Repair",
     label: "Single-Peptide Profile",
     image: "/images/zoonetics-products/k9-reforge.png",
     href: "/shop/bpc-157-10mg",
     purity: "99.31%",
     price: "$40",
     formats: ["5 mg", "10 mg", "20 mg"],
-    summary: "A focused BPC-157 profile used in preclinical research involving local repair signaling and multiple tissue models.",
+    summary: "The focused tissue-repair profile. Common research questions involve tendon and ligament models, local repair signaling and gastrointestinal tissue integrity.",
     focuses: ["Tendon models", "Ligament models", "Gastrointestinal tissue", "Local repair signaling"],
   },
   {
     id: "reload",
     name: "K9 Reload",
     compound: "TB-500",
+    focusLabel: "Movement + Recovery",
     label: "Single-Peptide Profile",
     image: "/images/zoonetics-products/k9-reload.png",
     href: "/shop/tb-500-10mg",
     purity: "99.59%",
     price: "$45",
     formats: ["5 mg", "10 mg", "20 mg"],
-    summary: "A focused TB-500 profile for research designs examining cell migration, actin regulation and recovery pathways.",
+    summary: "The movement and recovery profile. Research centers on cell migration, actin regulation, soft-tissue models and recovery following physical stress.",
     focuses: ["Cell migration", "Actin regulation", "Soft-tissue models", "Physical-stress recovery"],
   },
   {
     id: "reclaim",
     name: "K9 Reclaim",
     compound: "KPV",
+    focusLabel: "Gut + Inflammatory Pathways",
     label: "Dual-Format Profile",
     image: "/images/zoonetics-products/k9-reclaim.png",
     href: "/shop/kpv-10mg",
     purity: "99.45%",
     price: "$70",
     formats: ["10 mg injectable", "500 mcg oral"],
-    summary: "A KPV profile for preclinical research involving inflammatory signaling and epithelial barrier models.",
+    summary: "The barrier and inflammatory-pathway profile. Researchers use KPV in models involving gut integrity, epithelial barriers, skin and inflammatory signaling.",
     focuses: ["Inflammatory signaling", "Barrier models", "Epithelial tissue", "Dual-format research"],
   },
   {
     id: "restore",
     name: "K9 Restore",
     compound: "GHK-Cu",
+    focusLabel: "Skin + Collagen",
     label: "Copper-Peptide Profile",
     image: "/images/zoonetics-products/k9-restore.png",
     href: "/shop/ghk-cu-50mg",
     purity: "99.4%",
     price: "$40",
     formats: ["50 mg"],
-    summary: "A copper-peptide profile for research into tissue remodeling, collagen signaling and skin-model pathways.",
+    summary: "The skin and remodeling profile. Research questions commonly involve collagen signaling, skin and coat models, tissue remodeling and wound pathways.",
     focuses: ["Tissue remodeling", "Collagen signaling", "Skin models", "Wound-model research"],
   },
   {
     id: "recast",
     name: "K9 Recast",
     compound: "GHK-Cu + BPC-157 + TB-500",
+    focusLabel: "Multi-Pathway Recovery",
     label: "Triple-Blend Profile",
     image: "/images/zoonetics-products/k9-recast.png",
     href: "/shop/glow-70mg",
     purity: "99.56–99.32%",
     price: "$140",
     formats: ["70 mg"],
-    summary: "A three-compound profile for broader research designs spanning remodeling, repair signaling and cell migration.",
+    summary: "The widest research profile. This three-compound blend spans skin and collagen models, tissue remodeling, repair signaling, mobility and cell migration.",
     focuses: ["Multi-pathway research", "Tissue remodeling", "Repair signaling", "Cell migration"],
   },
 ] as const;
@@ -90,12 +96,12 @@ export default function ResearchProfileTabs() {
   const active = profiles.find((profile) => profile.id === activeId) ?? profiles[0];
 
   return (
-    <section id="product" className="scroll-mt-20 px-5 py-20 md:px-10 md:py-28" style={{ background: "#F7F9FC", color: "#10243D" }}>
+    <section id="product" className="scroll-mt-20 px-5 pb-20 pt-8 md:px-10 md:pb-28 md:pt-12" style={{ background: "#F7F9FC", color: "#10243D" }}>
       <div className="mx-auto max-w-[1200px]">
         <div className="grid gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#4C7EF3]">What It Is Studied For</p>
-            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.7rem,4vw,4.2rem)] font-extrabold leading-[0.96] tracking-[-0.045em]">Explore Every Research Profile.</h2>
+            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.35rem,3.3vw,3.5rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">Explore Every Research Profile.</h2>
           </div>
           <p className="max-w-xl text-[16px] font-medium leading-8 text-[#10243D]/68 lg:justify-self-end">Switch between standalone compounds and blends to compare research focus, formats, purity and pricing without leaving the page.</p>
         </div>
@@ -108,7 +114,7 @@ export default function ResearchProfileTabs() {
                 className="min-w-fit rounded-full border px-5 py-3 text-left transition"
                 style={{ background: selected ? "#10243D" : "#FFFFFF", borderColor: selected ? "#10243D" : "rgba(16,36,61,.12)", color: selected ? "#FFFFFF" : "#10243D" }}>
                 <span className="block text-[12px] font-extrabold">{profile.name}</span>
-                <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-[0.1em] opacity-55">{profile.compound}</span>
+                <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-[0.1em] opacity-55">{profile.focusLabel}</span>
               </button>
             );
           })}
@@ -131,7 +137,7 @@ export default function ResearchProfileTabs() {
             <p className="mt-7 max-w-xl text-[17px] font-medium leading-8 text-[#10243D]/72">{active.summary}</p>
 
             <div className="mt-8">
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#10243D]/45">Studied Pathways And Models</p>
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#10243D]/45">Common Research Questions</p>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
                 {active.focuses.map((focus) => <div key={focus} className="flex items-center gap-3 rounded-xl bg-[#F4F7FC] px-4 py-3 text-[12px] font-bold"><span className="h-2 w-2 rounded-full bg-[#4C7EF3]" />{focus}</div>)}
               </div>

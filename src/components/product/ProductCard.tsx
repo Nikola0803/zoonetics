@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Product } from "@/lib/types";
 import { ProductVisual } from "@/components/ui/ProductVisual";
+import { K9VialVisual } from "@/components/ui/K9VialVisual";
 import { PackSelector, usePackSelection } from "./PackSelector";
 import { useCart } from "@/lib/cart-context";
 import { useCurrency } from "@/lib/currency-context";
@@ -40,7 +41,9 @@ export function ProductCard({ product }: { product: Product }) {
     <div className="group flex flex-col">
       <Link href={`/shop/${product.slug}`} className="relative block overflow-hidden border border-stone/70 bg-white">
         <div className="aspect-[3/4] w-full">
-          {product.image ? (
+          {product.name.startsWith("K9 ") ? (
+            <K9VialVisual title={title} dosage={dosage} className="h-full w-full p-3 transition duration-500 ease-out group-hover:scale-[1.025]" />
+          ) : product.image ? (
             <Image
               src={product.image}
               alt={product.name}

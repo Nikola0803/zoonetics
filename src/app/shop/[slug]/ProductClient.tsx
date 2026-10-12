@@ -341,7 +341,7 @@ export function ProductClient({
                 <p className="text-base md:text-lg">{product.description}</p>
                 <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <InfoCard title="Storage" body={product.storage} />
-                  {product.reconstitution && <InfoCard title="Reconstitution" body={product.reconstitution} />}
+                  {product.reconstitution && <InfoCard title="Reconstitution" body={product.name.startsWith("K9 ") ? "Use only the included sterile saline and follow the supplied laboratory handling guide." : product.reconstitution} />}
                   <InfoCard title="Testing" body="Every batch is independently tested. View the full lab report in the Lab Report tab." />
                   <InfoCard title="Shipping" body="Ships domestically in discreet packaging. Tracking provided within 1 business day." />
                 </div>
