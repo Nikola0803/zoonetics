@@ -4,9 +4,9 @@
  * Inherited EVLV compatibility tokens. Existing commerce/account routes still
  * reference these semantic names while the Canis Continuum launch surface uses
  * its own navy, cobalt, periwinkle, lilac, and coral palette.
- *  1. Spec-exact palette (EVLV Brand Identity System, section 04/05) — the
+ *  1. Spec-exact palette (EVLV Brand Identity System, section 04/05): the
  *     single source of truth for every hex value used on the site.
- *  2. Semantic aliases — the names components actually reference in
+ *  2. Semantic aliases: the names components actually reference in
  *     className (e.g. `bg-sage-deep`), each pointed at the correct
  *     spec color for its role. Never hardcode a hex in a component; add
  *     an alias here instead.

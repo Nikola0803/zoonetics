@@ -384,7 +384,7 @@ export default function DoseCalculator() {
 
                 <hr className="my-5 border-[#EBF0F8]" />
 
-                {/* Dose table — low / mid / high with compact syringes */}
+                {/* Dose table: low / mid / high with compact syringes */}
                 {levels ? (
                   <table className="w-full text-left text-xs">
                     <thead>
@@ -428,7 +428,7 @@ export default function DoseCalculator() {
                   </table>
                 ) : (
                   <div className="h-20 flex items-center justify-center text-sm text-[#17233B]/20">
-                    — table appears after weight entry
+                    Table appears after weight entry
                   </div>
                 )}
 
@@ -452,7 +452,7 @@ export default function DoseCalculator() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#17233B]/30 mb-1.5">BAC water</p>
+                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#17233B]/30 mb-1.5">Sterile saline</p>
                     <div className="flex gap-1">
                       {[0.5, 1, 2, 4, 10].filter(w => {
                         const suggested = suggestWaterMl(vialMg, midMcg);

@@ -38,8 +38,12 @@ export async function getLiveProducts(): Promise<Product[]> {
 
   const products: Product[] = [];
   for (const group of data as FeedGroup[]) {
+    const groupName = group.name.toLowerCase();
+    if (groupName.includes("bacteriostatic") || groupName.includes("bac water")) continue;
     const variants = group.variants.map((v) => ({ slug: v.slug, label: v.label, price: v.priceCents / 100, inStock: v.inStock }));
     for (const v of group.variants) {
+      const searchable = `${v.slug} ${v.label}`.toLowerCase();
+      if (searchable.includes("bacteriostatic") || searchable.includes("bac-water") || searchable.includes("bac water")) continue;
       products.push({
         id: `crm-${v.sku}`,
         slug: v.slug,
