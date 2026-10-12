@@ -114,7 +114,7 @@ export default function DosingPage() {
                 <ul className="space-y-3">
                   {[
                     ["ri-medicine-bottle-line", "#4F6EF7",  "Lyophilized peptide vial",   "Stored in freezer until use"],
-                    ["ri-drop-line",            "#5A7A9E",  "Bacteriostatic water",        "BAC water, not saline"],
+                    ["ri-drop-line",            "#5A7A9E",  "Sterile saline water",        "Use only the sterile saline supplied for your research workflow"],
                     ["ri-syringe-line",         "#7C5CBF",  "U-100 insulin syringes",      "29–31G, 0.3–1 mL"],
                     ["ri-temp-cold-line",       "#17233B",  "Cold storage after mixing",   "2–8 °C, use within 28 days"],
                   ].map(([icon, color, label, sub]) => (
@@ -142,7 +142,7 @@ export default function DosingPage() {
                 <ol className="space-y-3">
                   {[
                     ["Warm the vial", "20–30 min at room temp before adding water."],
-                    ["Add BAC water slowly", "Let it run down the glass side. Swirl gently, never shake."],
+                    ["Add sterile saline slowly", "Let it run down the glass side. Swirl gently, never shake."],
                     ["Draw the calculated units", "Tilt vial, draw slowly with a U-100 syringe."],
                     ["Refrigerate", "2–8 °C after reconstitution. Do not refreeze."],
                   ].map(([title, body], i) => (

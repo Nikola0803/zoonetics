@@ -452,7 +452,7 @@ export default function DoseCalculator() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#17233B]/30 mb-1.5">BAC water</p>
+                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#17233B]/30 mb-1.5">Sterile saline</p>
                     <div className="flex gap-1">
                       {[0.5, 1, 2, 4, 10].filter(w => {
                         const suggested = suggestWaterMl(vialMg, midMcg);

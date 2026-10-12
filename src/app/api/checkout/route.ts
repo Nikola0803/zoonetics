@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { crmConfigured, crmFetch } from "@/lib/crm-proxy";
 import { createCheckoutReceipt } from "@/lib/checkout-receipt";
 import { PAYMENT_GATEWAYS, type PaymentGatewayId } from "@/lib/payment-config";
-import { sendBacWaterUpsellEmail, shouldSendBacWaterUpsell } from "@/lib/bac-water-upsell-email";
 
 export const runtime = "nodejs";
 
@@ -124,18 +123,6 @@ export async function POST(req: Request) {
       gateway: paymentMethod,
       memo: paymentMemo,
     });
-
-    // This is deliberately post-order and best-effort: a mail-provider
-    // outage must never turn a confirmed order into a checkout failure.
-    // Resend's order-scoped idempotency key prevents duplicate sends when
-    // the same checkout request is retried.
-    if (shouldSendBacWaterUpsell(cleanItems)) {
-      await sendBacWaterUpsellEmail({
-        to: email,
-        firstName: text(billing.firstName, 80)!,
-        orderId,
-      });
-    }
 
     return NextResponse.json({ order: { number: orderNumber, status: orderStatus, total: orderTotal }, receipt });
   } catch (error) {
