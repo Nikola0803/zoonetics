@@ -1,24 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
+import ResearchProfileTabs from "./components/ResearchProfileTabs";
 
 // ── PALETTE ──────────────────────────────────────────────────────────────────
-const D  = "#10243D";   // clinical navy — headlines, body, buttons
-const MD = "#183B56";   // deep ocean — proof panels and data surfaces
-const AM = "#4C7EF3";   // electric cobalt — actions and active states
-const CR = "#F7F9FC";   // porcelain — page background
-const BK = "#081624";   // midnight — ticker and footer
+const D  = "#10243D";   // clinical navy: headlines, body, buttons
+const MD = "#183B56";   // deep ocean: proof panels and data surfaces
+const AM = "#4C7EF3";   // electric cobalt: actions and active states
+const CR = "#F7F9FC";   // porcelain: page background
+const BK = "#081624";   // midnight: ticker and footer
 // ─────────────────────────────────────────────────────────────────────────────
 
 const faqs = [
   ["what is bpc-157 for dogs?", "BPC-157 (Body Protection Compound 157) is a short chain of amino acids derived from a protein found in stomach tissue. In preclinical animal research, it has been associated with tendon, ligament, and soft-tissue healing and increased local blood flow. It acts as a signaling molecule, directing repair rather than supplying raw building materials."],
   ["what is tb-500 and what does it do for dogs?", "TB-500 is a synthetic version of thymosin beta-4, a naturally occurring peptide found in most tissues. In animal studies it has been associated with cell migration to injured tissue, reduced inflammation, and improved tissue repair. It works differently from BPC-157, which is why the two are frequently studied together."],
   ["are peptides safe for dogs?", "There are no completed controlled canine clinical trials for BPC-157 or TB-500. The safety profile comes from preclinical animal research and reported use. These compounds are sold for research purposes only and are not FDA-approved veterinary medicines. Involve your veterinarian before use."],
-  ["how do you dose bpc-157 and tb-500 for a dog?", "ZooNetics cannot provide personalized dosing or administration advice. These materials are sold for research use only and are not approved veterinary medicines. Any decision involving your dog's health belongs in a conversation with a licensed veterinarian."],
+  ["how do you dose bpc-157 and tb-500 for a dog?", "ZOONETICS cannot provide personalized dosing or administration advice. These materials are sold for research use only and are not approved veterinary medicines. Any decision involving your dog's health belongs in a conversation with a licensed veterinarian."],
   ["how long does it take to see results in a dog?", "No promised timeline. Published protocols most commonly run 8 weeks. Owners who document their observations typically begin noting visible changes between weeks 4 and 8. Some see nothing. A 60-day money-back guarantee covers every order."],
   ["can peptides help a dog with arthritis or hip dysplasia?", "The research base is preclinical animal studies, not controlled canine clinical trials. Those studies documented tissue repair and reduced inflammatory markers. Arthritis and hip dysplasia involve structural joint changes that may or may not respond. We make no clinical claims. Consult your veterinarian."],
   ["bpc-157 vs glucosamine for dogs: what's the difference?", "Glucosamine supplies building blocks for cartilage and has a mixed evidence base in human and animal trials. BPC-157 is a signaling molecule that in animal studies activated specific repair pathways rather than supplying materials. Different mechanism, different research base, both unproven in controlled canine trials."],
   ["can i use k9 rebuild with other supplements or medications?", "We can't advise on drug interactions. Involve your veterinarian before combining any research compound with prescribed medications, ongoing treatments, or other supplements. This is especially important for dogs on NSAIDs or immunosuppressants."],
-  ["where can i buy bpc-157 and tb-500 for dogs?", "ZooNetics ships K9 Rebuild across the US. Every batch is third-party tested by an independent analytical laboratory for identity, purity, and endotoxins. A lot-level certificate of analysis is published before you can add to cart."],
+  ["where can i buy bpc-157 and tb-500 for dogs?", "ZOONETICS ships K9 Rebuild across the US. Every batch is third-party tested by an independent analytical laboratory for identity, purity, and endotoxins. A lot-level certificate of analysis is published before you can add to cart."],
   ["what does 'research use only' mean?", "It means these compounds are not approved veterinary medicines and are not intended to diagnose, treat, cure, or prevent any disease. They're sold for documented, non-clinical research. We don't make treatment claims. You acknowledge research use at checkout."],
 ];
 
@@ -32,7 +33,7 @@ const blogPosts = [
 function BrandMark({ light = false, size = "md" }: { light?: boolean; size?: "sm" | "md" | "lg" }) {
   const src = light ? "/brand/zoonetics-light.webp" : "/brand/zoonetics-dark.webp";
   const heights: Record<string, string> = { sm: "h-8", md: "h-10", lg: "h-12" };
-  return <Image src={src} alt="ZooNetics by EVLV" width={600} height={150} className={`${heights[size]} w-auto`} priority />;
+  return <Image src={src} alt="ZOONETICS by EVLV" width={600} height={150} className={`${heights[size]} w-auto`} priority />;
 }
 
 function TrustTicker() {
@@ -74,13 +75,13 @@ export default function Home() {
       <header className="sticky top-0 z-30 border-b px-5 md:px-10" style={{ background: CR, borderColor: `${D}12` }}>
           <div className="mx-auto flex h-[4.75rem] max-w-[1200px] items-center justify-between">
           <div>
-            <Link href="#top" aria-label="ZooNetics home"><BrandMark /></Link>
+            <Link href="#top" aria-label="ZOONETICS home"><BrandMark /></Link>
           </div>
           <nav className="hidden items-center gap-8 text-[14px] font-bold lg:flex" aria-label="Main navigation">
-            <Link href="#signal" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Why ZooNetics</Link>
+            <Link href="#signal" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Why ZOONETICS</Link>
             <Link href="#care-path" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>How It Works</Link>
             <Link href="#product" className="transition hover:opacity-80" style={{ color: `${D}99` }}>K9 Rebuild</Link>
-            <Link href="#profiles" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Research Profiles</Link>
+            <Link href="#product" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Research Profiles</Link>
             <Link href="#creators" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Owner Stories</Link>
             <Link href="#questions" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>FAQ</Link>
           </nav>
@@ -109,11 +110,11 @@ export default function Home() {
                 <span className="block lg:whitespace-nowrap">More good years.</span><span className="mt-1 block font-serif font-medium italic" style={{ color: "#8EAEFF" }}>That&apos;s the point.</span>
               </h1>
               <p className="mt-8 max-w-xl text-[17px] font-medium leading-8 text-white/80 md:text-lg">
-                Independently tested peptide profiles for canine research—built around mobility, tissue-repair, inflammatory, and recovery pathways. Every lot is identity and purity verified before it reaches the shelf.
+                Independently tested peptide profiles for canine research. Built around mobility, tissue-repair, inflammatory, and recovery pathways. Every lot is identity and purity verified before it reaches the shelf.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-extrabold text-[#081624] transition hover:bg-[#DDE7FF]">
-                  Explore K9 Rebuild <span className="ml-3">↗</span>
+                  Explore K9 Rebuild
                 </Link>
                 <Link href="#care-path" className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10">
                   See What&apos;s In The Kit
@@ -203,6 +204,8 @@ export default function Home() {
           </div>
         </section>
 
+        <ResearchProfileTabs />
+
         {/* ── CONNECTED CARE PATH ── */}
         <section id="care-path" className="py-20 md:py-28" style={{ background: "#FFFFFF", color: D }}>
           <div className="grid overflow-hidden bg-[#081624] lg:grid-cols-[1.05fr_0.95fr]">
@@ -221,8 +224,8 @@ export default function Home() {
               </div>
               <div className="flex flex-col justify-center px-7 py-14 text-white md:px-14 lg:px-16 xl:px-20">
                 <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8EAEFF]">More Than A Vial</p>
-                <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.65rem,4vw,4.35rem)] font-extrabold leading-[0.94] tracking-[-0.045em]">Research products with the proof and tools to use them responsibly.</h2>
-                <p className="mt-7 max-w-xl text-[16px] font-medium leading-8 text-white/78">ZooNetics supplies research-use-only peptide profiles—not veterinary medicines or software subscriptions. Every order is built around product integrity, clear handling, and consistent observation.</p>
+                <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.45rem,3.35vw,3.65rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">Research products with the proof and tools to use them responsibly.</h2>
+                <p className="mt-7 max-w-xl text-[16px] font-medium leading-8 text-white/78">ZOONETICS supplies research-use-only peptide profiles, not veterinary medicines or software subscriptions. Every order is built around product integrity, clear handling, and consistent observation.</p>
                 <div className="mt-9 space-y-5">
                   {[
                     ["01", "Choose the research profile", "Select a standalone peptide or blend by compound and research pathway."],
@@ -233,123 +236,11 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <Link href="#profiles" className="inline-flex justify-center rounded-full bg-white px-6 py-3.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#081624]">Shop Research Profiles →</Link>
+                  <Link href="#product" className="inline-flex justify-center rounded-full bg-white px-6 py-3.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#081624]">Shop Research Profiles →</Link>
                   <span className="text-[11px] font-semibold text-white/55">Physical research products · independently tested</span>
                 </div>
                 <p className="mt-6 text-[10px] font-medium leading-5 text-white/42">For research use only. Not approved veterinary medicines. Not intended to diagnose, treat, cure, or prevent disease.</p>
               </div>
-          </div>
-        </section>
-
-        {/* ── FEATURED PRODUCT ── */}
-        <section id="product" className="px-5 py-20 md:px-10 md:py-28" style={{ background: CR }}>
-          <div className="mx-auto max-w-[1200px]">
-            <div className="mb-12 text-center">
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>What it is studied for</p>
-              <h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5rem)] font-bold leading-none tracking-[-0.04em]" style={{ color: D }}>K9 Rebuild</h2>
-              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: `${D}66` }}>The research stack</p>
-              <p className="mx-auto mt-6 max-w-3xl text-balance text-[17px] font-medium leading-8" style={{ color: `${D}A8` }}>A paired BPC-157 + TB-500 profile for research into tissue-repair signaling, cell migration, inflammatory pathways, and recovery after physical stress.</p>
-              <p className="mx-auto mt-3 max-w-2xl text-[12px] leading-5" style={{ color: `${D}75` }}>Research use only. Evidence is preclinical; K9 Rebuild is not an approved veterinary medicine and no outcome is promised.</p>
-            </div>
-
-            {/* Format toggle (static) */}
-            <div className="mb-10 flex justify-center gap-2">
-              <span className="flex items-center gap-2 rounded-full border px-5 py-2.5 text-[12px] font-semibold" style={{ border: `1.5px solid ${D}`, color: D, background: "white" }}>
-                injectable original <span className="text-[10px] font-normal opacity-60">fastest uptake</span>
-              </span>
-              <span className="flex items-center gap-2 rounded-full border px-5 py-2.5 text-[12px]" style={{ borderColor: `${D}15`, color: `${D}70` }}>
-                oral drops <span className="rounded-sm px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider" style={{ background: AM, color: BK }}>PRE-ORDER</span> <span className="text-[10px] font-normal">salmon flavored · no needles</span>
-              </span>
-            </div>
-
-            <div className="grid items-start gap-10 md:grid-cols-2 md:gap-14">
-              <div className="aspect-square overflow-hidden rounded-2xl bg-white">
-                <Image src="/images/zoonetics-products/k9-rebuild.png" alt="K9 Rebuild" width={600} height={600} className="h-full w-full object-contain p-10" />
-              </div>
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: `${D}70` }}>BPC-157 + TB-500 / The Research Stack / 10 mg + 10 mg</p>
-
-                {/* Purity */}
-                <div className="mt-4 flex items-baseline gap-3 border-b pb-6" style={{ borderColor: `${D}10` }}>
-                  <div>
-                    <p className="font-display text-[3.5rem] font-bold leading-none tracking-[-0.06em]" style={{ color: D }}>99.543%</p>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.14em]" style={{ color: `${D}7A` }}>HPLC Purity</p>
-                  </div>
-                  <a href="/lab-results" className="ml-auto text-[11px] underline underline-offset-2" style={{ color: `${D}66` }}>see the certificate of analysis →</a>
-                </div>
-
-                {/* Checklist */}
-                <div className="my-6 space-y-3">
-                  {[
-                    "Pairs two widely studied repair-pathway peptides",
-                    "Built for consistent owner-led documentation",
-                    "Every lot is linked to independent analytical testing",
-                    "Backed by a 60-day money-back guarantee",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <span className="mt-0.5 shrink-0 text-[13px]" style={{ color: `${D}8C` }}>✓</span>
-                      <p className="text-[14px] leading-snug" style={{ color: `${D}B8` }}>{item}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="mb-5 text-[12px] font-semibold" style={{ color: `${D}8C` }}>FREE sterile saline water + handling and research guide with every pack</p>
-
-                {/* Pack selector */}
-                <div className="mb-5 flex flex-col gap-2">
-                  {[
-                    { packs: "1 pack", price: "$75", orig: null, save: null, note: "2-week supply (medium/large dogs)" },
-                    { packs: "2 packs", price: "$130", orig: "$150", save: "save $20", note: "most popular", best: true },
-                    { packs: "4 packs", price: "$220", orig: "$300", save: "save $80", note: "best value" },
-                  ].map((pack) => (
-                    <button key={pack.packs} type="button"
-                      className="flex w-full items-center justify-between rounded-xl border px-5 py-4 text-left transition"
-                      style={pack.best
-                        ? { border: `1.5px solid ${D}`, background: `${D}06` }
-                        : { border: `1px solid ${D}15` }}>
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border" style={{ borderColor: pack.best ? D : `${D}52`, background: pack.best ? D : "transparent" }}>
-                          {pack.best && <span className="block h-1.5 w-1.5 rounded-full" style={{ background: CR }} />}
-                        </span>
-                        <div>
-                          <span className="text-[13px] font-bold" style={{ color: D }}>{pack.packs}</span>
-                          {pack.best && <span className="ml-2 rounded-sm px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider" style={{ background: AM, color: BK }}>most popular</span>}
-                          <span className="ml-2 text-[11px]" style={{ color: `${D}70` }}>{pack.note}</span>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-[14px] font-bold" style={{ color: D }}>{pack.price}</span>
-                        {pack.orig && <span className="ml-2 text-[11px] line-through" style={{ color: `${D}5C` }}>{pack.orig}</span>}
-                        {pack.save && <span className="ml-1.5 text-[11px] font-semibold" style={{ color: AM }}>{pack.save}</span>}
-                      </div>
-                    </button>
-                  ))}
-                </div>
-
-                {/* Quantity selector */}
-                <div className="mb-4 flex items-center gap-4">
-                  <div className="flex items-center gap-0 overflow-hidden rounded-full border" style={{ borderColor: `${D}20` }}>
-                    <button type="button" className="flex h-10 w-10 items-center justify-center text-lg font-bold transition hover:opacity-70" style={{ color: D }}>−</button>
-                    <span className="w-8 text-center text-[14px] font-bold" style={{ color: D }}>1</span>
-                    <button type="button" className="flex h-10 w-10 items-center justify-center text-lg font-bold transition hover:opacity-70" style={{ color: D }}>+</button>
-                  </div>
-                  <Link href="/shop/bpc-tb-500-blend-10mg"
-                    className="flex-1 rounded-full py-3.5 text-center text-sm font-bold uppercase tracking-[0.13em] transition hover:opacity-90"
-                    style={{ background: D, color: CR }}>
-                    Add to cart · $130 <span className="font-normal opacity-70">/ save $20</span>
-                  </Link>
-                </div>
-
-                <p className="mb-3 text-center text-[12px] font-medium" style={{ color: AM }}>in stock · ships within 24 hours</p>
-                <div className="flex items-center justify-center gap-5 text-[11px]" style={{ color: `${D}70` }}>
-                  <span>99.543% purity</span>
-                  <span>·</span>
-                  <span>third-party tested</span>
-                  <span>·</span>
-                  <a href="/lab-results" className="underline underline-offset-2">see for yourself</a>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -364,7 +255,7 @@ export default function Home() {
                   They still want the walk.<br /><span className="font-serif font-medium italic" style={{ color: AM }}>Their body says wait.</span>
                 </h2>
                 <p className="mt-7 max-w-xl text-[16px] font-medium leading-8" style={{ color: `${D}A8` }}>
-                  That mismatch is what owners feel first. ZooNetics exists to turn it into something useful: a baseline, a record, a veterinary conversation, and—where appropriate—a transparent research decision.
+                  That mismatch is what owners feel first. ZOONETICS exists to turn it into something useful: a baseline, a record, a veterinary conversation, and, where appropriate, a transparent research decision.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link href="/shop/bpc-tb-500-blend-10mg"
@@ -372,7 +263,7 @@ export default function Home() {
                     style={{ background: D, color: CR }}>
                     Get K9 Rebuild →
                   </Link>
-                  <Link href="#profiles" className="inline-flex items-center gap-2 px-4 py-4 text-sm transition" style={{ color: `${D}99` }}>
+                  <Link href="#product" className="inline-flex items-center gap-2 px-4 py-4 text-sm transition" style={{ color: `${D}99` }}>
                     View All Profiles
                   </Link>
                 </div>
@@ -408,15 +299,15 @@ export default function Home() {
         {/* ── CREATOR COMMUNITY ── */}
         <section id="creators" className="px-5 py-20 md:px-10 md:py-28" style={{ background: "#EAF0FF" }}>
           <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
               <div>
                 <p className="text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>Video diaries from real owners</p>
-                <h2 className="mt-4 max-w-2xl font-display text-[clamp(2.5rem,3.8vw,3.9rem)] font-extrabold leading-[0.96] tracking-[-0.045em]" style={{ color: D }}>
+                <h2 className="mt-4 max-w-2xl font-display text-[clamp(2.35rem,3vw,3.1rem)] font-extrabold leading-[0.98] tracking-[-0.04em]" style={{ color: D }}>
                   <span className="block xl:whitespace-nowrap">Don&apos;t Take Our Word For It.</span><span className="mt-1 block font-serif font-medium italic" style={{ color: AM }}>Watch Theirs.</span>
                 </h2>
               </div>
               <div className="max-w-xl lg:justify-self-end">
-                <p className="text-[16px] font-medium leading-8" style={{ color: `${D}B8` }}>The useful stories include the awkward first video, the routine in between, and the honest follow-up. These are owner observations—not clinical evidence—and that distinction stays visible.</p>
+                <p className="text-[16px] font-medium leading-8" style={{ color: `${D}B8` }}>The useful stories include the awkward first video, the routine in between, and the honest follow-up. These are owner observations, not clinical evidence, and that distinction stays visible.</p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {["Owner submitted", "Weekly check-ins", "Individual results vary"].map((tag) => <span key={tag} className="rounded-full border bg-white/80 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.1em]" style={{ borderColor: `${D}12`, color: `${D}99` }}>{tag}</span>)}
                 </div>
@@ -446,47 +337,8 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col gap-4 rounded-2xl bg-white p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
               <div><p className="font-display text-xl font-extrabold" style={{ color: D }}>Every story starts with a baseline.</p><p className="mt-2 text-[13px] font-medium" style={{ color: `${D}85` }}>Owner-submitted experiences · research use only · not clinical evidence.</p></div>
-              <Link href="#profiles" className="inline-flex shrink-0 items-center justify-center rounded-full px-6 py-4 text-sm font-extrabold" style={{ background: D, color: CR }}>Explore Research Profiles ↓</Link>
+              <Link href="#product" className="inline-flex shrink-0 items-center justify-center rounded-full px-6 py-4 text-sm font-extrabold" style={{ background: D, color: CR }}>Explore Research Profiles ↑</Link>
             </div>
-          </div>
-        </section>
-
-        {/* ── CORE RESEARCH PROFILES ── */}
-        <section id="profiles" className="scroll-mt-20 px-5 py-20 md:px-10 md:py-28" style={{ background: BK, color: CR }}>
-          <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-              <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8EAEFF]">Beyond The Blend</p>
-                <h2 className="mt-4 max-w-2xl font-display text-[clamp(2.5rem,3.3vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.04em]"><span className="block xl:whitespace-nowrap">One Research Question.</span><span className="mt-1 block xl:whitespace-nowrap">One Clear Profile.</span></h2>
-              </div>
-              <p className="max-w-xl text-[16px] font-medium leading-8 text-white/68 lg:justify-self-end">K9 Rebuild pairs two compounds. The standalone profiles let researchers isolate a pathway, while KPV opens a distinct barrier and inflammatory-pathway research lane.</p>
-            </div>
-
-            <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { number: "01", name: "K9 Reforge", compound: "BPC-157", focus: "Tissue-Repair Signaling", copy: "Studied in preclinical models involving tendon, ligament, gastrointestinal tissue and local repair signaling.", image: "/images/zoonetics-products/k9-reforge.png", href: "/shop/bpc-157-10mg" },
-                { number: "02", name: "K9 Reload", compound: "TB-500", focus: "Cell-Migration Research", copy: "Studied for its relationship to cell migration, actin regulation and recovery pathways after physical stress.", image: "/images/zoonetics-products/k9-reload.png", href: "/shop/tb-500-10mg" },
-                { number: "03", name: "K9 Rebuild", compound: "BPC-157 + TB-500", focus: "Paired Repair-Pathway Research", copy: "A combined profile for research designs examining complementary repair-signaling and cell-migration pathways.", image: "/images/zoonetics-products/k9-rebuild.png", href: "/shop/bpc-tb-500-blend-10mg" },
-                { number: "04", name: "K9 Restore", compound: "GHK-Cu", focus: "Copper-Peptide Research", copy: "Studied in tissue-remodeling, skin, collagen-signaling and wound-model research environments.", image: "/images/zoonetics-products/k9-restore.png", href: "/shop/ghk-cu-50mg" },
-                { number: "05", name: "K9 Reclaim", compound: "KPV", focus: "Barrier + Inflammatory Pathways", copy: "A distinct research profile used in preclinical work involving inflammatory signaling and epithelial barrier models.", image: "/images/zoonetics-products/k9-reclaim.png", href: "/shop/kpv-10mg" },
-                { number: "06", name: "K9 Recast", compound: "GHK-Cu + BPC-157 + TB-500", focus: "Multi-Pathway Blend", copy: "A three-compound profile for broader tissue-remodeling, repair-signaling and cell-migration research designs.", image: "/images/zoonetics-products/k9-recast.png", href: "/shop/glow-70mg" },
-              ].map((profile) => (
-                <article key={profile.name} className="group flex min-h-[520px] flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.055] transition duration-300 hover:-translate-y-1 hover:bg-white/[0.085]">
-                  <div className="relative h-56 border-b border-white/10 bg-white/[0.04]">
-                    <span className="absolute left-5 top-5 z-10 text-[10px] font-extrabold tracking-[0.18em] text-white/38">{profile.number}</span>
-                    <Image src={profile.image} alt={profile.name} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-contain p-7 transition duration-500 group-hover:scale-[1.035]" />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#8EAEFF]">{profile.compound}</p>
-                    <h3 className="mt-2 font-display text-2xl font-extrabold">{profile.name}</h3>
-                    <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-white/48">{profile.focus}</p>
-                    <p className="mt-5 flex-1 text-[13px] font-medium leading-6 text-white/62">{profile.copy}</p>
-                    <Link href={profile.href} className="mt-6 inline-flex items-center justify-between border-t border-white/12 pt-5 text-[12px] font-extrabold">View Profile <span className="text-[#8EAEFF]">↗</span></Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <p className="mt-7 text-[11px] leading-5 text-white/40">All profiles are research materials only. They are not approved veterinary medicines and are not presented as treatments for any condition.</p>
           </div>
         </section>
 
@@ -629,11 +481,10 @@ export default function Home() {
         <p className="font-display text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[0.92] tracking-[-0.04em]" style={{ color: CR }}>
           Start With One Vial.
         </p>
-        <Link href="/shop/bpc-tb-500-blend-10mg"
-          className="mt-8 inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] transition hover:opacity-90"
-          style={{ background: CR, color: D }}>
-          Get K9 Rebuild →
-        </Link>
+        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] transition hover:opacity-90" style={{ background: CR, color: D }}>Get K9 Rebuild →</Link>
+          <Link href="/ambassadors" className="inline-flex items-center justify-center rounded-full border px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] transition hover:bg-white/10" style={{ borderColor: `${CR}55`, color: CR }}>Become An Affiliate</Link>
+        </div>
       </div>
 
       {/* ── FOOTER ── */}
@@ -653,7 +504,7 @@ export default function Home() {
               <p><Link href="/shop/bpc-tb-500-blend-10mg" className="transition hover:opacity-100">K9 Rebuild</Link></p>
               <p><Link href="#cycle" className="transition hover:opacity-100">How it works</Link></p>
               <p><Link href="#creators" className="transition hover:opacity-100">Owner Stories</Link></p>
-              <p><Link href="#profiles" className="transition hover:opacity-100">All Research Profiles</Link></p>
+              <p><Link href="#product" className="transition hover:opacity-100">All Research Profiles</Link></p>
             </div>
 
             <div className="space-y-3 text-[13px]" style={{ color: `${CR}AD` }}>
@@ -667,17 +518,17 @@ export default function Home() {
             <div className="space-y-3 text-[13px]" style={{ color: `${CR}AD` }}>
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: `${AM}cc` }}>Company</p>
               <p><Link href="#questions" className="transition hover:opacity-100">FAQ</Link></p>
-              <p><Link href="/about" className="transition hover:opacity-100">About ZooNetics</Link></p>
+              <p><Link href="/about" className="transition hover:opacity-100">About ZOONETICS</Link></p>
               <p><Link href="/contact" className="transition hover:opacity-100">Contact</Link></p>
               <p><Link href="/affiliates" className="transition hover:opacity-100">Affiliates</Link></p>
             </div>
           </div>
 
           <div className="flex flex-col gap-4 py-7 text-[10px] uppercase tracking-[0.12em]" style={{ color: `${CR}70` }}>
-            <p className="md:hidden">© 2026 ZooNetics. All rights reserved.</p>
+            <p className="md:hidden">© 2026 ZOONETICS. All rights reserved.</p>
             <p className="md:hidden">Research materials only · Not veterinary advice</p>
             <div className="hidden md:flex md:items-center md:justify-between">
-              <p>© 2026 ZooNetics. All rights reserved.</p>
+              <p>© 2026 ZOONETICS. All rights reserved.</p>
               <p>Research materials only · Not veterinary advice · Not intended to diagnose, treat, cure, or prevent disease</p>
             </div>
           </div>

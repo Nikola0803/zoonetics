@@ -28,7 +28,7 @@ export type Product = {
 function ProductVial({ image, name, compact = false }: Pick<Product, "image" | "name"> & { compact?: boolean }) {
   return (
     <div className={`relative mx-auto ${compact ? "h-44 w-32" : "h-64 w-44"}`}>
-      <Image src={image} alt={`${name} ZooNetics vial`} fill sizes={compact ? "128px" : "176px"} className="object-contain drop-shadow-[0_18px_20px_rgba(0,0,0,0.28)]" />
+      <Image src={image} alt={`${name} ZOONETICS vial`} fill sizes={compact ? "128px" : "176px"} className="object-contain drop-shadow-[0_18px_20px_rgba(0,0,0,0.28)]" />
     </div>
   );
 }
@@ -78,7 +78,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
 
   const addSelected = () => {
     if (!selectedVariant) return;
-    selectedVariant.cartProducts.forEach((product) => addToCart(product, quantity, product.price * (1 - packDiscount), `ZooNetics K9 · ${selectedVariant.label}`));
+    selectedVariant.cartProducts.forEach((product) => addToCart(product, quantity, product.price * (1 - packDiscount), `ZOONETICS K9 · ${selectedVariant.label}`));
     setJustAdded(true);
   };
 
@@ -104,7 +104,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
         </div>
       </div>
 
-      <div ref={track} onScroll={updatePosition} tabIndex={0} aria-label="ZooNetics product carousel" className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-8 pt-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4F6EF7] md:mx-0 md:px-0">
+      <div ref={track} onScroll={updatePosition} tabIndex={0} aria-label="ZOONETICS product carousel" className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-8 pt-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4F6EF7] md:mx-0 md:px-0">
         {visibleProducts.map((product, index) => {
           const basePrice = product.variants[0].cartProducts.reduce((sum, item) => sum + item.price, 0);
           const reportedPurity = product.variants[0].cartProducts[0]?.purity ?? "99%+";
@@ -149,7 +149,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
               <div className="flex items-center gap-3">
                 <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#DCE7FF] text-[#4F6EF7]"><i className="ri-bubble-chart-fill" /></span>
                 <div>
-                  <p className="text-sm font-bold">ZooNetics K9</p>
+                  <p className="text-sm font-bold">ZOONETICS K9</p>
                   <p className="text-xs text-[#17233B]/45">Research use only</p>
                 </div>
               </div>
@@ -159,11 +159,11 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
               </div>
             </header>
 
-            {/* Body — scrollable */}
+            {/* Body: scrollable */}
             <div className="flex-1 overflow-y-auto">
               <div className="grid lg:grid-cols-[420px_1fr]">
 
-                {/* Left — vial visual */}
+                {/* Left: vial visual */}
                 <div className="relative flex min-h-[280px] flex-col items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_50%_30%,#26324A_0%,#101829_55%,#090C12_100%)] px-8 py-12 lg:min-h-0">
                   <span className="absolute left-5 top-5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur">RUO · K9 research</span>
                   <ProductVial image={selectedProduct.image} name={selectedProduct.name} />
@@ -179,7 +179,7 @@ export default function ProductCarousel({ products }: { products: Product[] }) {
                   </div>
                 </div>
 
-                {/* Right — details */}
+                {/* Right: details */}
                 <div className="p-6 lg:p-8">
                   <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#D95858]">{selectedProduct.type}</p>
                   <h2 className="mt-2 font-display text-[2.4rem] font-semibold leading-none tracking-[-0.045em]">{selectedProduct.name}</h2>

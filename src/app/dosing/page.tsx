@@ -4,7 +4,7 @@ import Link from "next/link";
 import DoseCalculator from "./DoseCalculator";
 
 export const metadata: Metadata = {
-  title: "K9 Dosing Reference | ZooNetics",
+  title: "K9 Dosing Reference | ZOONETICS",
   description:
     "Weight-based K9 peptide dosing reference with syringe calculator. BPC-157, TB-500, GHK-Cu from published animal model research. Research use only.",
 };
@@ -26,7 +26,7 @@ export default function DosingPage() {
         <div className="mx-auto flex max-w-[1200px] items-center justify-between">
           <Link href="/" className="flex items-center gap-2 transition hover:opacity-80">
             <i className="ri-arrow-left-line text-sm text-[#17233B]/40" />
-            <Image src="/brand/zoonetics-dark.webp" alt="ZooNetics by EVLV" width={180} height={45} className="h-8 w-auto" priority />
+            <Image src="/brand/zoonetics-dark.webp" alt="ZOONETICS by EVLV" width={180} height={45} className="h-8 w-auto" priority />
           </Link>
           <div className="flex items-center gap-2 rounded-full border border-[#D95858]/25 bg-[#D95858]/[0.06] px-4 py-1.5">
             <i className="ri-flask-line text-xs text-[#D95858]" />
@@ -169,7 +169,7 @@ export default function DosingPage() {
         <div className="mx-auto flex max-w-[1200px] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-xl text-[11px] leading-5 text-[#17233B]/40">
             Dose ranges compiled from peer-reviewed animal model literature (Sikiric et al., Pickart et al., Goldstein et al.) for research documentation purposes only.
-            Not veterinary advice. ZooNetics compounds are labeled Research Use Only.
+            Not veterinary advice. ZOONETICS compounds are labeled Research Use Only.
           </p>
           <Link
             href="/#collection"

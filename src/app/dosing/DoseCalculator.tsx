@@ -384,7 +384,7 @@ export default function DoseCalculator() {
 
                 <hr className="my-5 border-[#EBF0F8]" />
 
-                {/* Dose table — low / mid / high with compact syringes */}
+                {/* Dose table: low / mid / high with compact syringes */}
                 {levels ? (
                   <table className="w-full text-left text-xs">
                     <thead>
@@ -428,7 +428,7 @@ export default function DoseCalculator() {
                   </table>
                 ) : (
                   <div className="h-20 flex items-center justify-center text-sm text-[#17233B]/20">
-                    — table appears after weight entry
+                    Table appears after weight entry
                   </div>
                 )}
 
