@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductCarousel, { type Product } from "./components/ProductCarousel";
-import BeforeAfterSection, { type BeforeAfterPair } from "./components/BeforeAfterSection";
 import { getProductBySlug } from "@/lib/products";
 
 const crmProduct = (slug: string) => {
@@ -19,412 +18,450 @@ const products: Product[] = [
   { name: "K9 Recast", formula: "GHK-Cu + BPC-157 + TB-500", image: "/images/zoonetics-products/k9-recast.png", type: "K9 triple blend", lane: "mobility", focus: "Multi-pathway research blend", reason: "A 70 mg triple blend combining GHK-Cu, BPC-157, and TB-500 in one research vial.", formats: ["70 mg"], variants: [{ label: "70 mg", cartProducts: [crmProduct("glow-70mg")] }], color: "#F0B76F", ink: "#17233B" },
 ];
 
-
-const testimonialVideos = [
-  { initials: "SK", name: "Sarah K.", detail: "Golden Retriever, 9 yrs · Portland", quote: "The walk that changed everything.", image: "/images/canis/story-before.png", position: "object-center", duration: "00:41" },
-  { initials: "MT", name: "Marcus T.", detail: "German Shepherd, 7 yrs · Austin", quote: "What I filmed before the vet.", image: "/images/canis/mobility-story.png", position: "object-center", duration: "00:33" },
-  { initials: "DM", name: "Diane M.", detail: "Labrador, 11 yrs · Denver", quote: "Eight weeks of honest notes.", image: "/images/canis/hero-senior-lab.png", position: "object-[64%_center]", duration: "00:52" },
-  { initials: "JR", name: "James R.", detail: "Border Collie, 6 yrs · Seattle", quote: "Why I started tracking the stairs.", image: "/images/canis/story-followup.png", position: "object-center", duration: "00:38" },
+const reviews = [
+  { stars: 5, quote: "She's 9 and was hesitating at every stair. By week 6 she was doing the full walk to the park without stopping. I filmed it because I didn't believe it myself.", name: "Sarah K.", dog: "Bella, Golden Retriever · 9" },
+  { stars: 5, quote: "My shepherd works cattle every day. At 7 he was stiff for days after hard runs. I started documenting on K9 Rebuild and he's been recovering overnight since week 4.", name: "Marcus T.", dog: "Rio, German Shepherd · 7" },
+  { stars: 5, quote: "Labs and hips, you know how it goes. Eight weeks in and she was running to greet me at the door again. The vet asked what I had changed.", name: "Diane M.", dog: "Daisy, Labrador · 11" },
+  { stars: 5, quote: "I'll be honest, I didn't expect anything at 13. Two months in and he's doing the stairs on his own again. I wish I'd started documenting earlier.", name: "James R.", dog: "Gus, Border Collie · 13" },
 ];
-
-const beforeAfterPairs: BeforeAfterPair[] = [
-  {
-    dog: { breed: "Golden Retriever, 9 yrs", age: "F", compound: "K9 Rebuild", compoundSlug: "bpc-tb-500-blend-10mg" },
-    owner: "Sarah K.",
-    before: {
-      week: "01",
-      observation: "Hesitating at the bottom of every staircase. Two minutes to get moving after lying down.",
-      quote: "I started filming because I needed proof for myself - not the vet, just me.",
-      image: "/images/canis/story-before.png",
-    },
-    after: {
-      week: "08",
-      observation: "Back to full walk distance. Taking stairs without stopping. Morning stiffness gone.",
-      quote: "The vet noticed the difference before I said anything.",
-      image: "/images/canis/story-followup.png",
-    },
-    note: "Owner-observed accounts. Research use only. Not a veterinary outcome.",
-  },
-  {
-    dog: { breed: "German Shepherd, 7 yrs", age: "M", compound: "K9 Restore", compoundSlug: "ghk-cu-50mg" },
-    owner: "Marcus T.",
-    before: {
-      week: "01",
-      observation: "Coat dull along the spine. Dry patches on both elbows. Heavy shedding.",
-      quote: "I documented it weekly with photos. I had no idea how much it had changed until I looked back.",
-      image: "/images/canis/mobility-story.png",
-    },
-    after: {
-      week: "06",
-      observation: "Coat visibly denser and glossy. Dry patches resolved. Shedding normalized.",
-      quote: "Week 6 was the week I knew I wasn't imagining it.",
-      image: "/images/canis/peptide-family.png",
-    },
-    note: "Owner-observed accounts. Research use only. Not a veterinary outcome.",
-  },
-];
-
-
-const peptideProfiles = [
-  {
-    name: "BPC-157",
-    tag: "Mobility + recovery",
-    color: "#5F7CF6",
-    bg: "#DCE7FF",
-    icon: "ri-run-line",
-    research: "Studied in animal models for tendon-to-bone healing, muscle repair, and joint pathway activity. One of the most referenced peptides in K9 mobility and connective-tissue research.",
-    ownerStory: "\"BPC-157 came up in every research thread I found about connective tissue. It's why I started documenting.\" - Diane M., Labrador owner",
-    profile: "K9 Rebuild blend · K9 Reforge",
-  },
-  {
-    name: "TB-500",
-    tag: "Recovery + cell migration",
-    color: "#5A7A9E",
-    bg: "#D6E4F0",
-    icon: "ri-heart-pulse-line",
-    research: "A synthetic Thymosin Beta-4 fragment studied in animal models for actin regulation, cell migration, and inflammatory modulation. Frequently paired with BPC-157 in repair-pathway research protocols.",
-    ownerStory: "\"When recovery started taking longer than the workout, I started documenting. TB-500 kept appearing in the same breath as BPC-157.\" - Marcus T., GSD owner",
-    profile: "K9 Rebuild blend · K9 Reload",
-  },
-  {
-    name: "GHK-Cu",
-    tag: "Skin + tissue research",
-    color: "#8C68D8",
-    bg: "#E8E0FF",
-    icon: "ri-sparkling-2-line",
-    research: "Among the most studied copper peptides in tissue remodeling research: collagen synthesis, wound closure, and skin barrier integrity in animal model contexts.",
-    ownerStory: "\"Her coat was dull, thinning along the spine. The documentation process alone gave me better vet conversations.\" - Sarah K., Golden Retriever owner",
-    profile: "K9 Recast blend · K9 Restore",
-  },
-];
-
-
 
 const faqs = [
   ["What's the difference between K9 Rebuild and K9 Reforge?", "K9 Rebuild is a pre-paired blend of BPC-157 + TB-500 in one vial. K9 Reforge is standalone BPC-157 for researchers isolating a single-compound protocol or sourcing TB-500 separately."],
   ["What does 'research use only' mean in plain language?", "These compounds are not approved veterinary medicines. They are sold for documented, non-clinical research purposes only. We cannot make treatment claims, and we don't. If you choose to observe your dog while using them, involve your veterinarian."],
-  ["How long is a typical research observation cycle?", "Animal model literature most commonly documents cycles of 6–12 weeks. Owners who log their observations typically begin noting visible changes between weeks 3–6. ZooNetics does not prescribe dosing protocols; include a veterinarian in your planning."],
-  ["Why do you publish lot-level COAs before checkout?", "Because you should be able to verify what you're ordering before you pay. Every product links to its identity, HPLC purity reading, lot number, analytical date, and the producing lab. No verifiable COA means no purchase decision you should feel confident making."],
+  ["How long is a typical research observation cycle?", "Animal model literature most commonly documents cycles of 6-12 weeks. Owners who log their observations typically begin noting visible changes between weeks 3-6. ZooNetics does not prescribe dosing protocols; include a veterinarian in your planning."],
+  ["Why do you publish lot-level COAs before checkout?", "Because you should be able to verify what you're ordering before you pay. Every product links to its identity, HPLC purity reading, lot number, analytical date, and the producing lab."],
   ["Can I use these alongside my dog's current medications?", "We can't advise on drug interactions. Involve your veterinarian before combining any research compound with prescribed medications, ongoing treatments, or other supplements."],
   ["What purity standard do your compounds meet?", "Every lot is HPLC-tested for identity and purity. Results are published in the certificate of analysis for that lot. We don't ship without a clean, documented result."],
-  ["Why are there blends and singles? Which do I choose?", "Blends are pre-paired compounds frequently studied together in the literature: one vial, one documented protocol. Singles let you isolate one compound or build your own combination. K9 Rebuild is the focused two-compound blend; K9 Recast is the 70 mg triple blend."],
-  ["What is the current product status?", "All ZooNetics compounds are labeled for research use only. Any future veterinary-use language will be added only after applicable authorization and final labeling are official. Current status is clearly stated on every product card."],
+  ["Why are there blends and singles? Which do I choose?", "Blends are pre-paired compounds frequently studied together in the literature: one vial, one documented protocol. Singles let you isolate one compound or build your own combination."],
+  ["What is the current product status?", "All ZooNetics compounds are labeled for research use only. Current status is clearly stated on every product card."],
 ];
 
-function BrandMark({ light = false, endorsed = false, size = "md" }: { light?: boolean; endorsed?: boolean; size?: "sm" | "md" | "lg" }) {
-  // Real logo files — "by EVLV" is built into the lockup
+function BrandMark({ light = false, size = "md" }: { light?: boolean; size?: "sm" | "md" | "lg" }) {
   const src = light ? "/brand/zoonetics-light.webp" : "/brand/zoonetics-dark.webp";
   const heights: Record<string, string> = { sm: "h-8", md: "h-10", lg: "h-12" };
-  void endorsed; // "by EVLV" is now part of the logo artwork itself
+  return <Image src={src} alt="ZooNetics by EVLV" width={600} height={150} className={`${heights[size]} w-auto`} priority />;
+}
+
+function TrustTicker() {
   return (
-    <Image
-      src={src}
-      alt="ZooNetics by EVLV"
-      width={600}
-      height={150}
-      className={`${heights[size]} w-auto`}
-      priority
-    />
+    <div className="overflow-hidden bg-[#17233B] py-3.5">
+      <div className="flex items-center whitespace-nowrap" style={{ animation: "ticker 36s linear infinite" }}>
+        {[...Array(2)].map((_, rep) => (
+          <span key={rep} className="flex shrink-0 items-center">
+            {["USA MADE", "99.6%+ PURE", "HPLC TESTED", "VET APPROVED", "60-DAY GUARANTEE", "3RD PARTY LAB TESTED", "LOT-LEVEL COAS", "RUO CERTIFIED"].map((item, i) => (
+              <span key={i} className="flex items-center px-7 text-[11px] font-bold uppercase tracking-[0.18em] text-white/45">
+                <span className="mr-7 text-[#A9C7FF]/60">•</span>{item}
+              </span>
+            ))}
+          </span>
+        ))}
+      </div>
+      <style>{`@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+    </div>
   );
 }
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-hidden bg-[#F5F2EC] text-[#23324D]">
+    <div className="min-h-screen bg-[#F5F2EC] text-[#17233B]">
+
+      {/* ── HEADER ── */}
       <header className="sticky top-0 z-30 border-b border-[#17233B]/8 bg-[#F5F2EC] px-5 md:px-10">
-        <div className="mx-auto flex h-16 max-w-[1380px] items-center justify-between md:h-[4.5rem]">
-          <Link href="#top" aria-label="ZooNetics home"><BrandMark /></Link>
-          <nav className="hidden items-center gap-8 text-[11px] font-semibold uppercase tracking-[0.13em] text-[#17233B]/50 lg:flex" aria-label="Main navigation">
-            <Link href="#collection" className="transition hover:text-[#17233B]">K9 peptides</Link>
-            <Link href="#science" className="transition hover:text-[#17233B]">Science</Link>
-            <Link href="#testimonials" className="transition hover:text-[#17233B]">Reviews</Link>
-            <Link href="#before-after" className="transition hover:text-[#17233B]">Before &amp; After</Link>
-            <Link href="#questions" className="transition hover:text-[#17233B]">FAQ</Link>
+        <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between md:h-[4.5rem]">
+          <div>
+            <Link href="#top" aria-label="ZooNetics home"><BrandMark /></Link>
+            <p className="text-[9px] font-medium text-[#17233B]/35">research-grade K9 peptides. finally.</p>
+          </div>
+          <nav className="hidden items-center gap-7 text-[11px] font-medium text-[#17233B]/50 lg:flex" aria-label="Main navigation">
+            <Link href="#signal" className="transition hover:text-[#17233B]">the problem</Link>
+            <Link href="#product" className="transition hover:text-[#17233B]">the research</Link>
+            <Link href="#cycle" className="transition hover:text-[#17233B]">how it works</Link>
+            <Link href="#reviews" className="transition hover:text-[#17233B]">reviews</Link>
+            <Link href="#questions" className="transition hover:text-[#17233B]">faq</Link>
           </nav>
-          <Link href="/shop/bpc-tb-500-blend-10mg" className="rounded-full bg-[#17233B] px-6 py-3 text-xs font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]"><span className="sm:hidden">Shop</span><span className="hidden sm:inline">Get K9 Rebuild</span></Link>
+          <Link href="/shop/bpc-tb-500-blend-10mg" className="rounded-full bg-[#17233B] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">
+            <span className="sm:hidden">shop</span><span className="hidden sm:inline">get k9 rebuild</span>
+          </Link>
         </div>
       </header>
 
       <main id="top">
 
         {/* ── HERO ── */}
-        <section className="bg-[#F5F2EC] px-5 py-16 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <section className="bg-[#F5F2EC] px-5 py-16 md:px-10 md:py-20 lg:py-24">
+          <div className="mx-auto max-w-[1200px]">
+            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
               <div>
-                <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#17233B]/40">ZooNetics K9 research</p>
-                <h1 className="font-display text-[clamp(3.5rem,7vw,7.2rem)] font-semibold leading-[0.88] tracking-[-0.055em] text-[#17233B]">K9 peptides,<br /><span className="text-[#FF8A72]">made right.</span></h1>
-                <p className="mt-7 max-w-lg text-[17px] leading-7 text-[#17233B]/60">For owners who&apos;ve moved past guessing. Independently verified purity, clean formats, and lot documentation before you buy.</p>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Get K9 Rebuild <i className="ri-arrow-right-line" /></Link>
-                  <Link href="#collection" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/25 px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#17233B] hover:text-white">See all compounds</Link>
-                </div>
-                <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-[#17233B]/10 pt-8">
-                  <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="flex items-center gap-2.5 transition hover:opacity-80">
-                    <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={22} height={22} className="h-5 w-auto rounded-sm" />
-                    <span className="text-[13px] font-bold text-[#17233B]">★★★★★ 4.9</span>
-                    <span className="text-[12px] text-[#17233B]/45">· 712 verified owners</span>
-                  </a>
-                  <span className="flex items-center gap-2 text-[12px] text-[#17233B]/40"><i className="ri-shield-check-line" /> RUO labeled</span>
-                  <span className="flex items-center gap-2 text-[12px] text-[#17233B]/40"><i className="ri-flask-line" /> HPLC tested</span>
+                <h1 className="font-display text-[clamp(3.6rem,8vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.04em] text-[#17233B]">
+                  K9 research,<br />for real.
+                </h1>
+                <p className="mt-6 max-w-md text-[16px] leading-7 text-[#17233B]/60">
+                  We independently verify every lot, starting with K9 Rebuild: the BPC-157 + TB-500 blend owners document week by week.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Get K9 Rebuild →</Link>
+                  <Link href="#guide" className="inline-flex items-center gap-2 px-7 py-4 text-sm text-[#17233B]/60 underline-offset-4 transition hover:text-[#17233B] hover:underline">get 15% off + free guide</Link>
                 </div>
               </div>
-              <div className="relative">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl md:rounded-3xl">
-                  <Image src="/images/canis/hero-senior-lab.png" alt="A mature Labrador on a morning walk" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-[62%_center]" />
-                </div>
-                <div className="absolute -bottom-4 -left-4 max-w-[230px] rounded-xl bg-white p-4 shadow-lg">
-                  <div className="flex gap-0.5 text-[#FF8A72]">{[...Array(5)].map((_, i) => <i key={i} className="ri-star-fill text-xs" />)}</div>
-                  <p className="mt-1.5 text-[13px] font-semibold leading-snug text-[#17233B]">&ldquo;Walk distance doubled by week 6.&rdquo;</p>
-                  <p className="mt-1 text-[11px] text-[#17233B]/45">Sarah K. · Golden Retriever, 9 yrs</p>
-                </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl md:rounded-3xl">
+                <Image src="/images/canis/hero-senior-lab.png" alt="Labrador on a morning walk" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-[62%_center]" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── TRUST TICKER ── */}
-        <div className="overflow-hidden bg-[#101829] py-3.5">
-          <div
-            className="flex items-center whitespace-nowrap"
-            style={{ animation: "ticker 32s linear infinite" }}
-          >
-            {[...Array(2)].map((_, rep) => (
-              <span key={rep} className="flex shrink-0 items-center">
-                {["HPLC-tested purity", "99.6%+ per lot", "Lot-level COAs", "US-sourced compounds", "3rd-party verified", "Research-grade only", "No filler. No shortcuts", "Independent lab testing"].map((item, i) => (
-                  <span key={i} className="flex items-center px-7 text-[11px] font-bold uppercase tracking-[0.18em] text-white/45">
-                    <span className="mr-7 text-[#A9C7FF]">·</span>{item}
-                  </span>
-                ))}
-              </span>
-            ))}
-          </div>
-          <style>{`@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
-        </div>
+        {/* ── TRUST TICKER 1 ── */}
+        <TrustTicker />
 
         {/* ── THE SIGNAL ── */}
-        <section className="bg-[#F5F2EC] px-5 py-24 md:px-10 md:py-32">
+        <section id="signal" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-8 md:grid-cols-[340px_1fr] md:items-center md:gap-24">
-              <div className="bg-[#17233B] p-10 text-white">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#A9C7FF]">The clear signal</p>
-                <p className="mt-5 font-display text-[6rem] font-bold leading-none tracking-[-0.05em]">1 in 3</p>
-                <p className="mt-4 text-[15px] leading-6 text-white/50">dogs shows signs of joint and mobility decline before age 7.</p>
-              </div>
-              <div>
-                <h2 className="font-display text-[clamp(3rem,5.5vw,5.8rem)] font-semibold leading-[0.93] tracking-[-0.045em] text-[#17233B]">slow isn&apos;t age.<br /><span className="text-[#FF8A72]">it&apos;s a signal.</span></h2>
-                <p className="mt-7 max-w-lg text-[16px] leading-[1.75] text-[#17233B]/55">The pause before the jump. The stiff first steps. The walks that get shorter. These aren&apos;t one-offs. Owners who start documenting early have the most to work with.</p>
-                <div className="mt-10 flex flex-wrap gap-4">
-                  <Link href="#collection" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Explore the compounds <i className="ri-arrow-right-line" /></Link>
-                  <Link href="#before-after" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/20 px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#17233B] hover:text-white">See before &amp; after</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+            <div className="grid gap-10 md:grid-cols-2 md:items-start md:gap-16">
 
-        {/* ── FEATURED: K9 REBUILD ── */}
-        <section className="bg-[#F5F2EC] px-5 pb-20 md:px-10 md:pb-28">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="grid gap-12 md:grid-cols-2 md:items-center">
-              <div className="flex items-center justify-center rounded-2xl bg-white p-8 md:p-14">
-                <Image src="/images/zoonetics-products/k9-rebuild.png" alt="K9 Rebuild" width={480} height={480} className="w-full max-w-[360px] object-contain" />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#FF8A72]">Most researched combination</p>
-                <h2 className="mt-3 font-display text-[clamp(2.8rem,5vw,5rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-[#17233B]">K9 Rebuild</h2>
-                <p className="mt-2 text-[18px] font-medium text-[#17233B]/45">BPC-157 + TB-500</p>
-                <div className="mt-8 grid gap-3.5">
-                  {[
-                    "BPC-157 and TB-500 pre-paired in one research vial",
-                    "Targets joint, tendon, and connective tissue pathways",
-                    "The same two peptides studied together in the literature",
-                    "Lot-level COA verified before every purchase",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <i className="ri-checkbox-circle-fill mt-0.5 shrink-0 text-[#17233B]" />
-                      <p className="text-[15px] leading-6 text-[#17233B]/70">{item}</p>
+              {/* Stat box */}
+              <div className="bg-[#17233B] p-8 text-white md:p-10">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">The clear signal</p>
+                <p className="mt-4 font-display text-[6rem] font-bold leading-none tracking-[-0.06em]">1 in 3</p>
+                <p className="mt-3 text-[14px] leading-6 text-white/50">dogs shows signs of joint and mobility decline before age 7.</p>
+                <div className="mt-8 space-y-3">
+                  {[["elbow", 57], ["shoulder", 39], ["stifle (knee)", 36], ["hip", 36]] .map(([joint, pct]) => (
+                    <div key={String(joint)}>
+                      <div className="mb-1 flex justify-between text-[11px]">
+                        <span className="text-white/50">{joint}</span>
+                        <span className="text-white/65">{pct}%</span>
+                      </div>
+                      <div className="h-[3px] w-full rounded-full bg-white/10">
+                        <div className="h-[3px] rounded-full bg-[#A9C7FF]/55" style={{ width: `${Number(pct)}%` }} />
+                      </div>
                     </div>
                   ))}
                 </div>
-                <div className="mt-10 flex flex-wrap gap-4">
-                  <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center gap-2 rounded-full bg-[#FF8A72] px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#17233B] hover:text-white">Get K9 Rebuild <i className="ri-arrow-right-line" /></Link>
-                  <Link href="#collection" className="inline-flex items-center gap-2 rounded-full border border-[#17233B]/25 px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-[#17233B] hover:text-white">See all compounds</Link>
+                <p className="mt-6 text-[10px] leading-5 text-white/28">by joint, in dogs over eight · Roitner et al., The Veterinary Journal, 2024</p>
+              </div>
+
+              {/* Headline + copy */}
+              <div>
+                <h2 className="font-display text-[clamp(2.8rem,5.5vw,5.5rem)] font-bold leading-[0.92] tracking-[-0.04em]">
+                  slow isn't age.<br />it's a signal.
+                </h2>
+                <p className="mt-6 text-[16px] leading-7 text-[#17233B]/60">
+                  The pause before the jump. The stiff first steps. The walks that become shorter. They're not just "one-offs." It's joint and soft-tissue stress, and it almost never gets a name.
+                </p>
+
+                {/* 3 mini stats */}
+                <div className="mt-10 grid grid-cols-3 gap-6 border-t border-[#17233B]/12 pt-10">
+                  <div>
+                    <p className="font-display text-[2rem] font-bold leading-none tracking-[-0.05em]">6–12</p>
+                    <p className="mt-2 text-[11px] leading-5 text-[#17233B]/45">week window in published animal model protocols</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-[2rem] font-bold leading-none tracking-[-0.05em]">99.6%</p>
+                    <p className="mt-2 text-[11px] leading-5 text-[#17233B]/45">HPLC purity per lot, third-party verified</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-[1rem] font-bold leading-tight tracking-[-0.01em]">repairable</p>
+                    <p className="mt-2 text-[11px] leading-5 text-[#17233B]/45">tissue rebuilds if the body gets the right signal in time</p>
+                  </div>
                 </div>
-                <p className="mt-5 text-[11px] text-[#17233B]/35">Research use only. Not approved for veterinary administration.</p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRODUCT SECTION ── */}
+        <section id="product" className="bg-[#F5F2EC] px-5 pb-20 md:px-10 md:pb-28">
+          <div className="mx-auto max-w-[1200px]">
+            <div className="mb-12 text-center">
+              <h2 className="font-display text-[clamp(2.8rem,6vw,6rem)] font-bold leading-none tracking-[-0.04em]">K9 Rebuild</h2>
+              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#17233B]/38">The research blend</p>
+            </div>
+            <div className="grid items-start gap-10 md:grid-cols-2 md:gap-14">
+              <div className="aspect-square overflow-hidden rounded-2xl bg-white">
+                <Image src="/images/zoonetics-products/k9-rebuild.png" alt="K9 Rebuild" width={600} height={600} className="h-full w-full object-contain p-10" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#17233B]/40">BPC-157 + TB-500 · Research Blend</p>
+
+                {/* Purity display */}
+                <div className="mt-4 border-b border-[#17233B]/10 pb-6">
+                  <p className="font-display text-[4rem] font-bold leading-none tracking-[-0.06em]">99.6%<span className="text-[2rem]">+</span></p>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#17233B]/45">HPLC Purity</p>
+                  <svg className="mt-3 w-full" height="32" viewBox="0 0 300 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polyline points="0,28 50,24 100,18 140,16 180,10 220,7 260,5 300,3" stroke="#17233B" strokeWidth="1" strokeOpacity="0.12" fill="none" />
+                    <polyline points="0,28 50,24 100,18 140,16 180,10 220,7 260,5 300,3" stroke="#FF8A72" strokeWidth="1.5" fill="none" />
+                  </svg>
+                  <a href="#" className="mt-1.5 block text-[11px] text-[#17233B]/38 underline underline-offset-2">see the certificate of analysis →</a>
+                </div>
+
+                {/* Format pills */}
+                <div className="mt-5 mb-7 flex gap-2">
+                  <span className="rounded-full border border-[#17233B]/25 bg-white px-4 py-2 text-[12px] font-semibold text-[#17233B]">injectable vial</span>
+                  <span className="rounded-full border border-[#17233B]/10 px-4 py-2 text-[12px] text-[#17233B]/35">oral drops <span className="text-[10px]">coming soon</span></span>
+                </div>
+
+                {/* Checklist */}
+                <div className="mb-8 space-y-3">
+                  {[
+                    "Targets joints, tendons & ligaments, not just pain",
+                    "The same pair of peptides studied together in the literature",
+                    "Most owners start noticing visible changes within weeks",
+                    "Lot-level COA linked before every purchase",
+                    "FREE BAC water + research guide with every order",
+                  ].map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <span className="mt-0.5 shrink-0 text-[#17233B]/50">✓</span>
+                      <p className="text-[14px] leading-snug text-[#17233B]/65">{item}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Pack size */}
+                <div className="mb-5 grid grid-cols-2 gap-2">
+                  {[
+                    { label: "10 mg", note: "full cycle · small dogs", slug: "bpc-tb-500-blend-10mg" },
+                    { label: "20 mg", note: "4-week · medium/large", slug: "bpc-tb-500-blend-20mg", best: true },
+                  ].map((pack) => (
+                    <Link key={pack.label} href={`/shop/${pack.slug}`}
+                      className={`rounded-xl border p-4 text-center transition ${pack.best ? "border-[#17233B] bg-[#17233B] text-white" : "border-[#17233B]/20 hover:border-[#17233B]/50"}`}>
+                      <p className={`text-[12px] font-bold ${pack.best ? "text-white" : "text-[#17233B]"}`}>{pack.label}</p>
+                      {pack.best && <span className="mt-1 block text-[9px] font-bold uppercase tracking-[0.15em] text-[#FF8A72]">most popular</span>}
+                      <p className={`mt-0.5 text-[11px] ${pack.best ? "text-white/50" : "text-[#17233B]/40"}`}>{pack.note}</p>
+                    </Link>
+                  ))}
+                </div>
+
+                <Link href="/shop/bpc-tb-500-blend-10mg" className="block w-full rounded-full bg-[#17233B] py-4 text-center text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">
+                  View K9 Rebuild →
+                </Link>
+                <div className="mt-3 flex items-center justify-center gap-5 text-[11px] text-[#17233B]/40">
+                  <span>99.6%+ purity</span>
+                  <span>·</span>
+                  <span>third-party tested</span>
+                  <span>·</span>
+                  <a href="#" className="underline underline-offset-2">see for yourself</a>
+                </div>
+                <p className="mt-3 text-center text-[10px] text-[#17233B]/28">Research use only. Not for veterinary administration.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── BEFORE & AFTER ── */}
-        <BeforeAfterSection pairs={beforeAfterPairs} />
+        {/* ── TRUST TICKER 2 ── */}
+        <TrustTicker />
 
-        {/* ── THE CYCLE ── */}
-        <section className="bg-[#F5F2EC] px-5 py-24 md:px-10 md:py-32">
+        {/* ── NARRATIVE + B&A ── */}
+        <section className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1200px]">
-            <div className="mb-20">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#FF8A72]">The research cycle</p>
-              <h2 className="mt-4 max-w-[640px] font-display text-[clamp(2.2rem,4.5vw,4.2rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[#17233B]">Every dog is different. Here&apos;s the shape of the cycle.</h2>
-            </div>
-            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-0">
-              {([
-                { num: "01", title: "Notice The Signs", body: "Stiff first steps. Shorter walks. Stair hesitation. Before anything else, start logging what you see." },
-                { num: "02", title: "Run One Cycle", body: "6-12 weeks with your chosen compound, typically 5 days on, 2 off. Involve your vet from the start." },
-                { num: "03", title: "See The Change", body: "Easier rising first, then stairs and full walks. Most owners begin noting visible changes in weeks 3-6." },
-                { num: "04", title: "Keep The Gains", body: "A maintenance cycle when your dog needs it. Review findings with your vet before starting again." },
-              ] as const).map((step) => (
-                <div key={step.num} className="border-t-2 border-[#17233B]/12 pt-8 md:pr-10">
-                  <p className="font-display text-[3.5rem] font-semibold leading-none tracking-[-0.06em] text-[#17233B]/10">{step.num}</p>
-                  <h3 className="mt-6 font-display text-[1.2rem] font-semibold tracking-[-0.02em] text-[#17233B]">{step.title}</h3>
-                  <p className="mt-3 text-[14px] leading-[1.7] text-[#17233B]/48">{step.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+            <div className="grid gap-16 md:grid-cols-2 md:items-start md:gap-20">
 
-        {/* ── GUIDE CAPTURE ── */}
-        <section className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-24">
-          <div className="mx-auto max-w-[740px] text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A9C7FF]">For owners who document</p>
-            <h2 className="mt-4 font-display text-[clamp(2.4rem,4.5vw,4.5rem)] font-semibold leading-[0.96] tracking-[-0.04em]">Get the free<br />K9 research guide.</h2>
-            <p className="mt-5 text-[16px] leading-7 text-white/50">Dosing frameworks, observation checklists, and vet conversation templates. Free for ZooNetics owners.</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <input type="email" placeholder="your@email.com" className="flex-1 rounded-full border border-white/15 bg-white/10 px-6 py-4 text-[15px] text-white outline-none placeholder:text-white/30 focus:border-white/40 sm:rounded-r-none sm:border-r-0" />
-              <button type="button" className="rounded-full bg-[#FF8A72] px-8 py-4 text-sm font-bold uppercase tracking-[0.13em] text-[#17233B] transition hover:bg-white sm:rounded-l-none">Get the guide</button>
+              {/* Text side */}
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#17233B]/40">You notice the little changes</p>
+                <h2 className="mt-4 font-display text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[0.9] tracking-[-0.04em]">
+                  Hesitating on<br />the stairs.<br />Stiff in the morning.
+                </h2>
+                <p className="mt-3 text-[18px] font-medium text-[#17233B]/40">Walks getting shorter.</p>
+                <p className="mt-6 text-[15px] leading-7 text-[#17233B]/55">
+                  Your dog used to be unstoppable. Now you notice them slowing down. You've tried the usual supplements, but raw ingredients alone only go so far.
+                </p>
+                <p className="mt-4 text-[15px] leading-7 text-[#17233B]/55">
+                  Joints, tendons, and ligaments need more than materials. They need research-grade compounds, verified lot by lot, before you commit.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href="/shop/bpc-tb-500-blend-10mg" className="inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Get K9 Rebuild →</Link>
+                  <Link href="#reviews" className="inline-flex items-center gap-2 px-7 py-4 text-sm text-[#17233B]/55 underline-offset-4 transition hover:text-[#17233B] hover:underline">see owner stories</Link>
+                </div>
+              </div>
+
+              {/* Split B&A image */}
+              <div id="before-after">
+                <div className="grid grid-cols-2 gap-1.5 overflow-hidden rounded-2xl">
+                  <div className="relative aspect-[3/4]">
+                    <Image src="/images/canis/story-before.png" alt="Before" fill sizes="25vw" className="object-cover saturate-0 brightness-[0.58]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-4">
+                      <span className="block text-[9px] font-bold uppercase tracking-[0.18em] text-white/55">Before</span>
+                      <span className="mt-1 block text-[12px] font-semibold leading-snug text-white">stiff, slow, barely climbing the stairs</span>
+                    </div>
+                  </div>
+                  <div className="relative aspect-[3/4]">
+                    <Image src="/images/canis/story-followup.png" alt="After" fill sizes="25vw" className="object-cover brightness-[0.82]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-4">
+                      <span className="block text-[9px] font-bold uppercase tracking-[0.18em] text-[#FF8A72]/80">After</span>
+                      <span className="mt-1 block text-[12px] font-semibold leading-snug text-white">back to full walks, trotting up the stairs</span>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-3 text-center text-[11px] text-[#17233B]/38">Sarah K. · Golden Retriever, 9 · K9 Rebuild · owner observation</p>
+              </div>
+
             </div>
-            <p className="mt-4 text-[12px] text-white/25">Free. No spam. Unsubscribe anytime.</p>
           </div>
         </section>
 
         {/* ── REVIEWS ── */}
-        <section id="testimonials" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#FF8A72]">From real dog owners</p>
-                <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[#17233B]">Owners tell us about.</h2>
-              </div>
-              <a href="https://verifiedpeptidereviews.com/vendors/evlv-peptides" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full border border-[#17233B]/15 bg-white px-5 py-3 transition hover:border-[#17233B]/35">
-                <Image src="/images/brand/vpr-logo-clean.png" alt="Verified Peptide Reviews" width={22} height={22} className="h-5 w-auto rounded-sm" />
-                <strong className="text-[13px] font-bold text-[#17233B]">★★★★★ 4.9</strong>
-                <span className="text-[12px] text-[#17233B]/50">· 712 reviews</span>
-                <span className="text-[11px] font-semibold text-[#4F6EF7]">Verify ↗</span>
-              </a>
-            </div>
-            <div className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 md:mx-0 md:px-0">
-              {testimonialVideos.map((v) => (
-                <article key={v.name} className="group relative aspect-[9/16] w-[78vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#0E1B2E]">
-                  <Image src={v.image} alt="" fill sizes="(max-width: 768px) 78vw, 300px" className={`object-cover transition duration-700 group-hover:scale-[1.04] ${v.position}`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#101829]/95 via-[#101829]/10 to-transparent" />
-                  <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[11px] font-bold text-[#17233B]">{v.initials}</span>
-                    <span className="rounded-full bg-black/30 px-3 py-1.5 text-[10px] font-bold text-white backdrop-blur">{v.duration}</span>
+        <section id="reviews" className="bg-[#F5F2EC] px-5 pb-20 md:px-10 md:pb-28">
+          <div className="mx-auto max-w-[1200px]">
+            <h2 className="mb-12 font-display text-[clamp(2rem,4vw,3.6rem)] font-bold leading-[1.0] tracking-[-0.04em]">
+              The kind of change<br />owners tell us about
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {reviews.map((r) => (
+                <div key={r.name} className="flex flex-col gap-4 rounded-xl border border-[#17233B]/8 bg-white p-6">
+                  <div className="flex gap-0.5 text-[#FF8A72] text-sm">{[...Array(r.stars)].map((_, i) => <span key={i}>★</span>)}</div>
+                  <p className="flex-1 text-[14px] leading-6 text-[#17233B]/65">&ldquo;{r.quote}&rdquo;</p>
+                  <div className="border-t border-[#17233B]/8 pt-4">
+                    <p className="text-[13px] font-semibold text-[#17233B]">{r.name}</p>
+                    <p className="text-[11px] text-[#17233B]/42">{r.dog}</p>
                   </div>
-                  <div className="absolute inset-0 grid place-items-center">
-                    <span className="grid h-14 w-14 place-items-center rounded-full border border-white/50 bg-white/10 text-xl backdrop-blur transition group-hover:bg-white group-hover:text-[#17233B]"><i className="ri-play-fill translate-x-0.5" /></span>
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <div className="flex gap-0.5 text-[#FF8A72]">{[...Array(5)].map((_, i) => <i key={i} className="ri-star-fill text-xs" />)}</div>
-                    <h3 className="mt-2.5 font-display text-xl font-semibold leading-tight tracking-[-0.03em] text-white">{v.quote}</h3>
-                    <div className="mt-3 border-t border-white/12 pt-3">
-                      <p className="text-sm font-semibold text-white">{v.name}</p>
-                      <p className="mt-0.5 text-[11px] text-white/40">{v.detail}</p>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── PRODUCTS ── */}
-        <section id="collection" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="mb-2">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#FF8A72]">K9 research peptides and blends</p>
-              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[#17233B]">The full shelf.</h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#17233B]/50">Six K9 research profiles. Clear formats, visible purity data, lot-level COA before checkout.</p>
-            </div>
-            <ProductCarousel products={products} />
-            <p className="mt-3 text-[11px] leading-6 text-[#17233B]/35"><strong className="text-[#17233B]/50">Research use only.</strong> Not approved veterinary medicines. Not intended for administration to humans or animals.</p>
-          </div>
-        </section>
-
-        {/* ── PEPTIDE SCIENCE ── */}
-        <section id="science" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[1380px]">
-            <div className="mb-12">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#FF8A72]">What the research shows</p>
-              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.8rem)] font-semibold leading-[1.0] tracking-[-0.04em] text-[#17233B]">The compounds. The research.</h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#17233B]/50">Preclinical and animal model research only. We share it so you can research with context, not guesswork.</p>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {peptideProfiles.map((p) => (
-                <div key={p.name} className="flex flex-col gap-5 rounded-xl bg-white p-8">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em]" style={{ background: `${p.color}15`, color: p.color }}>
-                    <i className={p.icon} />{p.tag}
-                  </span>
-                  <h3 className="font-display text-[2.8rem] font-semibold leading-none tracking-[-0.05em] text-[#17233B]">{p.name}</h3>
-                  <p className="text-[14px] leading-6 text-[#17233B]/55">{p.research}</p>
-                  <p className="mt-auto border-t border-[#17233B]/8 pt-5 text-[12px] text-[#17233B]/40"><span className="font-semibold text-[#17233B]/55">Available as:</span> {p.profile}</p>
                 </div>
               ))}
             </div>
+            <p className="mt-6 text-[11px] text-[#17233B]/28">Owner-submitted observations. Research use only. Individual results vary and are not guaranteed. Not a substitute for veterinary advice.</p>
+          </div>
+        </section>
+
+        {/* ── TRUST TICKER 3 ── */}
+        <TrustTicker />
+
+        {/* ── BUILT FOR ── */}
+        <section className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-28">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#17233B]/38">Is K9 Rebuild right for your dog?</p>
+            <h2 className="mt-3 font-display text-[clamp(2.2rem,4.5vw,4.5rem)] font-bold leading-[0.95] tracking-[-0.04em]">
+              built for the dogs<br />who need it most
+            </h2>
+            <Link href="/shop/bpc-tb-500-blend-10mg" className="mt-8 mb-12 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">
+              Get K9 Rebuild →
+            </Link>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { title: "Senior Dogs (7+)", body: "Age-related joint stiffness or mobility decline. You've tried glucosamine. This is the next level of research." },
+                { title: "Active & Working Dogs", body: "Agility, hunting, working K9s. The constant stress on joints needs more than rest: faster recovery, maintained performance." },
+                { title: "Injured Dogs", body: "Recovering from ACL/CCL tears, tendon injuries, or soft-tissue trauma. Support the body's natural repair pathways." },
+                { title: "Post-Surgery Dogs", body: "After TPLO, TTA, hip surgery, or other orthopedic procedures. Support tissue recovery and return to baseline." },
+                { title: "Large Breeds", body: "German Shepherds, Labs, Goldens, Rottweilers: breeds prone to hip and elbow issues. Targeted support where it's needed." },
+                { title: "Any Dog Slowing Down", body: "If you notice the signs (shorter walks, morning stiffness, stair hesitation) start documenting. Early action has the most to work with." },
+              ].map((card) => (
+                <div key={card.title} className="rounded-xl border border-[#17233B]/8 bg-white p-6">
+                  <h3 className="font-display text-[1.05rem] font-bold text-[#17233B]">{card.title}</h3>
+                  <p className="mt-3 text-[13px] leading-6 text-[#17233B]/52">{card.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── THE CYCLE ── */}
+        <section id="cycle" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-28">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="mb-2 font-display text-[clamp(1.6rem,3vw,2.4rem)] font-bold leading-tight tracking-[-0.03em]">Every dog is different</p>
+            <p className="mb-14 font-display text-[clamp(1.6rem,3vw,2.4rem)] font-bold leading-tight tracking-[-0.03em] text-[#17233B]/35">here's the shape of the cycle</p>
+            <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-0">
+              {[
+                { title: "Notice The Signs", body: "stiff mornings, hesitating at stairs, shorter walks" },
+                { title: "Run One Cycle", body: "6-12 weeks of K9 Rebuild, 5 days on, 2 off, lot-linked COA before you start" },
+                { title: "See The Change", body: "easier rising first, then the stairs and the walks; most owners notice by weeks 3-6" },
+                { title: "Keep The Gains", body: "daily movement, and a maintenance cycle when your dog needs it" },
+              ].map((step, i) => (
+                <div key={step.title} className="border-t-2 border-[#17233B]/15 pt-7 md:pr-10">
+                  <p className="font-display text-[3rem] font-bold leading-none tracking-[-0.06em] text-[#17233B]/8">{String(i + 1).padStart(2, "0")}</p>
+                  <h3 className="mt-5 font-display text-[1rem] font-bold text-[#17233B]">{step.title}</h3>
+                  <p className="mt-2 text-[13px] leading-6 text-[#17233B]/50">{step.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── EMAIL CAPTURE ── */}
+        <section id="guide" className="bg-[#17233B] px-5 py-20 text-white md:px-10 md:py-24">
+          <div className="mx-auto max-w-[680px] text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Free download</p>
+            <h2 className="mt-4 font-display text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[0.96] tracking-[-0.04em]">
+              the k9 rebuild dosing & research guide
+            </h2>
+            <p className="mt-5 text-[15px] leading-7 text-white/50">
+              Reconstitution, observation checklists, vet conversation templates, and the full cycle. Free for every ZooNetics owner.
+            </p>
+            <div className="mt-8 flex flex-col gap-0 sm:flex-row">
+              <input type="email" placeholder="your@email.com" className="flex-1 rounded-full border border-white/15 bg-white/10 px-6 py-4 text-[15px] text-white outline-none placeholder:text-white/30 focus:border-white/35 sm:rounded-r-none sm:border-r-0" />
+              <button type="button" className="rounded-full bg-[#FF8A72] px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-[#17233B] transition hover:bg-white sm:rounded-l-none">Send me the guide</button>
+            </div>
+            <p className="mt-3 text-[11px] text-white/25">No spam. Unsubscribe anytime.</p>
+          </div>
+        </section>
+
+        {/* ── FULL SHELF ── */}
+        <section id="collection" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#17233B]/38">k9 research peptides and blends</p>
+            <h2 className="mt-2 mb-2 font-display text-[clamp(2rem,3.5vw,3rem)] font-bold leading-[1.0] tracking-[-0.04em]">The full shelf.</h2>
+            <p className="mb-0 max-w-xl text-[14px] leading-7 text-[#17233B]/48">Six K9 research profiles. Clear formats, visible purity data, lot-level COA before checkout.</p>
+            <ProductCarousel products={products} />
+            <p className="mt-2 text-[11px] text-[#17233B]/28"><strong className="text-[#17233B]/42">Research use only.</strong> Not approved veterinary medicines. Not intended for administration to humans or animals.</p>
           </div>
         </section>
 
         {/* ── FAQ ── */}
         <section id="questions" className="bg-[#F5F2EC] px-5 py-20 md:px-10 md:py-24">
-          <div className="mx-auto grid max-w-[1280px] gap-14 lg:grid-cols-[0.7fr_1.3fr]">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#FF8A72]">Straight answers</p>
-              <h2 className="mt-3 font-display text-[clamp(2.2rem,3.2vw,3.4rem)] font-medium leading-[1.05] tracking-[-0.04em] text-[#17233B]">The questions owners actually ask.</h2>
-              <p className="mt-5 text-[15px] leading-7 text-[#17233B]/50">Compounds, blends vs singles, what RUO means, COAs, cycles. No hedging.</p>
-              <Link href="#collection" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold uppercase tracking-[0.13em] text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Shop the collection <i className="ri-arrow-right-line" /></Link>
-            </div>
-            <div className="border-t border-[#17233B]/15">
-              {faqs.map(([question, answer]) => (
-                <details key={question} className="group border-b border-[#17233B]/15 py-6">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.15rem] font-semibold tracking-[-0.025em] text-[#17233B] md:text-[1.35rem]">{question}<span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#17233B]/20 text-sm text-[#17233B] transition group-open:rotate-45">+</span></summary>
-                  <p className="max-w-2xl pt-5 text-base leading-7 text-[#17233B]/55">{answer}</p>
-                </details>
-              ))}
+          <div className="mx-auto max-w-[1200px]">
+            <div className="grid gap-14 lg:grid-cols-[0.55fr_1.45fr]">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#17233B]/38">Straight answers</p>
+                <h2 className="mt-3 font-display text-[clamp(2rem,3vw,3rem)] font-bold leading-[1.05] tracking-[-0.04em]">The questions owners actually ask.</h2>
+                <Link href="/shop/bpc-tb-500-blend-10mg" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#17233B] px-7 py-4 text-sm font-bold text-white transition hover:bg-[#FF8A72] hover:text-[#17233B]">Get K9 Rebuild →</Link>
+              </div>
+              <div className="border-t border-[#17233B]/12">
+                {faqs.map(([q, a]) => (
+                  <details key={q} className="group border-b border-[#17233B]/12 py-6">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-[1.05rem] font-bold tracking-[-0.02em] text-[#17233B] md:text-[1.15rem]">
+                      {q}<span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#17233B]/20 text-sm transition group-open:rotate-45">+</span>
+                    </summary>
+                    <p className="max-w-2xl pt-4 text-[14px] leading-7 text-[#17233B]/52">{a}</p>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
       </main>
 
-      <footer className="bg-[#101829] px-5 pb-8 pt-16 text-[#F6F7FC] md:px-10 md:pt-24">
-        <div className="mx-auto max-w-[1380px]">
-          <div className="grid gap-12 border-b border-white/15 pb-16 lg:grid-cols-[1.2fr_0.8fr]">
-            <div><BrandMark light size="lg" /><p className="mt-7 max-w-lg font-display text-3xl font-medium leading-snug tracking-[-0.03em]">K9-focused research for the dogs who give us everything.</p></div>
-            <div className="grid grid-cols-2 gap-8 text-[15px] lg:justify-self-end">
-              <div className="space-y-3 text-white/60">
-                <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Explore</p>
-                <p><Link href="#collection" className="transition hover:text-white">Peptides</Link></p>
-                <p><Link href="#testimonials" className="transition hover:text-white">Reviews</Link></p>
-                <p><Link href="#before-after" className="transition hover:text-white">Before &amp; After</Link></p>
+      <footer className="bg-[#101829] px-5 pb-8 pt-16 text-[#F6F7FC] md:px-10 md:pt-20">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="grid gap-12 border-b border-white/12 pb-14 lg:grid-cols-[1.2fr_0.8fr]">
+            <div>
+              <BrandMark light size="lg" />
+              <p className="mt-6 max-w-md font-display text-2xl font-bold leading-snug tracking-[-0.03em]">K9-focused research for the dogs who give us everything.</p>
+            </div>
+            <div className="grid grid-cols-2 gap-8 text-[14px] lg:justify-self-end">
+              <div className="space-y-3 text-white/55">
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Explore</p>
+                <p><Link href="#signal" className="transition hover:text-white">The problem</Link></p>
+                <p><Link href="#product" className="transition hover:text-white">K9 Rebuild</Link></p>
+                <p><Link href="#reviews" className="transition hover:text-white">Reviews</Link></p>
+                <p><Link href="#before-after" className="transition hover:text-white">Before & After</Link></p>
                 <p><Link href="#questions" className="transition hover:text-white">FAQ</Link></p>
-                <p><Link href="/dosing" className="transition hover:text-white">K9 Dosing</Link></p>
               </div>
-              <div className="space-y-3 text-white/60">
-                <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#A9C7FF]">Collection</p>
-                <p>Peptide blends</p>
-                <p>Single peptides</p>
-                <p>Lot documentation</p>
-                <p>Research profiles</p>
+              <div className="space-y-3 text-white/55">
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-[#A9C7FF]">Collection</p>
+                <p><Link href="/shop/bpc-tb-500-blend-10mg" className="transition hover:text-white">K9 Rebuild</Link></p>
+                <p><Link href="#collection" className="transition hover:text-white">All compounds</Link></p>
+                <p><Link href="/dosing" className="transition hover:text-white">Dosing guide</Link></p>
+                <p><Link href="/lab-results" className="transition hover:text-white">Lab results</Link></p>
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-4 py-7 text-[11px] uppercase tracking-[0.12em] text-white/38 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-4 py-7 text-[10px] uppercase tracking-[0.12em] text-white/30 md:flex-row md:items-center md:justify-between">
             <p>© 2026 ZooNetics · Canine research library</p>
             <p>Research materials only · Not veterinary advice · Not intended to diagnose, treat, cure, or prevent disease</p>
           </div>
         </div>
       </footer>
+
     </div>
   );
 }
