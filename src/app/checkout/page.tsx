@@ -277,7 +277,7 @@ export default function CheckoutPage() {
             <label className="mt-6 flex items-start gap-3 rounded-lg border border-stone bg-ivory-soft p-4">
               <input type="checkbox" checked={smsConsent} onChange={(e) => setSmsConsent(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-copper" />
               <span className="text-xs leading-relaxed text-charcoal/60">
-                By checking this box, you agree to receive text messages from EVLV at the number provided. Consent
+                By checking this box, you agree to receive text messages from ZOONETICS at the number provided. Consent
                 is not a condition to purchase. Message frequency varies. Message and data rates may apply. Reply
                 STOP to cancel or HELP for help. View our{" "}
                 <Link href="/privacy" className="text-copper hover:underline">
@@ -425,6 +425,13 @@ export default function CheckoutPage() {
                       >
                         {handleCopied ? "Copied" : "Copy"}
                       </button>
+                    </div>
+                    <div className="mt-3 flex items-center gap-2 rounded-md border border-stone/80 bg-white/70 px-3.5 py-3">
+                      <i className="ri-shield-check-line text-base text-sage-deep" />
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-charcoal/40">Recipient</p>
+                        <p className="mt-0.5 text-sm font-semibold text-charcoal">{selectedGatewayInfo.recipient}</p>
+                      </div>
                     </div>
                     <p className="mt-2.5 text-xs leading-relaxed text-charcoal/50">{selectedGatewayInfo.handleNote}</p>
                   </>

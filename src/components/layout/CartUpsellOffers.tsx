@@ -4,7 +4,7 @@
  * Inline checkout upsells, styled after a competitor reference the founder
  * liked: offers embedded directly in the order summary (a checkbox "add this
  * deal" card + a small "Researchers Also Add" row), not a popup modal.
- * Real EVLV pricing throughout - discounts are applied to actual product.price,
+ * Real ZOONETICS pricing throughout - discounts are applied to actual product.price,
  * never fabricated "was $X" numbers.
  */
 
@@ -20,6 +20,16 @@ const FEATURED_PACK_LABEL = `1 PCS (${FEATURED_DISCOUNT_PERCENT}% Off Offer)`;
 
 const ALSO_ADD_DISCOUNT_PERCENT = 10;
 const ALSO_ADD_PACK_LABEL = `1 PCS (${ALSO_ADD_DISCOUNT_PERCENT}% Off Offer)`;
+
+const ZOONETICS_PRODUCT_SLUGS = new Set([
+  "bpc-157-10mg",
+  "tb-500-10mg",
+  "bpc-tb-500-blend-10mg",
+  "ghk-cu-50mg",
+  "glow-70mg",
+  "kpv-10mg",
+  "kpv-oral-500mcg",
+]);
 
 export const FREE_SHIPPING_THRESHOLD = 400;
 export const FLAT_SHIPPING_COST = 15;
@@ -98,7 +108,13 @@ export function ResearchersAlsoAdd() {
 
   const inCartIds = new Set(lines.map((l) => l.product.id));
   const items = getProducts()
-    .filter((p) => !inCartIds.has(p.id) && p.slug !== FEATURED_SLUG && p.inStock)
+    .filter(
+      (p) =>
+        ZOONETICS_PRODUCT_SLUGS.has(p.slug) &&
+        !inCartIds.has(p.id) &&
+        p.slug !== FEATURED_SLUG &&
+        p.inStock
+    )
     .slice(0, 3);
 
   if (items.length === 0) return null;

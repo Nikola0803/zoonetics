@@ -4,20 +4,22 @@
  * models paymentMethod as "zelle" | "cashapp" | "venmo" with a paymentMemo
  * field, so this checkout flow lines up with what the real CRM expects.
  *
- * Left blank until real handles are set. Checkout gracefully falls back to
- * "we'll email you the details" when a handle is empty, it never invents one.
+ * These destinations are public checkout information. Environment variables
+ * can override them without requiring a storefront code change.
  */
 export type PaymentGatewayId = "cashapp" | "zelle" | "venmo";
 
 /**
- * Payment destinations are intentionally environment-only. A missing handle
- * disables that method; checkout never substitutes a demo or legacy account.
+ * Confirmed Warrior Distributions destinations are the production defaults.
+ * Keeping overrides available makes an account change deploy-safe.
  */
 export const PAYMENT_HANDLES: Record<PaymentGatewayId, string> = {
-  cashapp: process.env.NEXT_PUBLIC_CASHAPP_HANDLE?.trim() ?? "",
-  zelle: process.env.NEXT_PUBLIC_ZELLE_HANDLE?.trim() ?? "",
-  venmo: process.env.NEXT_PUBLIC_VENMO_HANDLE?.trim() ?? "",
+  cashapp: process.env.NEXT_PUBLIC_CASHAPP_HANDLE?.trim() || "$warriordistributions",
+  zelle: process.env.NEXT_PUBLIC_ZELLE_HANDLE?.trim() || "509-220-5434",
+  venmo: process.env.NEXT_PUBLIC_VENMO_HANDLE?.trim() || "@warriordistributions",
 };
+
+export const PAYMENT_RECIPIENT = "Warrior Distributions LLC";
 
 export function getEffectiveHandle(gateway: PaymentGatewayId): { handle: string; isDemo: boolean } {
   return { handle: PAYMENT_HANDLES[gateway], isDemo: false };
@@ -54,6 +56,7 @@ const ALL_PAYMENT_GATEWAYS: {
   label: string;
   icon: string;
   handle: string;
+  recipient: string;
   handleNote: string;
 }[] = [
   {
@@ -61,6 +64,7 @@ const ALL_PAYMENT_GATEWAYS: {
     label: "Cash App",
     icon: "ri-money-dollar-circle-line",
     handle: PAYMENT_HANDLES.cashapp,
+    recipient: PAYMENT_RECIPIENT,
     handleNote: "Use the verified Warrior Distributions business destination shown above.",
   },
   {
@@ -68,6 +72,7 @@ const ALL_PAYMENT_GATEWAYS: {
     label: "Zelle",
     icon: "ri-bank-line",
     handle: PAYMENT_HANDLES.zelle,
+    recipient: PAYMENT_RECIPIENT,
     handleNote: "Confirm the recipient name is Warrior Distributions before sending.",
   },
   {
@@ -75,6 +80,7 @@ const ALL_PAYMENT_GATEWAYS: {
     label: "Venmo",
     icon: "ri-smartphone-line",
     handle: PAYMENT_HANDLES.venmo,
+    recipient: PAYMENT_RECIPIENT,
     handleNote: "Use the verified Warrior Distributions business destination shown above.",
   },
 ];
