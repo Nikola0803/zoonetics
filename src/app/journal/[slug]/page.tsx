@@ -8,7 +8,7 @@ export function generateStaticParams() {
   return getJournalArticles().map((a) => ({ slug: a.slug }));
 }
 
-const SITE_URL = "https://evlvpeptides.com";
+const SITE_URL = "https://zoonetics.co";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!article) return {};
   const url = `${SITE_URL}/journal/${article.slug}`;
   return {
-    title: `${article.title} | EVLV Journal`,
+    title: `${article.title} | ZOONETICS Research Library`,
     description: article.excerpt,
     alternates: { canonical: `/journal/${article.slug}` },
     openGraph: {
@@ -51,11 +51,11 @@ export default async function JournalArticlePage({ params }: { params: Promise<{
     image: [`${SITE_URL}${article.image}`],
     datePublished: article.publishedDate,
     dateModified: article.publishedDate,
-    author: { "@type": "Organization", name: "EVLV" },
+    author: { "@type": "Organization", name: "ZOONETICS" },
     publisher: {
       "@type": "Organization",
-      name: "EVLV",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo/evlv-logo-light.png` },
+      name: "ZOONETICS",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/zoonetics-dark.webp` },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/journal/${article.slug}` },
   };

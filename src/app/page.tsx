@@ -26,10 +26,10 @@ const faqs = [
 ];
 
 const blogPosts = [
-  { title: "BPC-157 for Dogs: What the Animal Research Actually Shows", category: "Research", date: "Oct 2026", slug: "bpc-157-dogs-research" },
-  { title: "How to Reconstitute K9 Rebuild: A Complete Walkthrough", category: "Guide", date: "Sep 2026", slug: "reconstitution-guide" },
-  { title: "Hip Dysplasia in Dogs: Research-Backed Approaches to Mobility", category: "Conditions", date: "Sep 2026", slug: "hip-dysplasia-dogs" },
-  { title: "CCL Tears in Dogs: Recovery, Research, and What Owners Document", category: "Conditions", date: "Aug 2026", slug: "ccl-tears-dogs" },
+  { title: "BPC-157 for Dogs: What the Animal Research Actually Shows", category: "Research", date: "Oct 2026", slug: "bpc-157-dogs-research", image: "/images/research-library/bpc-157-animal-research-v1.png", alt: "Senior Labrador beside its owner reviewing animal research" },
+  { title: "How to Reconstitute K9 Rebuild: A Complete Walkthrough", category: "Guide", date: "Sep 2026", slug: "reconstitution-guide", image: "/images/research-library/reconstitution-guide-v1.png", alt: "Organized sterile research handling setup with peptide vial and saline" },
+  { title: "Hip Dysplasia in Dogs: Research-Backed Approaches to Mobility", category: "Conditions", date: "Sep 2026", slug: "hip-dysplasia-dogs", image: "/images/research-library/hip-dysplasia-mobility-v1.png", alt: "Senior Golden Retriever walking comfortably beside its owner" },
+  { title: "CCL Tears in Dogs: Recovery, Research, and What Owners Document", category: "Conditions", date: "Aug 2026", slug: "ccl-tears-dogs", image: "/images/research-library/ccl-recovery-documentation-v1.png", alt: "Owner recording a working dog's controlled step movement" },
 ];
 
 function BrandMark({ light = false, size = "md" }: { light?: boolean; size?: "sm" | "md" | "lg" }) {
@@ -218,8 +218,9 @@ export default function Home() {
                 <Link key={post.slug} href={`/journal/${post.slug}`}
                   className="group flex flex-col gap-4 overflow-hidden rounded-xl border bg-white transition hover:shadow-sm"
                   style={{ borderColor: `${D}08` }}>
-                  <div className="aspect-[16/9] overflow-hidden" style={{ background: `${D}06` }}>
-                    <div className="h-full w-full" style={{ background: `${D}06` }} />
+                  <div className="relative aspect-[16/9] overflow-hidden" style={{ background: `${D}06` }}>
+                    <Image src={post.image} alt={post.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover transition duration-700 group-hover:scale-[1.035]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#10243D]/18 to-transparent" />
                   </div>
                   <div className="flex flex-1 flex-col gap-2 px-5 pb-6">
                     <div className="flex items-center gap-2">

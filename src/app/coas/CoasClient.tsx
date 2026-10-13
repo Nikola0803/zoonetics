@@ -4,7 +4,22 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { getProducts } from "@/lib/products";
-import type { AdditionalWarriorReportGroup, CoaEntry, CoaReport } from "@/lib/coa-data";
+import type { CoaEntry, CoaReport } from "@/lib/coa-data";
+
+const K9_PRODUCT_SLUGS = new Set([
+  "bpc-157-5mg",
+  "bpc-157-10mg",
+  "bpc-157-20mg",
+  "tb-500-5mg",
+  "tb-500-10mg",
+  "tb-500-20mg",
+  "bpc-tb-500-blend-10mg",
+  "bpc-tb-500-blend-20mg",
+  "ghk-cu-50mg",
+  "kpv-10mg",
+  "kpv-oral-500mcg",
+  "glow-70mg",
+]);
 
 const WHY_POINTS = [
   "HPLC purity analysis with quantification",
@@ -26,12 +41,10 @@ function reportLabel(report: Pick<CoaReport, "label" | "lot">) {
 
 export function CoasClient({
   coaMap,
-  additionalReports,
 }: {
   coaMap: Record<string, CoaEntry>;
-  additionalReports: AdditionalWarriorReportGroup[];
 }) {
-  const products = useMemo(() => getProducts(), []);
+  const products = useMemo(() => getProducts().filter((product) => K9_PRODUCT_SLUGS.has(product.slug)), []);
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get("search") ?? "");
 
@@ -60,33 +73,33 @@ export function CoasClient({
 
   return (
     <>
-      <section className="-mt-[90px] bg-charcoal pb-20 pt-[150px] text-center text-white md:-mt-[100px] md:pb-32 md:pt-[170px]">
+      <section className="bg-[#101829] px-5 py-20 text-center text-white md:px-8 md:py-28">
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-copper">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/7 px-4 py-2 text-xs font-extrabold text-[#A9C7FF]">
             <i className="ri-shield-check-line" /> Independent Verification
           </div>
-          <h1 className="mb-4 font-display text-4xl font-semibold md:text-5xl lg:text-6xl">COAs</h1>
+          <h1 className="mb-4 font-display text-4xl font-extrabold tracking-[-0.04em] md:text-6xl">Every Lot. Independently Verified.</h1>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            Original purity, identity, potency and endotoxin reports issued to Warrior Distributions, LLC.
+            Search the current ZOONETICS K9 product line and match the lot on your vial to its independent laboratory report.
           </p>
         </div>
       </section>
 
-      <section className="border-b border-stone py-14">
+      <section className="border-b border-[#17233B]/10 bg-[#FBFCFF] py-12">
         <div className="mx-auto grid max-w-[1400px] grid-cols-3 gap-2 px-4 sm:gap-6 md:px-8">
           {stats.map(([value, label]) => (
             <div key={label} className="p-1 text-center sm:p-4">
-              <div className="font-display text-3xl font-semibold text-sage-deep md:text-4xl">{value}</div>
-              <div className="mt-1 text-sm text-charcoal/50">{label}</div>
+              <div className="font-display text-3xl font-extrabold text-[#4F6EF7] md:text-4xl">{value}</div>
+              <div className="mt-1 text-sm font-bold text-[#17233B]/50">{label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="bg-[#FBFCFF] py-16 md:py-24">
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-            <h2 className="font-display text-xl font-semibold text-charcoal md:text-2xl">Batch Verification Reports</h2>
+            <h2 className="font-display text-2xl font-extrabold tracking-[-0.025em] text-[#17233B] md:text-3xl">K9 Batch Verification Reports</h2>
             <div className="relative w-full sm:w-72">
               <input
                 type="search"
@@ -106,7 +119,7 @@ export function CoasClient({
               {filtered.map((p) => {
                 const coa = coaMap[p.slug];
                 const cardClass =
-                  "flex items-center gap-4 rounded-lg border border-stone bg-white p-4 text-left transition";
+                  "flex items-center gap-4 rounded-[18px] border border-[#17233B]/10 bg-white p-4 text-left transition";
                 const reports = coa?.reports?.length
                   ? coa.reports
                   : coa
@@ -136,7 +149,7 @@ export function CoasClient({
                 );
 
                 return coa ? (
-                  <div key={p.id} className={`${cardClass} flex-col items-stretch hover:border-sage-deep hover:shadow-md`}>
+                  <div key={p.id} className={`${cardClass} flex-col items-stretch hover:border-[#4F6EF7]/55 hover:shadow-[0_18px_45px_rgba(23,35,59,0.08)]`}>
                     <div className="flex items-center gap-4">{content}</div>
                     <div className="mt-1 grid gap-2 border-t border-stone pt-3">
                       {reports.map((report) => (
@@ -162,39 +175,10 @@ export function CoasClient({
             </div>
           )}
 
-          <div className="mt-16 border-t border-stone pt-10">
-            <div className="mb-6 max-w-3xl">
-              <h2 className="font-display text-xl font-semibold text-charcoal md:text-2xl">Additional Warrior reports</h2>
-              <p className="mt-2 text-sm leading-relaxed text-charcoal/60">
-                These original reports belong to Warrior Distributions, LLC, but are not connected to a product listing because the exact compound or strength is not currently sold on the storefront.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {additionalReports.map((group) => (
-                <div key={`${group.name}-${group.strength}`} className="rounded-lg border border-stone bg-white p-4">
-                  <h3 className="font-semibold text-charcoal">{group.name} {group.strength}</h3>
-                  <div className="mt-3 grid gap-2">
-                    {group.reports.map((report) => (
-                      <a
-                        key={report.url}
-                        href={report.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex items-center justify-between gap-3 rounded-md bg-ivory-soft px-3 py-2 text-xs font-semibold text-sage-deep transition hover:bg-sage-mist"
-                      >
-                        <span className="min-w-0 truncate">{reportLabel(report)}</span>
-                        <i className="ri-external-link-line shrink-0" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      <section className="bg-sage-forest py-20 text-white md:py-32">
+      <section className="bg-[#101829] py-20 text-white md:py-28">
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 px-4 md:grid-cols-2 md:px-8">
           <div>
             <h2 className="mb-4 font-display text-3xl font-semibold md:text-4xl">Why independent testing?</h2>

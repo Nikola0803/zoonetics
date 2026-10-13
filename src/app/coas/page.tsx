@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { CoasClient } from "./CoasClient";
-import { ADDITIONAL_WARRIOR_REPORTS, getCoaMap } from "@/lib/coa-data";
+import { getCoaMap } from "@/lib/coa-data";
 
 export const metadata: Metadata = {
   title: "Certificates of Analysis",
-  description: "Independent batch verification reports (Certificates of Analysis) for every EVLV research peptide, searchable by batch code.",
+  description: "Independent batch verification reports for the current ZOONETICS K9 research product line, searchable by product and lot code.",
   alternates: { canonical: "/coas" },
 };
 
@@ -13,7 +13,7 @@ export default async function CoasPage() {
   const coaMap = await getCoaMap();
   return (
     <Suspense fallback={null}>
-      <CoasClient coaMap={coaMap} additionalReports={ADDITIONAL_WARRIOR_REPORTS} />
+      <CoasClient coaMap={coaMap} />
     </Suspense>
   );
 }

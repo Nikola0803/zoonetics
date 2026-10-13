@@ -183,14 +183,21 @@ export const ADDITIONAL_WARRIOR_REPORTS: AdditionalWarriorReportGroup[] = [
 ];
 
 export async function getCoaMap(): Promise<Record<string, CoaEntry>> {
-  if (!crmConfigured()) return LOCAL_COA_MAP;
+  const k9Slugs = new Set([
+    "bpc-157-5mg", "bpc-157-10mg", "bpc-157-20mg",
+    "tb-500-5mg", "tb-500-10mg", "tb-500-20mg",
+    "bpc-tb-500-blend-10mg", "bpc-tb-500-blend-20mg",
+    "ghk-cu-50mg", "kpv-10mg", "kpv-oral-500mcg", "glow-70mg",
+  ]);
+  const localK9Map = Object.fromEntries(Object.entries(LOCAL_COA_MAP).filter(([slug]) => k9Slugs.has(slug)));
+  if (!crmConfigured()) return localK9Map;
 
   const { ok, data } = await crmGet("/api/store/coas", { revalidate: 120 });
-  if (!ok || !Array.isArray(data)) return LOCAL_COA_MAP;
+  if (!ok || !Array.isArray(data)) return localK9Map;
 
-  const map: Record<string, CoaEntry> = { ...LOCAL_COA_MAP };
+  const map: Record<string, CoaEntry> = { ...localK9Map };
   for (const c of data as CoaEntry[]) {
-    if (c.slug && c.url) map[c.slug] = c;
+    if (c.slug && c.url && k9Slugs.has(c.slug)) map[c.slug] = c;
   }
   return map;
 }

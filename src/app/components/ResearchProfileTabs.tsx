@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { K9VialVisual } from "@/components/ui/K9VialVisual";
 
 const profiles = [
   {
@@ -16,6 +16,7 @@ const profiles = [
     purity: "99.59–99.31%",
     price: "$75",
     formats: ["10 mg", "20 mg"],
+    dosage: "10 MG",
     summary: "The broad mobility profile. Researchers select this blend when the question spans joints, tendons, ligaments, soft tissue and recovery after physical stress.",
     focuses: ["Tissue-repair signaling", "Cell migration", "Inflammatory pathways", "Recovery after physical stress"],
   },
@@ -30,6 +31,7 @@ const profiles = [
     purity: "99.31%",
     price: "$40",
     formats: ["5 mg", "10 mg", "20 mg"],
+    dosage: "10 MG",
     summary: "The focused tissue-repair profile. Common research questions involve tendon and ligament models, local repair signaling and gastrointestinal tissue integrity.",
     focuses: ["Tendon models", "Ligament models", "Gastrointestinal tissue", "Local repair signaling"],
   },
@@ -44,6 +46,7 @@ const profiles = [
     purity: "99.59%",
     price: "$45",
     formats: ["5 mg", "10 mg", "20 mg"],
+    dosage: "10 MG",
     summary: "The movement and recovery profile. Research centers on cell migration, actin regulation, soft-tissue models and recovery following physical stress.",
     focuses: ["Cell migration", "Actin regulation", "Soft-tissue models", "Physical-stress recovery"],
   },
@@ -58,6 +61,7 @@ const profiles = [
     purity: "99.45%",
     price: "$70",
     formats: ["10 mg injectable", "500 mcg oral"],
+    dosage: "10 MG",
     summary: "The barrier and inflammatory-pathway profile. Researchers use KPV in models involving gut integrity, epithelial barriers, skin and inflammatory signaling.",
     focuses: ["Inflammatory signaling", "Barrier models", "Epithelial tissue", "Dual-format research"],
   },
@@ -72,6 +76,7 @@ const profiles = [
     purity: "99.4%",
     price: "$40",
     formats: ["50 mg"],
+    dosage: "50 MG",
     summary: "The skin and remodeling profile. Research questions commonly involve collagen signaling, skin and coat models, tissue remodeling and wound pathways.",
     focuses: ["Tissue remodeling", "Collagen signaling", "Skin models", "Wound-model research"],
   },
@@ -86,6 +91,7 @@ const profiles = [
     purity: "99.56–99.32%",
     price: "$140",
     formats: ["70 mg"],
+    dosage: "70 MG",
     summary: "The widest research profile. This three-compound blend spans skin and collagen models, tissue remodeling, repair signaling, mobility and cell migration.",
     focuses: ["Multi-pathway research", "Tissue remodeling", "Repair signaling", "Cell migration"],
   },
@@ -122,7 +128,7 @@ export default function ResearchProfileTabs() {
 
         <div className="mt-5 grid overflow-hidden rounded-[1.75rem] border border-[#10243D]/10 bg-white shadow-[0_24px_80px_rgba(16,36,61,0.08)] lg:grid-cols-[0.92fr_1.08fr]">
           <div className="relative min-h-[460px] bg-[#EDF2FA] lg:min-h-[650px]">
-            <Image key={active.id} src={active.image} alt={active.name} fill sizes="(max-width: 1024px) 100vw, 46vw" className="object-contain p-12 md:p-16" />
+            <K9VialVisual key={active.id} title={active.name} dosage={active.dosage} className="h-full min-h-[460px] w-full p-2 md:p-4 lg:min-h-[650px]" />
             <div className="absolute left-6 top-6 rounded-full border border-[#10243D]/10 bg-white/90 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.15em] backdrop-blur">Research Use Only</div>
             <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl border border-white/70 bg-white/88 p-5 backdrop-blur-xl">
               <div><p className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#10243D]/45">HPLC Purity</p><p className="mt-1 font-display text-xl font-extrabold">{active.purity}</p></div>

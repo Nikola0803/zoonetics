@@ -209,10 +209,10 @@ export default function CheckoutPage() {
 
   if (lines.length === 0) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-24 text-center">
-        <h1 className="font-display text-2xl font-semibold text-charcoal">Your cart is empty</h1>
-        <p className="mt-2 text-sm text-charcoal/50">Add something to your cart before checking out.</p>
-        <Link href="/shop" className="mt-6 inline-block rounded-md bg-copper px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-charcoal transition hover:bg-copper-light">
+      <div className="bg-[#FBFCFF] px-5 py-28 text-center">
+        <h1 className="font-display text-3xl font-extrabold tracking-[-0.035em] text-[#17233B]">Your Cart Is Empty</h1>
+        <p className="mt-3 text-sm font-medium text-[#17233B]/55">Explore the K9 research line before checking out.</p>
+        <Link href="/shop" className="mt-7 inline-block rounded-full bg-[#17233B] px-7 py-3.5 text-[12px] font-extrabold text-white transition hover:bg-[#4F6EF7]">
           Shop Products
         </Link>
       </div>
@@ -220,12 +220,16 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 md:py-16">
-      <h1 className="font-display text-3xl font-semibold uppercase tracking-tight text-charcoal md:text-4xl">Checkout</h1>
+    <div className="bg-[#F3F6FC] px-5 py-10 md:px-8 md:py-16">
+      <div className="mx-auto max-w-[1260px]">
+      <div className="mb-10 flex flex-col gap-4 border-b border-[#17233B]/10 pb-8 md:flex-row md:items-end md:justify-between">
+        <div><p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">Secure Order</p><h1 className="mt-2 font-display text-4xl font-extrabold tracking-[-0.04em] text-[#17233B] md:text-5xl">Complete Your Order.</h1></div>
+        <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-[#17233B]/55"><span><i className="ri-shield-check-line mr-1.5 text-[#4F6EF7]" />Protected checkout</span><span><i className="ri-flask-line mr-1.5 text-[#4F6EF7]" />Lot-level COA</span><span><i className="ri-truck-line mr-1.5 text-[#4F6EF7]" />Tracked dispatch</span></div>
+      </div>
 
-      <form onSubmit={handlePlaceOrder} className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[1fr_460px]">
-        <div className="space-y-10">
-          <section>
+      <form onSubmit={handlePlaceOrder} className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_460px] lg:items-start">
+        <div className="space-y-6">
+          <section className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_20px_60px_rgba(23,35,59,0.06)] md:p-8">
             <h2 className="mb-5 text-sm font-semibold uppercase tracking-wider text-charcoal/50">Shipping Information</h2>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <Field label="First Name" required value={firstName} onChange={setFirstName} placeholder="John" />
@@ -292,7 +296,7 @@ export default function CheckoutPage() {
             </label>
           </section>
 
-          <section>
+          <section className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_20px_60px_rgba(23,35,59,0.06)] md:p-8">
             <label className="mb-3 block text-sm font-semibold uppercase tracking-wider text-charcoal/50">
               Promo / Referral Code <span className="font-normal normal-case text-charcoal/40">(optional)</span>
             </label>
@@ -316,7 +320,7 @@ export default function CheckoutPage() {
             )}
           </section>
 
-          <section>
+          <section className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_20px_60px_rgba(23,35,59,0.06)] md:p-8">
             <label className="mb-3 block text-sm font-semibold uppercase tracking-wider text-charcoal/50">
               Order Notes <span className="font-normal normal-case text-charcoal/40">(optional)</span>
             </label>
@@ -332,8 +336,8 @@ export default function CheckoutPage() {
           </section>
         </div>
 
-        <div className="h-fit space-y-6">
-          <div className="rounded-lg border border-stone bg-white p-6 shadow-sm">
+        <div className="h-fit space-y-6 lg:sticky lg:top-[106px]">
+          <div className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_24px_70px_rgba(23,35,59,0.09)]">
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-charcoal/50">Order Summary</h2>
             <ShippingProgressBar />
             <div className="space-y-5">
@@ -383,7 +387,7 @@ export default function CheckoutPage() {
                 Checkout is temporarily unavailable while Warrior Distributions verifies its payment accounts. No payment destination will be shown until it is confirmed.
               </div>
             )}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {PAYMENT_GATEWAYS.map((gw) => {
                 const active = selectedGateway === gw.id;
                 return (
@@ -395,8 +399,8 @@ export default function CheckoutPage() {
                       setHandleCopied(false);
                     }}
                     aria-pressed={active}
-                    className={`relative flex flex-col items-center gap-2.5 rounded-lg border p-5 transition ${
-                      active ? "border-copper bg-copper/10" : "border-stone bg-ivory-soft hover:border-charcoal/30"
+                    className={`relative flex flex-col items-center gap-2.5 rounded-xl border p-4 transition ${
+                      active ? "border-[#4F6EF7] bg-[#EEF2FF]" : "border-[#17233B]/10 bg-white hover:border-[#4F6EF7]/50"
                     }`}
                   >
                     {active && <i className="ri-checkbox-circle-fill absolute right-2.5 top-2.5 text-base text-copper" />}
@@ -514,7 +518,7 @@ export default function CheckoutPage() {
           <button
             type="submit"
             disabled={!selectedGateway || expired || !shippingComplete || !ruoAttestation || placing}
-            className="w-full rounded-md bg-copper py-5 text-sm font-semibold uppercase tracking-[0.2em] text-charcoal transition hover:bg-copper-light disabled:cursor-not-allowed disabled:opacity-40"
+            className="w-full rounded-full bg-[#17233B] py-5 text-sm font-extrabold text-white transition hover:bg-[#4F6EF7] disabled:cursor-not-allowed disabled:opacity-40"
           >
             {placing ? "Placing Order..." : `Confirm Order (${formatPrice(total)})`}
           </button>
@@ -525,6 +529,7 @@ export default function CheckoutPage() {
           )}
         </div>
       </form>
+      </div>
     </div>
   );
 }
