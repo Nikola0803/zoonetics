@@ -1,6 +1,6 @@
 # Pet brand CRM handoff
 
-The EVLV application layer was copied intact so its integration surface remains available without modifying the EVLV repository. Do not point this project at the EVLV production brand record.
+ZOONETICS uses the same CRM organization as EVLV but has its own `Brand` record. The organization API key is intentionally shared; `CRM_STORE_DOMAIN=zoonetics.co` is what isolates every storefront request to the ZOONETICS workspace.
 
 ## Retained integration seams
 
@@ -15,11 +15,11 @@ The EVLV application layer was copied intact so its integration surface remains 
 
 ## Brand-isolation checklist
 
-1. Create a new CRM organization/brand record for the pet storefront.
-2. Issue a pet-brand API key and tracking key; never reuse EVLV production credentials.
+1. Run `npm run db:seed:zoonetics` in the CRM to create or update the ZOONETICS brand and product mappings.
+2. Reuse the EVLV organization API key and use only the ZOONETICS tracking/form keys printed by the seed.
 3. Set a new `CRM_STORE_DOMAIN` and public site URL.
 4. Create dog-specific product records, SKUs, lots, COAs, inventory, pricing, and media.
-5. Review every inherited transactional email and customer-facing route for EVLV naming before enabling it.
+5. Keep ZOONETICS sender details on the Brand record; brand-specific email styling can be completed after functional activation.
 6. Configure new verified payment destinations and sender domains.
 7. Keep `robots.index` disabled until legal, veterinary, and claims review is signed off.
 8. Replace static EVLV catalog fallbacks before exposing `/shop`.

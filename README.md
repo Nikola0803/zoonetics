@@ -1,16 +1,15 @@
-# PetPeps
+# ZOONETICS
 
-A standalone, dog-first longevity and peptide research storefront concept spun out from the EVLV platform.
+A dog-first K9 peptide storefront connected to the EVLV multi-brand command center.
 
 ## Status
 
-- Independent Git repository on `codex/pet-peptides-launch`
+- Independent ZOONETICS storefront repository
 - Premium launch homepage implemented
 - Original generated imagery stored in `public/images/canis/`
-- Existing CRM, catalog, checkout, account, affiliate, and attribution code retained for later activation
-- Search indexing intentionally disabled until veterinary, legal, claims, and product reviews are complete
+- CRM checkout, accounts, affiliate attribution, wholesale, newsletter, tracking, and catalog feeds are integrated
 
-The current public surface is an educational pre-launch concept. It deliberately does not sell or dose compounds.
+Commerce remains fail-closed until the production CRM and approved payment configuration are present.
 
 ## Local development
 
@@ -23,8 +22,4 @@ Open `http://localhost:3000`.
 
 ## CRM activation
 
-Copy `.env.example` to `.env.local` and configure the existing CRM variables. Register the pet brand as a separate CRM store/brand and use its own `CRM_STORE_DOMAIN`, API key, tracking key, payment destinations, sender identity, and public origin. See `docs/PET-CRM-HANDOFF.md` before enabling commerce.
-
-## Working brand
-
-“PetPeps” is the working brand name. Complete trademark and domain clearance before launch.
+Copy `.env.example` to `.env.local` and configure the CRM variables. ZOONETICS is a separate brand inside the existing EVLV organization, selected with `CRM_STORE_DOMAIN=zoonetics.co`. It shares the organization API key but has its own tracking/form keys, sender identity, catalog mappings, customers, and order data. See `docs/PET-CRM-HANDOFF.md`.
