@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { getStoredToken } from "@/lib/auth";
 
-// EVLV ships US-only right now, so the form only collects a US state --
+// ZOONETICS ships US-only right now, so the form only collects a US state.
 // no separate country field (which was also the thing wrapping "Province /
 // State" onto two lines in the 4-column layout).
 const SHIP_COUNTRY = "US";

@@ -149,7 +149,7 @@ export default function ResearchProfileTabs() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href={active.href} className="inline-flex flex-1 items-center justify-center rounded-full bg-[#10243D] px-7 py-4 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white transition hover:bg-[#4C7EF3]">Shop {active.name} · From {active.price}</Link>
-              <Link href="/lab-results" className="inline-flex items-center justify-center rounded-full border border-[#10243D]/18 px-6 py-4 text-[12px] font-extrabold">View COAs</Link>
+              <Link href="/coas" className="inline-flex items-center justify-center rounded-full border border-[#10243D]/18 px-6 py-4 text-[12px] font-extrabold">View Available COAs</Link>
             </div>
             <p className="mt-5 text-[10px] font-medium leading-5 text-[#10243D]/42">Preclinical research context only. Not an approved veterinary medicine. No clinical outcome is promised.</p>
           </div>

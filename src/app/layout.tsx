@@ -3,6 +3,7 @@ import { Inter, Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { CurrencyProvider } from "@/lib/currency-context";
+import { ResearchUseGate } from "@/components/layout/ResearchUseGate";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <CurrencyProvider>
-          <CartProvider>{children}</CartProvider>
+          <CartProvider><ResearchUseGate />{children}</CartProvider>
         </CurrencyProvider>
       </body>
     </html>

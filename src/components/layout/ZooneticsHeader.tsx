@@ -8,7 +8,7 @@ import { useCart } from "@/lib/cart-context";
 const links = [
   ["K9 Product Line", "/shop"],
   ["Research Library", "/journal"],
-  ["Lab Results", "/coas"],
+  ["Partners", "/partners"],
   ["Our Standard", "/sourcing"],
 ] as const;
 

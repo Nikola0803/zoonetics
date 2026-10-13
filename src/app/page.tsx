@@ -26,10 +26,10 @@ const faqs = [
 ];
 
 const blogPosts = [
-  { title: "BPC-157 for Dogs: What the Animal Research Actually Shows", category: "Research", date: "Oct 2026", slug: "bpc-157-dogs-research", image: "/images/research-library/bpc-157-animal-research-v1.png", alt: "Senior Labrador beside its owner reviewing animal research" },
-  { title: "How to Reconstitute K9 Rebuild: A Complete Walkthrough", category: "Guide", date: "Sep 2026", slug: "reconstitution-guide", image: "/images/research-library/reconstitution-guide-v1.png", alt: "Organized sterile research handling setup with peptide vial and saline" },
-  { title: "Hip Dysplasia in Dogs: Research-Backed Approaches to Mobility", category: "Conditions", date: "Sep 2026", slug: "hip-dysplasia-dogs", image: "/images/research-library/hip-dysplasia-mobility-v1.png", alt: "Senior Golden Retriever walking comfortably beside its owner" },
-  { title: "CCL Tears in Dogs: Recovery, Research, and What Owners Document", category: "Conditions", date: "Aug 2026", slug: "ccl-tears-dogs", image: "/images/research-library/ccl-recovery-documentation-v1.png", alt: "Owner recording a working dog's controlled step movement" },
+  { title: "BPC-157 and Canine Research: What Is Actually Being Studied?", category: "Research", date: "Oct 2026", slug: "bpc-157-canine-research", image: "/images/research-library/bpc-157-animal-research-v1.png", alt: "Senior Labrador beside its owner reviewing animal research" },
+  { title: "Sterile Saline and Research Handling Basics", category: "Handling", date: "Oct 2026", slug: "sterile-saline-research-handling-guide", image: "/images/research-library/reconstitution-guide-v1.png", alt: "Organized sterile research handling setup with peptide vial and saline" },
+  { title: "Animal Study, Canine Study or Marketing Claim?", category: "Evidence", date: "Oct 2026", slug: "reading-canine-peptide-evidence", image: "/images/research-library/hip-dysplasia-mobility-v1.png", alt: "Senior Golden Retriever walking comfortably beside its owner" },
+  { title: "How to Build a Useful Canine Mobility Baseline", category: "Observation", date: "Oct 2026", slug: "documenting-canine-mobility-baseline", image: "/images/research-library/ccl-recovery-documentation-v1.png", alt: "Owner recording a working dog's controlled step movement" },
 ];
 
 function BrandMark({ light = false, size = "md" }: { light?: boolean; size?: "sm" | "md" | "lg" }) {
@@ -60,7 +60,7 @@ export default function Home() {
             <Link href="/shop" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Shop</Link>
             <Link href="#product" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>What They Are Studied For</Link>
             <Link href="#creators" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Owner Stories</Link>
-            <Link href="/lab-results" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Lab Results</Link>
+            <Link href="/partners" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Partners</Link>
             <Link href="#questions" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>FAQ</Link>
           </nav>
           <div className="flex items-center gap-5">
@@ -134,17 +134,9 @@ export default function Home() {
         <section id="care-path" className="py-16 md:py-24" style={{ background: "#FFFFFF", color: D }}>
           <div className="grid overflow-hidden bg-[#081624] lg:grid-cols-[1.05fr_0.95fr]">
               <div className="relative min-h-[520px] lg:min-h-[700px]">
-                <Image src="/images/zoonetics-premium/telehealth-consultation-v1.png" alt="Veterinarian and dog owner reviewing a canine health record" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/80 via-transparent to-[#081624]/10" />
-                <div className="absolute bottom-6 left-5 right-5 overflow-hidden rounded-2xl border border-white/20 bg-white/95 p-5 shadow-2xl backdrop-blur-xl md:bottom-10 md:left-10 md:right-10 md:p-6" style={{ color: D }}>
-                  <div className="flex items-start justify-between gap-5">
-                    <div><p className="text-[9px] font-extrabold uppercase tracking-[0.18em]" style={{ color: AM }}>Inside Every K9 Rebuild Kit</p><p className="mt-1 font-display text-xl font-extrabold">Research-ready from day one.</p></div>
-                    <span className="rounded-full bg-[#E8F8F2] px-3 py-1 text-[10px] font-extrabold text-[#197A59]">LOT VERIFIED</span>
-                  </div>
-                  <div className="mt-5 grid grid-cols-3 gap-2 border-t pt-5 text-[10px] font-bold uppercase tracking-[0.08em]" style={{ borderColor: `${D}18` }}>
-                    <span><b className="mb-1 block text-lg" style={{ color: AM }}>01</b>Peptide Vials</span><span><b className="mb-1 block text-lg" style={{ color: AM }}>02</b>Sterile Saline</span><span><b className="mb-1 block text-lg" style={{ color: AM }}>03</b>Handling Guide</span>
-                  </div>
-                </div>
+                <Image src="/images/zoonetics-premium/research-order-essentials-v2.png" alt="ZOONETICS K9 Rebuild peptide vial, sterile saline, handling guide and lot certificate beside a senior Labrador" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/24 via-transparent to-[#081624]/10" />
+                <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-[#081624]/72 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-md md:left-8 md:top-8">Product · Proof · Essentials</div>
               </div>
               <div className="flex flex-col justify-center px-7 py-14 text-white md:px-14 lg:px-16 xl:px-20">
                 <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8EAEFF]">What Comes With Your Order</p>
@@ -263,8 +255,8 @@ export default function Home() {
               <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: `${AM}cc` }}>Learn</p>
               <p><Link href="/journal" className="transition hover:opacity-100">Blog</Link></p>
               <p><Link href="/science" className="transition hover:opacity-100">The research</Link></p>
-              <p><Link href="/lab-results" className="transition hover:opacity-100">Lab results</Link></p>
-              <p><Link href="/dosing" className="transition hover:opacity-100">Dosing guide</Link></p>
+              <p><Link href="/partners" className="transition hover:opacity-100">Partners & Affiliates</Link></p>
+              <p><Link href="/ruo" className="transition hover:opacity-100">Research use policy</Link></p>
             </div>
 
             <div className="space-y-3 text-[13px]" style={{ color: `${CR}AD` }}>
@@ -272,7 +264,7 @@ export default function Home() {
               <p><Link href="#questions" className="transition hover:opacity-100">FAQ</Link></p>
               <p><Link href="/about" className="transition hover:opacity-100">About ZOONETICS</Link></p>
               <p><Link href="/contact" className="transition hover:opacity-100">Contact</Link></p>
-              <p><Link href="/affiliates" className="transition hover:opacity-100">Affiliates</Link></p>
+              <p><Link href="/partners" className="transition hover:opacity-100">Partner Program</Link></p>
             </div>
           </div>
 
