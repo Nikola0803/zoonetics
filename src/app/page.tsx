@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import ResearchProfileTabs from "./components/ResearchProfileTabs";
-import VideoProofSection from "./components/VideoProofSection";
 import HomeNewsletter from "./components/HomeNewsletter";
+import WhatChangedCarousel from "./components/WhatChangedCarousel";
+import UGCStoriesSection from "./components/UGCStoriesSection";
 
 // ── PALETTE ──────────────────────────────────────────────────────────────────
 const D  = "#10243D";   // clinical navy: headlines, body, buttons
@@ -123,41 +124,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── THE SIGNAL ── */}
-        <section id="signal" className="bg-white px-5 py-14 md:px-10 md:py-20">
-          <div className="mx-auto max-w-[1200px]">
-            <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#4F6EF7]">Why Owners Start Looking At ZOONETICS</p>
-                <h2 className="mt-4 font-display text-[clamp(2.35rem,3.4vw,3.45rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#17233B]">What changed?</h2>
-              </div>
-              <p className="max-w-md text-[15px] font-medium leading-7 text-[#17233B]/62">Start with the research focus closest to what you are documenting.</p>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              {[
-                { image: "/images/canis/story-before.png", eyebrow: "Movement + mobility", title: "Are walks getting shorter?", href: "/shop/bpc-tb-500-blend-10mg", cta: "Explore K9 Rebuild", position: "object-[52%_center]" },
-                { image: "/images/canis/story-followup.png", eyebrow: "Soft tissue + recovery", title: "Is recovery taking longer?", href: "/shop/bpc-157-10mg", cta: "Explore K9 Reforge", position: "object-[48%_center]" },
-                { image: "/images/zoonetics-premium/telehealth-consultation-v1.png", eyebrow: "Skin + gut pathways", title: "Do skin or gut patterns keep returning?", href: "/shop/kpv-10mg", cta: "Explore K9 Reclaim", position: "object-center" },
-              ].map((card) => (
-                <Link key={card.title} href={card.href} className="group relative min-h-[400px] overflow-hidden rounded-[22px] bg-[#081624]">
-                  <Image src={card.image} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className={`object-cover transition duration-700 group-hover:scale-[1.035] ${card.position}`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/95 via-[#081624]/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-7">
-                    <p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#A9C7FF]">{card.eyebrow}</p>
-                    <h3 className="mt-3 max-w-[280px] font-display text-[1.65rem] font-extrabold leading-[1.02] tracking-[-0.035em]">{card.title}</h3>
-                    <p className="mt-5 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.12em]">{card.cta}<span className="transition group-hover:translate-x-1">→</span></p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <p className="mt-5 text-center text-[9px] font-semibold uppercase tracking-[0.12em] text-[#17233B]/35">Research use only · not veterinary medicine · no outcome promised</p>
-          </div>
-        </section>
+        <WhatChangedCarousel />
 
         <ResearchProfileTabs />
 
-        <VideoProofSection />
+        <UGCStoriesSection />
 
         {/* ── WHAT ARRIVES ── */}
         <section id="care-path" className="py-16 md:py-24" style={{ background: "#FFFFFF", color: D }}>
