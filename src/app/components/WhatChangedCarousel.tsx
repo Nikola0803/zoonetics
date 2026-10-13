@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { trackEvent } from "@/lib/pixel";
 
 const slides = [
   {
@@ -87,7 +88,11 @@ export default function WhatChangedCarousel() {
   }, [active, paused]);
 
   function move(direction: -1 | 1) {
-    setActive((current) => (current + direction + slides.length) % slides.length);
+    setActive((current) => {
+      const next = (current + direction + slides.length) % slides.length;
+      trackEvent("research_question_selected", { properties: { question: slides[next].question, product: slides[next].product, control: direction === 1 ? "next" : "previous" } });
+      return next;
+    });
   }
 
   return (
@@ -137,7 +142,7 @@ export default function WhatChangedCarousel() {
                   <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#A9C7FF]">{slide.compound}</p>
                   <p className="mt-5 text-[14px] font-medium leading-7 text-white/65">{slide.description}</p>
                 </div>
-                <Link href={slide.href} className="mt-7 inline-flex rounded-full bg-white px-6 py-3.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-[#081624] transition hover:bg-[#DDE7FF]">
+                <Link href={slide.href} onClick={() => trackEvent("product_cta_clicked", { properties: { placement: "research_question", product: slide.product, question: slide.question } })} className="mt-7 inline-flex rounded-full bg-white px-6 py-3.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-[#081624] transition hover:bg-[#DDE7FF]">
                   View {slide.product}
                 </Link>
               </div>
@@ -149,7 +154,7 @@ export default function WhatChangedCarousel() {
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex gap-2" aria-label="Choose research question">
                     {slides.map((item, index) => (
-                      <button key={item.question} type="button" onClick={() => setActive(index)} aria-label={`Show ${item.question}`} aria-current={index === active ? "true" : undefined} className={`h-2.5 rounded-full transition-all ${index === active ? "w-8 bg-white" : "w-2.5 bg-white/25 hover:bg-white/50"}`} />
+                      <button key={item.question} type="button" onClick={() => { setActive(index); trackEvent("research_question_selected", { properties: { question: item.question, product: item.product, control: "dot" } }); }} aria-label={`Show ${item.question}`} aria-current={index === active ? "true" : undefined} className={`h-2.5 rounded-full transition-all ${index === active ? "w-8 bg-white" : "w-2.5 bg-white/25 hover:bg-white/50"}`} />
                     ))}
                   </div>
                   <div className="flex gap-2">

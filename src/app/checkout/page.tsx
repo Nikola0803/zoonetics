@@ -397,6 +397,7 @@ export default function CheckoutPage() {
                     onClick={() => {
                       setSelectedGateway(gw.id);
                       setHandleCopied(false);
+                      trackEvent("payment_method_selected", { properties: { method: gw.id } });
                     }}
                     aria-pressed={active}
                     className={`relative flex flex-col items-center gap-2.5 rounded-xl border p-4 transition ${

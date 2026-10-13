@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { K9VialVisual } from "@/components/ui/K9VialVisual";
+import { trackEvent } from "@/lib/pixel";
 
 const profiles = [
   {
@@ -116,7 +117,7 @@ export default function ResearchProfileTabs() {
           {profiles.map((profile) => {
             const selected = active.id === profile.id;
             return (
-              <button key={profile.id} type="button" role="tab" aria-selected={selected} onClick={() => setActiveId(profile.id)}
+              <button key={profile.id} type="button" role="tab" aria-selected={selected} onClick={() => { setActiveId(profile.id); trackEvent("research_profile_selected", { properties: { profileId: profile.id, product: profile.name } }); }}
                 className="min-w-fit snap-start rounded-full border px-5 py-3 text-left transition"
                 style={{ background: selected ? "#10243D" : "#FFFFFF", borderColor: selected ? "#10243D" : "rgba(16,36,61,.12)", color: selected ? "#FFFFFF" : "#10243D" }}>
                 <span className="block text-[12px] font-extrabold">{profile.name}</span>
@@ -148,7 +149,7 @@ export default function ResearchProfileTabs() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href={active.href} className="inline-flex flex-1 items-center justify-center rounded-full bg-[#10243D] px-7 py-4 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white transition hover:bg-[#4C7EF3]">Shop {active.name} · From {active.price}</Link>
+              <Link href={active.href} onClick={() => trackEvent("product_cta_clicked", { properties: { placement: "profile_comparison", product: active.name, profileId: active.id } })} className="inline-flex flex-1 items-center justify-center rounded-full bg-[#10243D] px-7 py-4 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white transition hover:bg-[#4C7EF3]">Shop {active.name} · From {active.price}</Link>
               <Link href="/coas" className="inline-flex items-center justify-center rounded-full border border-[#10243D]/18 px-6 py-4 text-[12px] font-extrabold">View Available COAs</Link>
             </div>
             <p className="mt-5 text-[10px] font-medium leading-5 text-[#10243D]/42">Preclinical research context only. Not an approved veterinary medicine. No clinical outcome is promised.</p>

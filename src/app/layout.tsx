@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { CurrencyProvider } from "@/lib/currency-context";
 import { ResearchUseGate } from "@/components/layout/ResearchUseGate";
+import { ReferralCapture } from "@/components/layout/ReferralCapture";
+import { CampaignAttribution } from "@/components/layout/CampaignAttribution";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
@@ -34,14 +37,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const crmUrl = process.env.NEXT_PUBLIC_CRM_URL?.replace(/\/$/, "");
+  const trackingKey = process.env.NEXT_PUBLIC_CRM_TRACKING_KEY;
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable} ${newsreader.variable}`} data-scroll-behavior="smooth">
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" />
       </head>
       <body>
+        {crmUrl && trackingKey && <Script src={`${crmUrl}/pixel.js`} data-key={trackingKey} strategy="afterInteractive" />}
         <CurrencyProvider>
-          <CartProvider><ResearchUseGate />{children}</CartProvider>
+          <CartProvider><ResearchUseGate /><ReferralCapture /><CampaignAttribution />{children}</CartProvider>
         </CurrencyProvider>
       </body>
     </html>

@@ -1,23 +1,19 @@
 import { NextResponse } from "next/server";
 import { crmConfigured, crmFetch } from "@/lib/crm-proxy";
-import { bodyWithServerSession, unauthorized } from "@/lib/server-session";
+import { getSessionToken } from "@/lib/server-session";
 
 export const runtime = "nodejs";
 
-// POST /api/affiliate/register { token, referredBy?, socialLink, phone, address,
-// postalCode, city, province, country } - applies for affiliate status on the
-// shopper's EXISTING customer account (resolved server-side from `token`, same
-// bearer token /api/auth/login already issues). Affiliates are a role on the
-// Customer record, not a separate login - see AFFILIATE-PORTAL.md. This CRM
-// endpoint doesn't exist yet as of 2026-08 (peptides-crm-app's Affiliate model
-// is currently admin-created only). Until then this correctly 503s rather than
-// pretending to work.
+// Public creator applications are accepted by name and email. When the visitor
+// is already signed in, the server-side session token is included so the CRM
+// can link the application to their existing contact and order history.
 export async function POST(req: Request) {
   if (!crmConfigured()) {
     return NextResponse.json({ error: "Affiliate signup isn't connected yet." }, { status: 503 });
   }
-  const body = await bodyWithServerSession(req);
-  if (!body) return unauthorized();
+  const submitted = await req.json().catch(() => ({}));
+  const token = await getSessionToken();
+  const body = { ...(submitted && typeof submitted === "object" ? submitted : {}), ...(token ? { token } : {}) };
   const { ok, status, data } = await crmFetch("/api/store/affiliate/register", body);
   return NextResponse.json(data, { status: ok ? 200 : status });
 }

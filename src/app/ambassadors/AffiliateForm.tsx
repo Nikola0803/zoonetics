@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { getStoredToken } from "@/lib/auth";
+import { trackEvent } from "@/lib/pixel";
 
 // ZOONETICS ships US-only right now, so the form only collects a US state.
 // no separate country field (which was also the thing wrapping "Province /
@@ -48,6 +49,13 @@ export function AffiliateForm({ onApplied }: { onApplied?: () => void }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [started, setStarted] = useState(false);
+
+  function markStarted() {
+    if (started) return;
+    setStarted(true);
+    trackEvent("partner_application_started", { properties: { placement: "partners_page" } });
+  }
 
   function set<K extends keyof FormState>(key: K, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -90,6 +98,7 @@ export function AffiliateForm({ onApplied }: { onApplied?: () => void }) {
         );
       }
       setSubmitted(true);
+      trackEvent("partner_application_completed", { properties: { placement: "partners_page" } });
       onApplied?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
@@ -112,7 +121,7 @@ export function AffiliateForm({ onApplied }: { onApplied?: () => void }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border border-stone bg-ivory-soft p-6 md:p-8">
+    <form onSubmit={handleSubmit} onFocusCapture={markStarted} className="space-y-4 rounded-lg border border-stone bg-ivory-soft p-6 md:p-8">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Field label="Full Name" required value={form.name} onChange={(v) => set("name", v)} />
         <Field label="Email" type="email" required value={form.email} onChange={(v) => set("email", v)} />
