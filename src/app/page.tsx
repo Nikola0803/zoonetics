@@ -13,16 +13,16 @@ const BK = "#081624";   // midnight: ticker and footer
 // ─────────────────────────────────────────────────────────────────────────────
 
 const faqs = [
-  ["what is bpc-157 for dogs?", "BPC-157 (Body Protection Compound 157) is a short chain of amino acids derived from a protein found in stomach tissue. In preclinical animal research, it has been associated with tendon, ligament, and soft-tissue healing and increased local blood flow. It acts as a signaling molecule, directing repair rather than supplying raw building materials."],
-  ["what is tb-500 and what does it do for dogs?", "TB-500 is a synthetic version of thymosin beta-4, a naturally occurring peptide found in most tissues. In animal studies it has been associated with cell migration to injured tissue, reduced inflammation, and improved tissue repair. It works differently from BPC-157, which is why the two are frequently studied together."],
-  ["are peptides safe for dogs?", "There are no completed controlled canine clinical trials for BPC-157 or TB-500. The safety profile comes from preclinical animal research and reported use. These compounds are sold for research purposes only and are not FDA-approved veterinary medicines. Involve your veterinarian before use."],
-  ["how do you dose bpc-157 and tb-500 for a dog?", "ZOONETICS cannot provide personalized dosing or administration advice. These materials are sold for research use only and are not approved veterinary medicines. Any decision involving your dog's health belongs in a conversation with a licensed veterinarian."],
-  ["how long does it take to see results in a dog?", "No promised timeline. Published protocols most commonly run 8 weeks. Owners who document their observations typically begin noting visible changes between weeks 4 and 8. Some see nothing. A 60-day money-back guarantee covers every order."],
-  ["can peptides help a dog with arthritis or hip dysplasia?", "The research base is preclinical animal studies, not controlled canine clinical trials. Those studies documented tissue repair and reduced inflammatory markers. Arthritis and hip dysplasia involve structural joint changes that may or may not respond. We make no clinical claims. Consult your veterinarian."],
-  ["bpc-157 vs glucosamine for dogs: what's the difference?", "Glucosamine supplies building blocks for cartilage and has a mixed evidence base in human and animal trials. BPC-157 is a signaling molecule that in animal studies activated specific repair pathways rather than supplying materials. Different mechanism, different research base, both unproven in controlled canine trials."],
-  ["can i use k9 rebuild with other supplements or medications?", "We can't advise on drug interactions. Involve your veterinarian before combining any research compound with prescribed medications, ongoing treatments, or other supplements. This is especially important for dogs on NSAIDs or immunosuppressants."],
-  ["where can i buy bpc-157 and tb-500 for dogs?", "ZOONETICS ships K9 Rebuild across the US. Every batch is third-party tested by an independent analytical laboratory for identity, purity, and endotoxins. A lot-level certificate of analysis is published before you can add to cart."],
-  ["what does 'research use only' mean?", "It means these compounds are not approved veterinary medicines and are not intended to diagnose, treat, cure, or prevent any disease. They're sold for documented, non-clinical research. We don't make treatment claims. You acknowledge research use at checkout."],
+  ["What Is BPC-157 For Dogs?", "BPC-157 (Body Protection Compound 157) is a short chain of amino acids derived from a protein found in stomach tissue. In preclinical animal research, it has been associated with tendon, ligament, and soft-tissue healing and increased local blood flow. It acts as a signaling molecule, directing repair rather than supplying raw building materials."],
+  ["What Is TB-500 And What Does It Do For Dogs?", "TB-500 is a synthetic version of thymosin beta-4, a naturally occurring peptide found in most tissues. In animal studies it has been associated with cell migration to injured tissue, reduced inflammation, and improved tissue repair. It works differently from BPC-157, which is why the two are frequently studied together."],
+  ["Are Peptides Safe For Dogs?", "There are no completed controlled canine clinical trials for BPC-157 or TB-500. The safety profile comes from preclinical animal research and reported use. These compounds are sold for research purposes only and are not FDA-approved veterinary medicines. Involve your veterinarian before use."],
+  ["How Do You Dose BPC-157 And TB-500 For A Dog?", "ZOONETICS cannot provide personalized dosing or administration advice. These materials are sold for research use only and are not approved veterinary medicines. Any decision involving your dog's health belongs in a conversation with a licensed veterinarian."],
+  ["How Long Does It Take To See Results In A Dog?", "No promised timeline. Published protocols most commonly run 8 weeks. Owners who document their observations typically begin noting visible changes between weeks 4 and 8. Some see nothing. A 60-day money-back guarantee covers every order."],
+  ["Can Peptides Help A Dog With Arthritis Or Hip Dysplasia?", "The research base is preclinical animal studies, not controlled canine clinical trials. Those studies documented tissue repair and reduced inflammatory markers. Arthritis and hip dysplasia involve structural joint changes that may or may not respond. We make no clinical claims. Consult your veterinarian."],
+  ["BPC-157 Vs Glucosamine For Dogs: What's The Difference?", "Glucosamine supplies building blocks for cartilage and has a mixed evidence base in human and animal trials. BPC-157 is a signaling molecule that in animal studies activated specific repair pathways rather than supplying materials. Different mechanism, different research base, both unproven in controlled canine trials."],
+  ["Can I Use K9 Rebuild With Other Supplements Or Medications?", "We can't advise on drug interactions. Involve your veterinarian before combining any research compound with prescribed medications, ongoing treatments, or other supplements. This is especially important for dogs on NSAIDs or immunosuppressants."],
+  ["Where Can I Buy BPC-157 And TB-500 For Dogs?", "ZOONETICS ships K9 Rebuild across the US. Every batch is third-party tested by an independent analytical laboratory for identity, purity, and endotoxins. A lot-level certificate of analysis is published before you can add to cart."],
+  ["What Does 'Research Use Only' Mean?", "It means these compounds are not approved veterinary medicines and are not intended to diagnose, treat, cure, or prevent any disease. They're sold for documented, non-clinical research. We don't make treatment claims. You acknowledge research use at checkout."],
 ];
 
 const blogPosts = [
@@ -169,29 +169,38 @@ export default function Home() {
         </section>
 
         {/* ── FAQ ── */}
-        <section id="questions" className="px-5 py-16 md:px-10 md:py-20" style={{ background: CR }}>
+        <section id="questions" className="px-5 py-16 md:px-10 md:py-24" style={{ background: CR }}>
           <div className="mx-auto max-w-[1200px]">
-            <div className="grid gap-14 lg:grid-cols-[0.55fr_1.45fr]">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em]" style={{ color: `${D}66` }}>Questions owners ask</p>
-                <h2 className="mt-3 font-display text-[clamp(2rem,3vw,3rem)] font-bold leading-[1.05] tracking-[-0.04em]" style={{ color: D }}>Straight Answers.</h2>
-                <p className="mt-4 text-[14px] leading-6" style={{ color: `${D}8C` }}>The compounds, the evidence, the limitations. No hedging.</p>
-                <Link href="/shop/bpc-tb-500-blend-10mg"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-bold transition"
-                  style={{ background: D, color: CR }}>
-                  Get K9 Rebuild →
-                </Link>
-              </div>
-              <div className="border-t" style={{ borderColor: `${D}12` }}>
-                {faqs.map(([q, a]) => (
-                  <details key={q} className="group border-b py-6" style={{ borderColor: `${D}12` }}>
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-[1.0rem] font-semibold tracking-[-0.01em] first-letter:uppercase md:text-[1.05rem]" style={{ color: D }}>
-                      {q}
-                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border text-sm transition group-open:rotate-45" style={{ borderColor: `${D}20`, color: D }}>+</span>
-                    </summary>
-                    <p className="max-w-2xl pt-4 text-[14px] leading-7" style={{ color: `${D}91` }}>{a}</p>
-                  </details>
-                ))}
+            <div className="overflow-hidden rounded-[28px] border bg-white shadow-[0_24px_80px_rgba(16,36,61,0.07)]" style={{ borderColor: `${D}10` }}>
+              <div className="grid lg:grid-cols-[0.72fr_1.28fr]">
+                <div className="flex flex-col justify-between p-8 md:p-11 lg:min-h-[620px]" style={{ background: D, color: CR }}>
+                  <div>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>Before You Choose</p>
+                    <h2 className="mt-5 max-w-sm font-display text-[clamp(2.15rem,3vw,3.15rem)] font-extrabold leading-[1] tracking-[-0.04em]">Clear Questions. Straight Answers.</h2>
+                    <p className="mt-5 max-w-sm text-[14px] font-medium leading-7 text-white/62">Research use, evidence, handling and product selection explained without the noise.</p>
+                    <div className="relative mt-8 aspect-[4/5] overflow-hidden rounded-[20px] border border-white/15 bg-white/5">
+                      <Image src="/images/zoonetics-faq/owner-research-guide-v1.png" alt="Dog owner reviewing research information beside her senior Labrador" fill sizes="(max-width: 1024px) 100vw, 36vw" className="object-cover object-center" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#10243D]/35 via-transparent to-transparent" />
+                    </div>
+                  </div>
+                  <div className="mt-9 border-t border-white/15 pt-7">
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-white/42">Still Unsure?</p>
+                    <p className="mt-3 max-w-xs text-[14px] font-semibold leading-6 text-white/78">Start with the profile closest to the pathway you are documenting.</p>
+                    <Link href="/shop" className="mt-6 inline-flex rounded-full bg-white px-6 py-3.5 text-[11px] font-extrabold uppercase tracking-[0.12em] transition hover:bg-[#DDE7FF]" style={{ color: D }}>Compare Products</Link>
+                  </div>
+                </div>
+                <div className="px-6 py-3 md:px-10 md:py-6">
+                  {faqs.map(([q, a], index) => (
+                    <details key={q} className="group border-b last:border-b-0" style={{ borderColor: `${D}12` }}>
+                      <summary className="flex cursor-pointer list-none items-center gap-4 py-6 md:gap-6 md:py-7" style={{ color: D }}>
+                        <span className="text-[10px] font-extrabold tabular-nums tracking-[0.14em]" style={{ color: `${D}55` }}>{String(index + 1).padStart(2, "0")}</span>
+                        <span className="flex-1 text-[15px] font-extrabold leading-6 tracking-[-0.01em] first-letter:uppercase md:text-[16px]">{q}</span>
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border text-base transition group-open:rotate-45 group-open:bg-[#10243D] group-open:text-white" style={{ borderColor: `${D}20` }}>+</span>
+                      </summary>
+                      <p className="max-w-2xl pb-7 pl-10 pr-12 text-[14px] font-medium leading-7 md:pl-14" style={{ color: `${D}A0` }}>{a}</p>
+                    </details>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

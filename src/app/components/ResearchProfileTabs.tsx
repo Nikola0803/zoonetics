@@ -98,20 +98,20 @@ export default function ResearchProfileTabs() {
   return (
     <section id="product" className="scroll-mt-20 px-5 pb-16 pt-10 md:px-10 md:pb-24 md:pt-14" style={{ background: "#F7F9FC", color: "#10243D" }}>
       <div className="mx-auto max-w-[1200px]">
-        <div className="grid gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#4C7EF3]">What It Is Studied For</p>
-            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.3rem,3.1vw,3.35rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">Explore Every Research Profile.</h2>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#4C7EF3]">The K9 Product Line</p>
+            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.15rem,2.8vw,3rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">Compare All Six Profiles.</h2>
           </div>
-          <p className="max-w-xl text-[16px] font-medium leading-8 text-[#10243D]/68 lg:justify-self-end">Switch between standalone compounds and blends to compare research focus, formats, purity and pricing without leaving the page.</p>
+          <p className="max-w-lg text-[15px] font-medium leading-7 text-[#10243D]/64 lg:justify-self-end">Compare compounds, formats, verified purity and pricing in one place.</p>
         </div>
 
-        <div className="mt-12 flex gap-2 overflow-x-auto pb-3" role="tablist" aria-label="Research profiles">
+        <div className="mt-10 flex snap-x snap-mandatory gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mt-12" role="tablist" aria-label="Research profiles">
           {profiles.map((profile) => {
             const selected = active.id === profile.id;
             return (
               <button key={profile.id} type="button" role="tab" aria-selected={selected} onClick={() => setActiveId(profile.id)}
-                className="min-w-fit rounded-full border px-5 py-3 text-left transition"
+                className="min-w-fit snap-start rounded-full border px-5 py-3 text-left transition"
                 style={{ background: selected ? "#10243D" : "#FFFFFF", borderColor: selected ? "#10243D" : "rgba(16,36,61,.12)", color: selected ? "#FFFFFF" : "#10243D" }}>
                 <span className="block text-[12px] font-extrabold">{profile.name}</span>
                 <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-[0.1em] opacity-55">{profile.focusLabel}</span>
@@ -136,20 +136,13 @@ export default function ResearchProfileTabs() {
             <p className="mt-3 text-[13px] font-extrabold uppercase tracking-[0.14em] text-[#10243D]/48">{active.compound}</p>
             <p className="mt-7 max-w-xl text-[17px] font-medium leading-8 text-[#10243D]/72">{active.summary}</p>
 
-            <div className="mt-8">
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#10243D]/45">Common Research Questions</p>
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                {active.focuses.map((focus) => <div key={focus} className="flex items-center gap-3 rounded-xl bg-[#F4F7FC] px-4 py-3 text-[12px] font-bold"><span className="h-2 w-2 rounded-full bg-[#4C7EF3]" />{focus}</div>)}
-              </div>
-            </div>
-
             <div className="mt-8 border-t border-[#10243D]/10 pt-6">
               <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#10243D]/45">Available Formats</p>
               <div className="mt-3 flex flex-wrap gap-2">{active.formats.map((format) => <span key={format} className="rounded-full border border-[#10243D]/12 px-4 py-2 text-[11px] font-bold">{format}</span>)}</div>
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href={active.href} className="inline-flex flex-1 items-center justify-center rounded-full bg-[#10243D] px-7 py-4 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white">View {active.name} · From {active.price} →</Link>
+              <Link href={active.href} className="inline-flex flex-1 items-center justify-center rounded-full bg-[#10243D] px-7 py-4 text-[12px] font-extrabold uppercase tracking-[0.12em] text-white transition hover:bg-[#4C7EF3]">Shop {active.name} · From {active.price}</Link>
               <Link href="/lab-results" className="inline-flex items-center justify-center rounded-full border border-[#10243D]/18 px-6 py-4 text-[12px] font-extrabold">View COAs</Link>
             </div>
             <p className="mt-5 text-[10px] font-medium leading-5 text-[#10243D]/42">Preclinical research context only. Not an approved veterinary medicine. No clinical outcome is promised.</p>
