@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   description:
     "Shop ZOONETICS K9 research peptides and blends, including BPC-157, TB-500, and GHK-Cu, with lot-level COAs and research-ready traceability.",
   keywords: ["K9 research peptides", "dog peptide research", "BPC-157 research", "TB-500 research", "GHK-Cu research", "peptide blends"],
+  other: {
+    "command-center-verification": "cmv6ghrkn00oop5kqgazu4ahc",
+  },
   robots: { index: true, follow: true },
   openGraph: {
     title: "ZOONETICS",
