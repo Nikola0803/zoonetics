@@ -17,18 +17,18 @@ export default function VideoProofSection() {
   const clip = clips.find((item) => item.key === active) ?? clips[0];
 
   return (
-    <section id="creators" className="bg-[#EAF0FF] px-5 py-20 md:px-10 md:py-28">
+    <section id="creators" className="bg-[#EAF0FF] px-5 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1200px]">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
           <div>
             <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#4F6EF7]">Before And After Video Diaries</p>
-            <h2 className="mt-4 max-w-2xl font-display text-[clamp(2.6rem,3.5vw,3.8rem)] font-extrabold leading-[0.96] tracking-[-0.05em] text-[#17233B]">Before. After. Same movement.</h2>
+            <h2 className="mt-4 max-w-2xl font-display text-[clamp(2.35rem,3.15vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#17233B]">Before. After. Same movement.</h2>
           </div>
           <div className="max-w-xl lg:justify-self-end"><p className="text-[16px] font-medium leading-8 text-[#17233B]/68">Every creator story starts with a baseline clip and returns to the same movement at follow-up. No highlight reel, no mismatched angles, and no outcome presented without its starting point.</p><div className="mt-5 flex flex-wrap gap-2">{["Owner submitted", "Matched movement", "Individual results vary"].map(tag => <span key={tag} className="rounded-full bg-white px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.1em] text-[#17233B]/58">{tag}</span>)}</div></div>
         </div>
 
         <div className="mt-12 overflow-hidden rounded-[28px] bg-[#101829] shadow-[0_28px_80px_rgba(23,35,59,0.18)] lg:grid lg:grid-cols-[1.35fr_0.65fr]">
-          <div className="relative min-h-[520px] overflow-hidden md:min-h-[680px]">
+          <div className="relative min-h-[500px] overflow-hidden md:min-h-[620px]">
             {clip.video ? <video key={clip.video} controls playsInline poster={clip.image} className="absolute inset-0 h-full w-full object-cover"><source src={clip.video} type="video/mp4" /></video> : <Image key={clip.image} src={clip.image} alt={clip.label} fill sizes="(max-width: 1024px) 100vw, 65vw" className="object-cover transition duration-700" />}
             <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/95 via-transparent to-[#081624]/15" />
             <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-[#081624]/60 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-md">{clip.label}</div>

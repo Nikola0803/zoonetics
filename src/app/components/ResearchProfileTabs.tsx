@@ -96,12 +96,12 @@ export default function ResearchProfileTabs() {
   const active = profiles.find((profile) => profile.id === activeId) ?? profiles[0];
 
   return (
-    <section id="product" className="scroll-mt-20 px-5 pb-20 pt-8 md:px-10 md:pb-28 md:pt-12" style={{ background: "#F7F9FC", color: "#10243D" }}>
+    <section id="product" className="scroll-mt-20 px-5 pb-16 pt-10 md:px-10 md:pb-24 md:pt-14" style={{ background: "#F7F9FC", color: "#10243D" }}>
       <div className="mx-auto max-w-[1200px]">
         <div className="grid gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#4C7EF3]">What It Is Studied For</p>
-            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.35rem,3.3vw,3.5rem)] font-extrabold leading-[0.98] tracking-[-0.04em]">Explore Every Research Profile.</h2>
+            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.3rem,3.1vw,3.35rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">Explore Every Research Profile.</h2>
           </div>
           <p className="max-w-xl text-[16px] font-medium leading-8 text-[#10243D]/68 lg:justify-self-end">Switch between standalone compounds and blends to compare research focus, formats, purity and pricing without leaving the page.</p>
         </div>
@@ -132,7 +132,7 @@ export default function ResearchProfileTabs() {
 
           <div className="flex flex-col justify-center p-7 md:p-12 lg:p-14" role="tabpanel">
             <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#4C7EF3]">{active.label}</p>
-            <h3 className="mt-3 font-display text-[clamp(2.5rem,4vw,4.2rem)] font-extrabold leading-none tracking-[-0.05em]">{active.name}</h3>
+            <h3 className="mt-3 font-display text-[clamp(2.3rem,3.5vw,3.6rem)] font-extrabold leading-none tracking-[-0.045em]">{active.name}</h3>
             <p className="mt-3 text-[13px] font-extrabold uppercase tracking-[0.14em] text-[#10243D]/48">{active.compound}</p>
             <p className="mt-7 max-w-xl text-[17px] font-medium leading-8 text-[#10243D]/72">{active.summary}</p>
 
