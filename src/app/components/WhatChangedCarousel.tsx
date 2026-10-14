@@ -44,7 +44,7 @@ const slides = [
     position: "object-center",
     alt: "Dog owner checking her dog's coat while keeping observation notes",
     focus: "Skin + Gut Pathways",
-    question: "Do skin or gut patterns keep returning?",
+    question: "Do skin or gut issues keep coming back?",
     product: "K9 Reclaim",
     compound: "KPV",
     description: "A dual-format profile for research into inflammatory signaling, epithelial tissue and barrier models.",
@@ -100,10 +100,10 @@ export default function WhatChangedCarousel() {
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#4F6EF7]">Why Owners Start Looking At ZOONETICS</p>
-            <h2 className="mt-4 font-display text-[clamp(2.35rem,3.4vw,3.45rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#17233B]">What changed?</h2>
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#4F6EF7]">Start With The Change You Noticed</p>
+            <h2 className="mt-4 font-display text-[clamp(2rem,3.4vw,3.45rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#17233B]">What changed?</h2>
           </div>
-          <p className="max-w-md text-[15px] font-medium leading-7 text-[#17233B]/62">Start with the research question closest to what you are documenting.</p>
+          <p className="max-w-md text-[15px] font-medium leading-7 text-[#17233B]/62">Choose the question that sounds most familiar. We will show you the product profile built around that focus.</p>
         </div>
 
         <div
@@ -135,9 +135,9 @@ export default function WhatChangedCarousel() {
             <div className="flex min-h-[410px] flex-col justify-between p-7 text-white md:min-h-[440px] md:p-10 lg:p-12">
               <div key={slide.question} className="animate-[carousel-copy_.45s_ease-out]">
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">{slide.focus}</p>
-                <h3 className="mt-5 text-balance font-display text-[clamp(2.25rem,3.2vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">{slide.question}</h3>
+                <h3 className="mt-5 text-balance font-display text-[clamp(2rem,3.2vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">{slide.question}</h3>
                 <div className="mt-8 border-t border-white/15 pt-7">
-                  <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/45">Explore The Matching Profile</p>
+                  <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/45">The Matching ZOONETICS Profile</p>
                   <p className="mt-3 font-display text-2xl font-extrabold">{slide.product}</p>
                   <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#A9C7FF]">{slide.compound}</p>
                   <p className="mt-5 text-[14px] font-medium leading-7 text-white/65">{slide.description}</p>

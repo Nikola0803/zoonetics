@@ -39,8 +39,8 @@ export default function Home() {
       {/* ── ANNOUNCEMENT BAR ── */}
       <div className="overflow-hidden px-5 py-2.5 text-center" style={{ background: D }}>
         <p className="text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: "rgba(248,244,238,0.65)" }}>
-          Launch access is open · six independently tested K9 peptide profiles.{" "}
-          <Link href="/shop" className="underline underline-offset-2" style={{ color: CR }}>shop all products</Link>
+          More good days start with the right focus.{" "}
+          <Link href="#signal" className="underline underline-offset-2" style={{ color: CR }}>find their focus</Link>
         </p>
       </div>
 
@@ -52,24 +52,24 @@ export default function Home() {
             <div className="relative z-10 flex flex-col justify-center px-6 py-20 md:px-12 lg:px-20 lg:py-24">
               <div className="mb-7 flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: "#8EAEFF" }}>
                 <span className="h-2 w-2 rounded-full bg-[#54D6AF]" />
-                Peptides Built For Canine Research
+                Canine Recovery, Reconsidered
               </div>
-              <h1 className="max-w-[720px] text-balance font-display text-[clamp(3.05rem,4.7vw,4.9rem)] font-extrabold leading-[0.94] tracking-[-0.05em]">
-                <span className="block">Canine peptides.</span><span className="mt-1 block font-serif font-medium italic" style={{ color: "#8EAEFF" }}>Clear purpose. Proven purity.</span>
+              <h1 className="max-w-[720px] text-balance font-display text-[clamp(2.55rem,4.7vw,4.9rem)] font-extrabold leading-[0.94] tracking-[-0.05em]">
+                <span className="block">More good days.</span><span className="mt-1 block font-serif font-medium italic" style={{ color: "#8EAEFF" }}>Stronger comebacks.</span>
               </h1>
               <p className="mt-8 max-w-xl text-[17px] font-medium leading-8 text-white/80 md:text-lg">
-                Six research profiles for mobility, soft tissue, skin, gut and recovery pathways. Every lot is independently tested for identity and purity before it reaches you.
+                A focused K9 product line built around the changes owners notice first: shorter walks, slower recovery, skin or gut issues that keep coming back, and the small signs that tell you they are not quite themselves.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link href="/shop" className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-extrabold text-[#081624] transition hover:bg-[#DDE7FF]">
-                  Shop All K9 Peptides
+                <Link href="#signal" className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-extrabold text-[#081624] transition hover:bg-[#DDE7FF]">
+                  Find Their Focus
                 </Link>
-                <Link href="#product" className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10">
-                  Find The Right Profile
+                <Link href="/shop" className="inline-flex items-center justify-center rounded-full border border-white/30 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10">
+                  Explore The K9 Line
                 </Link>
               </div>
               <div className="mt-12 grid max-w-xl grid-cols-3 gap-3 border-t border-white/15 pt-7">
-                {[['99.543%', 'HPLC purity'], ['Every lot', 'COA published'], ['60 days', 'money-back']].map(([value, label]) => (
+                {[["6", "focused profiles"], ["5", "areas of focus"], ["60 days", "money-back"]].map(([value, label]) => (
                   <div key={label}><p className="font-display text-lg font-extrabold text-white md:text-xl">{value}</p><p className="mt-1 text-[9px] font-bold uppercase tracking-[0.15em] text-white/50">{label}</p></div>
                 ))}
               </div>
@@ -80,14 +80,14 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/70 via-transparent to-[#081624]/10 lg:bg-gradient-to-r lg:from-[#081624] lg:via-[#081624]/5 lg:to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 grid grid-cols-2 gap-3 md:bottom-10 md:left-10 md:right-10">
                 <div className="rounded-2xl border border-white/20 bg-[#081624]/78 p-5 text-white backdrop-blur-xl">
-                  <p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#8EAEFF]">The K9 product line</p>
-                  <p className="mt-2 text-base font-extrabold">6 focused profiles</p>
-                  <p className="mt-1 text-[11px] font-medium text-white/65">single peptides · targeted blends</p>
+                  <p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-[#8EAEFF]">Start With What Changed</p>
+                  <p className="mt-2 text-base font-extrabold">Find their focus</p>
+                  <p className="mt-1 text-[11px] font-medium text-white/65">mobility · recovery · skin · gut</p>
                 </div>
                 <div className="rounded-2xl border border-white/20 bg-white/92 p-5 backdrop-blur-xl" style={{ color: D }}>
-                  <div className="flex items-center justify-between"><p className="text-[9px] font-extrabold uppercase tracking-[0.18em]" style={{ color: `${D}A8` }}>Research integrity</p><span className="h-2 w-2 rounded-full bg-[#54D6AF]" /></div>
-                  <p className="mt-2 text-base font-extrabold">Lot verified</p>
-                  <p className="mt-1 text-[11px] font-semibold" style={{ color: `${D}B8` }}>identity · purity · lot-level COA</p>
+                  <div className="flex items-center justify-between"><p className="text-[9px] font-extrabold uppercase tracking-[0.18em]" style={{ color: `${D}A8` }}>Clear From The Start</p><span className="h-2 w-2 rounded-full bg-[#54D6AF]" /></div>
+                  <p className="mt-2 text-base font-extrabold">Focused choices</p>
+                  <p className="mt-1 text-[11px] font-semibold" style={{ color: `${D}B8` }}>compare every profile in one place</p>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function Home() {
               </div>
               <div id="zooprotocol" className="flex flex-col justify-center px-7 py-14 text-white md:px-14 lg:px-16 xl:px-20">
                 <div className="flex flex-wrap items-center gap-3"><p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8EAEFF]">ZooProtocol</p><span className="rounded-full border border-white/15 px-3 py-1 text-[8px] font-extrabold uppercase tracking-[0.13em] text-white/55">Private Beta</span></div>
-                <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.3rem,3.1vw,3.35rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">The order is only the start of the record.</h2>
+                <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2rem,3.1vw,3.35rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">The order is only the start of the record.</h2>
                 <p className="mt-7 max-w-xl text-[16px] font-medium leading-8 text-white/78">Track the same questions over time, connect observations to the correct product lot and keep one clear timeline inside your ZOONETICS account.</p>
                 <div className="mt-9 grid gap-x-5 gap-y-5 sm:grid-cols-2">
                   {[
@@ -124,7 +124,7 @@ export default function Home() {
                 </div>
                 <div className="mt-7 flex flex-wrap gap-2">{["Baseline", "Weekly check-ins", "Lot tracking", "Media timeline", "Exportable record"].map((item) => <span key={item} className="rounded-full border border-white/12 bg-white/[0.07] px-3 py-1.5 text-[9px] font-extrabold text-white/64">{item}</span>)}</div>
                 <div className="mt-8 flex flex-col items-start gap-2">
-                  <Link href="/account?tab=protocol" className="inline-flex w-full justify-center rounded-full bg-white px-6 py-3.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#081624] sm:w-auto">Create Your Research Record</Link>
+                  <Link href="/account/protocol" className="inline-flex w-full justify-center rounded-full bg-white px-6 py-3.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#081624] sm:w-auto">Create Your Research Record</Link>
                   <span className="pl-1 text-[11px] font-semibold text-white/55">Available inside your account</span>
                 </div>
                 <p className="mt-6 text-[10px] font-medium leading-5 text-white/42">Documentation support only. ZooProtocol does not provide diagnosis, treatment or veterinary dosing guidance.</p>
@@ -140,7 +140,7 @@ export default function Home() {
                 <div className="flex flex-col justify-between p-8 md:p-11 lg:min-h-[620px]" style={{ background: D, color: CR }}>
                   <div>
                     <p className="text-[10px] font-extrabold uppercase tracking-[0.2em]" style={{ color: AM }}>Before You Choose</p>
-                    <h2 className="mt-5 max-w-sm font-display text-[clamp(2.15rem,3vw,3.15rem)] font-extrabold leading-[1] tracking-[-0.04em]">Clear Questions. Straight Answers.</h2>
+                    <h2 className="mt-5 max-w-sm font-display text-[clamp(1.95rem,3vw,3.15rem)] font-extrabold leading-[1] tracking-[-0.04em]">Clear Questions. Straight Answers.</h2>
                     <p className="mt-5 max-w-sm text-[14px] font-medium leading-7 text-white/62">Research use, evidence, handling and product selection explained without the noise.</p>
                     <div className="relative mt-8 aspect-[4/5] overflow-hidden rounded-[20px] border border-white/15 bg-white/5">
                       <Image src="/images/zoonetics-faq/owner-research-guide-v1.png" alt="Dog owner reviewing research information beside her senior Labrador" fill sizes="(max-width: 1024px) 100vw, 36vw" className="object-cover object-center" />

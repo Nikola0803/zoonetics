@@ -10,12 +10,10 @@ import { useCurrency } from "@/lib/currency-context";
 import { getStoredCouponCode } from "@/lib/referral";
 import { trackEvent } from "@/lib/pixel";
 import { AffiliatePanel } from "./AffiliatePanel";
-import { VerificationPanel } from "./VerificationPanel";
 import { WholesalePanel } from "./WholesalePanel";
 import { AccountDeletionPanel } from "./AccountDeletionPanel";
-import { ZooProtocolPanel } from "./ZooProtocolPanel";
 
-type Tab = "orders" | "protocol" | "addresses" | "profile" | "affiliate" | "verification" | "wholesale";
+type Tab = "orders" | "addresses" | "profile" | "affiliate" | "wholesale";
 
 const STATUS_STYLE: Record<Order["status"], string> = {
   Processing: "bg-copper/15 text-copper",
@@ -30,10 +28,8 @@ const STATUS_STYLE: Record<Order["status"], string> = {
 
 const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "orders", label: "Orders", icon: "ri-file-list-3-line" },
-  { key: "protocol", label: "ZooProtocol", icon: "ri-pulse-line" },
   { key: "addresses", label: "Addresses", icon: "ri-map-pin-line" },
-  { key: "affiliate", label: "Ambassador", icon: "ri-handshake-line" },
-  { key: "verification", label: "Verification", icon: "ri-shield-check-line" },
+  { key: "affiliate", label: "Ambassador", icon: "ri-team-line" },
   { key: "wholesale", label: "Wholesale", icon: "ri-store-2-line" },
   { key: "profile", label: "Profile", icon: "ri-user-settings-line" },
 ];
@@ -86,9 +82,7 @@ function AccountPageInner() {
     if (stored) refresh(stored);
     if (justPlacedId) setTab("orders");
     else if (tabParam === "affiliate") setTab("affiliate");
-    else if (tabParam === "verification") setTab("verification");
     else if (tabParam === "wholesale") setTab("wholesale");
-    else if (tabParam === "protocol") setTab("protocol");
     setMounted(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -111,10 +105,10 @@ function AccountPageInner() {
               <div>
                 <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">ZOONETICS Account</p>
                 <h1 className="mt-6 max-w-lg font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.04em] md:text-6xl">Your research orders. One clear record.</h1>
-                <p className="mt-6 max-w-md text-base font-medium leading-7 text-white/66">Sign in to review orders, saved details, verification status and partner activity in one place.</p>
+                <p className="mt-6 max-w-md text-base font-medium leading-7 text-white/66">Sign in to review orders, saved details, ZooProtocol records and partner activity in one place.</p>
               </div>
               <div className="mt-12 grid gap-3 text-sm font-bold text-white/78 sm:grid-cols-3 lg:grid-cols-1">
-                {["Order history", "Partner dashboard", "Account verification"].map((item) => <div key={item} className="flex items-center gap-3 border-t border-white/14 pt-4"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#A9C7FF] text-[#17233B]">✓</span>{item}</div>)}
+                {["Order history", "ZooProtocol records", "Partner dashboard"].map((item) => <div key={item} className="flex items-center gap-3 border-t border-white/14 pt-4"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#A9C7FF] text-[#17233B]">✓</span>{item}</div>)}
               </div>
             </div>
           </div>
@@ -171,7 +165,6 @@ function AccountPageInner() {
 
         <div>
           {tab === "orders" && <OrdersPanel orders={orders} formatPrice={formatPrice} />}
-          {tab === "protocol" && <ZooProtocolPanel />}
           {tab === "addresses" && (
             <AddressesPanel
               addresses={addresses}
@@ -180,7 +173,6 @@ function AccountPageInner() {
             />
           )}
           {tab === "affiliate" && <AffiliatePanel />}
-          {tab === "verification" && <VerificationPanel />}
           {tab === "wholesale" && <WholesalePanel />}
           {tab === "profile" && (
             <>

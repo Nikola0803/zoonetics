@@ -37,6 +37,7 @@ export function AffiliatePanel() {
   const [copied, setCopied] = useState(false);
   const [requesting, setRequesting] = useState(false);
   const [requestMsg, setRequestMsg] = useState<{ text: string; ok: boolean } | null>(null);
+  const [showApplication, setShowApplication] = useState(false);
 
   function load() {
     setLoading(true);
@@ -105,14 +106,15 @@ export function AffiliatePanel() {
   if (!data || data.status === "NONE") {
     return (
       <div>
-        <div className="mb-6 rounded-lg border border-stone bg-ivory-soft p-6">
-          <p className="font-display text-lg font-semibold text-charcoal">Become an EVLV Affiliate</p>
-          <p className="mt-2 text-sm text-charcoal/60">
-            Earn commission referring researchers and labs to EVLV. Applications are reviewed by hand, typically
-            within a couple of business days.
+        <div className="rounded-[24px] bg-[#101829] p-7 text-white md:p-9">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#A9C7FF]">ZOONETICS Ambassador Program</p>
+          <p className="mt-3 font-display text-3xl font-extrabold">Turn trusted content into a real partnership.</p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65">
+            Share ZOONETICS with your dog community, receive a personal referral link and earn commission on confirmed orders.
           </p>
+          <button type="button" onClick={() => setShowApplication((value) => !value)} className="mt-6 rounded-full bg-white px-6 py-3 text-sm font-extrabold text-[#17233B]">{showApplication ? "Close Application" : "Apply To Become An Ambassador"}</button>
         </div>
-        <AffiliateForm onApplied={load} />
+        {showApplication && <div className="mt-6"><AffiliateForm onApplied={load} /></div>}
       </div>
     );
   }

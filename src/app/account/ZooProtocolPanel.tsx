@@ -1,68 +1,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { setMembershipStatus, type MembershipStatus } from "@/lib/auth";
-import { trackEvent } from "@/lib/pixel";
 
-const STEPS = [
-  { number: "01", title: "Build The Baseline", body: "Record movement, routines and the questions you want to investigate before a research period begins." },
-  { number: "02", title: "Keep One Timeline", body: "Add repeatable check-ins, photos, videos, lot numbers and notes to one consistent record." },
-  { number: "03", title: "Review The Pattern", body: "Compare like with like and export a clear timeline for conversations with your veterinarian or research team." },
-];
+type Entry = { date: string; movement: number; energy: number; comfort: number; note: string; photos?: string[] };
+const fields = ["movement", "energy", "comfort"] as const;
 
 export function ZooProtocolPanel() {
-  const [status, setStatus] = useState<MembershipStatus>("NONE");
-  const [loading, setLoading] = useState(true);
-  const [requesting, setRequesting] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    fetch("/api/membership/status", { method: "POST" })
-      .then(async (res) => res.ok ? res.json() : null)
-      .then((data) => { if (data?.status) setStatus(data.status); })
-      .catch(() => undefined)
-      .finally(() => setLoading(false));
-  }, []);
-
-  async function joinWaitlist() {
-    setRequesting(true);
-    setError("");
-    try {
-      const res = await fetch("/api/membership/request", { method: "POST" });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.error || "The early-access request could not be submitted.");
-      const next = (data.status ?? "PENDING") as MembershipStatus;
-      setStatus(next);
-      setMembershipStatus(next);
-      trackEvent("zooprotocol_waitlist_joined", { properties: { placement: "account" } });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Please try again shortly.");
-    } finally {
-      setRequesting(false);
-    }
-  }
-
-  return (
-    <div className="overflow-hidden rounded-[24px] bg-[#101829] text-white">
-      <div className="relative p-7 md:p-10">
-        <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[#4F6EF7]/20 blur-3xl" />
-        <div className="relative">
-          <div className="flex flex-wrap items-center gap-3">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">ZOOPROTOCOL</p>
-            <span className="rounded-full border border-white/15 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.15em] text-white/60">Coming Soon</span>
-          </div>
-          <h2 className="mt-5 max-w-2xl font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.035em] md:text-5xl">One record for the whole research journey.</h2>
-          <p className="mt-5 max-w-2xl text-sm font-medium leading-7 text-white/64">A private canine research workspace for baselines, repeatable check-ins, media, product lots and clear exports. Built to make the record consistent, not to replace veterinary judgment.</p>
-          <div className="mt-9 grid gap-3 md:grid-cols-3">
-            {STEPS.map((step) => <div key={step.number} className="rounded-2xl border border-white/10 bg-white/[0.055] p-5"><p className="text-xs font-extrabold text-[#A9C7FF]">{step.number}</p><h3 className="mt-4 text-base font-extrabold">{step.title}</h3><p className="mt-2 text-xs font-medium leading-5 text-white/52">{step.body}</p></div>)}
-          </div>
-          <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-            <div><p className="text-sm font-extrabold">Early access opens in stages.</p><p className="mt-1 text-xs font-medium text-white/45">Account holders get first access to private testing.</p></div>
-            {status === "PENDING" || status === "APPROVED" ? <span className="rounded-full bg-[#A9C7FF] px-6 py-3 text-center text-xs font-extrabold text-[#17233B]">{status === "APPROVED" ? "Early Access Active" : "You Are On The Waitlist"}</span> : <button type="button" onClick={joinWaitlist} disabled={requesting || loading} className="rounded-full bg-white px-6 py-3 text-xs font-extrabold text-[#17233B] transition hover:bg-[#A9C7FF] disabled:opacity-50">{requesting ? "Joining..." : "Join Early Access"}</button>}
-          </div>
-          {error && <p className="mt-4 text-xs font-bold text-[#FF8A72]">{error}</p>}
-        </div>
-      </div>
-    </div>
-  );
+  const [dog, setDog] = useState("");
+  const [breed, setBreed] = useState("");
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [openEntry, setOpenEntry] = useState<number | null>(null);
+  const [form, setForm] = useState({ movement: 5, energy: 5, comfort: 5, note: "" });
+  const [photos, setPhotos] = useState<string[]>([]);
+  useEffect(() => { try { const x = JSON.parse(localStorage.getItem("zooprotocol_beta") || "null"); if (x) { setDog(x.dog || ""); setBreed(x.breed || ""); setEntries(x.entries || []); } } catch {} fetch("/api/zooprotocol").then(r=>r.ok?r.json():null).then(data=>{const d=data?.dogs?.[0];const c=d?.cases?.[0];if(d){setDog(d.name);setBreed(d.breed||"");setEntries((c?.checkIns||[]).map((x:any)=>({date:x.createdAt,movement:x.movement,energy:x.energy,comfort:x.comfort,note:x.observation||""})));}}).catch(()=>undefined); }, []);
+  function save(next: Entry[]) { setEntries(next); localStorage.setItem("zooprotocol_beta", JSON.stringify({ dog, breed, entries: next })); }
+  async function add(e: React.FormEvent) { e.preventDefault(); const next={ ...form, photos, date: new Date().toISOString() }; save([next, ...entries]); fetch("/api/zooprotocol",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({dog:{name:dog,breed,focus:"Owner check-ins"},checkIn:{movement:form.movement,energy:form.energy,comfort:form.comfort,observation:form.note}})}).catch(()=>undefined); setForm({ movement: 5, energy: 5, comfort: 5, note: "" }); setPhotos([]); }
+  async function addPhotos(files: FileList | null) { if (!files) return; const encoded=await Promise.all(Array.from(files).slice(0,4-photos.length).map(file=>new Promise<string>((resolve,reject)=>{const img=new Image();const url=URL.createObjectURL(file);img.onload=()=>{const scale=Math.min(1,1280/Math.max(img.width,img.height));const canvas=document.createElement("canvas");canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);canvas.getContext("2d")?.drawImage(img,0,0,canvas.width,canvas.height);URL.revokeObjectURL(url);resolve(canvas.toDataURL("image/jpeg",.72));};img.onerror=reject;img.src=url;}))); setPhotos(current=>[...current,...encoded].slice(0,4)); }
+  return <div className="overflow-hidden rounded-[28px] bg-[#F6F8FC] shadow-[0_24px_70px_rgba(23,35,59,.1)]">
+    <header className="bg-[#101829] p-8 text-white"><p className="text-[10px] font-extrabold uppercase tracking-[.2em] text-[#A9C7FF]">ZooProtocol · Private Beta</p><h2 className="mt-4 font-display text-4xl font-extrabold tracking-[-.04em]">One clear record for your dog.</h2><p className="mt-4 max-w-2xl text-sm leading-7 text-white/60">Track the same questions over time, keep observations together and prepare a clean record to share with a qualified professional.</p></header>
+    <div className="grid gap-6 p-6 md:p-8 lg:grid-cols-[.9fr_1.1fr]">
+      <form onSubmit={add} className="rounded-2xl bg-white p-6"><h3 className="text-xl font-extrabold text-[#17233B]">Today&apos;s check-in</h3><div className="mt-5 grid gap-3 sm:grid-cols-2"><input required placeholder="Dog's name" value={dog} onChange={e=>setDog(e.target.value)} className="rounded-xl border p-3 text-sm"/><input required placeholder="Breed or mix" value={breed} onChange={e=>setBreed(e.target.value)} className="rounded-xl border p-3 text-sm"/></div>{fields.map(k=><label key={k} className="mt-5 block"><span className="flex justify-between text-sm font-bold capitalize text-[#17233B]"><span>{k}</span><span>{form[k]}/10</span></span><input className="mt-2 w-full accent-[#4F6EF7]" type="range" min="1" max="10" value={form[k]} onChange={e=>setForm({...form,[k]:Number(e.target.value)})}/></label>)}<textarea placeholder="What did you notice today?" value={form.note} onChange={e=>setForm({...form,note:e.target.value})} className="mt-5 min-h-24 w-full rounded-xl border p-3 text-sm"/><div className="mt-5 rounded-xl border border-dashed border-[#17233B]/20 bg-[#F6F8FC] p-4"><div className="flex gap-2"><label className="cursor-pointer rounded-full bg-[#17233B] px-4 py-2 text-xs font-extrabold text-white"><input type="file" accept="image/*" capture="environment" className="hidden" onChange={e=>addPhotos(e.target.files)}/>Take Photo</label><label className="cursor-pointer rounded-full border bg-white px-4 py-2 text-xs font-extrabold"><input type="file" accept="image/*" multiple className="hidden" onChange={e=>addPhotos(e.target.files)}/>Choose Photos</label></div><p className="mt-2 text-[10px] text-[#17233B]/40">Up to 4 photos. Use the same angle and lighting each week.</p>{photos.length>0&&<div className="mt-3 grid grid-cols-4 gap-2">{photos.map((src,i)=><button type="button" key={i} onClick={()=>setPhotos(p=>p.filter((_,n)=>n!==i))} className="relative aspect-square overflow-hidden rounded-lg"><img src={src} alt={`Preview ${i+1}`} className="h-full w-full object-cover"/><span className="absolute right-1 top-1 rounded bg-black/65 px-1 text-[9px] text-white">Remove</span></button>)}</div>}</div><button className="mt-4 w-full rounded-full bg-[#17233B] px-5 py-3 text-sm font-extrabold text-white">Save Check-In</button></form>
+      <div className="rounded-2xl bg-white p-6"><div className="flex items-center justify-between"><h3 className="text-xl font-extrabold text-[#17233B]">{dog ? `${dog}'s timeline` : "Your timeline"}</h3><span className="rounded-full bg-[#E8EEFC] px-3 py-1 text-[10px] font-extrabold text-[#4F6EF7]">{entries.length} CHECK-INS</span></div>{entries.length ? <div className="mt-5 space-y-3">{entries.map((x,i)=><article key={i} className="rounded-xl border border-[#17233B]/8 p-4"><button type="button" onClick={()=>setOpenEntry(openEntry===i?null:i)} className="w-full text-left"><div className="flex justify-between text-xs font-bold text-[#17233B]/45"><span>{new Date(x.date).toLocaleString()}</span><span>{Math.round((x.movement+x.energy+x.comfort)/3)}/10 AVG</span></div><div className="mt-2 flex items-center justify-between gap-3"><p className="line-clamp-2 text-sm text-[#17233B]/70">{x.note || "Check-in recorded."}</p><span className="shrink-0 text-[10px] font-extrabold uppercase tracking-wider text-[#4F6EF7]">{openEntry===i?"Close":"Read record"}</span></div></button>{openEntry===i&&<div className="mt-4 border-t border-[#17233B]/8 pt-4"><div className="grid grid-cols-3 gap-2">{fields.map(k=><div key={k} className="rounded-lg bg-[#F6F8FC] p-3 text-center"><p className="text-[9px] font-bold uppercase tracking-wider text-[#17233B]/40">{k}</p><p className="mt-1 text-xl font-extrabold text-[#17233B]">{x[k]}<span className="text-xs text-[#17233B]/35">/10</span></p>{entries[i+1]&&<p className={`mt-1 text-[10px] font-bold ${x[k]-entries[i+1][k]>=0?"text-emerald-600":"text-[#D95858]"}`}>{x[k]-entries[i+1][k]>=0?"+":""}{x[k]-entries[i+1][k]} vs previous</p>}</div>)}</div><div className="mt-4"><p className="text-[10px] font-bold uppercase tracking-wider text-[#17233B]/40">Owner observation</p><p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-[#17233B]/75">{x.note||"No additional observation was added."}</p></div></div>}</article>)}</div>:<p className="mt-8 text-sm text-[#17233B]/45">Your first check-in becomes the baseline. Repeat it weekly to make small changes easier to see.</p>}<div className="mt-6 rounded-xl bg-[#101829] p-5 text-white"><p className="text-[10px] font-extrabold uppercase tracking-wider text-[#A9C7FF]">Professional Review · Coming Soon</p><p className="mt-2 text-sm leading-6 text-white/60">Securely share this timeline and message an eligible veterinary professional from your account.</p></div></div>
+    </div><p className="px-8 pb-7 text-[11px] text-[#17233B]/40">Documentation support only. ZooProtocol does not diagnose, prescribe or replace veterinary care. Signed-in records sync securely with the ZOONETICS workspace.</p>
+  </div>;
 }

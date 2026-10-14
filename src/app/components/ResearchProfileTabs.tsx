@@ -108,7 +108,7 @@ export default function ResearchProfileTabs() {
         <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#4C7EF3]">The K9 Product Line</p>
-            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.15rem,2.8vw,3rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">Compare All Six Profiles.</h2>
+            <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(1.95rem,2.8vw,3rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">Compare All Six Profiles.</h2>
           </div>
           <p className="max-w-lg text-[15px] font-medium leading-7 text-[#10243D]/64 lg:justify-self-end">Compare compounds, formats, verified purity and pricing in one place.</p>
         </div>
@@ -139,7 +139,7 @@ export default function ResearchProfileTabs() {
 
           <div className="flex flex-col justify-center p-7 md:p-12 lg:p-14" role="tabpanel">
             <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#4C7EF3]">{active.label}</p>
-            <h3 className="mt-3 font-display text-[clamp(2.3rem,3.5vw,3.6rem)] font-extrabold leading-none tracking-[-0.045em]">{active.name}</h3>
+            <h3 className="mt-3 font-display text-[clamp(2rem,3.5vw,3.6rem)] font-extrabold leading-none tracking-[-0.045em]">{active.name}</h3>
             <p className="mt-3 text-[13px] font-extrabold uppercase tracking-[0.14em] text-[#10243D]/48">{active.compound}</p>
             <p className="mt-7 max-w-xl text-[17px] font-medium leading-8 text-[#10243D]/72">{active.summary}</p>
 

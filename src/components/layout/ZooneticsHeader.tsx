@@ -8,7 +8,6 @@ import { useCart } from "@/lib/cart-context";
 const links = [
   ["K9 Product Line", "/shop"],
   ["Research Library", "/journal"],
-  ["ZooProtocol", "/account?tab=protocol"],
   ["Partners", "/partners"],
   ["Our Standard", "/sourcing"],
 ] as const;
@@ -38,7 +37,7 @@ export function ZooneticsHeader() {
             <i className="ri-shopping-bag-line text-lg" />
             {count > 0 && <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#FF8A72] px-1 text-[10px] font-extrabold text-[#17233B]">{count}</span>}
           </button>
-          <Link href="/shop" className="hidden rounded-full bg-[#17233B] px-5 py-3 text-[12px] font-extrabold text-white transition hover:bg-[#4F6EF7] sm:block">Shop Products</Link>
+          <Link href="/account/protocol" className="hidden rounded-full bg-[#17233B] px-5 py-3 text-[12px] font-extrabold text-white transition hover:bg-[#4F6EF7] sm:block">ZooProtocol</Link>
           <button onClick={() => setOpen(!open)} className="flex h-11 w-11 items-center justify-center text-[#17233B] lg:hidden" aria-label="Open menu"><i className={open ? "ri-close-line text-xl" : "ri-menu-line text-xl"} /></button>
         </div>
       </div>

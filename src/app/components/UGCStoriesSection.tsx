@@ -38,7 +38,7 @@ export default function UGCStoriesSection() {
         <div className="grid gap-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#4F6EF7]">Owner Video Diaries</p>
-            <h2 className="mt-4 max-w-2xl font-display text-[clamp(2.35rem,3.15vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#17233B]">Real Dog People. Real Camera-Roll Moments.</h2>
+            <h2 className="mt-4 max-w-2xl font-display text-[clamp(2rem,3.15vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em] text-[#17233B]">Real Dog People. Real Camera-Roll Moments.</h2>
           </div>
           <div className="max-w-xl lg:justify-self-end">
             <p className="text-[15px] font-medium leading-7 text-[#17233B]/65">Short owner-recorded check-ins, captured in the places their dogs move every day. Each diary keeps the baseline and follow-up together.</p>

@@ -78,7 +78,7 @@ export function WholesalePanel() {
           href="/wholesale#apply"
           className="mt-5 inline-block rounded-md bg-copper px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-charcoal transition hover:bg-copper-light"
         >
-          Submit an Inquiry
+          Apply For Wholesale
         </Link>
       </div>
     );

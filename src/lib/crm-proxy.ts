@@ -31,11 +31,12 @@ export async function crmFetch(path: string, body: unknown, opts?: { timeoutMs?:
 }
 
 /** GET variant, for read-only CRM endpoints like /api/store/products. */
-export async function crmGet(path: string, opts?: { revalidate?: number }) {
+export async function crmGet(path: string, opts?: { revalidate?: number; headers?: Record<string, string> }) {
   const res = await fetch(`${process.env.CRM_API_URL}${path}`, {
     headers: {
       "x-store-domain": process.env.CRM_STORE_DOMAIN!,
       "x-store-api-key": process.env.CRM_ORG_API_KEY!,
+      ...opts?.headers,
     },
     next: { revalidate: opts?.revalidate ?? 60 },
   });

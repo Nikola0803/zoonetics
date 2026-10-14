@@ -43,7 +43,7 @@ export default function HomeNewsletter() {
       <div className="relative mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
         <div>
           <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#4F6EF7]">The ZOONETICS Field Notes</p>
-          <h2 className="mt-5 max-w-3xl text-balance font-display text-[clamp(2.5rem,4vw,4.1rem)] font-extrabold leading-[0.96] tracking-[-0.05em]">
+          <h2 className="mt-5 max-w-3xl text-balance font-display text-[clamp(2.05rem,4vw,4.1rem)] font-extrabold leading-[0.96] tracking-[-0.05em]">
             Start With One Vial. Save 10%.
           </h2>
           <p className="mt-6 max-w-xl text-[16px] font-medium leading-7 text-[#17233B]/62">
