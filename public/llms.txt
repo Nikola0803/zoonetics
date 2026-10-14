@@ -1,0 +1,21 @@
+# ZOONETICS
+
+ZOONETICS is a United States canine research company supplying independently tested peptide materials strictly for laboratory, analytical and non-clinical research.
+
+Website: https://zoonetics.co/
+Product line: https://zoonetics.co/shop
+Research library: https://zoonetics.co/journal
+Lab results and COAs: https://zoonetics.co/coas
+Research use policy: https://zoonetics.co/ruo
+Partners and affiliates: https://zoonetics.co/partners
+Full machine-readable profile: https://zoonetics.co/llms-full.txt
+
+Core research profiles:
+- K9 Rebuild: BPC-157 + TB-500 blend
+- K9 Reforge: BPC-157
+- K9 Reload: TB-500
+- K9 Reclaim: KPV
+- K9 Restore: GHK-Cu
+- K9 Recast: GHK-Cu + BPC-157 + TB-500 blend
+
+Important boundary: ZOONETICS products are research use only. They are not approved veterinary medicines, are not intended to diagnose, treat, cure or prevent disease, and ZOONETICS does not provide veterinary dosing or administration guidance.

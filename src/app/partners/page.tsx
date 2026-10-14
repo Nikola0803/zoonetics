@@ -27,16 +27,29 @@ export default function PartnersPage() {
             <p className="mt-6 max-w-xl text-base font-medium leading-7 text-white/65">Partner with a canine research brand built for trusted creators, clear education and long-term relationships, not one-off promo codes.</p>
             <div className="mt-8 flex flex-wrap gap-3"><a href="#apply" className="rounded-full bg-white px-7 py-4 text-sm font-extrabold text-[#17233B]">Apply To Partner</a><Link href="/account?tab=affiliate" className="rounded-full border border-white/20 px-7 py-4 text-sm font-extrabold text-white">Partner Sign In</Link></div>
           </div>
-          <div className="relative min-h-[430px] overflow-hidden rounded-[28px] md:min-h-[560px]">
-            <Image src="/images/ambassadors/hero-creator.webp" alt="Dog creator building a trusted community" fill priority className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#101829]/55 to-transparent" />
+          <div className="relative min-h-[430px] overflow-hidden rounded-[28px] border border-white/10 md:min-h-[560px]">
+            <Image src="/images/partners/creator-senior-lab-v1.png" alt="Dog creator filming with her senior Labrador" fill priority sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#101829]/55 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 rounded-full border border-white/20 bg-[#101829]/70 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-md md:bottom-8 md:left-8">Creators Who Put Dogs First</div>
           </div>
         </div>
       </section>
       <section className="bg-[#FBFCFF] px-5 py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-[1400px]">
           <div className="max-w-3xl"><p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">A Real Partnership</p><h2 className="mt-3 font-display text-4xl font-extrabold tracking-[-0.04em] text-[#17233B] md:text-5xl">Built To Grow With Your Community.</h2></div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">{benefits.map(([title, body], index) => <div key={title} className="rounded-[22px] border border-[#17233B]/10 bg-white p-7"><span className="text-xs font-extrabold text-[#4F6EF7]">0{index + 1}</span><h3 className="mt-5 font-display text-2xl font-extrabold tracking-[-0.025em] text-[#17233B]">{title}</h3><p className="mt-3 text-sm font-medium leading-6 text-[#17233B]/58">{body}</p></div>)}</div>
+          <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative min-h-[420px] overflow-hidden rounded-[24px] md:min-h-[540px]">
+              <Image src="/images/partners/dog-community-v1.png" alt="Dog creators and owners gathering with several breeds in a park" fill sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover object-center" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#17233B]/65 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 text-white md:bottom-8 md:left-8 md:right-8">
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#DDE7FF]">Breed Pages · Rescues · Trainers · Educators</p>
+                <p className="mt-2 max-w-md font-display text-2xl font-extrabold leading-tight tracking-[-0.03em]">Built around the communities already changing life for dogs.</p>
+              </div>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {benefits.map(([title, body], index) => <div key={title} className="rounded-[22px] border border-[#17233B]/10 bg-white p-7"><span className="text-xs font-extrabold text-[#4F6EF7]">0{index + 1}</span><h3 className="mt-5 font-display text-2xl font-extrabold tracking-[-0.025em] text-[#17233B]">{title}</h3><p className="mt-3 text-sm font-medium leading-6 text-[#17233B]/58">{body}</p></div>)}
+            </div>
+          </div>
         </div>
       </section>
       <section id="apply" className="bg-[#EEF2FA] px-5 py-16 md:px-8 md:py-24">

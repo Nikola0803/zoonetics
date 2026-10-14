@@ -7,6 +7,9 @@ import { CurrencyProvider } from "@/lib/currency-context";
 import { ResearchUseGate } from "@/components/layout/ResearchUseGate";
 import { ReferralCapture } from "@/components/layout/ReferralCapture";
 import { CampaignAttribution } from "@/components/layout/CampaignAttribution";
+import { CartDrawer } from "@/components/layout/CartDrawer";
+import { ZooneticsFooter } from "@/components/layout/ZooneticsFooter";
+import { ZooneticsHeader } from "@/components/layout/ZooneticsHeader";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
@@ -47,7 +50,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         {crmUrl && trackingKey && <Script src={`${crmUrl}/pixel.js`} data-key={trackingKey} strategy="afterInteractive" />}
         <CurrencyProvider>
-          <CartProvider><ResearchUseGate /><ReferralCapture /><CampaignAttribution />{children}</CartProvider>
+          <CartProvider>
+            <ResearchUseGate />
+            <ReferralCapture />
+            <CampaignAttribution />
+            <ZooneticsHeader />
+            {children}
+            <ZooneticsFooter />
+            <CartDrawer />
+          </CartProvider>
         </CurrencyProvider>
       </body>
     </html>

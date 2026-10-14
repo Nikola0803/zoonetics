@@ -32,12 +32,6 @@ const blogPosts = [
   { title: "How to Build a Useful Canine Mobility Baseline", category: "Observation", date: "Oct 2026", slug: "documenting-canine-mobility-baseline", image: "/images/research-library/ccl-recovery-documentation-v1.png", alt: "Owner recording a working dog's controlled step movement" },
 ];
 
-function BrandMark({ light = false, size = "md" }: { light?: boolean; size?: "sm" | "md" | "lg" }) {
-  const src = light ? "/brand/zoonetics-light.webp" : "/brand/zoonetics-dark.webp";
-  const heights: Record<string, string> = { sm: "h-8", md: "h-10", lg: "h-12" };
-  return <Image src={src} alt="ZOONETICS by EVLV" width={600} height={150} className={`${heights[size]} w-auto`} priority />;
-}
-
 export default function Home() {
   return (
     <div className="min-h-screen font-sans" style={{ background: CR, color: D }}>
@@ -50,35 +44,11 @@ export default function Home() {
         </p>
       </div>
 
-      {/* ── NAV ── */}
-      <header className="sticky top-0 z-30 border-b px-5 md:px-10" style={{ background: CR, borderColor: `${D}12` }}>
-          <div className="mx-auto flex h-[4.75rem] max-w-[1200px] items-center justify-between">
-          <div>
-            <Link href="#top" aria-label="ZOONETICS home"><BrandMark /></Link>
-          </div>
-          <nav className="hidden items-center gap-8 text-[14px] font-bold lg:flex" aria-label="Main navigation">
-            <Link href="/shop" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Shop</Link>
-            <Link href="#product" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>What They Are Studied For</Link>
-            <Link href="#creators" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Owner Stories</Link>
-            <Link href="/partners" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>Partners</Link>
-            <Link href="#questions" className="transition hover:opacity-80" style={{ color: `${D}CC` }}>FAQ</Link>
-          </nav>
-          <div className="flex items-center gap-5">
-            <Link href="/account" className="hidden text-[13px] font-bold lg:block" style={{ color: `${D}A8` }}>Account</Link>
-            <Link href="/shop"
-              className="rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] transition"
-              style={{ background: D, color: CR }}>
-              <span className="sm:hidden">shop</span><span className="hidden sm:inline">shop all products</span>
-            </Link>
-          </div>
-        </div>
-      </header>
-
       <main id="top">
 
         {/* ── HERO ── */}
         <section className="relative overflow-hidden" style={{ background: BK, color: CR }}>
-          <div className="mx-auto grid min-h-[760px] max-w-[1440px] lg:grid-cols-2">
+          <div className="mx-auto grid max-w-[1440px] lg:min-h-[760px] lg:grid-cols-2">
             <div className="relative z-10 flex flex-col justify-center px-6 py-20 md:px-12 lg:px-20 lg:py-24">
               <div className="mb-7 flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[0.2em]" style={{ color: "#8EAEFF" }}>
                 <span className="h-2 w-2 rounded-full bg-[#54D6AF]" />
@@ -105,7 +75,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative min-h-[560px] lg:min-h-[780px]">
+            <div className="relative min-h-[440px] sm:min-h-[520px] lg:min-h-[780px]">
               <Image src="/images/zoonetics-premium/hero-owner-lab-v3.png" alt="Senior black Labrador preparing for a morning walk with its owner" fill priority sizes="(max-width: 1024px) 100vw, 54vw" className="object-cover object-[78%_center]" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/70 via-transparent to-[#081624]/10 lg:bg-gradient-to-r lg:from-[#081624] lg:via-[#081624]/5 lg:to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 grid grid-cols-2 gap-3 md:bottom-10 md:left-10 md:right-10">
@@ -130,32 +100,34 @@ export default function Home() {
 
         <UGCStoriesSection />
 
-        {/* ── WHAT ARRIVES ── */}
+        {/* ── ZOOPROTOCOL ── */}
         <section id="care-path" className="px-5 py-16 md:px-10 md:py-24" style={{ background: "#FFFFFF", color: D }}>
           <div className="mx-auto grid max-w-[1200px] overflow-hidden rounded-[28px] bg-[#081624] lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="relative min-h-[520px] lg:min-h-[700px]">
-                <Image src="/images/zoonetics-premium/research-order-essentials-v2.png" alt="ZOONETICS K9 Rebuild peptide vial, sterile saline, handling guide and lot certificate beside a senior Labrador" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-center" />
+              <div className="relative min-h-[430px] sm:min-h-[520px] lg:min-h-[700px]">
+                <Image src="/images/zoonetics-premium/telehealth-consultation-v1.png" alt="Dog owner reviewing a canine research record with a veterinary professional" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover object-[64%_center]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#081624]/24 via-transparent to-[#081624]/10" />
-                <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-[#081624]/72 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-md md:left-8 md:top-8">Product · Proof · Essentials</div>
+                <div className="absolute left-5 top-5 rounded-full border border-white/30 bg-[#081624]/72 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white backdrop-blur-md md:left-8 md:top-8">Private Canine Research Record</div>
               </div>
-              <div className="flex flex-col justify-center px-7 py-14 text-white md:px-14 lg:px-16 xl:px-20">
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8EAEFF]">What Comes With Your Order</p>
-                <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.3rem,3.1vw,3.35rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">The product, the proof and the essentials.</h2>
-                <p className="mt-7 max-w-xl text-[16px] font-medium leading-8 text-white/78">Every ZOONETICS order pairs the selected peptide profile with its lot documentation and the materials needed for clear, responsible handling.</p>
-                <div className="mt-9 space-y-5">
+              <div id="zooprotocol" className="flex flex-col justify-center px-7 py-14 text-white md:px-14 lg:px-16 xl:px-20">
+                <div className="flex flex-wrap items-center gap-3"><p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#8EAEFF]">ZooProtocol</p><span className="rounded-full border border-white/15 px-3 py-1 text-[8px] font-extrabold uppercase tracking-[0.13em] text-white/55">Private Beta</span></div>
+                <h2 className="mt-4 max-w-xl text-balance font-display text-[clamp(2.3rem,3.1vw,3.35rem)] font-extrabold leading-[0.99] tracking-[-0.04em]">The order is only the start of the record.</h2>
+                <p className="mt-7 max-w-xl text-[16px] font-medium leading-8 text-white/78">Track the same questions over time, connect observations to the correct product lot and keep one clear timeline inside your ZOONETICS account.</p>
+                <div className="mt-9 grid gap-x-5 gap-y-5 sm:grid-cols-2">
                   {[
-                    ["01", "Independently tested peptide", "Identity and purity verified for the exact lot you receive."],
-                    ["02", "Sterile saline included", "The correct companion material is packed with the product."],
-                    ["03", "Clear handling guide", "Straightforward storage, preparation and research information."],
+                    ["01", "Notice", "Capture the small change while it is still fresh."],
+                    ["02", "Record", "Answer the same direct questions each check-in."],
+                    ["03", "Compare", "See the baseline beside the latest observation."],
+                    ["04", "Discuss", "Bring an organized timeline to a qualified professional."],
                   ].map(([n, title, body]) => (
-                    <div key={n} className="grid grid-cols-[34px_1fr] gap-4 border-t border-white/15 pt-5"><span className="text-[11px] font-extrabold text-[#8EAEFF]">{n}</span><div><h3 className="font-display text-lg font-extrabold">{title}</h3><p className="mt-1 text-[12px] font-medium leading-5 text-white/60">{body}</p></div></div>
+                    <div key={n} className="border-t border-white/15 pt-4"><span className="text-[10px] font-extrabold text-[#8EAEFF]">{n}</span><h3 className="mt-2 font-display text-lg font-extrabold">{title}</h3><p className="mt-1 text-[12px] font-medium leading-5 text-white/60">{body}</p></div>
                   ))}
                 </div>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <Link href="/shop" className="inline-flex justify-center rounded-full bg-white px-6 py-3.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#081624]">Shop All K9 Peptides</Link>
-                  <span className="text-[11px] font-semibold text-white/55">Six profiles · lot-level COAs</span>
+                <div className="mt-7 flex flex-wrap gap-2">{["Baseline", "Weekly check-ins", "Lot tracking", "Media timeline", "Exportable record"].map((item) => <span key={item} className="rounded-full border border-white/12 bg-white/[0.07] px-3 py-1.5 text-[9px] font-extrabold text-white/64">{item}</span>)}</div>
+                <div className="mt-8 flex flex-col items-start gap-2">
+                  <Link href="/account?tab=protocol" className="inline-flex w-full justify-center rounded-full bg-white px-6 py-3.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-[#081624] sm:w-auto">Create Your Research Record</Link>
+                  <span className="pl-1 text-[11px] font-semibold text-white/55">Available inside your account</span>
                 </div>
-                <p className="mt-6 text-[10px] font-medium leading-5 text-white/42">For research use only. Not approved veterinary medicines. Not intended to diagnose, treat, cure, or prevent disease.</p>
+                <p className="mt-6 text-[10px] font-medium leading-5 text-white/42">Documentation support only. ZooProtocol does not provide diagnosis, treatment or veterinary dosing guidance.</p>
               </div>
           </div>
         </section>
@@ -230,54 +202,6 @@ export default function Home() {
       </main>
 
       <HomeNewsletter />
-
-      {/* ── FOOTER ── */}
-      <footer className="px-5 pb-8 pt-16 md:px-10 md:pt-20" style={{ background: BK, color: CR }}>
-        <div className="mx-auto max-w-[1200px]">
-          <div className="grid gap-12 border-b pb-14 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr]" style={{ borderColor: `${CR}12` }}>
-            <div>
-              <BrandMark light size="lg" />
-              <p className="mt-4 max-w-xs text-[13px] leading-6" style={{ color: `${CR}9E` }}>
-                The research your dog deserves. Finally.
-              </p>
-              <a href="mailto:hello@zoonetics.co" className="mt-4 block text-[12px] transition hover:opacity-80" style={{ color: `${CR}8F` }}>hello@zoonetics.co</a>
-            </div>
-
-            <div className="space-y-3 text-[13px]" style={{ color: `${CR}AD` }}>
-              <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: `${AM}cc` }}>Shop</p>
-              <p><Link href="/shop/bpc-tb-500-blend-10mg" className="transition hover:opacity-100">K9 Rebuild</Link></p>
-              <p><Link href="#care-path" className="transition hover:opacity-100">How it works</Link></p>
-              <p><Link href="#creators" className="transition hover:opacity-100">Owner Stories</Link></p>
-              <p><Link href="#product" className="transition hover:opacity-100">All Research Profiles</Link></p>
-            </div>
-
-            <div className="space-y-3 text-[13px]" style={{ color: `${CR}AD` }}>
-              <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: `${AM}cc` }}>Learn</p>
-              <p><Link href="/journal" className="transition hover:opacity-100">Blog</Link></p>
-              <p><Link href="/science" className="transition hover:opacity-100">The research</Link></p>
-              <p><Link href="/partners" className="transition hover:opacity-100">Partners & Affiliates</Link></p>
-              <p><Link href="/ruo" className="transition hover:opacity-100">Research use policy</Link></p>
-            </div>
-
-            <div className="space-y-3 text-[13px]" style={{ color: `${CR}AD` }}>
-              <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: `${AM}cc` }}>Company</p>
-              <p><Link href="#questions" className="transition hover:opacity-100">FAQ</Link></p>
-              <p><Link href="/about" className="transition hover:opacity-100">About ZOONETICS</Link></p>
-              <p><Link href="/contact" className="transition hover:opacity-100">Contact</Link></p>
-              <p><Link href="/partners" className="transition hover:opacity-100">Partner Program</Link></p>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 py-7 text-[10px] uppercase tracking-[0.12em]" style={{ color: `${CR}70` }}>
-            <p className="md:hidden">© 2026 ZOONETICS. All rights reserved.</p>
-            <p className="md:hidden">Research materials only · Not veterinary advice</p>
-            <div className="hidden md:flex md:items-center md:justify-between">
-              <p>© 2026 ZOONETICS. All rights reserved.</p>
-              <p>Research materials only · Not veterinary advice · Not intended to diagnose, treat, cure, or prevent disease</p>
-            </div>
-          </div>
-        </div>
-      </footer>
 
     </div>
   );

@@ -128,8 +128,8 @@ export default function ResearchProfileTabs() {
         </div>
 
         <div className="mt-5 grid overflow-hidden rounded-[1.75rem] border border-[#10243D]/10 bg-white shadow-[0_24px_80px_rgba(16,36,61,0.08)] lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="relative min-h-[460px] bg-[#EDF2FA] lg:min-h-[650px]">
-            <K9VialVisual key={active.id} title={active.name} dosage={active.dosage} className="h-full min-h-[460px] w-full p-2 md:p-4 lg:min-h-[650px]" />
+          <div className="relative min-h-[400px] bg-[#EDF2FA] sm:min-h-[460px] lg:min-h-[650px]">
+            <K9VialVisual key={active.id} title={active.name} dosage={active.dosage} className="h-full min-h-[400px] w-full p-2 sm:min-h-[460px] md:p-4 lg:min-h-[650px]" />
             <div className="absolute left-6 top-6 rounded-full border border-[#10243D]/10 bg-white/90 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.15em] backdrop-blur">Research Use Only</div>
             <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl border border-white/70 bg-white/88 p-5 backdrop-blur-xl">
               <div><p className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#10243D]/45">HPLC Purity</p><p className="mt-1 font-display text-xl font-extrabold">{active.purity}</p></div>

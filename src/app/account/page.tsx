@@ -3,16 +3,19 @@
 import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { getStoredUser, clearAuth, setDisplayName, type AuthUser } from "@/lib/auth";
+import { getStoredUser, clearAuth, saveAuth, setDisplayName, type AuthUser } from "@/lib/auth";
 import { getOrdersForUser, mapCrmOrders, type Order } from "@/lib/orders";
 import { getAddressesForUser, addAddress, removeAddress, setDefaultAddress, type Address } from "@/lib/addresses";
 import { useCurrency } from "@/lib/currency-context";
+import { getStoredCouponCode } from "@/lib/referral";
+import { trackEvent } from "@/lib/pixel";
 import { AffiliatePanel } from "./AffiliatePanel";
 import { VerificationPanel } from "./VerificationPanel";
 import { WholesalePanel } from "./WholesalePanel";
 import { AccountDeletionPanel } from "./AccountDeletionPanel";
+import { ZooProtocolPanel } from "./ZooProtocolPanel";
 
-type Tab = "orders" | "addresses" | "profile" | "affiliate" | "verification" | "wholesale";
+type Tab = "orders" | "protocol" | "addresses" | "profile" | "affiliate" | "verification" | "wholesale";
 
 const STATUS_STYLE: Record<Order["status"], string> = {
   Processing: "bg-copper/15 text-copper",
@@ -27,6 +30,7 @@ const STATUS_STYLE: Record<Order["status"], string> = {
 
 const TABS: { key: Tab; label: string; icon: string }[] = [
   { key: "orders", label: "Orders", icon: "ri-file-list-3-line" },
+  { key: "protocol", label: "ZooProtocol", icon: "ri-pulse-line" },
   { key: "addresses", label: "Addresses", icon: "ri-map-pin-line" },
   { key: "affiliate", label: "Ambassador", icon: "ri-handshake-line" },
   { key: "verification", label: "Verification", icon: "ri-shield-check-line" },
@@ -84,6 +88,7 @@ function AccountPageInner() {
     else if (tabParam === "affiliate") setTab("affiliate");
     else if (tabParam === "verification") setTab("verification");
     else if (tabParam === "wholesale") setTab("wholesale");
+    else if (tabParam === "protocol") setTab("protocol");
     setMounted(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -98,22 +103,35 @@ function AccountPageInner() {
 
   if (!user) {
     return (
-      <div className="mx-auto max-w-lg px-4 py-24 text-center">
-        <h1 className="font-display text-2xl font-semibold text-charcoal">Sign in to view your account</h1>
-        <p className="mt-2 text-sm text-charcoal/50">Your orders and account details live here once you&rsquo;re signed in.</p>
-        <Link href="/" className="mt-6 inline-block rounded-md bg-copper px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-charcoal transition hover:bg-copper-light">
-          Back to EVLV
-        </Link>
-      </div>
+      <section className="px-5 py-16 md:px-8 md:py-24">
+        <div className="mx-auto grid max-w-[1200px] overflow-hidden rounded-[28px] bg-white shadow-[0_24px_80px_rgba(23,35,59,0.10)] lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative min-h-[360px] overflow-hidden bg-[#17233B] p-8 text-white md:p-12 lg:min-h-[610px]">
+            <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 15% 20%, #A9C7FF 0, transparent 34%), radial-gradient(circle at 85% 85%, #4F6EF7 0, transparent 38%)" }} />
+            <div className="relative flex h-full flex-col justify-between">
+              <div>
+                <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">ZOONETICS Account</p>
+                <h1 className="mt-6 max-w-lg font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.04em] md:text-6xl">Your research orders. One clear record.</h1>
+                <p className="mt-6 max-w-md text-base font-medium leading-7 text-white/66">Sign in to review orders, saved details, verification status and partner activity in one place.</p>
+              </div>
+              <div className="mt-12 grid gap-3 text-sm font-bold text-white/78 sm:grid-cols-3 lg:grid-cols-1">
+                {["Order history", "Partner dashboard", "Account verification"].map((item) => <div key={item} className="flex items-center gap-3 border-t border-white/14 pt-4"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#A9C7FF] text-[#17233B]">✓</span>{item}</div>)}
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16">
+            <AccountAccessPanel />
+          </div>
+        </div>
+      </section>
     );
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 md:py-14">
+    <div className="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-20">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-copper">My Account</p>
-          <h1 className="mt-2 font-display text-2xl font-semibold text-charcoal md:text-3xl">{user.username || user.email}</h1>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">ZOONETICS Account</p>
+          <h1 className="mt-2 font-display text-3xl font-extrabold tracking-[-0.03em] text-[#17233B] md:text-5xl">{user.username || user.email}</h1>
           <p className="mt-1 text-sm text-charcoal/50">{user.email}</p>
         </div>
         <button
@@ -153,6 +171,7 @@ function AccountPageInner() {
 
         <div>
           {tab === "orders" && <OrdersPanel orders={orders} formatPrice={formatPrice} />}
+          {tab === "protocol" && <ZooProtocolPanel />}
           {tab === "addresses" && (
             <AddressesPanel
               addresses={addresses}
@@ -171,6 +190,74 @@ function AccountPageInner() {
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function AccountAccessPanel() {
+  const [mode, setMode] = useState<"login" | "register">("login");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [terms, setTerms] = useState(false);
+  const [marketingOptIn, setMarketingOptIn] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    if (!terms) return setError("Confirm the research-use terms to continue.");
+    if (mode === "register" && password !== confirm) return setError("Passwords do not match.");
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/auth/${mode}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          password,
+          ...(mode === "register" ? {
+            name: name.trim(),
+            marketingOptIn,
+            referralCode: getStoredCouponCode() || undefined,
+          } : {}),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || "Account access is temporarily unavailable.");
+      saveAuth(data);
+      if (mode === "register") {
+        trackEvent("account_created", { properties: { referralCode: getStoredCouponCode() || undefined } });
+      }
+      window.location.reload();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Account access is temporarily unavailable.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div>
+      <div className="flex gap-6 border-b border-[#17233B]/10">
+        {(["login", "register"] as const).map((item) => <button key={item} type="button" onClick={() => { setMode(item); setError(""); }} className={`border-b-2 pb-3 text-sm font-extrabold capitalize transition ${mode === item ? "border-[#4F6EF7] text-[#17233B]" : "border-transparent text-[#17233B]/40"}`}>{item === "login" ? "Sign In" : "Create Account"}</button>)}
+      </div>
+      <p className="mt-7 text-xs font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">Customer Portal</p>
+      <h2 className="mt-3 font-display text-3xl font-extrabold tracking-[-0.035em] text-[#17233B] md:text-4xl">{mode === "login" ? "Welcome back." : "Create your account."}</h2>
+      <form onSubmit={submit} className="mt-7 space-y-4">
+        {mode === "register" && <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Full name</span><input required autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>}
+        <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Email address</span><input required type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>
+        <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Password</span><input required minLength={8} type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} value={password} onChange={(e) => setPassword(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>
+        {mode === "register" && <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Confirm password</span><input required minLength={8} type="password" autoComplete="new-password" value={confirm} onChange={(e) => setConfirm(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>}
+        <label className="flex cursor-pointer items-start gap-3 rounded-xl bg-[#E8EEFC] p-4"><input type="checkbox" checked={terms} onChange={(e) => setTerms(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#4F6EF7]" /><span className="text-xs font-semibold leading-5 text-[#17233B]/66">I am 21 or older and understand that ZOONETICS products are supplied strictly for research use only.</span></label>
+        {mode === "register" && <label className="flex cursor-pointer items-start gap-3 px-1"><input type="checkbox" checked={marketingOptIn} onChange={(e) => setMarketingOptIn(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#4F6EF7]" /><span className="text-xs font-medium leading-5 text-[#17233B]/52">Send me product releases, research-library updates and occasional offers. I can unsubscribe at any time.</span></label>}
+        {error && <p className="text-sm font-bold text-[#C54444]">{error}</p>}
+        <button disabled={loading} className="w-full rounded-full bg-[#17233B] px-7 py-4 text-sm font-extrabold text-white transition hover:bg-[#4F6EF7] disabled:opacity-50">{loading ? "Please Wait..." : mode === "login" ? "Sign In" : "Create Account"}</button>
+      </form>
+      <Link href="/shop" className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-[#17233B]/14 px-7 py-4 text-sm font-extrabold text-[#17233B] transition hover:border-[#17233B]">Return To Product Line</Link>
+      <p className="mt-6 text-xs font-medium leading-5 text-[#17233B]/45">Secure account access connects order documentation and partner information to the correct profile.</p>
     </div>
   );
 }

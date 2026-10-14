@@ -8,6 +8,7 @@ import { useCart } from "@/lib/cart-context";
 const links = [
   ["K9 Product Line", "/shop"],
   ["Research Library", "/journal"],
+  ["ZooProtocol", "/account?tab=protocol"],
   ["Partners", "/partners"],
   ["Our Standard", "/sourcing"],
 ] as const;
@@ -30,6 +31,9 @@ export function ZooneticsHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <Link href="/account" className="flex h-11 w-11 items-center justify-center rounded-full border border-[#17233B]/12 text-[#17233B] transition hover:border-[#4F6EF7] hover:text-[#4F6EF7]" aria-label="Open account">
+            <i className="ri-user-3-line text-lg" />
+          </Link>
           <button onClick={openCart} className="relative flex h-11 w-11 items-center justify-center rounded-full border border-[#17233B]/12 text-[#17233B] transition hover:border-[#4F6EF7]" aria-label="Open cart">
             <i className="ri-shopping-bag-line text-lg" />
             {count > 0 && <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#FF8A72] px-1 text-[10px] font-extrabold text-[#17233B]">{count}</span>}
@@ -38,7 +42,7 @@ export function ZooneticsHeader() {
           <button onClick={() => setOpen(!open)} className="flex h-11 w-11 items-center justify-center text-[#17233B] lg:hidden" aria-label="Open menu"><i className={open ? "ri-close-line text-xl" : "ri-menu-line text-xl"} /></button>
         </div>
       </div>
-      {open && <nav className="border-t border-[#17233B]/10 bg-white px-5 py-4 lg:hidden">{links.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="block border-b border-[#17233B]/8 py-4 text-sm font-bold text-[#17233B]">{label}</Link>)}</nav>}
+      {open && <nav className="border-t border-[#17233B]/10 bg-white px-5 py-4 lg:hidden">{links.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="block border-b border-[#17233B]/8 py-4 text-sm font-bold text-[#17233B]">{label}</Link>)}<Link href="/account" onClick={() => setOpen(false)} className="block py-4 text-sm font-bold text-[#17233B]">Account</Link></nav>}
     </header>
   );
 }

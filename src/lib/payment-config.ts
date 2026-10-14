@@ -14,7 +14,7 @@ export type PaymentGatewayId = "cashapp" | "zelle" | "venmo";
  * Keeping overrides available makes an account change deploy-safe.
  */
 export const PAYMENT_HANDLES: Record<PaymentGatewayId, string> = {
-  cashapp: process.env.NEXT_PUBLIC_CASHAPP_HANDLE?.trim() || "$warriordistributions",
+  cashapp: process.env.NEXT_PUBLIC_CASHAPP_HANDLE?.trim() || "$zoonetics",
   zelle: process.env.NEXT_PUBLIC_ZELLE_HANDLE?.trim() || "509-220-5434",
   venmo: process.env.NEXT_PUBLIC_VENMO_HANDLE?.trim() || "@warriordistributions",
 };
@@ -65,7 +65,7 @@ const ALL_PAYMENT_GATEWAYS: {
     icon: "ri-money-dollar-circle-line",
     handle: PAYMENT_HANDLES.cashapp,
     recipient: PAYMENT_RECIPIENT,
-    handleNote: "Use the verified Warrior Distributions business destination shown above.",
+    handleNote: "Use the official ZOONETICS Cash App destination shown above.",
   },
   {
     id: "zelle",

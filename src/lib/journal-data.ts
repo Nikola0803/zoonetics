@@ -143,7 +143,7 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     label: "Testing",
     title: "How to Read a Peptide Certificate of Analysis",
     excerpt: "Identity, purity, lot matching and the questions a real COA should answer before a vial reaches a research protocol.",
-    image: "/images/science/coa-vial-banner.png",
+    image: "/images/research-library/zoonetics-coa-guide-v1.png",
     publishedDate: "2026-10-05",
     readTime: "6 min read",
     body: [

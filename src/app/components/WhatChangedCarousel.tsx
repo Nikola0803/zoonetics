@@ -114,7 +114,7 @@ export default function WhatChangedCarousel() {
           onBlurCapture={() => setPaused(false)}
         >
           <div className="grid lg:grid-cols-[1.22fr_0.78fr]">
-            <div className="relative min-h-[470px] overflow-hidden md:min-h-[600px]">
+            <div className="relative min-h-[390px] overflow-hidden sm:min-h-[470px] md:min-h-[600px]">
               {slides.map((item, index) => (
                 <Image
                   key={item.image}
@@ -132,7 +132,7 @@ export default function WhatChangedCarousel() {
               </div>
             </div>
 
-            <div className="flex min-h-[440px] flex-col justify-between p-7 text-white md:p-10 lg:p-12">
+            <div className="flex min-h-[410px] flex-col justify-between p-7 text-white md:min-h-[440px] md:p-10 lg:p-12">
               <div key={slide.question} className="animate-[carousel-copy_.45s_ease-out]">
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">{slide.focus}</p>
                 <h3 className="mt-5 text-balance font-display text-[clamp(2.25rem,3.2vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">{slide.question}</h3>

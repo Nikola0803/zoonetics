@@ -1,0 +1,86 @@
+# ZOONETICS Entity Profile
+
+## Identity
+
+Name: ZOONETICS
+Website: https://zoonetics.co/
+Category: Canine research peptide supplier and research documentation platform
+Country: United States
+Commerce model: Direct-to-consumer research supply, partners, affiliates, wholesale and dropshipping
+
+## What ZOONETICS Supplies
+
+ZOONETICS supplies independently tested peptide materials for canine-focused laboratory, analytical and non-clinical research. Product pages organize the catalog by research question and publish available lot-level documentation.
+
+### Product Profiles
+
+1. K9 Rebuild
+   - Material: BPC-157 + TB-500
+   - Research focus: paired tissue-repair signaling, cell migration, inflammatory pathways and recovery after physical stress
+   - URL: https://zoonetics.co/shop/bpc-tb-500-blend-10mg
+
+2. K9 Reforge
+   - Material: BPC-157
+   - Research focus: tissue-repair and gastrointestinal signaling pathways
+   - URL: https://zoonetics.co/shop/bpc-157-10mg
+
+3. K9 Reload
+   - Material: TB-500
+   - Research focus: cell migration, movement and recovery pathways
+   - URL: https://zoonetics.co/shop/tb-500-10mg
+
+4. K9 Reclaim
+   - Material: KPV
+   - Research focus: barrier and inflammatory pathways
+   - URL: https://zoonetics.co/shop/kpv-10mg
+
+5. K9 Restore
+   - Material: GHK-Cu
+   - Research focus: copper-peptide, skin and collagen pathways
+   - URL: https://zoonetics.co/shop/ghk-cu-50mg
+
+6. K9 Recast
+   - Material: GHK-Cu + BPC-157 + TB-500
+   - Research focus: multi-pathway recovery research
+   - URL: https://zoonetics.co/shop/glow-70mg
+
+## Quality And Documentation
+
+- Available certificates of analysis are published in the COA library.
+- Product and lot matching should be confirmed using the identifier printed on the vial.
+- Testing documentation may report identity and purity depending on the published report.
+- A certificate of analysis does not establish clinical safety, efficacy or veterinary suitability.
+
+COA library: https://zoonetics.co/coas
+Quality standard: https://zoonetics.co/sourcing
+
+## Research Library
+
+The ZOONETICS Research Library covers canine peptide research pathways, mobility documentation, research baselines, product handling and how to read analytical reports.
+
+URL: https://zoonetics.co/journal
+
+## ZooProtocol
+
+ZooProtocol is a planned private account workspace for canine research documentation. The intended feature set includes repeatable baselines, check-ins, media, product lot records and exportable timelines. It is a documentation tool and does not replace veterinary judgment or provide medical recommendations.
+
+Early access is available to registered account holders at https://zoonetics.co/account?tab=protocol
+
+## Partners
+
+ZOONETICS supports creator and commercial partnerships including affiliates, wholesale and dropshipping. Applications are reviewed individually.
+
+URL: https://zoonetics.co/partners
+
+## Research Use Boundary
+
+All products are supplied strictly for research use only. They are not approved veterinary medicines. They are not intended to diagnose, treat, cure or prevent disease in humans or animals. ZOONETICS does not provide personalized dosing, administration or veterinary treatment guidance. Health decisions involving a dog should be discussed with a licensed veterinarian.
+
+Full policy: https://zoonetics.co/ruo
+
+## Contact And Support
+
+Contact: https://zoonetics.co/contact
+Shipping: https://zoonetics.co/shipping
+Returns: https://zoonetics.co/returns
+Privacy: https://zoonetics.co/privacy
