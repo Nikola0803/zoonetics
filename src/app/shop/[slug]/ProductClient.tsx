@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Product } from "@/lib/types";
 import { PackSelector, usePackSelection } from "@/components/product/PackSelector";
@@ -36,6 +37,12 @@ export function ProductClient({
   const [tab, setTab] = useState<(typeof TABS)[number]>("Description");
   const { addToCart } = useCart();
   const { formatPrice } = useCurrency();
+  const router = useRouter();
+
+  function handleBuyNow() {
+    addToCart(product, selected.qty, selected.unitPrice, selected.label);
+    router.push("/checkout");
+  }
   const [isMember, setIsMember] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
 
@@ -234,11 +241,10 @@ export function ProductClient({
           ) : (
             <button
               type="button"
-              disabled={!product.inStock}
-              onClick={() => addToCart(product, selected.qty, selected.unitPrice, selected.label)}
-              className="block w-full rounded-xl bg-copper py-4 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-copper-light disabled:cursor-not-allowed disabled:bg-stone disabled:text-charcoal/50"
+              onClick={handleBuyNow}
+              className="block w-full rounded-xl bg-copper py-4 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-copper-light"
             >
-              {product.inStock ? `Add to Cart -- ${formatPrice(lineTotal)}` : "Out of Stock"}
+              {`Buy Now -- ${formatPrice(lineTotal)}`}
             </button>
           )}
         </div>
@@ -418,11 +424,10 @@ export function ProductClient({
           ) : (
             <button
               type="button"
-              disabled={!product.inStock}
-              onClick={() => addToCart(product, selected.qty, selected.unitPrice, selected.label)}
-              className="flex-1 whitespace-nowrap rounded-xl bg-copper py-3.5 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-copper-light disabled:cursor-not-allowed disabled:bg-stone disabled:text-charcoal/50 sm:flex-none sm:px-8"
+              onClick={handleBuyNow}
+              className="flex-1 whitespace-nowrap rounded-xl bg-copper py-3.5 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-copper-light sm:flex-none sm:px-8"
             >
-              {product.inStock ? `Add to Cart -- ${formatPrice(lineTotal)}` : "Out of Stock"}
+              {`Buy Now -- ${formatPrice(lineTotal)}`}
             </button>
           )}
         </div>

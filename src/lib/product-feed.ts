@@ -159,7 +159,7 @@ export function mergeProducts(staticProducts: Product[], liveProducts: Product[]
       bySlug.set(live.slug, {
         ...existing,
         price: live.price,
-        inStock: live.inStock,
+        inStock: existing.inStock,
         sku: live.sku,
         variants: live.variants,
         image: PHOTO_LOCKED_SLUGS.has(existing.slug) ? existing.image : live.image || existing.image,
