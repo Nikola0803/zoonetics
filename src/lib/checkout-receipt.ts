@@ -15,11 +15,23 @@ export interface CheckoutReceipt {
 }
 
 function receiptSecret() {
-  const secret = process.env.CHECKOUT_RECEIPT_SECRET;
-  if (!secret || secret.length < 32) {
-    throw new Error("CHECKOUT_RECEIPT_SECRET must be configured with at least 32 characters.");
+  const dedicatedSecret = process.env.CHECKOUT_RECEIPT_SECRET?.trim();
+  if (dedicatedSecret) {
+    if (dedicatedSecret.length < 32) {
+      throw new Error("CHECKOUT_RECEIPT_SECRET must be configured with at least 32 characters.");
+    }
+    return dedicatedSecret;
   }
-  return secret;
+
+  // Existing deployments already have the server-only CRM organization key.
+  // Domain-separate it before using it to sign short-lived storefront receipts,
+  // so checkout does not fail merely because a second secret was not added to
+  // Vercel during rollout. A dedicated receipt secret still takes precedence.
+  const crmSecret = process.env.CRM_ORG_API_KEY?.trim();
+  if (!crmSecret) {
+    throw new Error("Checkout receipt signing is not configured.");
+  }
+  return `zoonetics-checkout-receipt-v1:${crmSecret}`;
 }
 
 function signature(encodedPayload: string) {

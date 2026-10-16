@@ -18,7 +18,9 @@ function text(value: unknown, max: number) {
 // Body must match peptides-crm-app's CheckoutInput shape (lib/order-engine.ts):
 // { items: [{slug, quantity}], paymentMethod, paymentMemo, billing: {...}, customerNote? }
 export async function POST(req: Request) {
-  if (!crmConfigured() || !process.env.CHECKOUT_RECEIPT_SECRET) {
+  if (!crmConfigured()) {
+    const missing = ["CRM_API_URL", "CRM_ORG_API_KEY", "CRM_STORE_DOMAIN"].filter((name) => !process.env[name]);
+    console.error("[checkout] Missing server configuration", { missing });
     return NextResponse.json({ error: "Checkout is temporarily unavailable. No order was created." }, { status: 503 });
   }
   const body = await req.json().catch(() => null);
