@@ -20,7 +20,7 @@ import { Product, ProductVariant } from "./types";
  */
 
 const BPC_157_VARIANTS: ProductVariant[] = [
-  { slug: "bpc-157-10mg", label: "10mg", price: 49.99, inStock: true },
+  { slug: "bpc-157-10mg", label: "10mg", price: 70, inStock: true },
   { slug: "bpc-157-5mg", label: "5mg", price: 39.99, inStock: true },
   { slug: "bpc-157-20mg", label: "20mg", price: 89.99, inStock: true },
 ];
@@ -28,12 +28,12 @@ const BPC_157_VARIANTS: ProductVariant[] = [
 const TB_500_VARIANTS: ProductVariant[] = [
   { slug: "tb-500-10mg", label: "10mg", price: 69.99, inStock: true },
   { slug: "tb-500-5mg", label: "5mg", price: 44.99, inStock: true },
-  { slug: "tb-500-20mg", label: "20mg", price: 129.99, inStock: true },
+  { slug: "tb-500-20mg", label: "20mg", price: 140, inStock: true },
 ];
 
 const BPC_TB_BLEND_VARIANTS: ProductVariant[] = [
-  { slug: "bpc-tb-500-blend-10mg", label: "10mg", price: 74.99, inStock: true },
-  { slug: "bpc-tb-500-blend-20mg", label: "20mg", price: 109.99, inStock: true },
+  { slug: "bpc-tb-500-blend-10mg", label: "10mg", price: 49.99, inStock: true },
+  { slug: "bpc-tb-500-blend-20mg", label: "20mg", price: 129.99, inStock: true },
 ];
 
 const EVLV3_VARIANTS: ProductVariant[] = [
@@ -455,7 +455,7 @@ export const products: Product[] = [
     category: "peptides",
     categoryLabel: "Peptide Research",
     image: "/images/zoonetics-products/k9-reload.png",
-    price: 129.99,
+    price: 140,
     bulkOption: { qty: 10, price: 1039.92, savePercent: 20 },
     purity: "99.1%",
     casNumber: "77591-33-4",
@@ -483,7 +483,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide Research",
     format: "blend",
     image: "/images/zoonetics-products/k9-rebuild.png",
-    price: 74.99,
+    price: 49.99,
     bulkOption: { qty: 10, price: 599.92, savePercent: 20 },
     purity: "99.31% BPC-157 / 99.59% TB-500",
     casNumber: "137525-51-0, 77591-33-4",
@@ -509,7 +509,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide Research",
     format: "blend",
     image: "/images/zoonetics-products/k9-rebuild.png",
-    price: 109.99,
+    price: 129.99,
     bulkOption: { qty: 10, price: 879.92, savePercent: 20 },
     purity: "99.68% BPC-157 / 99.55% TB-500",
     casNumber: "137525-51-0, 77591-33-4",
@@ -738,7 +738,7 @@ export const products: Product[] = [
     category: "peptides",
     categoryLabel: "Peptide Research",
     image: "/images/products/selank-10mg.png",
-    price: 49.99,
+    price: 70,
     bulkOption: { qty: 10, price: 399.92, savePercent: 20 },
     purity: "99.42%",
     casNumber: "129954-34-3",
@@ -933,7 +933,7 @@ export const products: Product[] = [
     categoryLabel: "Peptide & Ancillary Research",
     format: "oral",
     image: "/images/zoonetics-products/k9-reclaim.png",
-    price: 49.99,
+    price: 50,
     bulkOption: { qty: 10, price: 399.92, savePercent: 20 },
     purity: "99.0%",
     avgMass: "500 mcg",
