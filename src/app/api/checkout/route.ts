@@ -110,7 +110,15 @@ export async function POST(req: Request) {
     const orderId = text(result.id, 100);
     const orderNumber = text(result.number, 100);
     const orderStatus = text(result.status, 40);
-    const orderTotal = text(result.total, 30);
+    const reportedTotal = text(result.total, 30);
+    const grossCents = result.grossCents;
+    const shippingCents = result.shippingCents;
+    const derivedTotal =
+      typeof grossCents === "number" && Number.isInteger(grossCents) && grossCents >= 0 &&
+      typeof shippingCents === "number" && Number.isInteger(shippingCents) && shippingCents >= 0
+        ? ((grossCents + shippingCents) / 100).toFixed(2)
+        : null;
+    const orderTotal = reportedTotal ?? derivedTotal;
     if (!orderId || !orderNumber || !orderStatus || !orderTotal || !/^\d+\.\d{2}$/.test(orderTotal)) {
       console.error("[checkout] CRM returned an invalid success payload", { orderId, orderNumber, orderStatus });
       return NextResponse.json({ error: "The order could not be confirmed. Please contact support before retrying." }, { status: 502 });
