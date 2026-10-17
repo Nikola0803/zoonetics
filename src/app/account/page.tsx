@@ -102,7 +102,7 @@ function AccountPageInner() {
 
   if (!user) {
     return (
-      <section className="px-5 py-16 md:px-8 md:py-24">
+      <section className="min-h-screen bg-[#101829] px-5 py-16 md:px-8 md:py-24">
         <div className="mx-auto grid max-w-[1200px] overflow-hidden rounded-[28px] bg-white shadow-[0_24px_80px_rgba(23,35,59,0.10)] lg:grid-cols-[1.05fr_0.95fr]">
           <div className="relative min-h-[360px] overflow-hidden bg-[#17233B] p-8 text-white md:p-12 lg:min-h-[610px]">
             <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 15% 20%, #A9C7FF 0, transparent 34%), radial-gradient(circle at 85% 85%, #4F6EF7 0, transparent 38%)" }} />
@@ -126,7 +126,8 @@ function AccountPageInner() {
   }
 
   return (
-    <div className="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-20">
+    <div className="min-h-screen bg-[#F6F8FC] px-5 py-12 md:px-8 md:py-20">
+    <div className="mx-auto max-w-[1200px]">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">ZOONETICS Account</p>
@@ -188,6 +189,7 @@ function AccountPageInner() {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 }
