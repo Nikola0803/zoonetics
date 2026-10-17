@@ -38,8 +38,12 @@ function loadStoredLines(): CartLine[] {
     if (!Array.isArray(parsed)) return [];
     return parsed.filter(
       (l): l is CartLine =>
-        l && typeof l === "object" && l.product && typeof l.qty === "number" && typeof l.unitPrice === "number"
-    );
+        l && typeof l === "object" && l.product && typeof l.qty === "number" && typeof l.unitPrice === "number" &&
+        !/(?:10\s*(?:pcs|pack)|case pricing)/i.test(String(l.packLabel ?? ""))
+    ).map((line) => ({
+      ...line,
+      packLabel: /^(?:1\s*pcs|single vial)$/i.test(String(line.packLabel ?? "")) ? "Single vial" : line.packLabel,
+    }));
   } catch {
     return [];
   }

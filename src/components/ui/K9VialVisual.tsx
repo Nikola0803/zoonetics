@@ -25,7 +25,7 @@ export function K9VialVisual({ title, dosage, className = "" }: { title: string;
   const accent = accents[title] ?? "#FF8A72";
   const isOral = title === "K9 Reclaim Oral";
   return (
-    <div className={`relative flex items-center justify-center overflow-hidden bg-[#F3F6FC] ${className}`}>
+    <div className={`relative flex items-center justify-center overflow-hidden bg-white ${className}`}>
       <div className="relative aspect-square h-auto w-full max-w-full [container-type:inline-size]">
         <Image src={isOral ? "/images/zoonetics-products/oral-bottle-base-v1.png" : "/images/zoonetics-products/vial-base-v4.png"} alt={`${title} ${dosage ?? ""}`.trim()} fill sizes="(max-width: 768px) 90vw, 600px" className="object-contain" />
         <div className={`absolute flex flex-col items-center justify-center text-center text-white ${isOral ? "left-[28%] top-[42%] h-[33%] w-[44%]" : "left-[31.5%] top-[40%] h-[35%] w-[37%]"}`}>

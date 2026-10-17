@@ -14,12 +14,31 @@ import { useCart } from "@/lib/cart-context";
 import { useCurrency } from "@/lib/currency-context";
 import { getProductBySlug, getProducts } from "@/lib/products";
 
-const FEATURED_SLUG = "bpc-157-10mg";
 const FEATURED_DISCOUNT_PERCENT = 25;
-const FEATURED_PACK_LABEL = `1 PCS (${FEATURED_DISCOUNT_PERCENT}% Off Offer)`;
+const FEATURED_PACK_LABEL = `Single vial · ${FEATURED_DISCOUNT_PERCENT}% cart offer`;
 
 const ALSO_ADD_DISCOUNT_PERCENT = 10;
-const ALSO_ADD_PACK_LABEL = `1 PCS (${ALSO_ADD_DISCOUNT_PERCENT}% Off Offer)`;
+const ALSO_ADD_PACK_LABEL = `Single vial · ${ALSO_ADD_DISCOUNT_PERCENT}% cart offer`;
+
+const FEATURED_PRIORITY = [
+  "bpc-tb-500-blend-10mg",
+  "kpv-10mg",
+  "ghk-cu-50mg",
+  "tb-500-10mg",
+  "bpc-157-10mg",
+  "glow-70mg",
+  "kpv-oral-500mcg",
+];
+
+const RESEARCH_CONTEXT: Record<string, string> = {
+  "bpc-tb-500-blend-10mg": "Paired tissue-repair and recovery profile",
+  "kpv-10mg": "Barrier and inflammatory-pathway profile",
+  "ghk-cu-50mg": "Collagen and tissue-remodeling profile",
+  "tb-500-10mg": "Cell-migration and recovery profile",
+  "bpc-157-10mg": "Focused tissue-integrity profile",
+  "glow-70mg": "Multi-pathway research profile",
+  "kpv-oral-500mcg": "Oral-format barrier research profile",
+};
 
 const ZOONETICS_PRODUCT_SLUGS = new Set([
   "bpc-157-10mg",
@@ -30,6 +49,12 @@ const ZOONETICS_PRODUCT_SLUGS = new Set([
   "kpv-10mg",
   "kpv-oral-500mcg",
 ]);
+
+function getFeaturedProduct(inCartIds: Set<string>) {
+  return FEATURED_PRIORITY
+    .map((slug) => getProductBySlug(slug))
+    .find((candidate) => candidate?.inStock && !inCartIds.has(candidate.id));
+}
 
 export const FREE_SHIPPING_THRESHOLD = 400;
 export const FLAT_SHIPPING_COST = 15;
@@ -64,12 +89,11 @@ export function ShippingProgressBar() {
 export function FeaturedOfferCard() {
   const { lines, addToCart, removeLine } = useCart();
   const { formatPrice } = useCurrency();
-  const product = getProductBySlug(FEATURED_SLUG);
+  const inCartIds = new Set(lines.map((line) => line.product.id));
+  const product = getFeaturedProduct(inCartIds);
   if (!product) return null;
 
   const checked = lines.some((l) => l.product.id === product.id && l.packLabel === FEATURED_PACK_LABEL);
-  const alreadyInCartElsewhere = lines.some((l) => l.product.id === product.id && l.packLabel !== FEATURED_PACK_LABEL);
-  if (alreadyInCartElsewhere) return null;
 
   const discountedPrice = product.price * (1 - FEATURED_DISCOUNT_PERCENT / 100);
 
@@ -83,22 +107,27 @@ export function FeaturedOfferCard() {
   }
 
   return (
-    <label className="mt-5 flex cursor-pointer items-start gap-3 rounded-lg border border-copper/40 bg-copper/5 p-4">
-      <input type="checkbox" checked={checked} onChange={toggle} className="mt-1 h-4 w-4 shrink-0 accent-copper" />
-      <div className="h-14 w-11 shrink-0 overflow-hidden rounded-md bg-ivory-soft">
-        {product.image && <Image src={product.image} alt={product.name} width={90} height={112} className="h-full w-full object-cover" />}
+    <div className="mt-6">
+      <div className="mb-3 flex items-end justify-between gap-3">
+        <div><p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">Complete The Research Order</p><p className="mt-1 text-sm font-bold text-[#17233B]">Add a complementary profile</p></div>
+        <span className="rounded-full bg-[#EEF3FF] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider text-[#4F6EF7]">Cart offer</span>
       </div>
-      <div className="flex-1">
-        <p className="text-sm font-medium text-charcoal">
-          Add {product.name} ({FEATURED_DISCOUNT_PERCENT}% off today only)
-        </p>
-        <p className="mt-0.5 text-xs text-charcoal/50">Pairs well with what&apos;s in your cart.</p>
-        <div className="mt-1.5 flex items-baseline gap-2">
-          <span className="text-xs text-charcoal/40 line-through">{formatPrice(product.price)}</span>
-          <span className="text-sm font-semibold text-copper">{formatPrice(discountedPrice)}</span>
+      <label className="flex cursor-pointer items-center gap-3 rounded-[18px] border border-[#4F6EF7]/25 bg-[#EEF3FF] p-4 transition hover:border-[#4F6EF7]/55">
+        <input type="checkbox" checked={checked} onChange={toggle} className="h-4 w-4 shrink-0 accent-[#4F6EF7]" />
+        <div className="h-16 w-14 shrink-0 overflow-hidden rounded-xl bg-white p-1.5 shadow-sm">
+          {product.image && <Image src={product.image} alt={product.name} width={90} height={112} className="h-full w-full object-contain" />}
         </div>
-      </div>
-    </label>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-extrabold text-[#17233B]">{product.name}</p>
+          <p className="mt-0.5 text-[11px] leading-4 text-[#17233B]/55">{RESEARCH_CONTEXT[product.slug] ?? "Complementary canine research profile"}</p>
+          <div className="mt-2 flex items-baseline gap-2">
+            <span className="text-[11px] text-[#17233B]/35 line-through">{formatPrice(product.price)}</span>
+            <span className="text-sm font-extrabold text-[#4F6EF7]">{formatPrice(discountedPrice)}</span>
+            <span className="text-[9px] font-bold uppercase text-[#4F6EF7]">Save {FEATURED_DISCOUNT_PERCENT}%</span>
+          </div>
+        </div>
+      </label>
+    </div>
   );
 }
 
@@ -107,12 +136,13 @@ export function ResearchersAlsoAdd() {
   const { formatPrice } = useCurrency();
 
   const inCartIds = new Set(lines.map((l) => l.product.id));
+  const featuredProduct = getFeaturedProduct(inCartIds);
   const items = getProducts()
     .filter(
       (p) =>
         ZOONETICS_PRODUCT_SLUGS.has(p.slug) &&
         !inCartIds.has(p.id) &&
-        p.slug !== FEATURED_SLUG &&
+        p.id !== featuredProduct?.id &&
         p.inStock
     )
     .slice(0, 3);
@@ -120,18 +150,19 @@ export function ResearchersAlsoAdd() {
   if (items.length === 0) return null;
 
   return (
-    <div className="mt-6 border-t border-stone pt-5">
-      <p className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-charcoal/50">Researchers Also Add</p>
+    <div className="mt-6 border-t border-[#17233B]/10 pt-5">
+      <p className="mb-3 text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#17233B]/45">Researchers Also Consider</p>
       <div className="space-y-3">
         {items.map((p) => {
           const discountedPrice = p.price * (1 - ALSO_ADD_DISCOUNT_PERCENT / 100);
           return (
             <div key={p.id} className="flex items-center gap-3">
-              <div className="h-14 w-11 shrink-0 overflow-hidden rounded-md bg-ivory-soft">
-                {p.image && <Image src={p.image} alt={p.name} width={90} height={112} className="h-full w-full object-cover" />}
+              <div className="h-14 w-12 shrink-0 overflow-hidden rounded-xl border border-[#17233B]/8 bg-white p-1.5">
+                {p.image && <Image src={p.image} alt={p.name} width={90} height={112} className="h-full w-full object-contain" />}
               </div>
               <div className="flex-1">
-                <p className="text-xs font-medium text-charcoal">{p.name}</p>
+                <p className="text-xs font-extrabold text-[#17233B]">{p.name}</p>
+                <p className="mt-0.5 line-clamp-1 text-[10px] text-[#17233B]/45">{RESEARCH_CONTEXT[p.slug]}</p>
                 <div className="mt-0.5 flex items-baseline gap-1.5">
                   <span className="text-[11px] text-charcoal/40 line-through">{formatPrice(p.price)}</span>
                   <span className="text-xs font-semibold text-charcoal">{formatPrice(discountedPrice)}</span>
@@ -140,9 +171,9 @@ export function ResearchersAlsoAdd() {
               <button
                 type="button"
                 onClick={() => addToCart(p, 1, discountedPrice, ALSO_ADD_PACK_LABEL)}
-                className="rounded-md bg-sage-deep px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-ivory transition hover:bg-sage-light"
+                className="rounded-full bg-[#17233B] px-3 py-2 text-[9px] font-extrabold uppercase tracking-wide text-white transition hover:bg-[#4F6EF7]"
               >
-                Add {ALSO_ADD_DISCOUNT_PERCENT}% Off
+                Add · {ALSO_ADD_DISCOUNT_PERCENT}% Off
               </button>
             </div>
           );

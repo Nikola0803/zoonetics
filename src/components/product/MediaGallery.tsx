@@ -38,7 +38,7 @@ export function MediaGallery({
 
   if (media.length === 0) {
     return (
-      <div className="overflow-hidden rounded-lg border border-stone bg-ivory-soft">
+      <div className="overflow-hidden rounded-[24px] border border-[#17233B]/10 bg-white shadow-[0_20px_60px_rgba(23,35,59,0.08)]">
         <div className="aspect-square w-full">
           <ProductVisual name={title} dosage={dosage} className="h-full w-full p-10" />
         </div>
@@ -55,7 +55,7 @@ export function MediaGallery({
 
   return (
     <div>
-      <div className="group relative overflow-hidden rounded-lg border border-stone bg-ivory-soft">
+      <div className="group relative overflow-hidden rounded-[24px] border border-[#17233B]/10 bg-white shadow-[0_20px_60px_rgba(23,35,59,0.08)]">
         <div className="aspect-square w-full p-10 sm:p-14">
           {current.type === "image" && name.startsWith("K9 ") ? (
             <K9VialVisual title={title} dosage={dosage} className="h-full w-full" />
