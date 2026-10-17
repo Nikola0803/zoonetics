@@ -4,7 +4,7 @@
 
 Name: ZOONETICS
 Website: https://zoonetics.co/
-Category: Canine research peptide supplier and research documentation platform
+Category: Canine recovery research products and canine observation platform
 Country: United States
 Commerce model: Direct-to-consumer research supply, partners, affiliates, wholesale and dropshipping
 
@@ -62,9 +62,9 @@ URL: https://zoonetics.co/journal
 
 ## ZooProtocol
 
-ZooProtocol is a planned private account workspace for canine research documentation. The intended feature set includes repeatable baselines, check-ins, media, product lot records and exportable timelines. It is a documentation tool and does not replace veterinary judgment or provide medical recommendations.
+ZooProtocol is a private-beta account workspace for canine research documentation, including repeatable check-ins, observation notes, photos and professional-ready timelines. It is a documentation tool and does not replace veterinary judgment or provide medical recommendations.
 
-Early access is available to registered account holders at https://zoonetics.co/account?tab=protocol
+Access is available to registered account holders at https://zoonetics.co/account/protocol
 
 ## Partners
 

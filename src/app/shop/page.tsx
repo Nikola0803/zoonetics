@@ -6,8 +6,8 @@ import { ShopClient } from "./ShopClient";
 import { TrustIconRow } from "@/components/ui/TrustIconRow";
 
 export const metadata: Metadata = {
-  title: "Shop Research Peptides",
-  description: "Browse the ZOONETICS K9 research product line. Each lot is independently tested with a published Certificate of Analysis.",
+  title: "Canine Research Peptides | K9 Product Line",
+  description: "Compare ZOONETICS canine research peptide profiles for tissue-repair signaling, recovery, inflammatory, barrier, collagen and cell-migration pathways. Review lot-level testing before checkout.",
   alternates: { canonical: "/shop" },
 };
 

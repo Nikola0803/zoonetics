@@ -254,7 +254,7 @@ function AccountAccessPanel() {
         {error && <p className="text-sm font-bold text-[#C54444]">{error}</p>}
         <button disabled={loading} className="w-full rounded-full bg-[#17233B] px-7 py-4 text-sm font-extrabold text-white transition hover:bg-[#4F6EF7] disabled:opacity-50">{loading ? "Please Wait..." : mode === "login" ? "Sign In" : "Create Account"}</button>
       </form>
-      <Link href="/shop" className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-[#17233B]/14 px-7 py-4 text-sm font-extrabold text-[#17233B] transition hover:border-[#17233B]">Return To Product Line</Link>
+      <Link href="/" className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-[#17233B]/14 px-7 py-4 text-sm font-extrabold text-[#17233B] transition hover:border-[#17233B]">Return Home</Link>
       <p className="mt-6 text-xs font-medium leading-5 text-[#17233B]/45">Secure account access connects order documentation and partner information to the correct profile.</p>
     </div>
   );

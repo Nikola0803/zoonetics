@@ -38,8 +38,8 @@ export function ProductCard({ product }: { product: Product }) {
   const locked = memberLocked || restrictedLocked;
 
   return (
-    <div className="group flex flex-col">
-      <Link href={`/shop/${product.slug}`} className="relative block overflow-hidden border border-stone/70 bg-white">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#17233B]/10 bg-white shadow-[0_18px_50px_rgba(23,35,59,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(23,35,59,0.14)]">
+      <Link href={`/shop/${product.slug}`} className="relative block overflow-hidden bg-[radial-gradient(circle_at_50%_30%,#FFFFFF_0%,#EDF2FC_72%)]">
         <div className="aspect-[3/4] w-full">
           {product.name.startsWith("K9 ") ? (
             <K9VialVisual title={title} dosage={dosage} className="h-full w-full p-3 transition duration-500 ease-out group-hover:scale-[1.025]" />
@@ -56,7 +56,7 @@ export function ProductCard({ product }: { product: Product }) {
             <ProductVisual name={title} dosage={dosage} floating className="h-full w-full p-6" />
           )}
         </div>
-        {product.badges?.map((badge) => (
+        {product.badges?.filter((badge) => !/case pricing/i.test(badge)).map((badge) => (
           <span key={badge} className="absolute left-3 top-3 bg-sage-deep px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white">
             {badge}
           </span>
@@ -76,22 +76,22 @@ export function ProductCard({ product }: { product: Product }) {
         )}
       </Link>
 
-      <div className="flex flex-1 flex-col pt-4">
+      <div className="flex flex-1 flex-col p-5">
         <div className="flex items-start justify-between gap-2">
-          <Link href={`/shop/${product.slug}`} className="font-display text-base font-semibold tracking-tight text-charcoal transition hover:opacity-60 md:text-lg">
+          <Link href={`/shop/${product.slug}`} className="font-display text-lg font-extrabold tracking-[-0.025em] text-[#17233B] transition hover:text-[#4F6EF7] md:text-xl">
             {title} {dosage}
           </Link>
           <Link
-            href="/coas"
-            className="flex shrink-0 items-center gap-1 pt-1 text-[10px] font-medium uppercase tracking-[0.15em] text-charcoal/40 transition hover:text-copper"
+            href={`/shop/${product.slug}`}
+            className="flex shrink-0 items-center gap-1 pt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-[#4F6EF7] transition hover:text-[#17233B]"
           >
-            Read COA <i className="ri-arrow-right-up-line" />
+            Details <i className="ri-arrow-right-line" />
           </Link>
         </div>
 
         <div className="mt-2 flex items-center justify-between gap-3">
           <div className="flex items-baseline gap-1.5">
-            <span className="font-display text-xl font-semibold text-charcoal">{formatPrice(product.price).split(" ")[0]}</span>
+            <span className="font-display text-2xl font-extrabold text-[#17233B]">{formatPrice(product.price).split(" ")[0]}</span>
             <span className="text-[11px] font-medium uppercase tracking-wide text-charcoal/40">{formatPrice(product.price).split(" ")[1]}</span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -105,7 +105,7 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
 
-        <div className="mt-auto pt-4">
+        <div className="mt-auto pt-5">
           {packs.length > 1 && (
             <div className="mb-4">
               <PackSelector packs={packs} packIndex={packIndex} onSelect={setPackIndex} />
@@ -124,13 +124,13 @@ export function ProductCard({ product }: { product: Product }) {
               type="button"
               disabled={!product.inStock}
               onClick={() => addToCart(product, 1, selected.unitPrice, selected.label)}
-              className="w-full bg-sage-deep py-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-charcoal disabled:cursor-not-allowed disabled:bg-stone disabled:text-charcoal/40"
+              className="w-full rounded-full bg-[#17233B] py-4 text-[12px] font-extrabold uppercase tracking-[0.16em] text-white transition hover:bg-[#4F6EF7] disabled:cursor-not-allowed disabled:bg-stone disabled:text-charcoal/40"
             >
               {product.inStock ? "Add to Cart" : "Out of Stock"}
             </button>
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

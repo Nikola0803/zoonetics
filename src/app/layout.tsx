@@ -16,18 +16,23 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", displa
 const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "ZOONETICS - K9 Research Peptides & Blends",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://zoonetics.co"),
+  applicationName: "ZOONETICS",
+  title: { default: "ZOONETICS | Canine Recovery Research", template: "%s | ZOONETICS" },
   description:
-    "Shop ZOONETICS K9 research peptides and blends, including BPC-157, TB-500, and GHK-Cu, with lot-level COAs and research-ready traceability.",
-  keywords: ["K9 research peptides", "dog peptide research", "BPC-157 research", "TB-500 research", "GHK-Cu research", "peptide blends"],
+    "Explore focused canine recovery research profiles for mobility, soft tissue, skin, gut and recovery, with clear product comparisons and independent lot documentation.",
+  keywords: ["canine recovery research", "dog mobility research", "canine soft tissue research", "dog recovery products", "K9 research products", "BPC-157 canine research", "TB-500 canine research", "KPV canine research", "ZOONETICS"],
+  alternates: { canonical: "/" },
   other: {
     "command-center-verification": "cmv6ghrkn00oop5kqgazu4ahc",
   },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "ZOONETICS",
-    description: "K9 research peptides and blends with lot-level COAs, clear formats, and research-ready traceability.",
+    type: "website",
+    url: "https://zoonetics.co/",
+    siteName: "ZOONETICS",
+    title: "ZOONETICS | More Good Days. Stronger Comebacks.",
+    description: "Canine recovery research organized around the changes dog owners notice first.",
     images: [
       {
         url: "/images/zoonetics-premium/hero-senior-lab-v2.png",
@@ -37,6 +42,7 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: { card: "summary_large_image", title: "ZOONETICS | Canine Recovery Research", description: "Focused canine recovery research for mobility, soft tissue, skin, gut and recovery.", images: ["/images/zoonetics-premium/hero-senior-lab-v2.png"] },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -46,6 +52,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${inter.variable} ${manrope.variable} ${newsreader.variable}`} data-scroll-behavior="smooth">
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="ZOONETICS AI summary" />
+        <Script id="zoonetics-entity" type="application/ld+json" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org", "@graph": [
+            { "@type": "Organization", "@id": "https://zoonetics.co/#organization", name: "ZOONETICS", url: "https://zoonetics.co/", description: "United States canine recovery research company providing focused research products, lot documentation and the ZooProtocol canine observation platform.", sameAs: ["https://www.instagram.com/zooneticsbio/"], knowsAbout: ["canine recovery research", "canine mobility research", "soft tissue research", "BPC-157", "TB-500", "KPV", "GHK-Cu"] },
+            { "@type": "WebSite", "@id": "https://zoonetics.co/#website", url: "https://zoonetics.co/", name: "ZOONETICS", publisher: { "@id": "https://zoonetics.co/#organization" }, inLanguage: "en-US" }
+          ]
+        }) }} />
       </head>
       <body>
         {crmUrl && trackingKey && <Script src={`${crmUrl}/pixel.js`} data-key={trackingKey} strategy="afterInteractive" />}

@@ -55,11 +55,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     name: product.name,
     sku: product.sku,
     description: product.shortDescription,
-    image: product.image ? [`https://evlvpeptides.com${product.image}`] : undefined,
+    image: product.image ? [`https://zoonetics.co${product.image}`] : undefined,
     category: product.categoryLabel,
     offers: {
       "@type": "Offer",
-      url: `https://evlvpeptides.com/shop/${product.slug}`,
+      url: `https://zoonetics.co/shop/${product.slug}`,
       priceCurrency: "USD",
       price: product.price,
       availability: product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
@@ -75,9 +75,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://evlvpeptides.com" },
-      { "@type": "ListItem", position: 2, name: "Shop", item: "https://evlvpeptides.com/shop" },
-      { "@type": "ListItem", position: 3, name: product.name, item: `https://evlvpeptides.com/shop/${product.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://zoonetics.co" },
+      { "@type": "ListItem", position: 2, name: "Shop", item: "https://zoonetics.co/shop" },
+      { "@type": "ListItem", position: 3, name: product.name, item: `https://zoonetics.co/shop/${product.slug}` },
     ],
   };
 
@@ -122,7 +122,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
-              { n: "01", icon: "ri-file-list-3-line", t: "Pick your batch", b: "Choose a size and pack quantity -- no consultation or account needed." },
+              { n: "01", icon: "ri-file-list-3-line", t: "Pick your batch", b: "Choose the vial strength that fits the research plan. No subscription required." },
               { n: "02", icon: "ri-shield-check-line", t: "Checkout in minutes", b: "Secure checkout, no membership or subscription required." },
               { n: "03", icon: "ri-truck-line", t: "Ships same day", b: "Orders before our daily cutoff go out same day in discreet packaging." },
             ].map((step) => (

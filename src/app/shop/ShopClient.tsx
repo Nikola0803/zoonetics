@@ -118,13 +118,13 @@ export function ShopClient({ products }: { products: Product[] }) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#101829] py-20 text-center text-white md:py-28">
+      <section className="relative overflow-hidden bg-[#101829] py-14 text-center text-white md:py-20">
         <div className="absolute -right-24 -top-36 h-[480px] w-[480px] rounded-full bg-[#4F6EF7]/20 blur-3xl" />
         <div className="mx-auto max-w-[1400px] px-4 md:px-8">
           <p className="mb-5 text-xs font-extrabold uppercase tracking-[0.2em] text-[#A9C7FF]">The K9 Product Line</p>
-          <h1 className="mb-5 font-display text-4xl font-extrabold tracking-[-0.04em] md:text-6xl">Research profiles, clearly defined.</h1>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            Explore peptide profiles by research focus. Every ZOONETICS lot is independently tested for identity and purity, with its documentation visible before checkout.
+          <h1 className="mb-4 font-display text-4xl font-extrabold tracking-[-0.04em] md:text-5xl">Choose the research focus.</h1>
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-white/72 md:text-lg">
+            Explore the ZOONETICS canine research peptide line by pathway, format and research objective. Compare single-peptide and blended profiles for tissue-repair signaling, cell migration, inflammatory pathways, barrier function, collagen signaling and recovery after physical stress. Every available lot is independently tested for identity and purity, with its Certificate of Analysis available before checkout.
           </p>
           <div className="relative mx-auto mt-8 max-w-md">
             <input
@@ -188,14 +188,54 @@ export function ShopClient({ products }: { products: Product[] }) {
         </div>
       </section>
 
-      <section className="bg-[#F5F7FC] px-4 py-14 md:px-8 md:py-20">
+      <section className="bg-[#EEF2FA] px-4 py-12 md:px-8 md:py-16">
         <div className="mx-auto max-w-[1400px]">
         <p className="mb-6 text-sm text-charcoal/50">Showing {filtered.length} products</p>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-7 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-14 text-[#17233B] md:px-8 md:py-20">
+        <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div>
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#4F6EF7]">Canine Research Peptides</p>
+            <h2 className="mt-4 max-w-xl font-display text-3xl font-extrabold tracking-[-0.035em] md:text-4xl">
+              Understand the profile before choosing the product.
+            </h2>
+            <p className="mt-5 max-w-xl text-base font-medium leading-7 text-[#17233B]/65">
+              ZOONETICS organizes each research product around the biological pathways it is commonly investigated for, so researchers can compare the purpose of each profile without decoding a shelf of compound names.
+            </p>
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2">
+            <article>
+              <h3 className="font-display text-xl font-extrabold">Single-peptide profiles</h3>
+              <p className="mt-3 text-sm leading-7 text-[#17233B]/62">
+                K9 Reforge, K9 Reload, K9 Reclaim and K9 Restore isolate one peptide profile at a time. They support focused preclinical research into tissue integrity, cell migration, gut and barrier pathways, inflammatory signaling, collagen activity and skin-related pathways.
+              </p>
+            </article>
+            <article>
+              <h3 className="font-display text-xl font-extrabold">Multi-pathway blends</h3>
+              <p className="mt-3 text-sm leading-7 text-[#17233B]/62">
+                K9 Rebuild and K9 Recast combine complementary research profiles for projects examining several related pathways together, including repair signaling, recovery after physical stress, tissue remodeling and collagen activity.
+              </p>
+            </article>
+            <article>
+              <h3 className="font-display text-xl font-extrabold">Lot-level documentation</h3>
+              <p className="mt-3 text-sm leading-7 text-[#17233B]/62">
+                Product identity, purity and lot matching should be clear before purchase. Each listed ZOONETICS lot links to its available Certificate of Analysis so researchers can review the documentation associated with the vial they select.
+              </p>
+            </article>
+            <article>
+              <h3 className="font-display text-xl font-extrabold">Research use only</h3>
+              <p className="mt-3 text-sm leading-7 text-[#17233B]/62">
+                These products are intended strictly for laboratory and research use. They are not approved veterinary medicines and are not intended to diagnose, treat, cure or prevent disease in humans or animals. Published evidence may be preclinical and does not promise an outcome.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
     </>

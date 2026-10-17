@@ -12,18 +12,7 @@ export interface Pack {
 }
 
 export function usePackSelection(product: Product) {
-  const packs: Pack[] = product.bulkOption
-    ? [
-        { label: "1 PCS", qty: 1, unitPrice: product.price },
-        {
-          label: `${product.bulkOption.qty}-pack`,
-          qty: product.bulkOption.qty,
-          unitPrice: product.bulkOption.price / product.bulkOption.qty,
-          totalPrice: product.bulkOption.price,
-          savePercent: product.bulkOption.savePercent,
-        },
-      ]
-    : [{ label: "1 PCS", qty: 1, unitPrice: product.price }];
+  const packs: Pack[] = [{ label: "Single vial", qty: 1, unitPrice: product.price }];
 
   const [packIndex, setPackIndex] = useState(0);
   return { packIndex, setPackIndex, packs, selected: packs[packIndex] };

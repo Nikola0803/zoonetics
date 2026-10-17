@@ -55,9 +55,7 @@ export default function CheckoutPage() {
   const [country, setCountry] = useState<"US" | "CA">("US");
   const [stateCode, setStateCode] = useState("");
   const [zip, setZip] = useState("");
-  const [smsConsent, setSmsConsent] = useState(false);
   const [ruoAttestation, setRuoAttestation] = useState(false);
-  const [orderNotes, setOrderNotes] = useState("");
   const [couponCode, setCouponCode] = useState(() => getStoredCouponCode());
 
   const [selectedGateway, setSelectedGateway] = useState<PaymentGatewayId | null>(null);
@@ -160,12 +158,7 @@ export default function CheckoutPage() {
           // it is always safe to send even when the code above is really
           // just a referral code.
           discountCode: couponCode.trim() || undefined,
-          customerNote: [
-            `RUO attestation: purchaser confirmed laboratory/research use only at ${new Date().toISOString()}.`,
-            orderNotes.trim() || undefined,
-          ]
-            .filter(Boolean)
-            .join(" | "),
+          customerNote: `RUO attestation: purchaser confirmed laboratory/research use only at ${new Date().toISOString()}.`,
           ruoAttested: true,
           ruoAttestedAt: new Date().toISOString(),
           // The deployed CRM's checkout also requires a top-level customerEmail
@@ -220,18 +213,18 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="bg-[#F3F6FC] px-5 py-10 md:px-8 md:py-16">
-      <div className="mx-auto max-w-[1260px]">
-      <div className="mb-10 flex flex-col gap-4 border-b border-[#17233B]/10 pb-8 md:flex-row md:items-end md:justify-between">
-        <div><p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">Secure Order</p><h1 className="mt-2 font-display text-4xl font-extrabold tracking-[-0.04em] text-[#17233B] md:text-5xl">Complete Your Order.</h1></div>
+    <div className="bg-[#EEF2FA] px-4 py-7 md:px-8 md:py-10">
+      <div className="mx-auto max-w-[1120px]">
+      <div className="mb-7 flex flex-col gap-3 border-b border-[#17233B]/10 pb-5 md:flex-row md:items-end md:justify-between">
+        <div><p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">Secure Checkout</p><h1 className="mt-1 font-display text-3xl font-extrabold tracking-[-0.04em] text-[#17233B] md:text-4xl">Almost Done.</h1></div>
         <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-[#17233B]/55"><span><i className="ri-shield-check-line mr-1.5 text-[#4F6EF7]" />Protected checkout</span><span><i className="ri-flask-line mr-1.5 text-[#4F6EF7]" />Lot-level COA</span><span><i className="ri-truck-line mr-1.5 text-[#4F6EF7]" />Tracked dispatch</span></div>
       </div>
 
-      <form onSubmit={handlePlaceOrder} className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_460px] lg:items-start">
-        <div className="space-y-6">
-          <section className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_20px_60px_rgba(23,35,59,0.06)] md:p-8">
-            <h2 className="mb-5 text-sm font-semibold uppercase tracking-wider text-charcoal/50">Shipping Information</h2>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <form onSubmit={handlePlaceOrder} className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_390px] lg:items-start">
+        <div className="space-y-4">
+          <section className="rounded-[20px] border border-[#17233B]/10 bg-white p-5 shadow-[0_16px_45px_rgba(23,35,59,0.06)] md:p-6">
+            <h2 className="mb-4 text-xs font-extrabold uppercase tracking-[0.14em] text-[#17233B]/50">1 · Delivery Details</h2>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field label="First Name" required value={firstName} onChange={setFirstName} placeholder="John" />
               <Field label="Last Name" required value={lastName} onChange={setLastName} placeholder="Doe" />
               <Field label="Email Address" required type="email" value={email} onChange={setEmail} placeholder="you@lab.edu" className="sm:col-span-2" />
@@ -278,26 +271,10 @@ export default function CheckoutPage() {
               <Field label="Postal / ZIP Code" required value={zip} onChange={setZip} placeholder="02110" maxLength={10} />
             </div>
 
-            <label className="mt-6 flex items-start gap-3 rounded-lg border border-stone bg-ivory-soft p-4">
-              <input type="checkbox" checked={smsConsent} onChange={(e) => setSmsConsent(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-copper" />
-              <span className="text-xs leading-relaxed text-charcoal/60">
-                By checking this box, you agree to receive text messages from ZOONETICS at the number provided. Consent
-                is not a condition to purchase. Message frequency varies. Message and data rates may apply. Reply
-                STOP to cancel or HELP for help. View our{" "}
-                <Link href="/privacy" className="text-copper hover:underline">
-                  Privacy Policy
-                </Link>{" "}
-                and{" "}
-                <Link href="/terms" className="text-copper hover:underline">
-                  Terms of Service
-                </Link>
-                .
-              </span>
-            </label>
           </section>
 
-          <section className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_20px_60px_rgba(23,35,59,0.06)] md:p-8">
-            <label className="mb-3 block text-sm font-semibold uppercase tracking-wider text-charcoal/50">
+          <section className="rounded-[20px] border border-[#17233B]/10 bg-white p-5 shadow-[0_16px_45px_rgba(23,35,59,0.05)] md:p-6">
+            <label className="mb-3 block text-xs font-extrabold uppercase tracking-[0.14em] text-[#17233B]/50">
               Promo / Referral Code <span className="font-normal normal-case text-charcoal/40">(optional)</span>
             </label>
             <input
@@ -320,25 +297,11 @@ export default function CheckoutPage() {
             )}
           </section>
 
-          <section className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_20px_60px_rgba(23,35,59,0.06)] md:p-8">
-            <label className="mb-3 block text-sm font-semibold uppercase tracking-wider text-charcoal/50">
-              Order Notes <span className="font-normal normal-case text-charcoal/40">(optional)</span>
-            </label>
-            <textarea
-              maxLength={500}
-              rows={4}
-              placeholder="Any special instructions or notes..."
-              value={orderNotes}
-              onChange={(e) => setOrderNotes(e.target.value)}
-              className="w-full resize-none rounded-md border border-stone bg-white px-4 py-3.5 text-base text-charcoal outline-none placeholder:text-charcoal/40 focus:border-copper"
-            />
-            <p className="mt-1.5 text-right text-xs text-charcoal/40">{orderNotes.length}/500</p>
-          </section>
         </div>
 
-        <div className="h-fit space-y-6 lg:sticky lg:top-[106px]">
-          <div className="rounded-[24px] border border-[#17233B]/10 bg-white p-6 shadow-[0_24px_70px_rgba(23,35,59,0.09)]">
-            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-charcoal/50">Order Summary</h2>
+        <div className="h-fit space-y-4 lg:sticky lg:top-[96px]">
+          <div className="rounded-[20px] border border-[#17233B]/10 bg-white p-5 shadow-[0_20px_60px_rgba(23,35,59,0.09)]">
+            <h2 className="mb-4 text-xs font-extrabold uppercase tracking-[0.14em] text-[#17233B]/50">2 · Review Order</h2>
             <ShippingProgressBar />
             <div className="space-y-5">
               {lines.map((line) => (
@@ -381,7 +344,7 @@ export default function CheckoutPage() {
           </div>
 
           <div>
-            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-charcoal/50">Payment Method</h2>
+            <h2 className="mb-4 text-xs font-extrabold uppercase tracking-[0.14em] text-[#17233B]/50">3 · Choose Payment</h2>
             {PAYMENT_GATEWAYS.length === 0 && (
               <div className="rounded-lg border border-copper/40 bg-copper/5 p-4 text-sm leading-relaxed text-charcoal/70">
                 Checkout is temporarily unavailable while Warrior Distributions verifies its payment accounts. No payment destination will be shown until it is confirmed.
@@ -482,8 +445,7 @@ export default function CheckoutPage() {
               </div>
               <p className="mt-3 text-xs leading-relaxed text-charcoal/50">
                 Include this exact code in your {selectedGateway ? PAYMENT_GATEWAYS.find((g) => g.id === selectedGateway)?.label : "payment"} note
-                so we can match your payment and dispatch faster. Your items are held for 2 hours. After that, stock
-                releases back to general inventory.
+                so we can match your payment to this order. The code remains valid for two hours.
               </p>
               {expired && (
                 <button
@@ -519,7 +481,7 @@ export default function CheckoutPage() {
           <button
             type="submit"
             disabled={!selectedGateway || expired || !shippingComplete || !ruoAttestation || placing}
-            className="w-full rounded-full bg-[#17233B] py-5 text-sm font-extrabold text-white transition hover:bg-[#4F6EF7] disabled:cursor-not-allowed disabled:opacity-40"
+            className="w-full rounded-full bg-[#17233B] py-4 text-sm font-extrabold text-white shadow-[0_12px_30px_rgba(23,35,59,0.18)] transition hover:bg-[#4F6EF7] disabled:cursor-not-allowed disabled:opacity-40"
           >
             {placing ? "Placing Order..." : `Confirm Order (${formatPrice(total)})`}
           </button>
@@ -566,7 +528,7 @@ function Field({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-12 w-full rounded-md border border-stone bg-white px-4 text-base text-charcoal outline-none placeholder:text-charcoal/40 focus:border-copper"
+        className="h-11 w-full rounded-xl border border-[#17233B]/12 bg-[#F8FAFE] px-4 text-sm font-semibold text-[#17233B] outline-none placeholder:font-normal placeholder:text-[#17233B]/35 focus:border-[#4F6EF7] focus:bg-white"
       />
     </div>
   );

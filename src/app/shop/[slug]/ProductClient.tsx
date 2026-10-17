@@ -24,6 +24,16 @@ function splitDosage(name: string) {
   return { title: name.slice(0, match.index).trim(), dosage: match[1].toUpperCase() };
 }
 
+function researchFocusFor(name: string) {
+  if (name.includes("Rebuild")) return ["Tissue-repair signaling", "Cell migration", "Recovery after physical stress"];
+  if (name.includes("Reforge")) return ["Tissue integrity", "Inflammatory pathways", "Localized repair signaling"];
+  if (name.includes("Reload")) return ["Cell migration", "Movement research", "Recovery pathways"];
+  if (name.includes("Reclaim")) return ["Barrier function", "Gut pathways", "Inflammatory signaling"];
+  if (name.includes("Restore")) return ["Collagen pathways", "Skin integrity", "Tissue remodeling"];
+  if (name.includes("Recast")) return ["Multi-pathway recovery", "Tissue integrity", "Collagen signaling"];
+  return ["Documented research", "Pathway observation", "Lot-linked analysis"];
+}
+
 export function ProductClient({
   product,
   coa,
@@ -102,6 +112,7 @@ export function ProductClient({
   const minVariantPrice = variantPrices.length > 0 ? Math.min(product.price, ...variantPrices) : product.price;
   const hasCheaperVariant = !!product.variants && product.variants.length > 1 && minVariantPrice < product.price;
   const { title, dosage } = splitDosage(product.name);
+  const researchFocus = researchFocusFor(product.name);
   const reports = coa?.reports?.length
     ? coa.reports
     : coa
@@ -118,7 +129,7 @@ export function ProductClient({
       <div className="relative self-start lg:sticky lg:top-[110px] lg:col-start-1 lg:row-start-1 lg:row-span-2">
         <MediaGallery name={product.name} title={title} dosage={dosage} image={product.image} gallery={product.gallery} />
         <div className="pointer-events-none absolute inset-0 flex items-start justify-between p-4">
-          {product.badges?.map((b) => (
+          {product.badges?.filter((badge) => !/case pricing/i.test(badge)).map((b) => (
             <span key={b} className="pointer-events-auto rounded-full bg-sage-deep px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-white">
               {b}
             </span>
@@ -145,6 +156,13 @@ export function ProductClient({
           </div>
         </div>
         <p className="mt-2 text-base leading-relaxed text-charcoal/60 md:text-lg">{product.shortDescription}</p>
+        <div className="mt-4 rounded-[18px] border border-[#A9C7FF]/45 bg-[#EEF3FF] p-4">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#4F6EF7]">What It Is Studied For</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {researchFocus.map((focus) => <span key={focus} className="rounded-full bg-white px-3 py-2 text-xs font-bold text-[#17233B] shadow-sm">{focus}</span>)}
+          </div>
+          <p className="mt-3 text-[11px] font-medium leading-5 text-[#17233B]/50">Preclinical research context only. No veterinary outcome is promised.</p>
+        </div>
       </div>
 
       {/* Buy box -- right column, below the hero head */}
@@ -172,14 +190,7 @@ export function ProductClient({
             </span>
             <div className="font-display text-2xl font-semibold text-charcoal sm:text-3xl md:text-4xl">{formatPrice(selected.unitPrice)}</div>
           </div>
-          {product.bulkOption && (
-            <p className="mt-1 text-sm text-charcoal/50">
-              Case pricing available -- {product.bulkOption.qty}-unit case at reduced per-unit cost
-            </p>
-          )}
-          <p className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-copper-dark">
-            <i className="ri-fire-line" /> High demand -- 13 people viewing now
-          </p>
+          <p className="mt-2 text-sm font-semibold text-[#17233B]/55">One independently tested research vial</p>
         </div>
 
         {product.variants && product.variants.length > 1 && (
@@ -230,7 +241,7 @@ export function ProductClient({
           </div>
         )}
 
-        <div ref={ctaRef} className="mt-6">
+        <div ref={ctaRef} className="mt-5 rounded-[22px] border border-[#17233B]/10 bg-white p-4 shadow-[0_18px_50px_rgba(23,35,59,0.08)]">
           {locked ? (
             <Link
               href={restrictedLocked ? "/account?tab=verification" : "/plans"}
@@ -242,11 +253,16 @@ export function ProductClient({
             <button
               type="button"
               onClick={handleBuyNow}
-              className="block w-full rounded-xl bg-copper py-4 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-copper-light"
+              className="block w-full rounded-full bg-[#17233B] py-4 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-[#4F6EF7]"
             >
-              {`Buy Now -- ${formatPrice(lineTotal)}`}
+              {`Buy Now · ${formatPrice(lineTotal)}`}
             </button>
           )}
+          <div className="mt-3 grid grid-cols-3 gap-2 text-center text-[10px] font-bold uppercase tracking-[0.08em] text-[#17233B]/50">
+            <span><i className="ri-shield-check-line mr-1 text-[#4F6EF7]" />Tested</span>
+            <span><i className="ri-truck-line mr-1 text-[#4F6EF7]" />Tracked</span>
+            <span><i className="ri-lock-line mr-1 text-[#4F6EF7]" />Secure</span>
+          </div>
         </div>
 
         <ResearchUseNotice />
@@ -425,9 +441,9 @@ export function ProductClient({
             <button
               type="button"
               onClick={handleBuyNow}
-              className="flex-1 whitespace-nowrap rounded-xl bg-copper py-3.5 text-sm font-semibold uppercase tracking-wide text-charcoal transition hover:bg-copper-light sm:flex-none sm:px-8"
+              className="flex-1 whitespace-nowrap rounded-full bg-[#17233B] py-3.5 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-[#4F6EF7] sm:flex-none sm:px-8"
             >
-              {`Buy Now -- ${formatPrice(lineTotal)}`}
+              {`Buy Now · ${formatPrice(lineTotal)}`}
             </button>
           )}
         </div>
