@@ -193,7 +193,7 @@ function AccountPageInner() {
 }
 
 function AccountAccessPanel() {
-  const [mode, setMode] = useState<"login" | "register">("login");
+  const [mode, setMode] = useState<"login" | "register" | "forgot">("login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -202,6 +202,25 @@ function AccountAccessPanel() {
   const [marketingOptIn, setMarketingOptIn] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [resetSent, setResetSent] = useState(false);
+
+  async function submitForgot(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    try {
+      await fetch("/api/auth/reset-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      setResetSent(true);
+    } catch {
+      setError("Could not send reset email. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -237,6 +256,34 @@ function AccountAccessPanel() {
     }
   }
 
+  if (mode === "forgot") {
+    return (
+      <div>
+        <button type="button" onClick={() => { setMode("login"); setError(""); setResetSent(false); }} className="mb-6 flex items-center gap-2 text-xs font-bold text-[#17233B]/50 transition hover:text-[#17233B]">
+          <i className="ri-arrow-left-line" /> Back to sign in
+        </button>
+        <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#4F6EF7]">Customer Portal</p>
+        <h2 className="mt-3 font-display text-3xl font-extrabold tracking-[-0.035em] text-[#17233B]">Forgot password?</h2>
+        {resetSent ? (
+          <p className="mt-6 rounded-xl bg-[#E8EEFC] px-5 py-4 text-sm font-semibold text-[#17233B]">
+            If an account exists for that email, a reset link has been sent. Check your inbox.
+          </p>
+        ) : (
+          <form onSubmit={submitForgot} className="mt-7 space-y-4">
+            <label className="block">
+              <span className="mb-2 block text-xs font-bold text-[#17233B]/60">Email address</span>
+              <input required type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" />
+            </label>
+            {error && <p className="text-sm font-bold text-[#C54444]">{error}</p>}
+            <button disabled={loading} className="w-full rounded-full bg-[#17233B] px-7 py-4 text-sm font-extrabold text-white transition hover:bg-[#4F6EF7] disabled:opacity-50">
+              {loading ? "Sending..." : "Send Reset Link"}
+            </button>
+          </form>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex gap-6 border-b border-[#17233B]/10">
@@ -247,7 +294,10 @@ function AccountAccessPanel() {
       <form onSubmit={submit} className="mt-7 space-y-4">
         {mode === "register" && <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Full name</span><input required autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>}
         <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Email address</span><input required type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>
-        <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Password</span><input required minLength={8} type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} value={password} onChange={(e) => setPassword(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>
+        <div>
+          <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Password</span><input required minLength={8} type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} value={password} onChange={(e) => setPassword(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>
+          {mode === "login" && <button type="button" onClick={() => { setMode("forgot"); setError(""); }} className="mt-1.5 text-xs font-semibold text-[#4F6EF7] hover:underline">Forgot password?</button>}
+        </div>
         {mode === "register" && <label className="block"><span className="mb-2 block text-xs font-bold text-[#17233B]/60">Confirm password</span><input required minLength={8} type="password" autoComplete="new-password" value={confirm} onChange={(e) => setConfirm(e.target.value)} className="h-12 w-full rounded-xl border border-[#17233B]/14 bg-[#F6F8FC] px-4 text-sm font-semibold text-[#17233B] outline-none transition focus:border-[#4F6EF7]" /></label>}
         <label className="flex cursor-pointer items-start gap-3 rounded-xl bg-[#E8EEFC] p-4"><input type="checkbox" checked={terms} onChange={(e) => setTerms(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#4F6EF7]" /><span className="text-xs font-semibold leading-5 text-[#17233B]/66">I am 21 or older and understand that ZOONETICS products are supplied strictly for research use only.</span></label>
         {mode === "register" && <label className="flex cursor-pointer items-start gap-3 px-1"><input type="checkbox" checked={marketingOptIn} onChange={(e) => setMarketingOptIn(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#4F6EF7]" /><span className="text-xs font-medium leading-5 text-[#17233B]/52">Send me product releases, research-library updates and occasional offers. I can unsubscribe at any time.</span></label>}
