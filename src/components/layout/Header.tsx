@@ -9,6 +9,7 @@ import { useCart } from "@/lib/cart-context";
 import type { Product } from "@/lib/types";
 
 const NAV = [
+  { href: "/zoo-protocol", label: "ZooProtocol" },
   { href: "/trade", label: "Trade" },
   { href: "/coas", label: "COA Library" },
   { href: "/sourcing", label: "Quality" },
